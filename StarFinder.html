@@ -231,6 +231,48 @@
     .popup-close-btn:hover {
       background: rgba(255, 255, 255, 0.3);
     }
+
+    /* ==== PLUMB 2026-09-26, the all-sites responsive pass ====================
+       Measured: under 980px the list came BEFORE the map (the map, which is the
+       product, fell below the fold); the legend and toolbar were absolute to the
+       whole page at hard-coded tops, so "Fit to all" sat on the first card; and
+       the search's min-width:260px pushed the header past a phone's width, which
+       WebKit scrolled sideways 52-162px. Now: map first, list after, and the map's
+       floating controls live IN the map's grid cell, so they move with it. */
+    /* the quick links were inline boxes, so a narrow card split one button across
+       two lines (the bell on one line, "Book" and a torn border on the next) */
+    .meta .links{display:flex;flex-wrap:wrap;gap:6px}
+    .meta .links a{white-space:nowrap}
+    @media (max-width: 980px){
+      .wrap{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;
+            grid-template-areas:"head" "map" "list"}
+      header{grid-area:head;flex-wrap:wrap;padding:10px 12px}
+      header .controls{width:100%}
+      .search{flex:1 1 100%}
+      .search input{min-width:0;width:100%;box-sizing:border-box}
+      #map{grid-area:map;order:0;height:58svh;min-height:300px}
+      aside{grid-area:list;order:0;height:auto;overflow:visible;border-right:0;border-top:1px solid var(--border)}
+      .legend{grid-area:map;position:relative;top:auto;right:auto;align-self:start;justify-self:end;margin:10px;height:max-content}
+      .toolbar{grid-area:map;position:relative;left:auto;top:auto;align-self:start;justify-self:start;margin:10px;height:max-content}
+    }
+    @media (max-width: 380px){
+      .item{grid-template-columns:64px minmax(0,1fr)}
+      .thumb{width:64px;height:64px}
+      .meta .links{display:flex;flex-wrap:wrap;gap:6px}
+    }
+    /* phone landscape: a short screen gets the map beside the list, not above it */
+    @media (max-height: 500px) and (orientation: landscape){
+      .wrap{grid-template-columns:minmax(0,300px) minmax(0,1fr);grid-template-rows:auto 1fr;
+            grid-template-areas:"head head" "list map";height:100svh;min-height:0}
+      header{grid-area:head;padding:6px 12px}
+      header .sub{display:none}
+      .search{flex:1 1 180px}
+      .search input{min-width:0;width:100%}
+      #map{grid-area:map;height:auto;min-height:0}
+      aside{grid-area:list;height:auto;overflow:auto;border-top:0;border-right:1px solid var(--border)}
+      .legend{grid-area:map;position:relative;top:auto;right:auto;align-self:start;justify-self:end;margin:8px}
+      .toolbar{grid-area:map;position:relative;left:auto;top:auto;align-self:start;justify-self:start;margin:8px}
+    }
 </style>
 </head>
 <body>
@@ -270,7 +312,7 @@
       <div class="row"><span class="dot ok"></span> Oklahoma</div>
     </div>
 
-    <div class="toolbar" aria-hidden="true">
+    <div class="toolbar">
       <button id="fitBtn" class="floating-btn" title="Zoom to all">Fit to all</button>
       <button id="clearBtn" class="floating-btn" title="Clear search">Clear search</button>
     </div>
