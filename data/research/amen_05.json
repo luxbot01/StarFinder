@@ -1,0 +1,229 @@
+{
+  "_author": "Gloaming",
+  "_finished": "2026-10-30 19:13 CDT",
+  "places": [
+    {
+      "id": "tx-bastrop",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": null,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/bastrop/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Contrasting_Tree_Types_Coexist_in_a_Forest.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Contrasting_Tree_Types_Coexist_in_a_Forest.jpg",
+          "credit": "Wing-Chi Poon (Wikimedia user Wingchi)",
+          "license": "CC BY-SA 2.5",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Fees page: Full Hookup sites list 20/30/50-amp electric with water hookup; Campsites with Electricity list 20/30-amp with water hookup; tent and walk-in sites show 'Water nearby' and the page says water is 'not at each site'. Restrooms are listed as nearby (toilet type not stated). Drinking water and showers are not stated on the page. Cabins (historic cabins) come from the main park page, not the fees page. One photo is listed: a forest landscape (CC BY-SA 2.5). The restroom file (Bastrop_Texas_7442.jpg, CC BY-SA 4.0, gillfoto) was left out because it is a building, not a landscape."
+    },
+    {
+      "id": "tx-choke-canyon",
+      "rv_30a": null,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": true,
+      "showers": null,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/choke-canyon/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Campsite_Choke_Canyon_State_Park_Texas_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Campsite_Choke_Canyon_State_Park_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Alligator_At_Choke_Canyon.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Alligator_At_Choke_Canyon.jpg",
+          "credit": "Lionelmayne",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Electric sites are stated only as '50 amp hookup', so rv_30a is null (30-amp not stated). Water hookup at electric sites; walk-in sites show 'Water nearby' only. Drinking water is mentioned near the boat ramp, day-use area and youth group area. Restrooms are nearby at electric and walk-in sites; the youth group area has no restrooms. Showers not stated. Cabins come from the main park page. Photo 1 is the Calliham Unit campsite (a landscape of the site); photo 2 is an alligator (wildlife, not a landscape)."
+    },
+    {
+      "id": "tx-estero-llano-grande",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/estero-llano-grande/fees-facilities",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/A_resaca_in_Estero_Llano_Grande_State_Park%2C_Hidalgo_County%2C_Texas%2C_USA_%2813_April_2016%29.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:A_resaca_in_Estero_Llano_Grande_State_Park,_Hidalgo_County,_Texas,_USA_(13_April_2016).jpg",
+          "credit": "William L. Farr (Wikimedia user Wilafa)",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Estero_Llano_Grande_State_Park.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Estero_Llano_Grande_State_Park.jpg",
+          "credit": "cricketsblog (Flickr; Commons structured data names Melissa McMasters)",
+          "license": "CC BY 2.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "The campsites subpage returned 404. The fees root page lists only a 'Group Lodging' link with no details, so no electric sites, drinking water, restrooms, showers or cabins are stated. Left null, not false. Both photos name this park, and both licences were read on each file's own page."
+    },
+    {
+      "id": "tx-guadalupe-river",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/guadalupe-river/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Guadalupe_river_state_park.jpg/960px-Guadalupe_river_state_park.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Guadalupe_river_state_park.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Guadalupe_river_state_park_bluff.jpg/960px-Guadalupe_river_state_park_bluff.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Guadalupe_river_state_park_bluff.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Turkey Sink sites: 50-amp electric with water hookup. Cedar Sage sites: 30-amp electric with water. Walk-in tent sites have no electricity. 'Restrooms with showers nearby' for the electric sites; walk-in areas list restrooms nearby. Drinking water and cabins are not stated on the fees page or the main page (cabins null, not false)."
+    },
+    {
+      "id": "tx-lake-corpus-christi",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lake-corpus-christi/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Lake_corpus_christi_view.jpg/960px-Lake_corpus_christi_view.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_corpus_christi_view.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Campsites offer electric hookup only, with no amperage stated, so rv_30a and rv_50a are null. Each campsite type lists 'Water'. 'Restrooms with showers nearby' for full-hookup and water-only sites; toilet type not stated. Drinking water not stated. Cabins and screened shelters come from the main park page; the fees page names no units. A second photo, the fishing pier (Lake_corpus_christi_sp_pier.jpg, CC BY 4.0), was not listed because its thumbnail was still rate-limited when checked."
+    },
+    {
+      "id": "tx-mckinney-falls",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/mckinney-falls/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Mckinney_lower_falls.jpg/960px-Mckinney_lower_falls.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Mckinney_lower_falls.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Premium sites list 50/30/20-amp electric with water hookup; 69 sites list 30/20-amp with water. 'Restrooms with showers nearby' (toilet type not stated). Drinking water not stated. Six cabins come from the main park page; the fees page names no units."
+    },
+    {
+      "id": "tx-post-oak-ridge",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/post-oak-ridge/fees-facilities",
+      "photos": [],
+      "notes": "The campsites subpage returned 404. The fees root page has only entrance-fee navigation and no facility details. Nothing is stated, so every amenity is null. No Commons category exists for this park, so photos is empty."
+    },
+    {
+      "id": "tx-village-creek",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/village-creek/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Village_Creek_Swimming_Hole.jpg/960px-Village_Creek_Swimming_Hole.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Village_Creek_Swimming_Hole.jpg",
+          "credit": "Urban Versis 32",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Campsites with electricity (25 sites) are listed only as 'Electric hookup', so amperage is not stated and rv_30a and rv_50a are null. Water hookup at those sites. 'Restrooms with showers nearby' (toilet type not stated). Drinking water not stated; hike-in primitive sites list 'Water nearby'. One eight-person cabin is named on the main park page. The swimming-hole file's description does not name the park; its Commons category does, and the category is the basis for using it. A second photo (Campsite_Village_Creek_State_Park_Texas_2023.jpg, CC BY 4.0) was not listed because its thumbnail was still rate-limited when checked."
+    },
+    {
+      "id": "nps-paal",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://www.nps.gov/paal/planyourvisit/index.htm",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Palo_Alto_Battlefield_National_Historic_Site_PAAL8320.jpg/960px-Palo_Alto_Battlefield_National_Historic_Site_PAAL8320.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Palo_Alto_Battlefield_National_Historic_Site_PAAL8320.jpg",
+          "credit": "National Park Service Digital Image Archives (transferred to Commons by Fae)",
+          "license": "Public domain (NPS image; the page says it is public domain in the United States)",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "The NPS planyourvisit page states no restrooms, drinking water, showers, campsites, electric hookups or cabins, so every amenity is null. The photo's description names 'Palo Alto Battlefield National Historic Site', the park's earlier designation, and the Commons category names the National Historical Park. Its content (an 1846 clash) was checked from the description only, not visually."
+    },
+    {
+      "id": "usfs-black-kettle-national-grassland",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": true,
+      "restrooms": true,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://www.fs.usda.gov/r03/cibola/recreation/lake-marvin-campground",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Black_Kettle_National_Grassland.jpg/960px-Black_Kettle_National_Grassland.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Black_Kettle_National_Grassland.jpg",
+          "credit": "U.S. Forest Service (uploaded by Fredlyfish4)",
+          "license": "Public domain (the page says the image is in the public domain in the United States)",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Lake Marvin Campground (the Texas-unit campground): 'Potable water is available at this site' and a vault toilet. Single electric hookup sites at $20 per night, amperage not stated, so rv_30a and rv_50a are null. Tent camping is free. Picnic tables are available. Showers and cabins are not stated. The photo's description names the grassland, but the scene is the Oklahoma portion (a windmill and homestead in Unit 76 in western Oklahoma), not the Texas unit. Used because it is the same national grassland; flagged for the orchestrator to decide."
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "_author": "Sidereal",
+  "_finished": "2026-10-30 evening, CDT (approximate; session clock read 6:26 PM at sage_init)",
+  "places": [
+    {
+      "id": "tx-abilene",
+      "rv_30a": null,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/abilene/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Abilene_State_Park_1.jpg/960px-Abilene_State_Park_1.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Abilene_State_Park_1.jpg",
+          "credit": "mr_t_77 from WV, USA",
+          "license": "CC BY-SA 2.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Abilene_State_Park_2.jpg/960px-Abilene_State_Park_2.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Abilene_State_Park_2.jpg",
+          "credit": "mr_t_77 from WV, USA",
+          "license": "CC BY-SA 2.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "rv_30a null: the campsite page prints 'Electric hookup' (no amperage) for four groups and never states 30 amp, so per the brief it is null. rv_50a true: Group Trailer Area (17 sites) lists '50 amp hookup'. The six campsite groups total 69 sites (3, 15, 20, 17, 2, 12). The park overview page mentions a 35-site RV group that does not appear on the campsite page; not reconciled. water_at_site true: five of six groups list 'Water hookup'; the 12 tent-only sites list 'Water' only. water_access null: drinkable water not stated. restrooms true: restrooms referenced; toilet type not stated. showers true: 'Restrooms with showers nearby' for five groups; Group Trailer Area restrooms have no showers in the area, with showers 1/3 mile away. cabins true: the park overview page lists yurts under Lodging (overview page, not the campsite page). Screened shelters are on the site menu and were not verified. Group hall for rent (not lodging)."
+    },
+    {
+      "id": "tx-buescher",
+      "rv_30a": true,
+      "rv_50a": false,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/buescher/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Buescher_state_park_2007.jpg/960px-Buescher_state_park_2007.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Buescher_state_park_2007.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/View_from_Scenic_Overlook_Buescher_State_Park_Texas_2022.jpg/1280px-View_from_Scenic_Overlook_Buescher_State_Park_Texas_2022.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:View_from_Scenic_Overlook_Buescher_State_Park_Texas_2022.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "rv_30a true: 'Campsites with Electricity' (32 sites) list '20/30-amp electric'. rv_50a false: no 50 amp mentioned. water_at_site true: electric sites and the 20-site water-only Lakeview area list 'Water hookup'. Walk-in primitive sites 61-65 have no water hookup. water_access null: drinkable water and spigots not stated. restrooms true: 'Restrooms with showers nearby' for electric and water sites, 'Restrooms nearby' for walk-in sites; toilet type not stated. showers true for electric and water sites only. cabins true: the park overview page lists 'cabins without restrooms' among camping and lodging types; bookability is from the overview, not the campsite page. Screened shelters are on the site menu, not verified."
+    },
+    {
+      "id": "tx-devils-sinkhole",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/devils-sinkhole/fees-facilities",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Devil%27s_Sinkhole.jpg/1280px-Devil%27s_Sinkhole.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Devil%27s_Sinkhole.jpg",
+          "credit": "Perdustin",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "No campsites at this natural area, so rv_30a, rv_50a and water_at_site are false. The fees-and-facilities page fetch returned navigation and an 'Entrance Fees' link only, so water, restrooms and showers are null. Tours leave from the Devil's Sinkhole Visitor Center (101 N. Sweeten St., Rocksprings); whether it has restrooms is not stated. cabins false: no lodging is listed and the park page says camping is at nearby Kickapoo Cavern State Park. Photo: an interior view captioned 'Interior view of Devil's Sinkhole, 1979' (German caption 'Innenansicht von Devil's Sinkhole, 1979'); the page does not say it shows bats, so it is not claimed to."
+    },
+    {
+      "id": "tx-garner",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/garner/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Garner_state_park.jpg/960px-Garner_state_park.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Garner_state_park.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "rv_30a and rv_50a true: Full Hookup and New Garner sites list '20/30/50-amp electrical hookup'; separate 50 amp and 30 amp campsite pages. Old Garner electric sites list '20 amp' and '30 amp'. water_at_site true: Full Hookup, 30 amp and 50 amp sites list 'Water hookup'; the water-only sites list 'Water' with no hookup wording. water_access null: drinkable water not stated. restrooms true: 'Restrooms nearby' (Old Garner electric) and 'Restrooms with showers nearby' (30 and 50 amp); toilet type not stated; Full Hookup and water-only sites list no restrooms. showers true for 30 and 50 amp sites only. cabins true: historic cabins are listed on the park overview page (bookability from the overview; campsite page silent). Second photo held back: Mount Old Baldy Trail View 1.jpg (CC0, Doughbo) is licence-clean, but both the Special:FilePath and direct thumbnail URLs returned HTTP 429 on every retry, so it failed the load check. Add it on a later check if it loads."
+    },
+    {
+      "id": "tx-lake-bob-sandlin",
+      "rv_30a": true,
+      "rv_50a": false,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lake-bob-sandlin/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Pier_Lake_Bob_Sandlin_State_Park_Texas_2023.jpg/1280px-Pier_Lake_Bob_Sandlin_State_Park_Texas_2023.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Pier_Lake_Bob_Sandlin_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "rv_30a true: the 75 'Campsites with Electricity' list '30 amp hookup'; no 50 amp mentioned, so rv_50a false. water_at_site true: electric sites list 'Water hookup'. Primitive sites: no water hookup. water_access null: drinkable water not stated. restrooms true: electric sites list 'Restrooms with showers nearby'; primitive sites have a 'Chemical toilet in the area' (not claimed as flush or vault). showers true for electric sites only. cabins true: the park overview page lists cabins and screened shelters among camping and lodging types; campsite page silent. Group picnic area and pavilion are for day use, not lodging."
+    },
+    {
+      "id": "tx-lost-maples",
+      "rv_30a": true,
+      "rv_50a": false,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lost-maples/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Lost_Maples_Scenic_View_2021.jpg/960px-Lost_Maples_Scenic_View_2021.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Lost_Maples_Scenic_View_2021.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Lost_Maples_State_Natural_Area%2C_Edwards_Plateau%2C_Texas%2C_United_States.jpg/960px-Lost_Maples_State_Natural_Area%2C_Edwards_Plateau%2C_Texas%2C_United_States.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Lost_Maples_State_Natural_Area,_Edwards_Plateau,_Texas,_United_States.jpg",
+          "credit": "Alec Norman",
+          "license": "CC BY-SA 3.0 (page also tags GFDL 1.2 or later)",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "rv_30a true: the 30 electric sites list '30 amp hookup'. rv_50a false: only 30 amp is mentioned. water_at_site true: electric sites list 'Water hookup'. water_access null: park-wide drinking water is not stated; hike-in sites say 'No potable water'. restrooms and showers true: electric sites list 'Restrooms with showers nearby'; toilet type not stated. Hike-in sites (30 sites, up to six people each, 1 to 3.2 miles on trails) list no toilets, showers or shelters. cabins false: the park overview page lists no cabins, yurts, lodges, screened shelters or glamping units. Photo 2 is a 2005 capture by Alec Norman (uploaded 2006) of one of the ponds."
+    },
+    {
+      "id": "tx-palo-duro-canyon",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/palo-duro-canyon/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Lighthouse_at_Palo_Duro_Canyon_State_Park.jpg/1280px-Lighthouse_at_Palo_Duro_Canyon_State_Park.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Lighthouse_at_Palo_Duro_Canyon_State_Park.jpg",
+          "credit": "Patrickhuber100",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Palo_Duro_Canyon_State_Park_2002.jpg/960px-Palo_Duro_Canyon_State_Park_2002.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Palo_Duro_Canyon_State_Park_2002.jpg",
+          "credit": "Leaflet",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "rv_30a and rv_50a true: Juniper (18) and Mesquite | Sagebrush (47) list '30 amp hookup' and '50 amp hookup'; Hackberry (32) lists '20 amp' and '30 amp'; Wolfberry group camp (9) lists '30/50-amp electric and water hookups'. water_at_site true: Juniper, Mesquite | Sagebrush and Hackberry list 'Water hookup'; Wolfberry includes water hookups; Fortress Cliff drive-up sites have water 'in the campground, but not at each site'. water_access null: the campsite page does not state park-wide drinking water; hike-in area says 'No drinking water is in the area; you must bring your own.' restrooms and showers true: 'Restrooms with showers nearby' at Juniper, Mesquite | Sagebrush and Hackberry; Wolfberry 'Restrooms/showers in walking distance' with wheelchair-accessible restrooms; Fortress Cliff restrooms with showers 1/2 to 2 miles away; toilet type not stated. cabins true: three rim cabins and four Cow Camp cabins on the canyon floor, per the park overview page (campsite page silent). Glamping units are on the overview (no schema field). Tasajillo Pavilion is for rent (not lodging)."
+    },
+    {
+      "id": "tx-sheldon-lake",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/sheldon-lake/fees-facilities",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Tower_Sheldon_Lake_SP_Harris_Co_Texas_2024.jpg/1280px-Tower_Sheldon_Lake_SP_Harris_Co_Texas_2024.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Tower_Sheldon_Lake_SP_Harris_Co_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Pond_Sheldon_Lake_SP_Harris_Co_Texas_2024.jpg/960px-Pond_Sheldon_Lake_SP_Harris_Co_Texas_2024.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Pond_Sheldon_Lake_SP_Harris_Co_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "The fees-and-facilities page fetch returned only navigation and a 'No Entrance Fee' link, so every amenity field is null rather than guessed. The batch-one park page lists no campsites; its navigation has a 'Camping & Lodging' link that was not opened. Park facts from the pages read (not amenity fields): free entry, open 8 a.m. to 5 p.m., free day-use passes reserved online, 82-foot John Jacob Observation Tower. Photo 1 is the observation tower (its description names the park); photo 2 is a former fish hatchery pond (its description names the park)."
+    },
+    {
+      "id": "nps-gumo",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": true,
+      "restrooms": true,
+      "showers": false,
+      "cabins": false,
+      "amenity_source": "https://www.nps.gov/gumo/planyourvisit/camping.htm",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Guadalupe_Mtns_El_Capitan_2006.JPG/1280px-Guadalupe_Mtns_El_Capitan_2006.JPG",
+          "page": "https://commons.wikimedia.org/wiki/File:Guadalupe_Mtns_El_Capitan_2006.JPG",
+          "credit": "Leaflet",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Guadalupe_Peak_from_Bowl_Trail.JPG/1280px-Guadalupe_Peak_from_Bowl_Trail.JPG",
+          "page": "https://commons.wikimedia.org/wiki/File:Guadalupe_Peak_from_Bowl_Trail.JPG",
+          "credit": "Fredlyfish4",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Camping page (last updated March 27, 2022): Pine Springs (20 tent walk-in sites, 13 RV sites, no hookups, no dump station, RV max 55 ft) and Dog Canyon (9 tent sites, 4 RV sites, no hookups, no dump station, RV max 23 ft). rv_30a and rv_50a false: no electric hookups are listed. water_at_site false: no hookups at either campground. water_access true: the camping page says Pine Springs potable water is 'for water bottles and hydration packs only', so drinkable water exists in the park, with that restriction. restrooms true: flush toilets and sinks at Pine Springs and Dog Canyon. showers false: 'no showers' at both. cabins false: no cabins or lodges are named; Frijole Horse Corral is for group and horse use. The NPS planyourvisit page calls Pine Springs 'primitive tent and RV'; the camping page does not, and is used here. Photo 2 licence: the page states CC BY-SA 3.0 and also a permission line citing CC BY-SA 4.0 'or a similar license'; both are share-alike, and the stated CC BY-SA 3.0 is used. No NPS public-domain photos were searched for."
+    },
+    {
+      "id": "usfs-caddo-national-grassland",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": null,
+      "water_access": true,
+      "restrooms": true,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://www.fs.usda.gov/r08/texas/recreation/bois-d-arc-trailhead-caddo-lbj-national-grasslands",
+      "photos": [],
+      "notes": "Bois d'Arc Trailhead page (updated Oct 14, 2025) lists 26 campsites, vault toilets, potable water and a horse washing area; horse camping listed. rv_30a and rv_50a false: no electric hookups appear on the facility list. water_at_site null: potable water is listed for the site, not per campsite. water_access true: potable water at the trailhead; park-wide water not checked. restrooms true: vault toilets. showers null: none named. cabins false: none named. Photos: none found. Reviewed and not used: 'Caddo-LBJ National Grassland Sign.jpg' (public domain, U.S. Forest Service, but a 400-pixel district office sign, not a landscape) and the 1983 Library of Congress Forest Service map (public domain, a map not a photo). 'LBJ Grasslands Hillside.jpg' is the Lyndon B. Johnson unit, so it was not used. Caddo Lake photos are a different place. The orchestrator may choose the sign if a low-resolution placeholder is wanted."
+    }
+  ]
+}

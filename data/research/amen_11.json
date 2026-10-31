@@ -1,0 +1,237 @@
+{
+ "_author": "Ephemeris",
+ "_finished": "2026-10-30 19:11 CDT",
+ "places": [
+  {
+   "id": "tx-bonham",
+   "rv_30a": true,
+   "rv_50a": true,
+   "water_at_site": true,
+   "water_access": null,
+   "restrooms": true,
+   "showers": true,
+   "cabins": false,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/bonham/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bonham%20July%202016%2036%20(Bonham%20State%20Park).jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Bonham_July_2016_36_(Bonham_State_Park).jpg",
+     "credit": "Michael Barera",
+     "license": "CC BY-SA 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bonham%20State%20Park,Texas.jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Bonham_State_Park,Texas.jpg",
+     "credit": "Nicolas Henderson",
+     "license": "CC BY 2.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Electric amperage is on the fee page: sites 1 and 2 (full hookup) show 30/50-amp; sites 3 to 14 show 20/30/50-amp; tent-only sites 15 to 21 show 20-amp. Water spigot at each electric and tent site. Restrooms and showers: the page says 'Restrooms/showers nearby' for sites 1 to 21; the toilet type (flush, vault, composting) is not stated. Drinkable water anywhere in the park is not stated, so water_access is null. cabins is false: the park has a group barracks with hall and kitchen (about 94 people) and a six-site group camp, but no cabins, cottages, lodge rooms or yurts were listed. Photo 2 is Flickr-origin, uploaded to Commons under CC BY 2.0 as the page states."
+  },
+  {
+   "id": "tx-davis-mountains",
+   "rv_30a": true,
+   "rv_50a": true,
+   "water_at_site": true,
+   "water_access": null,
+   "restrooms": true,
+   "showers": null,
+   "cabins": true,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/davis-mountains/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Davis%20Mountains%20State%20Park%20View.JPG?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Davis_Mountains_State_Park_View.JPG",
+     "credit": "Travis K. Witt",
+     "license": "CC BY-SA 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Overlooking%20Davis%20Mountains%20State%20Park%20(142943017).jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Overlooking_Davis_Mountains_State_Park_(142943017).jpg",
+     "credit": "Jonathan Cutrer",
+     "license": "CC BY 2.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Fee page: full-hookup campsites (26 sites) show 30-amp and 50-amp hookups with water and sewer; electricity sites (34) show 20-amp and 30-amp with water hookup; the page says 'Restrooms nearby' for those sites. Campsites with water only share water ('Not all sites have water - several sites must share'), so water_at_site is true for the electric sites only. cabins is true because the main park page names Indian Lodge (a historic 39-room lodge) as bookable rooms; the fee page's Lodging section text was not included in the summary, so confirm before publishing. Drinkable water anywhere in the park and shower details are not on the page: water_access and showers are null. Toilet type is not stated."
+  },
+  {
+   "id": "tx-franklin-mountains",
+   "rv_30a": false,
+   "rv_50a": false,
+   "water_at_site": false,
+   "water_access": null,
+   "restrooms": null,
+   "showers": null,
+   "cabins": false,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/franklin-mountains/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/El%20Paso%20Franklin%20Mountains%20and%20Scenic%20Drive%20aerial.jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:El_Paso_Franklin_Mountains_and_Scenic_Drive_aerial.jpg",
+     "credit": "Dicklyon",
+     "license": "CC BY-SA 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Franklin%20mts%20entrance.jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Franklin_mts_entrance.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "The fee page says 'No Water' at every campsite type (drive-up RV, walk-in tent, group camps) and 'No electricity' at the five drive-up RV sites, so rv_30a and rv_50a are false for the unserviced RV sites, and water_at_site is false. The page does not state restrooms, showers, drinkable water, or cabins, so restrooms, showers and water_access are null; cabins is false as no cabins were listed. The aerial photo's description does not name the park; it is included because its Commons category is Franklin Mountains State Park. The entrance photo's description names the park."
+  },
+  {
+   "id": "tx-kickapoo-cavern",
+   "rv_30a": null,
+   "rv_50a": null,
+   "water_at_site": true,
+   "water_access": null,
+   "restrooms": true,
+   "showers": true,
+   "cabins": false,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/kickapoo-cavern/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Kickapoo%20Cavern%20State%20Park,%20landscape.jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Kickapoo_Cavern_State_Park,_landscape.jpg",
+     "credit": "Mark Gustafson",
+     "license": "CC BY-SA 4.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "RV amperage is not stated: the five full-hookup sites show 'Electric hookup' with no 30 or 50 wording, so rv_30a and rv_50a are null per the brief. Full-hookup sites show 'Water hookup'; the 10 water-only sites share spigots, so water_at_site is true for the hookup sites. The page says 'Restrooms with showers nearby' for the full-hookup and water-only areas: restrooms and showers are true, toilet type not stated. Drinkable water anywhere in the park is not stated (water_access null). cabins is false: none listed. Tent sites are not named on the page. Trade-off: the 10 water-only sites and the 30-person group camp are not coded as kinds."
+  },
+  {
+   "id": "tx-lockhart",
+   "rv_30a": true,
+   "rv_50a": true,
+   "water_at_site": true,
+   "water_access": null,
+   "restrooms": true,
+   "showers": true,
+   "cabins": false,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/lockhart/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lockhart%20state%20park%20ccc%20dam%202.jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Lockhart_state_park_ccc_dam_2.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Full-hookup sites (10) show 'Electric hookup', '30 amp hookup' and '50 amp hookup'; electricity sites (10) show 30-amp, so rv_30a and rv_50a are true. Water hookup is listed for both electric site types. The page says 'Restrooms with showers nearby' for both, so restrooms and showers are true; toilet type is not stated. Drinkable water anywhere in the park is not stated, so water_access is null. cabins is false: the page lists group sites and the group recreation hall only. One photo only: the other Lockhart candidate in the Commons category is a golf-hole picture, which was not used as a landscape."
+  },
+  {
+   "id": "tx-old-tunnel",
+   "rv_30a": false,
+   "rv_50a": false,
+   "water_at_site": false,
+   "water_access": null,
+   "restrooms": null,
+   "showers": null,
+   "cabins": false,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/old-tunnel",
+   "photos": [
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Old%20tunnel%20state%20park%20tunnel%202013.jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Old_tunnel_state_park_tunnel_2013.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Camping is not allowed at this park (main park page), so the RV and site fields are false. The fee-facilities campsites page returned 404 and is not used as the source; the main park page is the amenity source. Restrooms, showers and drinkable water are not stated on the main page, so they are null. The park's bat-viewing tickets are a separate matter and are in the round-one notes. The photo's description names Old Tunnel State Park."
+  },
+  {
+   "id": "tx-sea-rim",
+   "rv_30a": true,
+   "rv_50a": true,
+   "water_at_site": true,
+   "water_access": null,
+   "restrooms": null,
+   "showers": null,
+   "cabins": true,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/sea-rim/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sea%20Rim%20State%20Park.jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Sea_Rim_State_Park.jpg",
+     "credit": "John Perry",
+     "license": "CC BY-SA 2.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sea%20Rim%20State%20Park,%20Gambusia%20Nature%20Trail%20Boardwalk,%20Texas.jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Sea_Rim_State_Park,_Gambusia_Nature_Trail_Boardwalk,_Texas.jpg",
+     "credit": "William L. Farr",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "The fee page lists 'Campsites with Electricity' (15 sites) with a '50/30-amp hookup', so rv_30a and rv_50a are true, and water hookup at those electric sites. Primitive drive-up sites say 'No Water'. Cabins is true: the main park page names one lodging cabin, but the fee page's Lodging section did not describe it, so confirm bookability before publishing. Restrooms, showers and drinkable water are not stated on the fee page, so they are null. The page's floating-campsite mention in the summary was not coded. The boardwalk photo's description names Sea Rim State Park and its Jefferson County location."
+  },
+  {
+   "id": "nps-cham",
+   "rv_30a": false,
+   "rv_50a": false,
+   "water_at_site": false,
+   "water_access": null,
+   "restrooms": true,
+   "showers": null,
+   "cabins": false,
+   "amenity_source": "https://www.nps.gov/cham/planyourvisit/basicinfo.htm",
+   "photos": [
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Chamizal%20visitor%20center.JPG?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Chamizal_visitor_center.JPG",
+     "credit": "Matthew A. Lynn",
+     "license": "Public domain",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Chamizal%20National%20Memorial.jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Chamizal_National_Memorial.jpg",
+     "credit": "GoneBefore",
+     "license": "CC BY-SA 4.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "The NPS basic-info page says the memorial 'includes walking and bike trails, picnic areas, restrooms' without locations or toilet type, so restrooms is true. No camping and no lodging, so the RV and cabin fields are false. Drinking water, showers and visitor-center hours were not on the page. The visitor-center photo is public domain by the uploader's release, not an NPS image: the page does not say NPS and does not claim NPS authorship. The obelisk photo's description names the memorial; the page does not state NPS or public domain, and its licence is CC BY-SA 4.0 as stated. The NPS page gives only a mailing address (800 South San Marcial Street, El Paso), so the visitor center's exact location is not confirmed here."
+  },
+  {
+   "id": "usfs-sabine-national-forest",
+   "rv_30a": null,
+   "rv_50a": null,
+   "water_at_site": null,
+   "water_access": true,
+   "restrooms": true,
+   "showers": null,
+   "cabins": false,
+   "amenity_source": "https://www.fs.usda.gov/r08/texas/recreation/lakeview-campground",
+   "photos": [
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sabine%20National%20Forest,%20Toledo%20Bend%20Reservoir,%20Texas.jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Sabine_National_Forest,_Toledo_Bend_Reservoir,_Texas.jpg",
+     "credit": "William L. Farr",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colorow%20Box%20Canyon.jpg?width=800",
+     "page": "https://commons.wikimedia.org/wiki/File:Colorow_Box_Canyon.jpg",
+     "credit": "sonnia hill",
+     "license": "CC BY 2.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Forest-level fields come from two campground pages, so they are per campground, not forest-wide. Lakeview Campground (amenity_source): 10 camping-trailer sites, RVs to 24 feet, no electric hookups; potable water available at the site; 'Restrooms are not available at this site' but portable toilets are within a short distance of each campsite (the page contradicts itself). Boles Field (also on the Forest Service site, not the amenity source): camping with electric hookups, amperage not stated, potable water at the site, flush toilet(s), no reservation needed for camping. Because amperage is not stated anywhere, rv_30a and rv_50a are null. water_access is true at the two campgrounds checked, not forest-wide. restrooms is true because Boles Field has flush toilets. The Colorow photo's description names Sabine National Forest; the Toledo Bend photo's description names the forest and the Indian Mounds Wilderness area. Neither photo is a USDA public-domain image; both are CC licensed as stated."
+  }
+ ]
+}

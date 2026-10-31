@@ -1,0 +1,307 @@
+{
+ "_author": "Alidade (photos) and GEGENSCHEIN (rebuild)",
+ "_finished": "Friday, October 30, 2026, evening",
+ "places": [
+  {
+   "id": "tx-blanco",
+   "rv_30a": true,
+   "rv_50a": true,
+   "water_at_site": true,
+   "water_access": null,
+   "restrooms": true,
+   "showers": null,
+   "cabins": null,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/blanco/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Blanco_State_Park%2C_Blanco%2C_Texas_%2848368054806%29.jpg/960px-Blanco_State_Park%2C_Blanco%2C_Texas_%2848368054806%29.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Blanco_State_Park,_Blanco,_Texas_(48368054806).jpg",
+     "credit": "Nicolas Henderson from Coppell, Texas",
+     "license": "CC BY 2.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Blanco_State_Park_%2849190199248%29.jpg/960px-Blanco_State_Park_%2849190199248%29.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Blanco_State_Park_(49190199248).jpg",
+     "credit": "runarut",
+     "license": "CC BY 2.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Blanco_State_Park_13.jpg/960px-Blanco_State_Park_13.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Blanco_State_Park_13.jpg",
+     "credit": "Charles Willgren from Fort Collins, Colorado, United States",
+     "license": "CC BY 2.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Rebuilt by the orchestrator (GEGENSCHEIN) after the batch-10 researcher hung: photos are theirs (licence read and load checked by them); amenities are true only where the official page's own words say so, otherwise null."
+  },
+  {
+   "id": "tx-daingerfield",
+   "rv_30a": null,
+   "rv_50a": null,
+   "water_at_site": true,
+   "water_access": null,
+   "restrooms": true,
+   "showers": null,
+   "cabins": null,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/daingerfield/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Daingerfield_sp_cabin.jpg/960px-Daingerfield_sp_cabin.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Daingerfield_sp_cabin.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Daingerfield_sp_lake.jpg/960px-Daingerfield_sp_lake.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Daingerfield_sp_lake.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Daingerfield_sp_reflection.jpg/960px-Daingerfield_sp_reflection.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Daingerfield_sp_reflection.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Rebuilt by the orchestrator (GEGENSCHEIN) after the batch-10 researcher hung: photos are theirs (licence read and load checked by them); amenities are true only where the official page's own words say so, otherwise null."
+  },
+  {
+   "id": "tx-fort-richardson",
+   "rv_30a": true,
+   "rv_50a": true,
+   "water_at_site": true,
+   "water_access": true,
+   "restrooms": true,
+   "showers": true,
+   "cabins": null,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/fort-richardson/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/0011Fort_Richardson_Hospital_Jacksboro_Texas.jpg/960px-0011Fort_Richardson_Hospital_Jacksboro_Texas.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:0011Fort_Richardson_Hospital_Jacksboro_Texas.jpg",
+     "credit": "Mark Fisher",
+     "license": "CC BY-SA 3.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/0011Fort_Richardson_Officers_Quarters_Jacksboro_Texas.jpg/960px-0011Fort_Richardson_Officers_Quarters_Jacksboro_Texas.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:0011Fort_Richardson_Officers_Quarters_Jacksboro_Texas.jpg",
+     "credit": "Mark Fisher",
+     "license": "CC BY-SA 3.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Fort_Richardson.JPG/960px-Fort_Richardson.JPG",
+     "page": "https://commons.wikimedia.org/wiki/File:Fort_Richardson.JPG",
+     "credit": "NetherlandishYankee ( talk )",
+     "license": "Public domain",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Rebuilt by the orchestrator (GEGENSCHEIN) after the batch-10 researcher hung: photos are theirs (licence read and load checked by them); amenities are true only where the official page's own words say so, otherwise null."
+  },
+  {
+   "id": "tx-inks-lake",
+   "rv_30a": null,
+   "rv_50a": true,
+   "water_at_site": true,
+   "water_access": true,
+   "restrooms": true,
+   "showers": true,
+   "cabins": null,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/inks-lake/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Devils_Waterhole_View_Inks_Lake_State_Park_Texas_2023.jpg/960px-Devils_Waterhole_View_Inks_Lake_State_Park_Texas_2023.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Devils_Waterhole_View_Inks_Lake_State_Park_Texas_2023.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Inks_lake_scenery_2014.jpg/960px-Inks_lake_scenery_2014.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Inks_lake_scenery_2014.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Overlook_of_Inks_Lake_State_Park_Texas_2023.jpg/960px-Overlook_of_Inks_Lake_State_Park_Texas_2023.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Overlook_of_Inks_Lake_State_Park_Texas_2023.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Rebuilt by the orchestrator (GEGENSCHEIN) after the batch-10 researcher hung: photos are theirs (licence read and load checked by them); amenities are true only where the official page's own words say so, otherwise null."
+  },
+  {
+   "id": "tx-lake-whitney",
+   "rv_30a": null,
+   "rv_50a": true,
+   "water_at_site": true,
+   "water_access": null,
+   "restrooms": true,
+   "showers": true,
+   "cabins": true,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/lake-whitney/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Big_Oak_Lake_Whitney_State_Park_Texas_2024.jpg/960px-Big_Oak_Lake_Whitney_State_Park_Texas_2024.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Big_Oak_Lake_Whitney_State_Park_Texas_2024.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Day_Use_Area_Lake_Whitney_SP_Texas_2024.jpg/960px-Day_Use_Area_Lake_Whitney_SP_Texas_2024.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Day_Use_Area_Lake_Whitney_SP_Texas_2024.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Sunset_Lake_Whitney_Texas_2024.jpg/960px-Sunset_Lake_Whitney_Texas_2024.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Sunset_Lake_Whitney_Texas_2024.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Rebuilt by the orchestrator (GEGENSCHEIN) after the batch-10 researcher hung: photos are theirs (licence read and load checked by them); amenities are true only where the official page's own words say so, otherwise null."
+  },
+  {
+   "id": "tx-mustang-island",
+   "rv_30a": null,
+   "rv_50a": true,
+   "water_at_site": null,
+   "water_access": null,
+   "restrooms": true,
+   "showers": true,
+   "cabins": null,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/mustang-island/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Mustang_Island_State_Park%2C_mudflats_on_back_of_island%2C_Nueces_Co._TX%3B_22_Apr_2025.jpg/960px-Mustang_Island_State_Park%2C_mudflats_on_back_of_island%2C_Nueces_Co._TX%3B_22_Apr_2025.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Mustang_Island_State_Park,_mudflats_on_back_of_island,_Nueces_Co._TX;_22_Apr_2025.jpg",
+     "credit": "William L. Farr",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Mustang_Island_State_Park%2C_the_beach%2C_Nueces_Co._TX%3B_22_Apr_2025.jpg/960px-Mustang_Island_State_Park%2C_the_beach%2C_Nueces_Co._TX%3B_22_Apr_2025.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Mustang_Island_State_Park,_the_beach,_Nueces_Co._TX;_22_Apr_2025.jpg",
+     "credit": "William L. Farr",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Mustang_Island_State_Park.jpg/960px-Mustang_Island_State_Park.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Mustang_Island_State_Park.jpg",
+     "credit": "Shawn Hinsey",
+     "license": "CC BY 2.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Rebuilt by the orchestrator (GEGENSCHEIN) after the batch-10 researcher hung: photos are theirs (licence read and load checked by them); amenities are true only where the official page's own words say so, otherwise null."
+  },
+  {
+   "id": "tx-san-angelo",
+   "rv_30a": true,
+   "rv_50a": true,
+   "water_at_site": true,
+   "water_access": true,
+   "restrooms": true,
+   "showers": true,
+   "cabins": null,
+   "amenity_source": "https://tpwd.texas.gov/state-parks/san-angelo/fees-facilities/campsites",
+   "photos": [
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Bison_San_Angelo_State_Park_Texas.jpg/960px-Bison_San_Angelo_State_Park_Texas.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Bison_San_Angelo_State_Park_Texas.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Campground_San_Angelo_State_Park_Texas.jpg/960px-Campground_San_Angelo_State_Park_Texas.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Campground_San_Angelo_State_Park_Texas.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Fisher_Lake_from_San_Angelo_State_Park_2019.jpg/960px-Fisher_Lake_from_San_Angelo_State_Park_2019.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Fisher_Lake_from_San_Angelo_State_Park_2019.jpg",
+     "credit": "Larry D. Moore",
+     "license": "CC BY 4.0",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Rebuilt by the orchestrator (GEGENSCHEIN) after the batch-10 researcher hung: photos are theirs (licence read and load checked by them); amenities are true only where the official page's own words say so, otherwise null."
+  },
+  {
+   "id": "nps-blsc",
+   "rv_30a": false,
+   "rv_50a": false,
+   "water_at_site": false,
+   "water_access": null,
+   "restrooms": null,
+   "showers": null,
+   "cabins": false,
+   "amenity_source": null,
+   "photos": [
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/NPS_photo_of_Blackwell_School.jpg/960px-NPS_photo_of_Blackwell_School.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:NPS_photo_of_Blackwell_School.jpg",
+     "credit": "David Larson",
+     "license": "Public domain",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Rebuilt by the orchestrator (GEGENSCHEIN) after the batch-10 researcher hung: photos are theirs (licence read and load checked by them); amenities are true only where the official page's own words say so, otherwise null. Blackwell School NHS is a historic school building in Marfa with no campground."
+  },
+  {
+   "id": "usfs-davy-crockett-national-forest",
+   "rv_30a": null,
+   "rv_50a": null,
+   "water_at_site": null,
+   "water_access": null,
+   "restrooms": null,
+   "showers": null,
+   "cabins": null,
+   "amenity_source": null,
+   "photos": [
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Davy_Crockett_National_Forest%2C_Houston_County%2C_Texas%2C_USA_%28May_2019%29.jpg/960px-Davy_Crockett_National_Forest%2C_Houston_County%2C_Texas%2C_USA_%28May_2019%29.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Davy_Crockett_National_Forest,_Houston_County,_Texas,_USA_(May_2019).jpg",
+     "credit": "William L. Farr",
+     "license": "CC BY-SA 4.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Davy_Crockett_National_Forest_-_Texas_%2851787456486%29.jpg/960px-Davy_Crockett_National_Forest_-_Texas_%2851787456486%29.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Davy_Crockett_National_Forest_-_Texas_(51787456486).jpg",
+     "credit": "Tony Webster",
+     "license": "CC BY 2.0",
+     "source": "Wikimedia Commons"
+    },
+    {
+     "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Davy_Crockett_National_Forest_Dogwood_tree_-_20230417-FS-MC-20231.jpg/960px-Davy_Crockett_National_Forest_Dogwood_tree_-_20230417-FS-MC-20231.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Davy_Crockett_National_Forest_Dogwood_tree_-_20230417-FS-MC-20231.jpg",
+     "credit": "Forest Service Photography",
+     "license": "Public domain",
+     "source": "Wikimedia Commons"
+    }
+   ],
+   "notes": "Rebuilt by the orchestrator (GEGENSCHEIN) after the batch-10 researcher hung: photos are theirs (licence read and load checked by them); amenities are true only where the official page's own words say so, otherwise null."
+  }
+ ]
+}

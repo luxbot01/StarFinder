@@ -1,0 +1,272 @@
+{
+  "_author": "Ephemeris",
+  "_finished": "Friday, October 30, 2026 07:20 PM CDT",
+  "places": [
+    {
+      "id": "tx-brazos-bend",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/brazos-bend/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/40_Acre_Lake_View_Brazos_Bend_State_Park_Texas.jpg/960px-40_Acre_Lake_View_Brazos_Bend_State_Park_Texas.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:40_Acre_Lake_View_Brazos_Bend_State_Park_Texas.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Observation_Tower_Brazos_Bend_State_Park_Texas_2022.jpg/960px-Observation_Tower_Brazos_Bend_State_Park_Texas_2022.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Observation_Tower_Brazos_Bend_State_Park_Texas_2022.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "CAMPSITE PAGE: electric sites list '30 amp hookup' (Red Buckeye Camping Area, 33 sites) and '50 amp hookup' (Burr Oak premium, 40 sites), with 'Water hookup' at both electric areas. Primitive sites and youth group sites have 'Water nearby' or 'Water spigot in the area', not hookups. 'Restrooms with showers nearby' for electric and primitive sites; no showers printed for youth group sites. CABINS: the main TPWD page says 'Reserve a campsite, screened shelter, or cabin.' NOT PRINTED on any page read: restroom type (flush or vault), drinking water in the park, and cabin details. Photo check: a Great Egret image (CC BY 2.0, Mike Fisher) was dropped because Commons returned HTTP 429 during the image check, not because of its licence."
+    },
+    {
+      "id": "tx-devils-river",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/devils-river/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/7/78/Devils_River_-_Dolan_Falls_%28174119268%29.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Devils_River_-_Dolan_Falls_(174119268).jpg",
+          "credit": "Clinton & Charles Robertson from RAF Lakenheath, UK & San Marcos, TX, USA & UK",
+          "license": "CC BY-SA 2.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "NO ELECTRICITY OR WATER at any campsite type ('No water or electricity' on every type), so rv_30a and rv_50a are false and water_at_site is false. RESTROOMS: Dan A. Hughes primitive sites list 'Composting toilets nearby'; Del Norte drive-up primitive sites list 'No Restrooms'. SHOWERS: the main Devils River page (read in round one) describes a Del Norte group barracks 'with restrooms and showers'; that is a group building, not a campsite, so showers is true for the park with that caveat. CABINS: the page links to 'Lodging' but describes no units, so null. NOT PRINTED: drinking water. Photo check: a second Devils River pano (CC BY-SA 2.0) was dropped because Commons returned HTTP 429 during the image check, not because of its licence. The photo's title names the Devils River and Dolan Falls; the place match rests on that title."
+    },
+    {
+      "id": "tx-galveston-island",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/galveston-island/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Galveston_State_Beach.jpg/960px-Galveston_State_Beach.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Galveston_State_Beach.jpg",
+          "credit": "Womblecat",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Galveston_Island_Park_Beach_Sand_Castle_%285984947488%29.jpg/960px-Galveston_Island_Park_Beach_Sand_Castle_%285984947488%29.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Galveston_Island_Park_Beach_Sand_Castle_(5984947488).jpg",
+          "credit": "USEPA Environmental-Protection-Agency",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "CAMPSITE PAGE: '20/30/50 amp hookups' at premium and water-electric beachside sites and '50/30-amp hookup' at Bay Side electric sites. WATER: 'Water' is printed at the premium and water-electric beachside sites and the Bay Side sites (tent-only and hike-in sites say 'Water nearby'); I read 'Water' as water at the site, which is an inference, not a printed 'hookup'. RESTROOMS: 'Restrooms with showers nearby' (beachside) and 'Restroom with showers nearby' (Bay Side); the restroom type is not printed. CABINS: the main page says visitors can 'rent one of our lodges'; cabins are not named and the lodges are not described, so true is my reading of 'lodge rooms you can book', which Rose should check. NOT PRINTED: drinking water in the park. Photo check: two Commons files confirmed; the Commons page for the sand castle photo is credited to USEPA, which is public domain on Commons, and its description names Galveston Island State Park. I did not use the 'Gfp-texas-galveston-island-state-park-...' Commons files because their origin was not confirmed and they may be TPWD's own photos."
+    },
+    {
+      "id": "tx-lake-arrowhead",
+      "rv_30a": null,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lake-arrowhead/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Pier_Lake_Arrowhead_State_Park_Texas_2024.jpg/960px-Pier_Lake_Arrowhead_State_Park_Texas_2024.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Pier_Lake_Arrowhead_State_Park_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Lake_Arrowhead_State_Park_%2845190340834%29.jpg/960px-Lake_Arrowhead_State_Park_%2845190340834%29.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Arrowhead_State_Park_(45190340834).jpg",
+          "credit": "Nicolas Henderson from Coppell, Texas",
+          "license": "CC BY 2.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Campground_Lake_Arrowhead_State_Park_Texas_2024.jpg/960px-Campground_Lake_Arrowhead_State_Park_Texas_2024.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Campground_Lake_Arrowhead_State_Park_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "CAMPSITE PAGE: 'Campsites with Electricity' (48 sites) list only '50 amp hookup', so rv_30a is null (30-amp not printed). 'Water hookup' at the electric sites; water-only sites (19) say 'Water nearby'. 'Restrooms with showers nearby' at electric sites; 'Restrooms nearby' at water and primitive sites. CABINS: none printed on the campsite page or the main page, so null. NOT PRINTED: restroom type, drinking water. COUNTY CONFLICT FOR THE ORCHESTRATOR: the batch-one row says Clay County (Wikipedia). The Commons captions by Larry D. Moore say 'Lake Arrowhead State Park in Wichita County, Texas', and TPWD prints only Henrietta (the Clay seat). Please reconcile before publishing the county. Photos: all three confirmed CC BY (2.0 or 4.0) on the Commons file pages and the image URLs returned HTTP 200."
+    },
+    {
+      "id": "tx-longhorn-cavern",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/longhorn-cavern",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Longhorn_cavern_entrance.jpg/960px-Longhorn_cavern_entrance.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Longhorn_cavern_entrance.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Longhorn_cavern_arches.jpg/960px-Longhorn_cavern_arches.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Longhorn_cavern_arches.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Tourists_at_Longhorn_Cavern_IMG_2026.JPG/960px-Tourists_at_Longhorn_Cavern_IMG_2026.JPG",
+          "page": "https://commons.wikimedia.org/wiki/File:Tourists_at_Longhorn_Cavern_IMG_2026.JPG",
+          "credit": "Billy Hathorn",
+          "license": "CC BY 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "DAY-USE ONLY: the TPWD page says 'There is no overnight camping', so the campsite fields are false and cabins is false (no overnight lodging is offered). RESTROOMS, SHOWERS and DRINKING WATER: none printed on the main park page, so null. Picnicking and the grounds are described ('Grounds and facilities are open daily'), but no restroom type is given. Cave entry is by paid guided tour only. Photo check: three Commons files confirmed as CC BY, all named for Longhorn Cavern State Park in Burnet County. I did not use the Commons 'Longhorn Cavern State Park - ... - SP35' files; they look like TPWD-released photos and are excluded under the no-TPWD-photo rule."
+    },
+    {
+      "id": "tx-palmetto",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/palmetto/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/San_Marcos_River_Palmetto_State_Park_2023.jpg/960px-San_Marcos_River_Palmetto_State_Park_2023.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:San_Marcos_River_Palmetto_State_Park_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Oxbow_Lake_Palmetto_State_Park_Texas_2023.jpg/960px-Oxbow_Lake_Palmetto_State_Park_Texas_2023.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Oxbow_Lake_Palmetto_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Palmetto_state_park.jpg/960px-Palmetto_state_park.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Palmetto_state_park.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "CAMPSITE PAGE: 'Campsites with Electricity' list '30 amp hookup' and '50 amp hookup', with 'Water hookup' at the electric sites; 'Restrooms with showers nearby' at electric sites. CABIN: the main page says 'rent our air-conditioned cabin (for up to six people)'. NOT PRINTED: drinking water (the page mentions an artesian well and does not say whether it is potable), restroom type (flush or vault), and whether showers are at the site. Photos: three Larry D. Moore CC BY 4.0 files on Commons, each captioned for Palmetto State Park in Gonzales County, all HTTP 200 on check."
+    },
+    {
+      "id": "tx-seminole-canyon",
+      "rv_30a": null,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/seminole-canyon/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Seminole_Canyon_near_Rio_Grande_Confluence_Aug_2012.JPG/960px-Seminole_Canyon_near_Rio_Grande_Confluence_Aug_2012.JPG",
+          "page": "https://commons.wikimedia.org/wiki/File:Seminole_Canyon_near_Rio_Grande_Confluence_Aug_2012.JPG",
+          "credit": "GregsTexas (facebook.com/GregsTexas)",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Seminole_Canyon_State_Park_%26_Historic_Site.JPG/960px-Seminole_Canyon_State_Park_%26_Historic_Site.JPG",
+          "page": "https://commons.wikimedia.org/wiki/File:Seminole_Canyon_State_Park_%26_Historic_Site.JPG",
+          "credit": "Cqui",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "CAMPSITE PAGE: 'Campsites with Electricity' (23 sites) list only '50 amp hookup', so rv_30a is null (30-amp not printed) and rv_50a is true; the same 23 sites list 'Water hookup'. The 8 'Campsites with Water' say 'Water nearby'; the primitive sites list no water. 'Restrooms with showers nearby' is printed for all three campsite types, so showers means showers near the restrooms, not per site. NOT PRINTED: restroom type (flush or vault), drinking water, cabins or lodging. Photos: two CC BY-SA 3.0 Commons files named for Seminole Canyon State Park, both HTTP 200 on check."
+    },
+    {
+      "id": "nps-foda",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://www.nps.gov/foda/planyourvisit/index.htm",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Fort_Davis_National_Historic_Site_FODA1577.jpg/960px-Fort_Davis_National_Historic_Site_FODA1577.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Fort_Davis_National_Historic_Site_FODA1577.jpg",
+          "credit": "National Park Service Digital Image Archives",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Fort_Davis_National_Historic_Site%2C_Texas_01.JPG/960px-Fort_Davis_National_Historic_Site%2C_Texas_01.JPG",
+          "page": "https://commons.wikimedia.org/wiki/File:Fort_Davis_National_Historic_Site,_Texas_01.JPG",
+          "credit": "John Cummings",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "NPS PAGE: 'There is no lodging or camping in Fort Davis National Historic Site.' Camping is in the town and at Davis Mountains State Park. So no campsites: rv_30a, rv_50a and water_at_site are false, and cabins is false because there is no lodging on the site. NOT PRINTED on the NPS page: restrooms (the visitor centre's restrooms are not described), drinking water and showers, so null. The NPS planyourvisit page was last updated May 29, 2024. Photo check: the NPS image is public domain on Commons and credited to the NPS Digital Image Archives; the second image is CC BY-SA 3.0 and was confirmed on check."
+    },
+    {
+      "id": "usfs-sam-houston-national-forest",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": true,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://www.fs.usda.gov/r08/texas/recreation/cagle-recreation-area",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Sam_Houston_National_Forest%2C_San_Jacinto_County%2C_Texas%2C_USA_%28October_2017%29.jpg/960px-Sam_Houston_National_Forest%2C_San_Jacinto_County%2C_Texas%2C_USA_%28October_2017%29.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Sam_Houston_National_Forest,_San_Jacinto_County,_Texas,_USA_(October_2017).jpg",
+          "credit": "William L. Farr",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Stubblefield_Lake_seen_from_Lone_Star_Hiking_Trail%2C_Sam_Houston_National_Forest.jpg/960px-Stubblefield_Lake_seen_from_Lone_Star_Hiking_Trail%2C_Sam_Houston_National_Forest.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Stubblefield_Lake_seen_from_Lone_Star_Hiking_Trail,_Sam_Houston_National_Forest.jpg",
+          "credit": "William L. Farr",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "FOREST ROW, aggregated from the three official campground pages read: Cagle Recreation Area, Double Lake Recreation Area and Kelly's Pond Campground. Stubblefield is EXCLUDED: its official page returned HTTP 404, and third-party listings conflict (one reports a Forest Service closure order that ran to June 1, 2026, and flood damage), so its amenities and status are unknown. CAGLE: 'Single Site with electric, water and sewer hook-ups' (water_at_site true); 'Potable water is available at this site' (water_access true); 'Yes, Flush toilet(s)'. Site count: the official page says 47 full-service RV sites; the Wikipedia article says 48 spurs; I used the official 47. DOUBLE LAKE: electric hookups listed, amp rating not printed; 'Potable water is available at this site'; 'Yes, Flush toilet(s)'; a lodge 'for group events' by reservation, not described as overnight lodging, so cabins is null. KELLY'S POND: 8 tent campsites, 'no potable water or electricity', vault toilet, so water_access is true for the forest only because of Cagle and Double Lake. AMP RATINGS: not printed on any official campground page, so rv_30a and rv_50a are null. SHOWERS: not printed on any official page read. OFFICIAL LIST: 10 of 13 recreation sites shown; page 2 was not read. Photos: two William L. Farr Commons files, both named for the forest; the second shows Stubblefield Lake seen from the Lone Star Hiking Trail, a view from the forest, not the campground."
+    }
+  ]
+}

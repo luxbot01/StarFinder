@@ -1,0 +1,279 @@
+{
+  "_author": "Alidade",
+  "_finished": "Friday, October 30, 2026 7:24 PM CDT",
+  "places": [
+    {
+      "id": "tx-big-spring",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": true,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/big-spring/fees-facilities/big-spring-accessibility",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Big_Spring_State_Park_Scarp_2009.jpg/960px-Big_Spring_State_Park_Scarp_2009.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Big_Spring_State_Park_Scarp_2009.jpg",
+          "credit": "Leaflet",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Big_Spring_State_Park_Scenic_Drive_2009.jpg/960px-Big_Spring_State_Park_Scenic_Drive_2009.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Big_Spring_State_Park_Scenic_Drive_2009.jpg",
+          "credit": "Leaflet",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Day-use park per TPWD, with no campsites, so the electric, water-at-site and cabin fields are false. Restrooms: CCC-built restrooms and a wheelchair-accessible vault toilet near the group pavilion (TPWD accessibility page). Drinking water and showers are not mentioned on the TPWD pages read, so they are null. Photos: Commons files by Leaflet, CC BY-SA 3.0; licence from each file's metadata."
+    },
+    {
+      "id": "tx-copper-breaks",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/copper-breaks/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Copper_Breaks_State_Park_with_the_Milky_Way_Galaxy.jpg/960px-Copper_Breaks_State_Park_with_the_Milky_Way_Galaxy.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Copper_Breaks_State_Park_with_the_Milky_Way_Galaxy.jpg",
+          "credit": "Matthew T Rader",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Copper_Breaks_State_Park_%282016%29.jpg/960px-Copper_Breaks_State_Park_%282016%29.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Copper_Breaks_State_Park_(2016).jpg",
+          "credit": "Nicolas Henderson from Coppell, Texas",
+          "license": "CC BY 2.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Copper_Breaks_Lake.jpg/960px-Copper_Breaks_Lake.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Copper_Breaks_Lake.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites page: '30/50 amp electric hookup' at the Comanche sites, with water hookups; tent-only Kiowa sites with water; 'Restrooms with showers nearby' and 'Restrooms nearby'. water_access is set true from 'The closest water sources are across the road in the day-use area and next to the Kiowa restroom'; the page does not say the water is drinkable. No cabins listed. Photos: Milky Way photo CC BY-SA 4.0 (Matthew T Rader); 2016 photo CC BY 2.0 (Nicolas Henderson); lake photo CC BY 4.0 (Larry D. Moore)."
+    },
+    {
+      "id": "tx-fort-parker",
+      "rv_30a": true,
+      "rv_50a": false,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/fort-parker/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Lake_Fort_Parker_State_Park_Texas_2025.jpg/960px-Lake_Fort_Parker_State_Park_Texas_2025.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Fort_Parker_State_Park_Texas_2025.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Overlook_Fort_Parker_State_Park_Texas_2025.jpg/960px-Overlook_Fort_Parker_State_Park_Texas_2025.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Overlook_Fort_Parker_State_Park_Texas_2025.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites page lists '30 amp hookup' and 'Water hookup' at the electric sites; no 50-amp listed, so rv_50a is false. 'Water spigots are in the area, not at each site' (water_access). 'Restrooms with showers nearby', 'Vault toilet nearby' and a primitive toilet at the group camp. Cabins: 2 cabin sites on the TPWD lodging page. Photos: Commons, CC BY 4.0 (Larry D. Moore)."
+    },
+    {
+      "id": "tx-huntsville",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/huntsville/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Lake_Raven_at_Huntsville_State_Park.jpg/960px-Lake_Raven_at_Huntsville_State_Park.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Raven_at_Huntsville_State_Park.jpg",
+          "credit": "Urban Versis 32",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Headwater_Boardwalks_Huntsville_State_Park_Texas_2025.jpg/960px-Headwater_Boardwalks_Huntsville_State_Park_Texas_2025.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Headwater_Boardwalks_Huntsville_State_Park_Texas_2025.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites page: '20/30/50-amp electric hookup'; 'Water hookup'; 'a shared water faucet between the sites' (water_access). 'Restrooms nearby', 'Restrooms with showers nearby' and 'Showers nearby'. Cabins: 2 cabin sites on the TPWD cabins page. Photos: Lake Raven photo CC BY-SA 4.0 (Urban Versis 32); Headwater Boardwalks CC BY 4.0 (Larry D. Moore)."
+    },
+    {
+      "id": "tx-lake-tawakoni",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lake-tawakoni/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Lake_Tawakoni_State_Park_Texas_2023.jpg/960px-Lake_Tawakoni_State_Park_Texas_2023.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Tawakoni_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Forest_Lake_Tawakoni_State_Park_Texas_2023.jpg/960px-Forest_Lake_Tawakoni_State_Park_Texas_2023.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Forest_Lake_Tawakoni_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites page: 30/50 amp at Spring Point and Full Hookup sites, 30 amp at White Deer Reach (site 38 is 30-amp, site 39 is 50-amp); 'Water hookup'; 'Restrooms with showers nearby' and 'Restrooms/showers nearby'. No cabins on the pages read. Park-wide drinking water is not stated, so water_access is null; the Trading Post sells drinks and ice, which is not drinking water. Photos: Commons, CC BY 4.0 (Larry D. Moore)."
+    },
+    {
+      "id": "tx-mother-neff",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/mother-neff/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Prairie_Pond_Mother_Neff_State_Park_Texas_2026.jpg/960px-Prairie_Pond_Mother_Neff_State_Park_Texas_2026.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Prairie_Pond_Mother_Neff_State_Park_Texas_2026.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Tower_View_Mother_Neff_State_Park_Texas_2026.jpg/960px-Tower_View_Mother_Neff_State_Park_Texas_2026.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Tower_View_Mother_Neff_State_Park_Texas_2026.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Mother_neff_forest.jpg/960px-Mother_neff_forest.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Mother_neff_forest.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites page: '30 amp hookup' and '50 amp hookup' with water and sewer at the Full Hookup sites; 'A restroom with ADA showers and a dish washing station is in the camping loop'. The CCC Lodge is counted as cabins (lodge rooms you can book). Park-wide drinking water is not stated, so water_access is null. Tent sites were closed for flood damage on the page. Photos: Commons, CC BY 4.0 (Larry D. Moore), three files."
+    },
+    {
+      "id": "tx-resaca-de-la-palma",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": true,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/resaca-de-la-palma/fees-facilities/accessibility-information",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Resaca_de_la_Palma_State_Park.jpg/960px-Resaca_de_la_Palma_State_Park.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Resaca_de_la_Palma_State_Park.jpg",
+          "credit": "StephalyBoyd",
+          "license": "CC0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "No campsites on the TPWD pages read, so electric, water-at-site and cabin fields are false. Restrooms: visitor center restrooms (TPWD accessibility page) and 'Restrooms nearby' on the group page. Drinking water and showers are not mentioned, so null. Private vehicles are not allowed; visitors use the tram, foot or bike from the visitor center. Photo: Commons, CC0, StephalyBoyd."
+    },
+    {
+      "id": "nps-bith",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": true,
+      "restrooms": true,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://www.nps.gov/bith/planyourvisit/visitor-center.htm",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Big_Thicket_National_Preserve%2C_Lance_Rosier_Unit%2C_Hardin_County%2C_Texas%2C_USA_%28May_2020%29.jpg/960px-Big_Thicket_National_Preserve%2C_Lance_Rosier_Unit%2C_Hardin_County%2C_Texas%2C_USA_%28May_2020%29.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Big_Thicket_National_Preserve,_Lance_Rosier_Unit,_Hardin_County,_Texas,_USA_(May_2020).jpg",
+          "credit": "William L. Farr",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Little_Pine_Island_Bayou%2C_Big_Thicket_National_Preserve%2C_Hardin_County%2C_Texas.jpg/960px-Little_Pine_Island_Bayou%2C_Big_Thicket_National_Preserve%2C_Hardin_County%2C_Texas.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Little_Pine_Island_Bayou,_Big_Thicket_National_Preserve,_Hardin_County,_Texas.jpg",
+          "credit": "William L. Farr",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Big_Thicket_Visitor_Center_%28ac1463fc-04f3-433a-93f3-47a15328621c%29.JPG/960px-Big_Thicket_Visitor_Center_%28ac1463fc-04f3-433a-93f3-47a15328621c%29.JPG",
+          "page": "https://commons.wikimedia.org/wiki/File:Big_Thicket_Visitor_Center_(ac1463fc-04f3-433a-93f3-47a15328621c).JPG",
+          "credit": "NPS Photo",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Developed campgrounds: none (backcountry only), so electric, water-at-site and cabin fields are false. Visitor center drinking water and restrooms come from an NPS listing found by search (the visitor center as a picnic area, with drinking water and restrooms with water) and from the Longleaf Pine Trail map summary. Neither page rendered for a direct read here: the NPS visitor-center Amenities section came back empty and the trail-map PDF was unreadable. These two fields are second-hand; verify before publishing. Showers are not mentioned, so null. Photos: Lance Rosier Unit (CC BY-SA 4.0, William L. Farr); Little Pine Island Bayou (CC BY 4.0, William L. Farr); visitor center (Public domain, NPS Photo)."
+    },
+    {
+      "id": "usfs-angelina-national-forest",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": false,
+      "water_access": true,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://www.fs.usda.gov/r08/texas/recreation/boykin-springs",
+      "photos": [
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Boykin_Creek%2C_Angelina_National_Forest%2C_Angelina_County%2C_Texas%2C_USA_%28November_2020%29.jpg/960px-Boykin_Creek%2C_Angelina_National_Forest%2C_Angelina_County%2C_Texas%2C_USA_%28November_2020%29.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Boykin_Creek,_Angelina_National_Forest,_Angelina_County,_Texas,_USA_(November_2020).jpg",
+          "credit": "William L. Farr",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Angelina_National_Forest%2C_Angelina_County%2C_Texas%2C_USA_%28November_2020%29.jpg/960px-Angelina_National_Forest%2C_Angelina_County%2C_Texas%2C_USA_%28November_2020%29.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Angelina_National_Forest,_Angelina_County,_Texas,_USA_(November_2020).jpg",
+          "credit": "William L. Farr",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/1/14/Anf_bouton_lake.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Anf_bouton_lake.jpg",
+          "credit": "US Forest Service",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "These amenities are for the Boykin Springs campground, which is the point used for this entry, not the whole forest. Forest Service page: 'Drinking water is available throughout the campground but there are no sites with water hookups' (water_access true, water_at_site false); bathhouse with flush toilets and hot showers. Electric hookups are not mentioned, so rv_30a and rv_50a are null; RV-length camping-trailer sites have no hookups mentioned. No cabins listed. Photos: Angelina National Forest, Nov 2020 (CC BY-SA 4.0, William L. Farr); Bouton Lake (Public domain, US Forest Service)."
+    }
+  ]
+}

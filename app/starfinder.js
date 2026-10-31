@@ -12,23 +12,6 @@
     agency: "all", sort: "dark", q: "", sel: null, me: null, map: null, mapReady: false };
   window.__sf = state;   // read-only handle for the test harness
 
-  /* ---------- the sky behind the globe: drawn once, two planes ---------- */
-  function drawSky() {
-    const dpr = Math.min(devicePixelRatio || 1, 2);
-    [["#starsFar", 0.00042, 0.6, 0.5], ["#starsNear", 0.00009, 1.25, 0.9]].forEach(([sel, density, rMax, aMax], k) => {
-      const c = $(sel); const w = innerWidth, h = innerHeight;
-      c.width = w * dpr; c.height = h * dpr; const g = c.getContext("2d"); g.scale(dpr, dpr);
-      let seed = 7 + k * 101; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
-      const n = Math.round(w * h * density);
-      for (let i = 0; i < n; i++) {
-        const x = rnd() * w, y = rnd() * h, r = 0.25 + rnd() ** 3 * rMax, t = rnd();
-        const col = t < 0.15 ? "255,214,170" : t < 0.3 ? "190,205,255" : "245,240,255";
-        g.fillStyle = `rgba(${col},${(0.25 + rnd() * aMax).toFixed(2)})`;
-        g.beginPath(); g.arc(x, y, r, 0, 6.283); g.fill();
-      }
-    });
-  }
-
   /* ---------- small helpers ---------- */
   const STAR = "M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z";
   function starsSvg(n, big) {
@@ -51,6 +34,32 @@
     : sqm >= 20.0 ? "Edge of town: the Milky Way is faint" : sqm >= 19.0 ? "Suburban sky" : "City sky: only the brightest stars";
   const KINDS = { tent: "Tent sites", rv_hookups: "RV hookups", primitive: "Primitive sites", backcountry: "Backcountry", cabins: "Cabins",
     screened_shelters: "Screened shelters", lodge: "Lodge", equestrian: "Equestrian", group: "Group sites", dispersed: "Dispersed camping" };
+
+  /* ---------- amenity icons: drawn here, one stroke weight, currentColor ---------- */
+  const IC = {
+    amp30: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7.4 9.6l2.6-1.5M16.6 9.6L14 8.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="15.6" r="1.6" fill="currentColor"/></svg>',
+    amp50: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 8.6v3.6M16 8.6v3.6M10.6 15.8h2.8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M12 5.6v2.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    water: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2c3 4 5.6 7 5.6 10.2a5.6 5.6 0 0 1-11.2 0C6.4 10.2 9 7.2 12 3.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.4 14a2.7 2.7 0 0 0 2.4 2.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+    waterSite: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h7.5a3.5 3.5 0 0 1 3.5 3.5V14M4 6.5v5M15 14.5v1.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 5h3M15 18.6c0 1.1.8 2 1.8 2s1.8-.9 1.8-2c0-1-1.8-3.2-1.8-3.2s-1.8 2.2-1.8 3.2z" fill="currentColor"/></svg>',
+    restrooms: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="5" r="1.9" fill="currentColor"/><circle cx="16.5" cy="5" r="1.9" fill="currentColor"/><path d="M5.6 9h3.8v6H8.5v5h-2v-5h-.9zM14.6 9h3.8l1.5 6h-1.8v5h-1.6v-5h-1.6v5h-1.6v-5H11z" fill="currentColor"/><path d="M12 8v13" stroke="currentColor" stroke-width="1" opacity=".5"/></svg>',
+    showers: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6.5a4 4 0 0 1 4 4v1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M10.5 9.5h8l-1.3 2.2h-5.4z" fill="currentColor"/><path d="M11.6 14.2l-.6 1.6M14.5 14.2v1.8M17.4 14.2l.6 1.6M11 18.4l-.6 1.6M14.5 18.4v1.8M18 18.4l.6 1.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+    cabins: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.2 11.2L12 4.2l8.8 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.6 10v9.6h12.8V10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10.2 19.6v-5h3.6v5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M15.6 6.2V4.4h1.8v3.2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>',
+  };
+  const AMEN = [["rv30", "amp30", "30-amp RV hookups", "30A"], ["rv50", "amp50", "50-amp RV hookups", "50A"], ["waterSite", "waterSite", "Water hookups at sites"],
+    ["water", "water", "Drinking water"], ["restrooms", "restrooms", "Restrooms"], ["showers", "showers", "Showers"], ["cabins", "cabins", "Cabins or lodging"]];
+  function amenStrip(p) {
+    const a = p.amen || {};
+    return AMEN.filter(([k]) => a[k] === true).map(([k, ic, label, amp]) =>
+      `<i class="${amp ? "amp" : ""}" title="${label}" aria-label="${label}">${IC[ic]}${amp ? amp : ""}</i>`).join("");
+  }
+  function amenFull(p) {
+    const a = p.amen || {};
+    const known = AMEN.filter(([k]) => a[k] === true || a[k] === false);
+    if (!known.length) return "";
+    return `<div><h3>At the park</h3><div class="amen-full">${known.map(([k, ic, label]) =>
+      `<span class="${a[k] ? "" : "no"}">${IC[ic]}${label}${a[k] ? "" : '<span class="sr-only"> (none)</span>'}</span>`).join("")}</div>
+      ${a.src ? `<p class="prov" style="margin-top:6px">Amenities from <a href="${esc(a.src)}" target="_blank" rel="noopener">the park's page</a>.</p>` : ""}</div>`;
+  }
 
   /* ---------- filtering, sorting and the list ---------- */
   function visible() {
@@ -76,7 +85,8 @@
         <svg class="dot" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="11" fill="${starColor(p.sky.stars)}" opacity=".16"/><path d="M15 5.5l1.7 7.8 7.8 1.7-7.8 1.7L15 24.5l-1.7-7.8L5.5 15l7.8-1.7z" fill="${starColor(p.sky.stars)}"/></svg>
         <span class="nm">${esc(p.name)}</span>
         <span class="rate">${starsSvg(p.sky.stars)}<span class="pct">${Math.round(p.sky.pct)}% of stars</span></span>
-        <span class="sub">${esc(sub)}${p.camping ? " · camping" : ""}${p.darkSky ? " · Dark Sky Place" : ""}</span>
+        <span class="sub">${esc(sub)}${p.darkSky ? " · Dark Sky Place" : ""}</span>
+        ${amenStrip(p) ? `<span class="amen">${amenStrip(p)}</span>` : ""}
       </button></li>`;
     }).join("") || `<li class="count" style="padding:12px">No place matches. Clear a filter or the search.</li>`;
     if (state.mapReady) state.map.setFilter("pl-core", ["in", ["get", "id"], ["literal", items.map((p) => p.id)]]);
@@ -88,8 +98,9 @@
     return state.places.filter((o) => o !== p && o.sky.pct >= p.sky.pct + 8)
       .map((o) => ({ o, d: km(p, o) })).filter((x) => x.d <= 200).sort((a, b) => a.d - b.d).slice(0, 3);
   }
+  const credit = (ph) => `<a href="${esc(ph.page || ph.img)}" target="_blank" rel="noopener">${esc(ph.credit || ph.source || "Photo")}</a>${ph.license ? ", " + esc(ph.license) : ""}${ph.source ? " · " + esc(ph.source) : ""}`;
   function renderCard(p) {
-    const s = p.sky, card = $("#card"), photos = state.photos[p.id] || [];
+    const s = p.sky, card = $("#card"), photos = p.photos || [];
     const kinds = (p.campingKinds || []).map((k) => `<span class="tag">${esc(KINDS[k] || k)}</span>`).join("");
     const camp = p.camping === true ? (kinds || '<span class="tag">Camping</span>') : p.camping === false ? '<span class="tag">No camping here</span>' : '<span class="tag">Camping not confirmed</span>';
     const dsp = p.darkSky ? `<span class="tag gold">DarkSky International: ${esc(p.darkSky.designation)}${p.darkSky.year ? " (" + esc(p.darkSky.year) + ")" : ""}</span>` : "";
@@ -116,10 +127,11 @@
         </div>
         <div class="tags"><span class="tag model">Modelled from NASA satellite data</span>${dsp}${pub}</div>
         ${nearPct ? `<p class="note">The sky gets noticeably darker within about 8 km of this point; campsites away from town lights may beat this rating.</p>` : ""}
-        ${photos.length ? `<figure class="photo" style="margin:0"><img id="ph" src="${esc(photos[0])}?width=800" alt="${esc(p.name)}" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption>Photo: Wikimedia Commons</figcaption>${photos.length > 1 ? `<div class="nav"><button data-ph="-1" aria-label="Previous photo">&#8249;</button><button data-ph="1" aria-label="Next photo">&#8250;</button></div>` : ""}</figure>` : ""}
+        ${photos.length ? `<figure class="photo" style="margin:0"><img id="ph" src="${esc(photos[0].img)}" alt="${esc(p.name)}" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption id="phCap">${credit(photos[0])}</figcaption>${photos.length > 1 ? `<div class="nav"><button data-ph="-1" aria-label="Previous photo">&#8249;</button><button data-ph="1" aria-label="Next photo">&#8250;</button></div>` : ""}</figure>` : ""}
         ${p.blurb ? `<p>${esc(p.blurb)}</p>` : ""}
-        ${p.status ? `<p class="note">${esc(p.status)}</p>` : ""}
+        ${p.status ? `<p class="prov">Research note: ${esc(p.status)} Check the park's own page before you go.</p>` : ""}
         <div><h3>Staying the night</h3><div class="tags">${camp}</div></div>
+        ${amenFull(p)}
         <div class="actions">
           ${p.url ? `<a class="btn primary" href="${esc(p.url)}" target="_blank" rel="noopener">Official page</a>` : ""}
           ${p.reserve ? `<a class="btn" href="${esc(p.reserve)}" target="_blank" rel="noopener">Reservations</a>` : ""}
@@ -131,7 +143,7 @@
       </div>`;
     card.setAttribute("aria-labelledby", "cardTitle");
     let pi = 0;
-    $$("[data-ph]", card).forEach((b) => b.addEventListener("click", () => { pi = (pi + +b.dataset.ph + photos.length) % photos.length; $("#ph").src = photos[pi] + "?width=800"; }));
+    $$("[data-ph]", card).forEach((b) => b.addEventListener("click", () => { pi = (pi + +b.dataset.ph + photos.length) % photos.length; $("#ph").src = photos[pi].img; $("#phCap").innerHTML = credit(photos[pi]); }));
     $("#cardClose").addEventListener("click", () => select(null));
     $$("[data-go]", card).forEach((b) => b.addEventListener("click", () => select(b.dataset.go, true)));
   }
@@ -159,6 +171,36 @@
         state.map.flyTo({ center: [p.lon, p.lat], zoom: Math.max(state.map.getZoom(), 8.2), padding: pad, duration: reduce ? 0 : 1400, essential: true });
       }
     }
+  }
+
+  /* ---------- the pin pop-up: the 2025 shape Rose likes, restyled ---------- */
+  let pop = null;
+  function showPop(id, fly) {
+    const p = state.byId.get(id); if (!p || !state.mapReady) return;
+    const ph = p.photos || []; let i = 0;
+    if (pop) pop.remove();
+    const hero = ph.length ? `<img src="${esc(ph[0].img)}" alt="${esc(p.name)}" onerror="this.style.display='none'">` +
+      (ph.length > 1 ? '<button class="ph-nav prev" aria-label="Previous photo">&#8249;</button><button class="ph-nav next" aria-label="Next photo">&#8250;</button>' : "") +
+      `<div class="credit">${credit(ph[0])}</div>`
+      : `<div class="nophoto"><svg width="54" height="54" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5l3 10.5 10.5 3-10.5 3-3 10.5-3-10.5L2.5 16l10.5-3z" fill="${starColor(p.sky.stars)}"/></svg></div>`;
+    const html = `<div class="pop" role="dialog" aria-label="${esc(p.name)}">
+      <button class="x" aria-label="Close">&times;</button>
+      <div class="hero">${hero}</div>
+      <div class="pb"><div class="pt">${esc(p.name)}</div>
+        <div class="pr">${starsSvg(p.sky.stars)}<span>${Math.round(p.sky.pct)}% OF STARS</span></div>
+        ${amenStrip(p) ? `<div class="amen" style="justify-content:center">${amenStrip(p)}</div>` : ""}
+        <div class="pa">${p.url ? `<a class="btn primary" href="${esc(p.url)}" target="_blank" rel="noopener">Open Park Page</a>` : ""}<button class="btn" data-details>Details</button></div></div></div>`;
+    pop = new maplibregl.Popup({ className: "sf-pop", closeButton: false, maxWidth: "none", offset: 14, focusAfterOpen: false })
+      .setLngLat([p.lon, p.lat]).setHTML(html).addTo(state.map);
+    const el = pop.getElement();
+    el.querySelector(".x").addEventListener("click", () => pop && pop.remove());
+    el.querySelector("[data-details]").addEventListener("click", () => select(id, false));
+    el.querySelectorAll(".ph-nav").forEach((b) => b.addEventListener("click", () => {
+      i = (i + (b.classList.contains("next") ? 1 : -1) + ph.length) % ph.length;
+      el.querySelector(".hero img").src = ph[i].img; el.querySelector(".hero .credit").innerHTML = credit(ph[i]); }));
+    $$(".row").forEach((r) => (r.dataset.id === id ? r.setAttribute("aria-current", "true") : r.removeAttribute("aria-current")));
+    state.map.setFilter("pl-sel", ["==", ["get", "id"], id]);
+    if (fly) state.map.easeTo({ center: [p.lon, p.lat], zoom: Math.max(state.map.getZoom(), 7.2), offset: [0, isPhone() ? 120 : 140], duration: reduce ? 0 : 900 });
   }
 
   /* ---------- the phone drawer and the layer menu ---------- */
@@ -199,6 +241,7 @@
       maxPitch: 0, dragRotate: false, pitchWithRotate: false, touchPitch: false, renderWorldCopies: false,
     });
     state.map = map;
+    try { if (window.SurgeSpace) window.SurgeSpace.attach(map, $("#space")); } catch (e) { /* decoration only */ }
     map.touchZoomRotate.disableRotation();
     map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
     map.on("style.load", () => {
@@ -230,7 +273,7 @@
       else map.jumpTo({ center: [-99.6, 31.1], zoom: isPhone() ? 4.3 : 5.15 });
     });
     for (const id of ["pl-core", "pl-glow"]) {
-      map.on("click", id, (e) => { const f = e.features && e.features[0]; if (f) select(f.properties.id, true); });
+      map.on("click", id, (e) => { const f = e.features && e.features[0]; if (f) showPop(f.properties.id, true); });
       map.on("mouseenter", id, () => (map.getCanvas().style.cursor = "pointer"));
       map.on("mouseleave", id, () => (map.getCanvas().style.cursor = ""));
     }
@@ -241,13 +284,16 @@
   function wire() {
     const q = $("#q");
     q.addEventListener("input", () => { state.q = q.value; $("#qClear").hidden = !q.value; if (isPhone() && q.value) setDrawer(true); renderList(); });
-    q.addEventListener("keydown", (e) => { if (e.key === "Enter") { const f = visible()[0]; if (f) select(f.id, true); } });
+    const goFirst = () => { const f = visible()[0]; if (f) { if (isPhone()) { setDrawer(false); showPop(f.id, true); } else select(f.id, true); } };
+    q.addEventListener("keydown", (e) => { if (e.key === "Enter") goFirst(); });
+    $("#qGo").addEventListener("click", goFirst);
     $("#qClear").addEventListener("click", () => { q.value = ""; state.q = ""; $("#qClear").hidden = true; renderList(); q.focus(); });
     $$("[data-filter]").forEach((b) => b.addEventListener("click", () => {
       const k = b.dataset.filter; state.filters[k] = !state.filters[k]; b.setAttribute("aria-pressed", String(state.filters[k])); renderList(); }));
     $("#agency").addEventListener("change", (e) => { state.agency = e.target.value; renderList(); });
     $("#sort").addEventListener("change", (e) => { state.sort = e.target.value; renderList(); });
-    $("#list").addEventListener("click", (e) => { const b = e.target.closest(".row"); if (b) select(b.dataset.id, true); });
+    $("#list").addEventListener("click", (e) => { const b = e.target.closest(".row"); if (!b) return;
+      if (isPhone()) { setDrawer(false); showPop(b.dataset.id, true); } else { select(b.dataset.id, true); setTimeout(() => showPop(b.dataset.id, false), reduce ? 0 : 1450); } });
     $("#burger").addEventListener("click", () => setDrawer(!$("#panel").classList.contains("open")));
     $("#layersBtn").addEventListener("click", () => setLayers($("#layersPop").hidden));
     $$("[data-layer]").forEach((t) => t.addEventListener("click", () => {
@@ -270,16 +316,16 @@
     document.addEventListener("keydown", (e) => {
       if (e.key !== "Escape") return;
       if (!$("#layersPop").hidden) setLayers(false);
+      else if (pop && pop.isOpen()) pop.remove();
       else if (!$("#card").hidden) select(null);
       else if ($("#panel").classList.contains("open")) setDrawer(false);
     });
     document.addEventListener("click", (e) => { if (!$("#layersPop").hidden && !e.target.closest("#toolbar")) setLayers(false); });
-    addEventListener("resize", () => { clearTimeout(wire.t); wire.t = setTimeout(drawSky, 200); });
   }
 
   async function start() {
     document.body.insertAdjacentHTML("afterbegin", '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="sfHalf" clipPathUnits="userSpaceOnUse"><rect x="0" y="0" width="12" height="24"/></clipPath></defs></svg>');
-    drawSky(); wire();
+    wire();
     try {
       const [pl, ph] = await Promise.all([fetch("data/places.json").then((r) => r.json()), fetch("data/photos.json").then((r) => r.json()).catch(() => ({}))]);
       state.places = pl.places; state.photos = ph; state.places.forEach((p) => state.byId.set(p.id, p));

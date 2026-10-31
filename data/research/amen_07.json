@@ -1,0 +1,265 @@
+{
+  "_author": "Armillary",
+  "_finished": "2026-10-30 19:20 CDT",
+  "places": [
+    {
+      "id": "tx-bentsen-rio-grande-valley",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/bentsen-rio-grande-valley/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bentsen-Rio_Grande_Valley_State_Park,_Hidalgo_County,_Texas,_USA_(15_April_2016).jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Bentsen-Rio_Grande_Valley_State_Park,_Hidalgo_County,_Texas,_USA_(15_April_2016).jpg",
+          "credit": "William L. Farr",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Only one photo chosen; the park's other Commons files (a visitor centre image and a feeder-station image) were not licence-checked, so they are not used. RV flags are false because the campsites page lists only primitive walk-in tent sites (no electric or RV sites). Water at site is false (no water listed at the primitive sites). Restrooms and showers are stated as about 3/4 mile from the primitive sites, which is why both are true; they are not at the sites. Water access is null: the page prints no drinking-water statement. Cabins false: the facilities page lists no lodging."
+    },
+    {
+      "id": "tx-colorado-bend",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": null,
+      "water_access": true,
+      "restrooms": true,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/colorado-bend/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Colorado_River_Colorado_Bend_SP_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Colorado_River_Colorado_Bend_SP_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Gorman_Falls_Trail_Colorado_Bend_SP_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Gorman_Falls_Trail_Colorado_Bend_SP_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Camping_Area_Colorado_Bend_State_Park_Texas.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Camping_Area_Colorado_Bend_State_Park_Texas.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "RV flags are false: the drive-up sites have no hookups of any kind and no electric site is listed. Water at site is null: the page says water is nearby but not at every site, which does not say whether any site has a tap. Water access is true because the page names potable water in the group-camp area. Restrooms are true (restrooms nearby for the walk-in sites; composting toilets for the group camps). Showers and cabins are not mentioned on the campsites page, so both are null. The hike-in backcountry areas have no water or toilets."
+    },
+    {
+      "id": "tx-fort-boggy",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/fort-boggy/fees-facilities/cabins",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Fort_Boggy_State_Park_Swimming.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Fort_Boggy_State_Park_Swimming.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Fort_Boggy_State_Park_Cabin.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Fort_Boggy_State_Park_Cabin.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Cabins true: the cabins page lists five cabin sites, up to eight people each, $85 per night plus the entrance fee, reservable online. The campsites page covers only the hike-in primitive sites, which have no electricity or water. Restrooms and showers are not mentioned on any page read, so both are null. Water access is null."
+    },
+    {
+      "id": "tx-honey-creek",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/honey-creek",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Overlook_Honey_Creek_SNA_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Overlook_Honey_Creek_SNA_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Creek_Upstream_Honey_Creek_SNA_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Creek_Upstream_Honey_Creek_SNA_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "No campsites, so the RV and water-at-site flags are false. Cabins false: the park's navigation lists only accessibility, activity-fee and no-entrance-fee pages, and the main page names no lodging. Restrooms, showers and drinking water are not mentioned on the pages read, so those are null. The creek area is reached only on guided hikes."
+    },
+    {
+      "id": "tx-lake-mineral-wells",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lake-mineral-wells/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Mineral_Wells_State_Park_View.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Mineral_Wells_State_Park_View.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Mineral_Wells_State_Park_Swimming_Area.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Mineral_Wells_State_Park_Swimming_Area.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "RV flags are true because the page names 30-amp electric sites (30 sites) and 50-amp electric sites (47 sites). Water at site is true (electric and water sites). Restrooms and showers are stated as nearby for the electric sites. Water access is null: the page names water at the sites but does not say drinking water is available elsewhere. Cabins false: the 15 screened shelters ($36 a night, up to eight people, electricity and nearby restrooms and showers) are not cabins under this schema, so they are not counted here; the screened-shelters page is at https://tpwd.texas.gov/state-parks/lake-mineral-wells/fees-facilities/screened-shelters. Commons describes the View photo as in Parker County; Wikipedia gives Palo Pinto (the park is listed in both)."
+    },
+    {
+      "id": "tx-mission-tejas",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/mission-tejas/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mission_San_Francisco_de_los_Tejas,_entrance_3.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Mission_San_Francisco_de_los_Tejas,_entrance_3.jpg",
+          "credit": "Jpo tx113",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Campground_Mission_Tejas_State_Park_2026.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Campground_Mission_Tejas_State_Park_2026.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "RV flags are null: the page names electric sites (12 sites, plus 3 tent-only electric sites) but never states the amperage, so it cannot be set to true or false. Water at site is true (the electric sites include water; water sites A and B). Restrooms and showers are stated as nearby for the electric sites. Cabins are null: the campsites page names none, and Commons has a 'Joseph R. Rice Log Cabin' subcategory that I did not check for bookability. Water access is null: no drinking-water statement. The first photo is the mission entrance, which is the park's namesake site."
+    },
+    {
+      "id": "tx-purtis-creek",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/purtis-creek/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dam_Purtis_Creek_State_Park_Texas_2025.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Dam_Purtis_Creek_State_Park_Texas_2025.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Wetland_Purtis_Creek_State_Park_Texas_2025.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Wetland_Purtis_Creek_State_Park_Texas_2025.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "RV flags are null: the electric sites (56) are not given an amperage on the campsites page. Water at site is true (water and electric hookups). Restrooms and showers are stated as nearby for the electric sites. Cabins are null, not mentioned on the campsites page. Water access is null. The Dam photo's description says Henderson County; the Wetland photo's says Van Zandt County, which matches the county the Commons category uses."
+    },
+    {
+      "id": "nps-amis",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": true,
+      "restrooms": true,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://www.nps.gov/amis/planyourvisit/camping.htm",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Amistad_National_Recreation_Area_AMIS0600.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Amistad_National_Recreation_Area_AMIS0600.jpg",
+          "credit": "National Park Service Digital Image Archives",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Rough_Canyon_Campground_NPS.png?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Rough_Canyon_Campground_NPS.png",
+          "credit": "National Park Service",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "RV flags are false: the NPS camping page says the campgrounds have no hookups. Water at site is false; Governors Landing has running water to shared spigots only. Water access is true: the NPS page names running water to shared spigots at Governors Landing and an RV dump station with potable water on the road to the Diablo East boat ramp. The spigots' drinking status is not printed, so that part is not claimed. Restrooms are true: the page says all campgrounds have vault toilets. Showers and cabins are not mentioned, so both are null. Both photos are NPS images marked public domain on their Commons pages; the Rough Canyon image is an NPS aerial of the Rough Canyon campground."
+    },
+    {
+      "id": "nps-saan",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://www.nps.gov/saan/planyourvisit/index.htm",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mission_San_Jos%C3%A9_San_Antonio.JPG?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Mission_San_Jos%C3%A9_San_Antonio.JPG",
+          "credit": "Liveon001 ©Travis Witt",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mission_Concepcion,_San_Antonio,_Texas.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Mission_Concepcion,_San_Antonio,_Texas.jpg",
+          "credit": "Jkulick",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Mission_San_Jos%C3%A9_San_Antonio_Arches.JPG?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Mission_San_Jos%C3%A9_San_Antonio_Arches.JPG",
+          "credit": "Liveon001 ©Travis Witt",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "The NPS planyourvisit index page does not address camping, RV sites, water, restrooms or cabins, so every amenity field is null rather than guessed. Photos are three mission images from Commons under Creative Commons share-alike licences; they are not NPS-marked public domain, so none was taken from that category. Rejected: the Flickr photo of the UNESCO designation event (CC BY-SA 2.0, but it shows officials at an event rather than the missions) and an SMU DeGolyer 'Second Mission' card (copyright status is 'No known copyright restrictions', not a CC or public-domain licence). Mission San Jose here is the San Antonio, Texas mission, not the California mission of the same name."
+    }
+  ]
+}

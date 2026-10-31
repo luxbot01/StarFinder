@@ -1,0 +1,314 @@
+{
+  "_author": "Almucantar",
+  "_finished": "2026-10-30 ~7:30 PM CDT",
+  "places": [
+    {
+      "id": "tx-atlanta",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/atlanta/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Boat_Ramp_Atlanta_State_Park_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Boat_Ramp_Atlanta_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Terrace_Trail_Atlanta_State_Park_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Terrace_Trail_Atlanta_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bobo_Ferry_Trail_Atlanta_State_Park_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Bobo_Ferry_Trail_Atlanta_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites tab: full hookup and electric sites at both 30-amp and 50-amp, all with water hookups; sites allow tents on tent pads. Showers: the Knights Bluff camping-area restroom has an accessible shower (accessibility page); restrooms nearby the sites. No cabins on the main, campsites, accessibility or group pages. water_access null: no drinking-water statement on the TPWD pages read. Photos: all three are 2023 Commons uploads by Larry D. Moore (own work), each titled for this park."
+    },
+    {
+      "id": "tx-caprock-canyons",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/caprock-canyons/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Caprock_Canyons_2014_1.JPG?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Caprock_Canyons_2014_1.JPG",
+          "credit": "Fredlyfish4",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Caprock_Canyons_2014_10.JPG?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Caprock_Canyons_2014_10.JPG",
+          "credit": "Fredlyfish4",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites tab: electric sites at 50-amp and 30-amp, each with a water hookup; restrooms nearby the electric sites. Primitive tent-only sites have organic toilets and no showers. Showers for the electric sites are not stated, so null. TPWD says there is no water on the Trailway and tells primitive campers to bring their own drinking water, so water_access is null (no park-wide statement). No cabins found on the Caprock pages read. Photos: 2014 Commons uploads by Fredlyfish4 with camera locations near the park; the file title names the park only through its category."
+    },
+    {
+      "id": "tx-eisenhower",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/eisenhower/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Texoma,_Eisenhower_State_Park.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Texoma,_Eisenhower_State_Park.jpg",
+          "credit": "GrapevineTxOnline.com",
+          "license": "CC BY 2.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Eisenhower_State_Park_(Texas).jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Eisenhower_State_Park_(Texas).jpg",
+          "credit": "Luis Tamayo",
+          "license": "CC BY-SA 2.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Camp_Area_Eisenhower_State_Park_Texas_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Camp_Area_Eisenhower_State_Park_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites tab lists full hookup sites (water, sewer, electric), electric sites with water, and tent-pad sites with a water spigot between sites. The tab does not state an amperage, so rv_30a and rv_50a are null. Restrooms nearby the campsites; the Ike's Cabin page says restrooms with showers are nearby. Cabins: 'Ike's Cabin' (fees-facilities/cabin) is bookable online; it has no restroom of its own, no cooking inside, and no motor homes or camper trailers. water_access null: spigots are listed but drinkability is not stated. Screened shelters are also listed on the campsites tab."
+    },
+    {
+      "id": "tx-goose-island",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/goose-island/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Boardwalk_Goose_Island_SP_Texas_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Boardwalk_Goose_Island_SP_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Big_Tree_Texas_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Big_Tree_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Campsite_Goose_Island_State_Park_Texas_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Campsite_Goose_Island_State_Park_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites tab: bayfront electric sites (20/30/50-amp), electric sites at 20 and 30 amp, and premium full-hookup sites at 50-amp and 30-amp, all with water. The TPWD main page says every camping loop has restrooms with showers. Group Camp (Youth) is an overnight site for sponsored youth groups only; no cabins found. water_access null: no drinking-water statement found. Photos are 2024 Commons uploads by Larry D. Moore (CC BY 4.0), each titled for this park."
+    },
+    {
+      "id": "tx-lake-casa-blanca",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lake-casa-blanca/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Entrance_to_Lake_Casa_Blanca,_Laredo,_TX_IMG_2013.JPG?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Entrance_to_Lake_Casa_Blanca,_Laredo,_TX_IMG_2013.JPG",
+          "credit": "Billy Hathorn at en.wikipedia",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites tab: Full Hookup sites (water, sewer, electric; 10 sites in Areas J and N with no monthly reservations) and electric sites, each with a water hookup. Amperage is not stated, so rv_30a and rv_50a are null. Restrooms with showers nearby the campsites. No cabins found. water_access null. Only one allowed photo exists in the park's Commons category: an entrance photo, not a landscape."
+    },
+    {
+      "id": "tx-martin-creek-lake",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/martin-creek-lake/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Docks_at_Martin_Creek_Lake_State_Park_2019.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Docks_at_Martin_Creek_Lake_State_Park_2019.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bridge_Martin_Creek_Lake_State_Park_Texas_2025.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Bridge_Martin_Creek_Lake_State_Park_Texas_2025.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Canoes_Martin_Creek_Lake_State_Park_2019.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Canoes_Martin_Creek_Lake_State_Park_2019.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites tab: lakefront 30-amp electric sites, 50-amp electric sites and 30-amp electric sites, each with a water hookup; restrooms with showers nearby the campsites. The main page says 'Reserve a cabin or screen shelter for your stay' and lists Screened Shelters. The cabin subpage returned 404, so cabins is true on that wording only; the count and type are unverified. water_access null. Primitive island sites have no water or restrooms (TPWD)."
+    },
+    {
+      "id": "tx-pedernales-falls",
+      "rv_30a": true,
+      "rv_50a": false,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/pedernales-falls/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Natural_Pool_on_the_Pedernales_River.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Natural_Pool_on_the_Pedernales_River.jpg",
+          "credit": "Corey Leopold",
+          "license": "CC BY 2.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Hill_Country_Sunset_-_Pedernales_Falls_State_Park.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Hill_Country_Sunset_-_Pedernales_Falls_State_Park.jpg",
+          "credit": "Corey Leopold",
+          "license": "CC BY 2.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pedernales_Falls_State_Park_Twin_Falls_Area.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Pedernales_Falls_State_Park_Twin_Falls_Area.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites tab: electric sites at 30-amp with water hookups, and no 50-amp listed, so rv_50a is false. Restrooms with showers nearby and a shower listed. Backcountry Wolf Ridge sites (hike-in, two miles) have no potable water and use chemical toilets; the developed-area drinking water is not stated, so water_access is null. No cabins found."
+    },
+    {
+      "id": "tx-stephen-f-austin",
+      "rv_30a": true,
+      "rv_50a": false,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/stephen-f-austin/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pileated_Trail_Stephen_F_Austin_SP_Texas_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Pileated_Trail_Stephen_F_Austin_SP_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Campsite_Stephen_Austin_State_Park_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Campsite_Stephen_Austin_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "TPWD campsites tab: Full Hookup RV sites with 30-amp hookups and water (no 50-amp listed, so rv_50a is false); tent-only sites with water and no electricity; walk-in primitive sites. Restrooms with showers nearby. Cabins: a one-room ADA cabin that sleeps four (fees-facilities/cabin) and Bullinger Creek Lodge group barracks are reservable (group facilities page). water_access null: no drinking-water statement."
+    },
+    {
+      "id": "nps-lyjo",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": true,
+      "restrooms": true,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://www.nps.gov/lyjo/planyourvisit/visitorcenters.htm",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lyndon_B._Johnson_National_Historical_Park_LYJO2753.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lyndon_B._Johnson_National_Historical_Park_LYJO2753.jpg",
+          "credit": "National Park Service",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lyndon_B._Johnson_birthplace_NPS.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lyndon_B._Johnson_birthplace_NPS.jpg",
+          "credit": "National Park Service",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/LBJNHP_1.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:LBJNHP_1.jpg",
+          "credit": "Epopan",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "No campground found: NPS index and directions pages name none, and the NPS camping page (planyourvisit/camping.htm) returned 404. So the campsite fields are false. NPS visitor-centers page: 'Public restrooms and drinking fountains are available' (Johnson City visitor center). Showers not stated, so null. Cabins false: no bookable cabins on the NPS pages read. Photos: the two NPS images are marked public domain on their Commons pages (the LYJO image cites the NPS Digital Image Archives); the LBJNHP_1 image is CC BY-SA 4.0 by Epopan."
+    },
+    {
+      "id": "usfs-mcclellan-creek-national-grassland",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": true,
+      "showers": false,
+      "cabins": false,
+      "amenity_source": "https://www.fs.usda.gov/r03/cibola/recreation/lake-mcclellan-campground",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_McClellan.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_McClellan.jpg",
+          "credit": "U.S. Forest Service",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Forest Service Lake McClellan Campground page: vault toilet, 'Potable water is available at this site', picnic tables; single sites $10 a night, single sites with electric hookup $15 a night (described as water and electric hookups). The page does not state the amperage, so rv_30a and rv_50a are null. Showers not listed, so false. No cabins. The lake was dry at the time of the page read. Photos: Lake_McClellan.jpg is the one verified photo (USFS, public domain). McClellan_Creek.jpg (also USFS public domain) was left out because the Commons image server kept returning 429 during the load check; add it after a re-check."
+    }
+  ]
+}

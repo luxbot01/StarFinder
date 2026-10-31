@@ -1,0 +1,279 @@
+{
+  "_author": "Ephemeris",
+  "_finished": "2026-10-30 19:23 CDT",
+  "places": [
+    {
+      "id": "tx-albert-bessie-kronkosky",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": false,
+      "restrooms": false,
+      "showers": false,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/albert-bessie-kronkosky",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/ABK_SNA_Entrance_2026.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:ABK_SNA_Entrance_2026.jpg",
+          "credit": "Larry D. Moore",
+          "license": "Creative Commons Attribution 4.0 International",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Park is not open: the TPWD page says it is under construction and has no opening date, so every amenity is false because nothing exists yet, not because TPWD ruled it out. Re-check when TPWD announces an opening. The one photo is a future-entrance shot dated 10 Aug 2026 (Commons description says 'Future entrance')."
+    },
+    {
+      "id": "tx-caddo-lake",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": null,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/caddo-lake/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Big_Cypress_Bayou,_Caddo_Lake_State_Park,_Harrison_County,_Texas,_USA_(April_2017).jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Big_Cypress_Bayou,_Caddo_Lake_State_Park,_Harrison_County,_Texas,_USA_(April_2017).jpg",
+          "credit": "William L. Farr",
+          "license": "Creative Commons Attribution-Share Alike 4.0 International",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bald_cypress_(Taxodium_distichum),_Saw_Mill_Pond,_Caddo_Lake_State_Park,_Harrison_County,_Texas,_USA_(April_2017).jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Bald_cypress_(Taxodium_distichum),_Saw_Mill_Pond,_Caddo_Lake_State_Park,_Harrison_County,_Texas,_USA_(April_2017).jpg",
+          "credit": "William L. Farr",
+          "license": "Creative Commons Attribution-Share Alike 4.0 International",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Caddo_lake_sp_tx_cabins.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Caddo_lake_sp_tx_cabins.jpg",
+          "credit": "Larry D. Moore",
+          "license": "Creative Commons Attribution 4.0 International",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "50-amp: the Full Hookup Campsites (8 sites, Woodpecker Hollow) list 50-amp electric. 30-amp: the electric sites (Armadillo Run and Squirrel Haven) list a 30 amp hookup. Water hookup at electric sites; Mill Pond 'Campsites with Water' are tent-only with water. 'Restrooms nearby' is the only restroom wording on the campsite page; no shower statement there, so showers is null. Cabins: six-person and four-person historic cabins, each with water, electricity and a shower (lodging page, https://tpwd.texas.gov/state-parks/caddo-lake/fees-facilities/caddo-lodging). water_access is null: no statement that drinking water is available beyond the campsite hookups."
+    },
+    {
+      "id": "tx-dinosaur-valley",
+      "rv_30a": true,
+      "rv_50a": false,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/dinosaur-valley/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dinosaur_Valley_State_Park_October_2020_04_(Paluxy_River).jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Dinosaur_Valley_State_Park_October_2020_04_(Paluxy_River).jpg",
+          "credit": "Michael Barera",
+          "license": "Creative Commons Attribution-Share Alike 4.0 International",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dinosaur_Valley_River_Bed.JPG?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Dinosaur_Valley_River_Bed.JPG",
+          "credit": "Fredlyfish4",
+          "license": "Creative Commons Attribution-Share Alike 3.0 Unported",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Campsites with Electricity (36 sites) list water hookup, electric hookup and 30 amp hookup only, so rv_50a is false on the page's own list. Primitive walk-in sites have no water, showers or restrooms, and the closest potable water is 1/3 to 1/2 mile away, so potable water exists in the park. Sauropod Group Camp: drinking water in the parking area; restrooms with showers about 400 yards away. No cabins on the campsite or group pages."
+    },
+    {
+      "id": "tx-goliad",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/goliad/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/River_Trail_Goliad_State_Park_Texas_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:River_Trail_Goliad_State_Park_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "Creative Commons Attribution 4.0 International",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Camping_Area_Goliad_State_Park_Texas_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Camping_Area_Goliad_State_Park_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "Creative Commons Attribution 4.0 International",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Full hookup sites (20, Karankawa area, pull-through) list 20/30/50-amp electric; Jacales electric sites list 20/30/50-amp too. Walk-in tent sites share water spigots; restrooms with showers nearby. The five screened shelters are not cabins, so cabins is false."
+    },
+    {
+      "id": "tx-lake-brownwood",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lake-brownwood/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Brownwood_View_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Brownwood_View_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "Creative Commons Attribution 4.0 International",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_Fishing_Pier_Lake_Brownwood_State_Park_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Sunset_Fishing_Pier_Lake_Brownwood_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "Creative Commons Attribution 4.0 International",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "50/30/20-amp electric at the Willow Point full hookup sites; 30/20-amp electric at Comanche Trails sites; water at every electric site. Tent-only sites have water spigots in the area (not at each site). Restrooms with showers nearby. Cabins: the main park page lists two-person and four-person cabins and lodges for four to 26 people (https://tpwd.texas.gov/state-parks/lake-brownwood); the campsite page does not cover them."
+    },
+    {
+      "id": "tx-lyndon-b-johnson",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lyndon-b-johnson",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Wildflowers_LBJ_State_Park_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Wildflowers_LBJ_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "Creative Commons Attribution 4.0 International",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lyndon_B._Johnson_State_Park_and_Historic_Site_July_2017.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lyndon_B._Johnson_State_Park_and_Historic_Site_July_2017.jpg",
+          "credit": "Michael Barera",
+          "license": "Creative Commons Attribution-Share Alike 4.0 International",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "The TPWD campsite page returned 404, and the main page says only that youth groups can reserve a small camping area; no hookups, water, restrooms or showers are listed, so those are null. The historic cabins (Behrens, 1870s; Danz, 1860s) are tour sites, not rentals, so cabins is false."
+    },
+    {
+      "id": "tx-palo-pinto-mountains",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/palo-pinto-mountains/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/A_View_Palo_Pinto_Mountains_State_Park_Texas_2026.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:A_View_Palo_Pinto_Mountains_State_Park_Texas_2026.jpg",
+          "credit": "Larry D. Moore",
+          "license": "Creative Commons Attribution 4.0 International",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Canyon_View_Overlook_Palo_Pinto_Mountains_State_Park_Texas_2026.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Canyon_View_Overlook_Palo_Pinto_Mountains_State_Park_Texas_2026.jpg",
+          "credit": "Larry D. Moore",
+          "license": "Creative Commons Attribution 4.0 International",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Campsites with Electricity (Warbler Ridge, 23 sites): water and 'Electric 20/30/50 amp' listed, restrooms with showers nearby. Walk-in tent sites: 'Water nearby' and a vault toilet nearby; hike-in primitive sites (about 2 miles): no water, composting toilet nearby. 'Water nearby' does not say drinking water, so water_access is null. No cabins on the campsite page (the nav lists horse sites and a group site)."
+    },
+    {
+      "id": "tx-south-llano-river",
+      "rv_30a": true,
+      "rv_50a": false,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/south-llano-river/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/South_Llano_River_at_South_Llano_River_SP_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:South_Llano_River_at_South_Llano_River_SP_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "Creative Commons Attribution 4.0 International",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/View_South_Llano_River_State_Park_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:View_South_Llano_River_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "Creative Commons Attribution 4.0 International",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Electric sites (56) list a water hookup and a 30 amp hookup only, so rv_50a is false on the page's own list. Six walk-in sites have water nearby and chemical toilets nearby; five primitive hike-in sites have a composting toilet and no water. Restrooms with showers nearby for the electric sites. No cabins listed."
+    },
+    {
+      "id": "nps-lamr",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://www.nps.gov/lamr/planyourvisit/camping.htm",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Meredith_at_Sunset.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Meredith_at_Sunset.jpg",
+          "credit": "NPS",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Scenic_View_at_Lake_Meredith_NRA.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Scenic_View_at_Lake_Meredith_NRA.jpg",
+          "credit": "NPS",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Sanford-Yake: 10 fee RV sites with 50, 30 and 20 amp electric and water hookups, reserved by calling 806-865-3131. Potable water: the Fritch Fortress and Sanford-Yake bathrooms have potable water, showers and flush toilets (Fritch Fortress showers are open in the summer season only). Dump stations use non-potable water. No cabins on the NPS camping page. The two photos are NPS images. The Commons file pages state 'Public domain' and cite the NPS media pages; those NPS pages are JavaScript-rendered and their rights text could not be read here, so the licence basis is the Commons page. Flagged for the orchestrator to decide."
+    },
+    {
+      "id": "usfs-lyndon-b-johnson-national-grassland",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": true,
+      "restrooms": true,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://www.fs.usda.gov/r08/texas/recreation/caddo-lbj-national-grasslands",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/LBJ_Grasslands_Hillside.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:LBJ_Grasslands_Hillside.jpg",
+          "credit": "Eapender at English Wikipedia",
+          "license": "Creative Commons Attribution-Share Alike 3.0 Unported",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Bois D'Arc Trailhead: 26 campsites with sanitary facilities, a horse washing area and potable water (USFS listing, joint Caddo-LBJ page). 'Sanitary facilities' is read as restrooms; the toilet type is not named. Black Creek: 14 walk-in sites, amenities not listed. No electric hookups are mentioned, so rv_30a and rv_50a are null (unknown), not false. No showers or cabins listed."
+    }
+  ]
+}

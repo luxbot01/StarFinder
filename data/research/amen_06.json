@@ -1,0 +1,214 @@
+{
+  "_author": "Nightjar",
+  "_finished": "Friday October 30 2026 19:10 CDT",
+  "places": [
+    {
+      "id": "tx-bear-creek",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": false,
+      "restrooms": false,
+      "showers": false,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/bear-creek",
+      "photos": [],
+      "notes": "Not open. TPWD: 'This park is not yet open. It is in the planning stage of development.' Every amenity field is false because none is offered yet, not because one is known to be absent. The /fees-facilities/campsites page returns 404. No Wikimedia Commons category exists for this park, so no photos."
+    },
+    {
+      "id": "tx-cleburne",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": null,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/cleburne/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cedar_Lake_Cleburne_State_Park_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Cedar_Lake_Cleburne_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cleburne_State_Park_October_2020_06_%28Cedar_Lake%29.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Cleburne_State_Park_October_2020_06_(Cedar_Lake).jpg",
+          "credit": "Michael Barera",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "The campsites page names 30 amp hookups (Poplar Point, North Creek, Shady Springs, Cedar Grove, Keyhole) and 50 amp hookups (Poplar Point, Shady Springs), with 'Water hookup' listed for every electric site type. Drinkable water is not stated, and 'Water nearby' appears only for the youth group camp. Restrooms are listed as 'Restrooms nearby' with the toilet type not stated, so restrooms is true on the page's own wording. Showers are not stated, so null. The campsites page names no cabins; the cabins value comes from the TPWD main park page, which says cabins can be reserved."
+    },
+    {
+      "id": "tx-falcon",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": null,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/falcon/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Falcon_State_Park%2C_Roma%2C_TX.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Falcon_State_Park,_Roma,_TX.jpg",
+          "credit": "cricketsblog",
+          "license": "CC BY 2.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Javelina Run and Mesquite Bend list '30 amp hookup' and '50 amp hookup' with 'Water hookup'. Black Bass Loop lists no electric. Javelina Run also lists a sewer hookup. Drinkable water is not stated. Restrooms are listed as 'Restrooms nearby' with the type not stated. Showers are not stated. Cabins: the TPWD main park page says 'Offered as lodging' (fetched in round one), not the campsites page, which only links a Lodging menu. Group sites appear only as a menu link with no detail. The park's Wikimedia Commons category holds one park photo, the one used; the other files in it are of plants and animals."
+    },
+    {
+      "id": "tx-hill-country",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": null,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/hill-country/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Overlook_View_Hill_Country_SNA_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Overlook_View_Hill_Country_SNA_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Hill_Country_SNA_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Hill_Country_SNA_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "The campsites page lists no electric sites at all, so rv_30a and rv_50a are false for the listed campsites. Walk-in sites West Verde Creek, Comanche Bluff and Chaquita Falls are labelled 'Water'; the hike-in sites say 'No Water'. The word on the page is 'Water', not 'hookup', so water_at_site is true on that label. Toilets: 'Vault toilet nearby' (Comanche Bluff) and 'Chemical toilet nearby' (West Verde Creek, Chaquita Falls); the vault counts toward restrooms. Drinkable water and showers are not stated. Cabins: the TPWD main page (round one) describes a group lodge that 'sleeps nine' with a kitchen and bathroom; counted as a lodge. Trails and backcountry camps may close for wet weather."
+    },
+    {
+      "id": "tx-lake-livingston",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lake-livingston/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Livingston_State_Park%2C_Pineywoods_Boardwalk%2C_Polk_Co._TX%3B_29_April_2025.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Livingston_State_Park,_Pineywoods_Boardwalk,_Polk_Co._TX;_29_April_2025.jpg",
+          "credit": "William L. Farr",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Livingston_State_Park_Dock.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Livingston_State_Park_Dock.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Piney Shores lists '20 amp hookup', '30 amp hookup' and '50 amp hookup'; Red Oak, Yaupon and Pin Oak list '50 amp hookup'. Hercules and Pin Oak electric sites say only 'Electricity', so no amp rating. Full-hookup sites have 'Water hookup'; electric sites say 'Water'. 'Restrooms with showers nearby' is listed for the full-hookup and electric sites, so showers is true. Drinkable water is not stated. Cabins: neither the campsites page nor the TPWD main page (round one) names cabins, so cabins is null. The Commons category holds a file titled 'Lake Livingston State Park Cabin.jpg', which I did not verify as a bookable cabin, so it is not used. The page also lists 10 screened shelters and a group site."
+    },
+    {
+      "id": "tx-meridian",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/meridian/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Overlook_Meridian_State_Park_Texas_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Overlook_Meridian_State_Park_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Spillway_Lake_Meridian_State_Park_Texas_2024.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Spillway_Lake_Meridian_State_Park_Texas_2024.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Full-hookup and electric sites list 'Electric hookup' and 'Water hookup' (electric sites) or 'Water' (full hookup), but the page names no amp rating, so rv_30a and rv_50a are null. Primitive sites: 'No potable water in this area', and restrooms are 200 yards to one mile away. 'Restrooms with showers nearby' is listed for the full-hookup and electric sites. Cabins: the TPWD main page (round one) and Wikipedia both name three cabins. Drinkable water elsewhere is not stated, so water_access is null."
+    },
+    {
+      "id": "tx-powderhorn",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": false,
+      "restrooms": false,
+      "showers": false,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/powderhorn",
+      "photos": [],
+      "notes": "Not open. TPWD: 'This state park is not open; it is in the planning phase of development.' No amenities are offered now, so every field is false for the present; this is not a claim that the park can never offer them. The page says initial plans call for campsites, cabins, screened shelters and a group site, with no detail. The /fees-facilities/campsites page returns 404. No Wikimedia Commons category exists for this park, so no photos."
+    },
+    {
+      "id": "nps-alfl",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://www.nps.gov/alfl/planyourvisit/places-to-stay.htm",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Alfl_3771.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Alfl_3771.jpg",
+          "credit": "NPS Photo",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Alibates_flint_overlook%2C_Texas_panhandle.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Alibates_flint_overlook,_Texas_panhandle.jpg",
+          "credit": "roy.luck",
+          "license": "CC BY 2.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "The places-to-stay page names no campground or RV site at the monument itself. Its campgrounds are twelve free Lake Meredith National Recreation Area sites (McBride Canyon, Mullinaw Creek, Fritch Fortress, Cedar Canyon, Sanford-Yake), and the page says the nearest with drinking water and flush toilets are Fritch Fortress, Cedar Canyon and Sanford-Yake. Those sites are not at the monument, and the page was last updated March 31, 2012, so they may be out of date. Private RV parks and motels in Fritch, Borger and nearby towns are also listed, not at the monument. The monument's own access is by ranger-led tour (Wikipedia), and the NPS page gives no restroom or water detail for the monument. Restrooms and water_access are null because the monument's own facilities are not stated. Cabins: none named at the monument."
+    },
+    {
+      "id": "nps-rigr",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://www.nps.gov/rigr/planyourvisit/index.htm",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lower_Canyons._River_Mile_708.6._March_2011._%2847a88edf-8f83-417d-bb28-86555e8bd994%29.JPG?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lower_Canyons._River_Mile_708.6._March_2011._(47a88edf-8f83-417d-bb28-86555e8bd994).JPG",
+          "credit": "NPS Photo",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "The NPS planyourvisit page for this unit names no campsites, water, restrooms or lodging for the river itself, so every amenity is null. Facilities for the river are run through Big Bend National Park, which was not read for this unit. Wikipedia says Boquillas Canyon is reached through a popular RV campground, which is not named on the unit page, so no camping amenity is recorded. The one photo is a vegetation-monitoring photopoint on the Lower Canyons at river mile 708.6, not a scenic view; its depicted-place field names this unit and Big Bend. A second Commons file captioned as New Mexico was left out."
+    }
+  ]
+}

@@ -1,0 +1,342 @@
+{
+  "_author": "Pinpoint",
+  "_finished": "Friday, October 30, 2026 07:30 PM CDT",
+  "places": [
+    {
+      "id": "tx-balmorhea",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/balmorhea/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Balmorhea_pool_2009.jpg/960px-Balmorhea_pool_2009.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Balmorhea_pool_2009.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Balmorhea_cienaga_2009.jpg/960px-Balmorhea_cienaga_2009.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Balmorhea_cienaga_2009.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Balmorhea_camping_2009.jpg/960px-Balmorhea_camping_2009.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Balmorhea_camping_2009.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "rv_30a and rv_50a from the campsite page: back-in sites are 30-amp only (sites 12-17 tent-only); pull-through sites are 20/30/50. Restrooms with showers nearby. cabins = San Solomon Springs Courts motel-style lodge rooms (the TPWD Lodging page). water_access null: no drinking-water statement on the TPWD pages read."
+    },
+    {
+      "id": "tx-cedar-hill",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/cedar-hill/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Lake_View_Cedar_Hill_State_Park_Texas_2025.jpg/960px-Lake_View_Cedar_Hill_State_Park_Texas_2025.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_View_Cedar_Hill_State_Park_Texas_2025.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Cedar_Hill_State_Park_November_2020_01_(Joe_Pool_Lake).jpg/960px-Cedar_Hill_State_Park_November_2020_01_(Joe_Pool_Lake).jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Cedar_Hill_State_Park_November_2020_01_(Joe_Pool_Lake).jpg",
+          "credit": "Michael Barera",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Cedar_hill_state_park_swimming_area.jpg/960px-Cedar_hill_state_park_swimming_area.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Cedar_hill_state_park_swimming_area.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Campsite page: \"30 amp hookup\" and \"50 amp hookup\" listed; all sites have water and electricity; restrooms with hot showers nearby. No cabins on the campsite page. water_access null (no drinking-water statement)."
+    },
+    {
+      "id": "tx-enchanted-rock",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": true,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/enchanted-rock/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Enchanted_Rock_Panorama.jpg/960px-Enchanted_Rock_Panorama.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Enchanted_Rock_Panorama.jpg",
+          "credit": "JUSTIN ELBERT",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Enchanted_Rock_023.JPG/960px-Enchanted_Rock_023.JPG",
+          "page": "https://commons.wikimedia.org/wiki/File:Enchanted_Rock_023.JPG",
+          "credit": "Dsw3131",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "No electric sites listed, so rv_30a and rv_50a are false. Walk-in tent sites say \"Water nearby\", not at the site, so water_at_site is false. water_access true: the TPWD alert page says bottled water can be bought at headquarters (the park asks visitors to bring their own). Composting toilets and restrooms with showers nearby. Only two allowed photos found; the Nima series is GFDL in the page licence block and was excluded."
+    },
+    {
+      "id": "tx-government-canyon",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": false,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/government-canyon/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Gov_Canyon_trail.jpg/960px-Gov_Canyon_trail.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Gov_Canyon_trail.jpg",
+          "credit": "Kimikel",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Discovery_Trail_Govt_Canyon_SNA_Texas_2023.jpg/960px-Discovery_Trail_Govt_Canyon_SNA_Texas_2023.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Discovery_Trail_Govt_Canyon_SNA_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Gov_Canyon_State_Nat_Area1.JPG/960px-Gov_Canyon_State_Nat_Area1.JPG",
+          "page": "https://commons.wikimedia.org/wiki/File:Gov_Canyon_State_Nat_Area1.JPG",
+          "credit": "Zereshk",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Camping is walk-in tent pads with water nearby (not at site), so water_at_site is false and no electric sites are listed. Restrooms with showers nearby. water_access null: the park page talks about the drinking water supply, not a park water source. The Commons file \"Government Canyon State Natural Area.jpg\" is GFDL and was not used."
+    },
+    {
+      "id": "tx-lake-colorado-city",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lake-colorado-city/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/View_Lake_Colorado_City_State_Park_2023.jpg/960px-View_Lake_Colorado_City_State_Park_2023.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:View_Lake_Colorado_City_State_Park_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Old_Wreck_in_Lake_Colorado_City_SP_Texas_2023.jpg/960px-Old_Wreck_in_Lake_Colorado_City_SP_Texas_2023.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Old_Wreck_in_Lake_Colorado_City_SP_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cactus_Cut_Trail_Lake_Colorado_City_SP_Texas_2023.jpg/960px-Cactus_Cut_Trail_Lake_Colorado_City_SP_Texas_2023.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Cactus_Cut_Trail_Lake_Colorado_City_SP_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "rv_30a and rv_50a null: the page lists electric sites and electric pull-through sites but gives no amp rating. water_at_site true (electric sites list Water and Electricity). Cabins: \"Reserve a campsite or cabin\"; restrooms with showers in all loops and the cabin area."
+    },
+    {
+      "id": "tx-martin-dies-jr",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/martin-dies-jr/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Martin_Dies_Jr_State_Park_Boardwalk.jpg/960px-Martin_Dies_Jr_State_Park_Boardwalk.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Martin_Dies_Jr_State_Park_Boardwalk.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Slough_Martin_Dies_Jr_State_Park_Texas_2023.jpg/960px-Slough_Martin_Dies_Jr_State_Park_Texas_2023.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Slough_Martin_Dies_Jr_State_Park_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Campsites with Electricity (30 amp) and (50 amp) listed; Water hookup. Restrooms with showers nearby. Cabins: the main page says \"rent a screened shelter or cabin\". Tent camping is not stated. Other Commons files for this park (Shelters, Dock, Observation Bridge, Pier) showed no licence block on the page, so they were not used."
+    },
+    {
+      "id": "tx-possum-kingdom",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/possum-kingdom/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Possum_Kingdom_State_Park_View.jpg/960px-Possum_Kingdom_State_Park_View.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Possum_Kingdom_State_Park_View.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Possum_Kingdom_State_Park_June_2021_01_(Possum_Kingdom_Lake).jpg/960px-Possum_Kingdom_State_Park_June_2021_01_(Possum_Kingdom_Lake).jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Possum_Kingdom_State_Park_June_2021_01_(Possum_Kingdom_Lake).jpg",
+          "credit": "Michael Barera",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Possum_Kingdom_State_Park_Camp_Site.jpg/960px-Possum_Kingdom_State_Park_Camp_Site.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Possum_Kingdom_State_Park_Camp_Site.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Campsites list \"20/30/50-amp electricity\" and Water hookup. Restrooms nearby and restrooms with showers nearby (walk-in primitive sites: bathrooms about half a mile away). Cabins 1-6 are air-conditioned cabins, closed December through February for renovations (TPWD alert, Jul 9, 2026). Tent camping is not explicitly stated."
+    },
+    {
+      "id": "tx-tyler",
+      "rv_30a": true,
+      "rv_50a": true,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/tyler/fees-facilities/campsites",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Tyler_sp_tx_lake_view.jpg/960px-Tyler_sp_tx_lake_view.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Tyler_sp_tx_lake_view.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Waterfall_Tyler_State_Park_Texas_2025.jpg/960px-Waterfall_Tyler_State_Park_Texas_2025.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Waterfall_Tyler_State_Park_Texas_2025.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Lakeshore_Trail_Tyler_State_Park_Texas_2025.jpg/960px-Lakeshore_Trail_Tyler_State_Park_Texas_2025.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Lakeshore_Trail_Tyler_State_Park_Texas_2025.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "\"30 amp hookup\", \"50 amp hookup\" and \"30/50 amp hookups\" on the campsite page; Water hookup; restrooms with showers nearby. Cabins and screened shelters are listed under Stay overnight on the main page. Tent pads and tents allowed at Lakeview; Big Pine is no-tent."
+    },
+    {
+      "id": "nps-pais",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://www.nps.gov/pais/planyourvisit/camping.htm",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Aerial_View_Of_Part_Of_The_Padre_Island_National_Seashore.jpg/960px-Aerial_View_Of_Part_Of_The_Padre_Island_National_Seashore.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Aerial_View_Of_Part_Of_The_Padre_Island_National_Seashore.jpg",
+          "credit": "RobertKixmiller",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Bird_Island_Basin_Campground_at_Padre_Island_National_Seashore_at_dawn.jpg/960px-Bird_Island_Basin_Campground_at_Padre_Island_National_Seashore_at_dawn.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Bird_Island_Basin_Campground_at_Padre_Island_National_Seashore_at_dawn.jpg",
+          "credit": "Jennifer Rangubphai",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Car_camping_at_night_in_Padre_Island_National_Seashore_(48770157336).jpg/960px-Car_camping_at_night_in_Padre_Island_National_Seashore_(48770157336).jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Car_camping_at_night_in_Padre_Island_National_Seashore_(48770157336).jpg",
+          "credit": "capt_tain Tom",
+          "license": "CC BY 2.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "NPS camping page: \"No electric or water hook-ups are available in the park\" (rv_30a/rv_50a/water_at_site false). An RV dump station and freshwater filling station sit at the Malaquite Campground entrance, for RVs and open to all visitors; drinking water is not stated, so water_access is null. Restrooms and showers are not stated on the pages read, so null. The Car camping photo is Flickr-origin but Commons carries it as CC BY 2.0 (credit: capt_tain Tom)."
+    },
+    {
+      "id": "usfs-rita-blanca-national-grassland",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": false,
+      "restrooms": true,
+      "showers": null,
+      "cabins": false,
+      "amenity_source": "https://www.fs.usda.gov/r03/cibola/recreation/thompson-grove-picnic-site",
+      "photos": [
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Rita_Blanca_National_Grassland.jpg/960px-Rita_Blanca_National_Grassland.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Rita_Blanca_National_Grassland.jpg",
+          "credit": "U.S. Forest Service",
+          "license": "Public domain",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Rita_Blanca_National_Grassland_from_West_High_Lonesome_Lane,_Dallam_County,_Texas.jpg/960px-Rita_Blanca_National_Grassland_from_West_High_Lonesome_Lane,_Dallam_County,_Texas.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Rita_Blanca_National_Grassland_from_West_High_Lonesome_Lane,_Dallam_County,_Texas.jpg",
+          "credit": "William L. Farr",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Rita_Blanca_NG_Pronghorn.jpg/960px-Rita_Blanca_NG_Pronghorn.jpg",
+          "page": "https://commons.wikimedia.org/wiki/File:Rita_Blanca_NG_Pronghorn.jpg",
+          "credit": "Larry Lamsa",
+          "license": "CC BY 2.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "Official FS Thompson Grove page: \"Restrooms are available at this site\", \"Drinking water is not offered\", no electric sites listed (so rv_30a/rv_50a false), and no campsite hookups (water_at_site false). Showers not stated, so null. No cabins. Photos are grassland or wildlife views; the pronghorn photo is the weakest fit."
+    }
+  ]
+}

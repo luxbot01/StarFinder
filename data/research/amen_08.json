@@ -1,0 +1,258 @@
+{
+  "_author": "Lodestar",
+  "_finished": "2026-10-30 19:14 CDT",
+  "places": [
+    {
+      "id": "tx-big-bend-ranch",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/big-bend-ranch",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dark_Canyon_on_the_Rio_Grande_River.JPG?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Dark_Canyon_on_the_Rio_Grande_River.JPG",
+          "credit": "JasonReina",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Madrid_Falls_Texas.JPG?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Madrid_Falls_Texas.JPG",
+          "credit": "Freakinout",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Harvest_moon_in_Big_Bend_Ranch_State_Park.JPG?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Harvest_moon_in_Big_Bend_Ranch_State_Park.JPG",
+          "credit": "Jcllorca",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "RV AND TENT: the TPWD campsite sentence 'Campsites are primitive with no water, electricity or bathrooms' is quoted on the Fort Leaton TPWD page (about the Big Bend Ranch campsites); the Big Bend Ranch page itself does not print it, so re-check it there. Hence rv_30a and rv_50a false and water_at_site false. water_access null: the page advises 'Carry plenty of extra water on the trails' and does not say drinking water is available. restrooms and showers true: 'Bathroom & shower facility open 24/7' at the Sauceda Ranger Station (flush or vault not stated). cabins true: 'reserve a bed at the bunkhouse' at the Sauceda Bunkhouse (a bunkhouse, not a cabin; counted because it is lodging you can book). PHOTOS: Madrid Falls file title and description do not name the park; it is in the Commons category Big Bend Ranch State Park, which does name it. The Madrid Falls page also offers CC BY-SA 3.0 and GFDL as alternatives; CC BY-SA 4.0 is the first listed. Photos were checked by curl (200, image/jpeg), with Wikimedia rate limits retried."
+    },
+    {
+      "id": "tx-cooper-lake",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/cooper-lake",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cooper_Lake_State_Park_July_2015_1.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Cooper_Lake_State_Park_July_2015_1.jpg",
+          "credit": "Michael Barera",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "rv_30a and rv_50a null: TPWD says 'sites with water and electricity' but does not give amperage. water_at_site true from that phrase. restrooms and showers null: the page does not state them for campsites. cabins true: 'cabins with kitchens and bathrooms' at South Sulphur (the page gives the figure 14), with cabins and screened shelters at both units. A 'walk-in campsite' and screened shelters are listed; screened shelters are not cabins. Water access not stated. PHOTO: the file page calls it the South Sulphur unit of Cooper Lake State Park in Hopkins County. Commons category: Cooper Lake State Park (the category page redirected to Cooper State Park)."
+    },
+    {
+      "id": "tx-fort-leaton",
+      "rv_30a": false,
+      "rv_50a": false,
+      "water_at_site": false,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/fort-leaton",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/A_portion_of_Fort_Leaton,_a_Texas_State_Historic_Site,_on_the_edge_of_Presidio,_along_the_Rio_Grande_River_in_Brewster_County,_Texas_LCCN2014630294.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:A_portion_of_Fort_Leaton,_a_Texas_State_Historic_Site,_on_the_edge_of_Presidio,_along_the_Rio_Grande_River_in_Brewster_County,_Texas_LCCN2014630294.jpg",
+          "credit": "Carol M. Highsmith, Library of Congress (Prints and Photographs Division, Lyda Hill Texas Collection)",
+          "license": "Public domain",
+          "source": "Wikimedia Commons (from the Library of Congress)"
+        }
+      ],
+      "notes": "This is a day-use site. rv_30a, rv_50a and water_at_site are false because the fort has no campsites ('The fort is a day-use site'); the primitive campsites belong to Big Bend Ranch State Park, which has no electricity or water. water_access, restrooms, showers and cabins are null: the TPWD page does not state them for the fort. The Commons category holds about 32 files, mostly 1936 HABS drawings and photographs (public domain); only one was checked and used. The Library of Congress file page says 'no known copyright restrictions'."
+    },
+    {
+      "id": "tx-hueco-tanks",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/hueco-tanks",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Hueco-tanks-east-mtn-tx1.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Hueco-tanks-east-mtn-tx1.jpg",
+          "credit": "Brian Stansberry",
+          "license": "CC BY 3.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Hueco_Tanks_State_Preserve_(29734736520).jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Hueco_Tanks_State_Preserve_(29734736520).jpg",
+          "credit": "formulanone",
+          "license": "CC BY-SA 2.0",
+          "source": "Wikimedia Commons (Flickr)"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Hueco_Tanks_State_Park,_A_journey_into_the_past_141206-A-FJ979-001.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Hueco_Tanks_State_Park,_A_journey_into_the_past_141206-A-FJ979-001.jpg",
+          "credit": "Sgt. James Avery, 16th Mobile Public Affairs Detachment (U.S. Army, via DVIDS)",
+          "license": "Public domain",
+          "source": "Wikimedia Commons (U.S. Army)"
+        }
+      ],
+      "notes": "AMENITIES: TPWD says '20 campsites' and that the park store at headquarters 'sells gifts and other items'. It does not state electric sites, water at campsites, drinking water, restrooms, showers or cabins, so those are null. The TPWD page links a separate Campsites page that was not read; that page should settle the null fields. PHOTOS: the Hueco-tanks-east-mtn file description names Heuco Tanks (the file's spelling). The formulanone file's page has only the title 'Hueco Tanks State Preserve' as its description. The Army photo's description names the park, with a volunteer guide named Ed Anthony. Photos were checked by curl (200, image/jpeg)."
+    },
+    {
+      "id": "tx-lake-somerville",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": null,
+      "restrooms": true,
+      "showers": true,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/lake-somerville",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Summerville_State_Park,_Flag_Pond_area,_Lee_County,_Texas,_USA_(11_May_2017).jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Lake_Summerville_State_Park,_Flag_Pond_area,_Lee_County,_Texas,_USA_(11_May_2017).jpg",
+          "credit": "William L. Farr",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Birds_at_Sunset_Lake_Somerville_SP_Texas_2023.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Birds_at_Sunset_Lake_Somerville_SP_Texas_2023.jpg",
+          "credit": "Larry D. Moore",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "water_at_site true from the TPWD phrase 'sites with water and electricity', with no amperage (rv_30a and rv_50a null). restrooms and showers true: 'Both units have restrooms with showers' (TPWD), and chemical toilets are along the Trailway. water_access null: drinking water is not stated. cabins null: none listed, and the group hall and pavilion are rentals. The file titles spell the park 'Lake Summerville' (as Commons does); the descriptions name the park as Lake Summerville State Park, and the Birds file says Lake Somerville State Park and Trailway in Burleson County."
+    },
+    {
+      "id": "tx-monahans-sandhills",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": null,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/monahans-sandhills",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Monahans_Sandhills_at_Sunrise.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Monahans_Sandhills_at_Sunrise.jpg",
+          "credit": "Wing-Chi Poon",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Monahans_Sandhills_2009.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Monahans_Sandhills_2009.jpg",
+          "credit": "Leaflet",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "water_at_site true: 'Reserve one of 25 campsites with water and electricity' (amperage not stated, so rv_30a and rv_50a are null). water_access true, but only for the equestrian area: TPWD says 'Other equestrian amenities include a trailer parking area, potable water and three campsites.' Park-wide drinking water is not stated. restrooms, showers and cabins are null: the group hall and pavilion are rentals and are not counted as lodging. The TPWD page shows active alerts (text not read)."
+    },
+    {
+      "id": "tx-ray-roberts-lake",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": true,
+      "amenity_source": "https://tpwd.texas.gov/state-parks/ray-roberts-lake",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_at_Lake_Ray_Roberts.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Sunset_at_Lake_Ray_Roberts.jpg",
+          "credit": "Morcup",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "cabins true: the TPWD page says 'Reserve ... a room at Lone Star Lodge', and says the lodge is at the Jordan unit (not the Isle du Bois point used in the first batch). Amperage, campsite water, drinking water, restrooms and showers are not stated, so those are null. The TPWD page does not give electric or water details for the campsites. PHOTO: the file title and description say 'Sunset at Lake Ray Roberts', which names the lake; the file's structured data (depicts) names Ray Roberts Lake State Park, Johnson Branch Unit. This is the only usable photo from the search; the Commons category is only the lake. The category search did not find a park category."
+    },
+    {
+      "id": "nps-bibe",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": true,
+      "water_access": true,
+      "restrooms": true,
+      "showers": null,
+      "cabins": true,
+      "amenity_source": "https://www.nps.gov/bibe/planyourvisit/camping.htm",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Emory_Peak's_summit.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Emory_Peak's_summit.jpg",
+          "credit": "Sefor4",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Big_Bend_South_Rim.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Big_Bend_South_Rim.jpg",
+          "credit": "Bpluke01",
+          "license": "CC BY-SA 4.0",
+          "source": "Wikimedia Commons"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Big_Bend_Rio_Grande.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Big_Bend_Rio_Grande.jpg",
+          "credit": "Adbar",
+          "license": "CC BY-SA 3.0",
+          "source": "Wikimedia Commons"
+        }
+      ],
+      "notes": "water_access and restrooms true: the NPS camping page says the developed frontcountry campgrounds 'provide drinking water and restrooms'. water_at_site true: the Rio Grande Village RV Park (a concession run by Aramark, phone 855-765-1324) has '25 sites with full hook-ups'. The amperage is not stated, so rv_30a and rv_50a are null. cabins true: Chisos Mountains Lodge is 'the only lodging within Big Bend National Park' (NPS planyourvisit index page, full-service). showers are not stated. The first-batch note stands: the park point is the Wikipedia centre, not the HQ. PHOTOS: each file's own page names Big Bend (the Emory Peak file says 'highest point in Big Bend National Park'). Big Bend South Rim was rate-limited and checked on a retry (200, image/jpeg)."
+    },
+    {
+      "id": "nps-waco",
+      "rv_30a": null,
+      "rv_50a": null,
+      "water_at_site": null,
+      "water_access": null,
+      "restrooms": null,
+      "showers": null,
+      "cabins": null,
+      "amenity_source": "https://www.nps.gov/waco/planyourvisit/index.htm",
+      "photos": [
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Waco_Mammoth_National_Monument_-_55370576872.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Waco_Mammoth_National_Monument_-_55370576872.jpg",
+          "credit": "Xiquinho Silva (xiquinhosilva)",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons (Flickr)"
+        },
+        {
+          "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Waco_Mammoth_National_Monument_-_55371524201.jpg?width=800",
+          "page": "https://commons.wikimedia.org/wiki/File:Waco_Mammoth_National_Monument_-_55371524201.jpg",
+          "credit": "Xiquinho Silva (xiquinhosilva)",
+          "license": "CC BY 4.0",
+          "source": "Wikimedia Commons (Flickr)"
+        }
+      ],
+      "notes": "AMENITIES: the NPS planyourvisit page states nothing about restrooms, drinking water, showers, parking or lodging. It only says to start at the Welcome Center (6220 Steinbeck Bend Drive) and points hotel and restaurant questions to the local tourism office. All amenity fields are null, not false. The first-batch camping value is null for the same reason. PHOTOS: the file description names 'The Waco Mammoth National Monument ... in Waco, Texas'. Both were checked by curl (200, image/jpeg) after Wikimedia rate limits."
+    }
+  ]
+}
