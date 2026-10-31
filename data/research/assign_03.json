@@ -1,0 +1,62 @@
+[
+ {
+  "id": "tx-atlanta",
+  "name_hint": "Atlanta SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/atlanta"
+ },
+ {
+  "id": "tx-caprock-canyons",
+  "name_hint": "Caprock Canyons SP & Trailway",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/caprock-canyons"
+ },
+ {
+  "id": "tx-eisenhower",
+  "name_hint": "Eisenhower SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/eisenhower"
+ },
+ {
+  "id": "tx-goose-island",
+  "name_hint": "Goose Island SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/goose-island"
+ },
+ {
+  "id": "tx-lake-casa-blanca",
+  "name_hint": "Lake Casa Blanca International SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lake-casa-blanca"
+ },
+ {
+  "id": "tx-martin-creek-lake",
+  "name_hint": "Martin Creek Lake SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/martin-creek-lake"
+ },
+ {
+  "id": "tx-pedernales-falls",
+  "name_hint": "Pedernales Falls SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/pedernales-falls"
+ },
+ {
+  "id": "tx-stephen-f-austin",
+  "name_hint": "Stephen F. Austin SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/stephen-f-austin"
+ },
+ {
+  "id": "nps-lyjo",
+  "name_hint": "Lyndon B. Johnson National Historical Park",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/lyjo/"
+ },
+ {
+  "id": "usfs-mcclellan-creek-national-grassland",
+  "name_hint": "McClellan Creek National Grassland",
+  "agency_hint": "USDA Forest Service",
+  "url_hint": "https://www.fs.usda.gov/ (find the official page)"
+ }
+]

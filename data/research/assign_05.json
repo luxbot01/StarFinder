@@ -1,0 +1,62 @@
+[
+ {
+  "id": "tx-bastrop",
+  "name_hint": "Bastrop SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/bastrop"
+ },
+ {
+  "id": "tx-choke-canyon",
+  "name_hint": "Choke Canyon SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/choke-canyon"
+ },
+ {
+  "id": "tx-estero-llano-grande",
+  "name_hint": "Estero Llano Grande SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/estero-llano-grande"
+ },
+ {
+  "id": "tx-guadalupe-river",
+  "name_hint": "Guadalupe River SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/guadalupe-river"
+ },
+ {
+  "id": "tx-lake-corpus-christi",
+  "name_hint": "Lake Corpus Christi SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lake-corpus-christi"
+ },
+ {
+  "id": "tx-mckinney-falls",
+  "name_hint": "McKinney Falls SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/mckinney-falls"
+ },
+ {
+  "id": "tx-post-oak-ridge",
+  "name_hint": "Post Oak Ridge SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/post-oak-ridge"
+ },
+ {
+  "id": "tx-village-creek",
+  "name_hint": "Village Creek SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/village-creek"
+ },
+ {
+  "id": "nps-paal",
+  "name_hint": "Palo Alto Battlefield National Historical Park",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/paal/"
+ },
+ {
+  "id": "usfs-black-kettle-national-grassland",
+  "name_hint": "Black Kettle National Grassland (Lake Marvin, Texas unit)",
+  "agency_hint": "USDA Forest Service",
+  "url_hint": "https://www.fs.usda.gov/ (find the official page)"
+ }
+]

@@ -1,0 +1,56 @@
+[
+ {
+  "id": "tx-bentsen-rio-grande-valley",
+  "name_hint": "Bentsen-Rio Grande Valley SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/bentsen-rio-grande-valley"
+ },
+ {
+  "id": "tx-colorado-bend",
+  "name_hint": "Colorado Bend SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/colorado-bend"
+ },
+ {
+  "id": "tx-fort-boggy",
+  "name_hint": "Fort Boggy SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/fort-boggy"
+ },
+ {
+  "id": "tx-honey-creek",
+  "name_hint": "Honey Creek SNA",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/honey-creek"
+ },
+ {
+  "id": "tx-lake-mineral-wells",
+  "name_hint": "Lake Mineral Wells SP & Trailway",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lake-mineral-wells"
+ },
+ {
+  "id": "tx-mission-tejas",
+  "name_hint": "Mission Tejas SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/mission-tejas"
+ },
+ {
+  "id": "tx-purtis-creek",
+  "name_hint": "Purtis Creek SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/purtis-creek"
+ },
+ {
+  "id": "nps-amis",
+  "name_hint": "Amistad National Recreation Area",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/amis/"
+ },
+ {
+  "id": "nps-saan",
+  "name_hint": "San Antonio Missions National Historical Park",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/saan/"
+ }
+]

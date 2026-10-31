@@ -1,0 +1,62 @@
+[
+ {
+  "id": "tx-albert-bessie-kronkosky",
+  "name_hint": "Albert & Bessie Kronkosky SNA",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/albert-bessie-kronkosky"
+ },
+ {
+  "id": "tx-caddo-lake",
+  "name_hint": "Caddo Lake SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/caddo-lake"
+ },
+ {
+  "id": "tx-dinosaur-valley",
+  "name_hint": "Dinosaur Valley SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/dinosaur-valley"
+ },
+ {
+  "id": "tx-goliad",
+  "name_hint": "Goliad SP & HS",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/goliad"
+ },
+ {
+  "id": "tx-lake-brownwood",
+  "name_hint": "Lake Brownwood SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lake-brownwood"
+ },
+ {
+  "id": "tx-lyndon-b-johnson",
+  "name_hint": "Lyndon B. Johnson SP & HS",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lyndon-b-johnson"
+ },
+ {
+  "id": "tx-palo-pinto-mountains",
+  "name_hint": "Palo Pinto Mountains SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/palo-pinto-mountains"
+ },
+ {
+  "id": "tx-south-llano-river",
+  "name_hint": "South Llano River SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/south-llano-river"
+ },
+ {
+  "id": "nps-lamr",
+  "name_hint": "Lake Meredith National Recreation Area",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/lamr/"
+ },
+ {
+  "id": "usfs-lyndon-b-johnson-national-grassland",
+  "name_hint": "Lyndon B. Johnson National Grassland",
+  "agency_hint": "USDA Forest Service",
+  "url_hint": "https://www.fs.usda.gov/ (find the official page)"
+ }
+]

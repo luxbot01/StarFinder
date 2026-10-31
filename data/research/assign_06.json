@@ -1,0 +1,56 @@
+[
+ {
+  "id": "tx-bear-creek",
+  "name_hint": "Bear Creek SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/bear-creek"
+ },
+ {
+  "id": "tx-cleburne",
+  "name_hint": "Cleburne SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/cleburne"
+ },
+ {
+  "id": "tx-falcon",
+  "name_hint": "Falcon SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/falcon"
+ },
+ {
+  "id": "tx-hill-country",
+  "name_hint": "Hill Country SNA",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/hill-country"
+ },
+ {
+  "id": "tx-lake-livingston",
+  "name_hint": "Lake Livingston SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lake-livingston"
+ },
+ {
+  "id": "tx-meridian",
+  "name_hint": "Meridian SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/meridian"
+ },
+ {
+  "id": "tx-powderhorn",
+  "name_hint": "Powderhorn SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/powderhorn"
+ },
+ {
+  "id": "nps-alfl",
+  "name_hint": "Alibates Flint Quarries National Monument",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/alfl/"
+ },
+ {
+  "id": "nps-rigr",
+  "name_hint": "Rio Grande Wild and Scenic River",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/rigr/"
+ }
+]

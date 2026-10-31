@@ -1,0 +1,56 @@
+[
+ {
+  "id": "tx-blanco",
+  "name_hint": "Blanco SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/blanco"
+ },
+ {
+  "id": "tx-daingerfield",
+  "name_hint": "Daingerfield SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/daingerfield"
+ },
+ {
+  "id": "tx-fort-richardson",
+  "name_hint": "Fort Richardson SP, HS",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/fort-richardson"
+ },
+ {
+  "id": "tx-inks-lake",
+  "name_hint": "Inks Lake SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/inks-lake"
+ },
+ {
+  "id": "tx-lake-whitney",
+  "name_hint": "Lake Whitney SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lake-whitney"
+ },
+ {
+  "id": "tx-mustang-island",
+  "name_hint": "Mustang Island SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/mustang-island"
+ },
+ {
+  "id": "tx-san-angelo",
+  "name_hint": "San Angelo SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/san-angelo"
+ },
+ {
+  "id": "nps-blsc",
+  "name_hint": "Blackwell School National Historic Site",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/blsc/"
+ },
+ {
+  "id": "usfs-davy-crockett-national-forest",
+  "name_hint": "Davy Crockett National Forest",
+  "agency_hint": "USDA Forest Service",
+  "url_hint": "https://www.fs.usda.gov/ (find the official page)"
+ }
+]

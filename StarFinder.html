@@ -2,919 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CampFinder</title>
-  <!-- Leaflet CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
-  <style>
-    :root{
-      --bg:#0b0c10; --panel:#11131a; --muted:#99a3ad; --accent:#4cc9f0; --accent2:#b5179e;
-      --ok:#3da35d; --tx:#4e79a7; --card:#1a1d27; --border:#262a36; --shadow:0 6px 24px rgba(0,0,0,.25);
-    }
-    html,body{height:100%;margin:0;background:var(--bg);color:#e8eef6;font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji"}
-    .wrap{display:grid;grid-template-columns:320px 1fr;grid-template-rows:auto 1fr;min-height:100vh}
-    header{grid-column:1/3;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:14px 16px;background:linear-gradient(180deg,#0d0f16,#0a0b11);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:500}
-    header h1{font-size:18px;margin:0;font-weight:700;letter-spacing:.2px}
-    header .sub{color:var(--muted);font-size:12px}
-    header .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .chip{border:1px solid var(--border);background:var(--panel);padding:6px 10px;border-radius:999px;color:#cfe5ff;display:inline-flex;align-items:center;gap:8px}
-    .chip input{accent-color:var(--accent)}
-    .search{position:relative}
-    .search input{background:#0e1018;color:#e8eef6;border:1px solid var(--border);border-radius:10px;padding:10px 12px 10px 36px;min-width:260px;outline:0}
-    .search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:.55}
-
-    aside{background:var(--panel);border-right:1px solid var(--border);overflow:auto}
-    .list{padding:10px}
-    .item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px;display:grid;grid-template-columns:84px 1fr;gap:10px;box-shadow:var(--shadow);margin:10px 0}
-    .thumb{width:84px;height:84px;border-radius:10px;overflow:hidden;background:#0e1018;border:1px solid var(--border)}
-    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-    .meta{display:flex;flex-direction:column;gap:6px}
-    .meta h3{margin:0;font-size:15px}
-    .meta .pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#cfe5ff}
-    .pill .dot{width:8px;height:8px;border-radius:50%}
-    .pill .tx{background:var(--tx)}
-    .pill .ok{background:var(--ok)}
-    .meta .links a{font-size:12px;color:#b7cffc;text-decoration:none;border:1px solid var(--border);padding:6px 8px;border-radius:8px}
-    .meta .links a:hover{border-color:#334155}
-
-    #map{height:100%;width:100%}
-
-    .leaflet-popup-content{margin:10px 10px 6px 10px}
-    .popup-card{width:min(320px,78vw);}
-    .popup-card img{width:100%;height:170px;object-fit:cover;border-radius:12px 12px 0 0;border:1px solid var(--border)}
-/* Override default popup styles: hidden as new design defined below */
-.popup-card img{display:none;}
-
-    .legend{position:absolute;z-index:450;right:14px;top:82px;background:#0e1118;border:1px solid var(--border);border-radius:12px;padding:8px 10px;box-shadow:var(--shadow);color:#cfe5ff;font-size:12px}
-    .legend .row{display:flex;align-items:center;gap:8px}
-    .legend .dot{width:10px;height:10px;border-radius:50%}
-    .legend .tx{background:var(--tx)}
-    .legend .ok{background:var(--ok)}
-    .toolbar{position:absolute;z-index:450;left:calc(320px + 12px);top:82px;display:flex;gap:8px}
-    .floating-btn{background:#0e1118;border:1px solid var(--border);border-radius:10px;padding:8px 10px;color:#cfe5ff;text-decoration:none;box-shadow:var(--shadow)}
-    /* enhance floating button aesthetics */
-    .floating-btn{
-      background: rgba(255,255,255,0.08);
-      color:#000000;
-      border-radius:12px;
-      padding:8px 12px;
-      border:1px solid var(--border);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-      backdrop-filter: blur(6px);
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-    .floating-btn:hover{
-      background: rgba(255,255,255,0.15);
-      transform: translateY(-1px);
-    }
-    .floating-btn:active{
-      transform: translateY(0);
-    }
-
-    @media (max-width: 980px){
-      .wrap{grid-template-columns:1fr}
-      aside{order:2;height:45vh}
-      #map{order:3;height:55vh}
-      .toolbar{left:12px;top:132px}
-    }
-      /* Preview card shown on hover */
-    .preview {
-      position: absolute;
-      z-index: 800;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      /* subtle drop shadow to give the card a floating feel */
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-      overflow: hidden;
-      width: 180px;
-      display: none;
-      pointer-events: none;
-    }
-    .preview img {
-      display: block;
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-      /* apply soft shadow around the image edges */
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 4px 12px rgba(0,0,0,0.3);
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-    }
-    .preview .info {
-      padding: 6px 8px;
-      font-size: 12px;
-      color: #dfe9f5;
-    }
-
-    /* Remove Leaflet popup backgrounds and tips so our custom card floats without a white box. */
-    .leaflet-popup,
-    .leaflet-popup-content-wrapper,
-    .leaflet-popup-tip-container {
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-    .leaflet-popup-content {
-      padding: 0 !important;
-      margin: 0 !important;
-      background: transparent !important;
-      border: none !important;
-    }
-    .leaflet-popup-tip {
-      display: none !important;
-    }
-
-    /* Style the popup close (×) button with a light translucent circle that darkens on hover. */
-    .leaflet-popup-close-button {
-      display: none !important;
-    }
-    .leaflet-popup-close-button:hover {
-      display: none !important;
-    }
-
-    /* --- NEW POPUP DESIGN --- */
-    .popup-card {
-      width: min(340px, 80vw);
-      background: rgba(15,18,26,0.92);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(8px);
-      position: relative;
-      overflow: hidden;
-    }
-    .popup-hero {
-      position: relative;
-      height: 200px;
-    }
-    .popup-hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .popup-hero button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 32px;
-      height: 32px;
-      background: rgba(0,0,0,0.4);
-      border: none;
-      color: #fff;
-      border-radius: 50%;
-      cursor: pointer;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:18px;
-      backdrop-filter: blur(2px);
-    }
-    .popup-hero button.prev { left: 10px; }
-    .popup-hero button.next { right: 10px; }
-    .popup-body {
-      padding: 16px;
-      /* Center contents in the body */
-      text-align: center;
-    }
-    .popup-title {
-      margin: 0 0 8px 0;
-      color: #ffffff;
-      font-size: 18px;
-      font-weight: 600;
-    }
-    .popup-cta {
-      display: inline-block;
-      margin: 0 auto;
-      padding: 10px 14px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .popup-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.5);
-    }
-
-    /* Additional close button inside our popup card.  This ensures
-       the user has a visible × to close the popup, regardless of
-       Leaflet’s default button styling. */
-    .popup-close-btn {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      width: 28px;
-      height: 28px;
-      line-height: 28px;
-      text-align: center;
-      border-radius: 50%;
-      font-size: 20px;
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(4px);
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s ease;
-      z-index: 20;
-    }
-    .popup-close-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    /* ==== PLUMB 2026-09-26, the all-sites responsive pass ====================
-       Measured: under 980px the list came BEFORE the map (the map, which is the
-       product, fell below the fold); the legend and toolbar were absolute to the
-       whole page at hard-coded tops, so "Fit to all" sat on the first card; and
-       the search's min-width:260px pushed the header past a phone's width, which
-       WebKit scrolled sideways 52-162px. Now: map first, list after, and the map's
-       floating controls live IN the map's grid cell, so they move with it. */
-    /* the quick links were inline boxes, so a narrow card split one button across
-       two lines (the bell on one line, "Book" and a torn border on the next) */
-    .meta .links{display:flex;flex-wrap:wrap;gap:6px}
-    .meta .links a{white-space:nowrap}
-    @media (max-width: 980px){
-      .wrap{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto;
-            grid-template-areas:"head" "map" "list"}
-      header{grid-area:head;flex-wrap:wrap;padding:10px 12px}
-      header .controls{width:100%}
-      .search{flex:1 1 100%}
-      .search input{min-width:0;width:100%;box-sizing:border-box}
-      #map{grid-area:map;order:0;height:58svh;min-height:300px}
-      aside{grid-area:list;order:0;height:auto;overflow:visible;border-right:0;border-top:1px solid var(--border)}
-      .legend{grid-area:map;position:relative;top:auto;right:auto;align-self:start;justify-self:end;margin:10px;height:max-content}
-      .toolbar{grid-area:map;position:relative;left:auto;top:auto;align-self:start;justify-self:start;margin:10px;height:max-content}
-    }
-    @media (max-width: 380px){
-      .item{grid-template-columns:64px minmax(0,1fr)}
-      .thumb{width:64px;height:64px}
-      .meta .links{display:flex;flex-wrap:wrap;gap:6px}
-    }
-    /* phone landscape: a short screen gets the map beside the list, not above it */
-    @media (max-height: 500px) and (orientation: landscape){
-      .wrap{grid-template-columns:minmax(0,300px) minmax(0,1fr);grid-template-rows:auto 1fr;
-            grid-template-areas:"head head" "list map";height:100svh;min-height:0}
-      header{grid-area:head;padding:6px 12px}
-      header .sub{display:none}
-      .search{flex:1 1 180px}
-      .search input{min-width:0;width:100%}
-      #map{grid-area:map;height:auto;min-height:0}
-      aside{grid-area:list;height:auto;overflow:auto;border-top:0;border-right:1px solid var(--border)}
-      .legend{grid-area:map;position:relative;top:auto;right:auto;align-self:start;justify-self:end;margin:8px}
-      .toolbar{grid-area:map;position:relative;left:auto;top:auto;align-self:start;justify-self:start;margin:8px}
-    }
-</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>StarFinder</title>
+  <meta name="description" content="Find dark skies and campsites across Texas: every state park, natural area and historic site, every national park unit, and the national forests and grasslands, rated by how many stars you can see." />
+  <meta name="theme-color" content="#0b0820" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23140f2e'/%3E%3Cpath d='M16 4l2.6 9.4L28 16l-9.4 2.6L16 28l-2.6-9.4L4 16l9.4-2.6z' fill='%23f2c45a'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="app/starfinder.css" />
 </head>
 <body>
-  <div class="wrap" role="application" aria-label="Dallas family camping map with cabins">
-    <header>
-      <div>
-        <h1>CampFinder</h1>
-        <div class="sub">Explore scenic state parks & cabins around Texas & Oklahoma</div>
+  <div id="sky" aria-hidden="true"><canvas id="starsFar"></canvas><canvas id="starsNear"></canvas></div>
+  <div id="map" role="region" aria-label="Map of Texas parks and night-sky brightness"></div>
+
+  <aside class="panel glass" id="panel" aria-label="Places">
+    <div class="topline">
+      <button class="burger icon-btn" id="burger" aria-label="Open the list of places" aria-expanded="false" aria-controls="drawer">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path id="burgerIcon" d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+      </button>
+      <div class="brand">
+        <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5l3 10.5 10.5 3-10.5 3-3 10.5-3-10.5L2.5 16l10.5-3z" fill="oklch(0.85 0.14 85)"/><circle cx="16" cy="16" r="2.4" fill="#fff"/></svg>
+        <div><h1>StarFinder</h1><p>Dark skies and campsites across Texas</p></div>
       </div>
-      <div class="controls">
-        <label class="chip" title="Filter Texas parks">
-          <input type="checkbox" id="filter-tx" checked /> TX
-        </label>
-        <label class="chip" title="Filter Oklahoma parks">
-          <input type="checkbox" id="filter-ok" checked /> OK
-        </label>
-        <!-- Light pollution overlay toggle.  When checked, a light pollution map
-             will be displayed beneath the base map.  See JS section for logic. -->
-        <label class="chip" title="Show light pollution overlay">
-          <input type="checkbox" id="toggle-light" /> Light
-        </label>
-        <div class="search" role="search">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.471 6.471 0 0 0 4.23-1.57l.27.28v.79l5 5L20.49 19l-5-5ZM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"/></svg>
-          <input id="search" type="text" placeholder="Search a park… (e.g., Beavers Bend)" aria-label="Search parks" />
-        </div>
+      <button class="icon-btn about-btn" data-about aria-label="About StarFinder, its data and sources">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M12 11v6M12 7.5v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="search" role="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.5 15.5L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <label class="sr-only" for="q">Search parks, towns or counties</label>
+        <input id="q" type="search" placeholder="Search parks, towns, counties" autocomplete="off" enterkeyhint="search" />
+        <button class="clear" id="qClear" aria-label="Clear the search" hidden>
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
       </div>
-    </header>
-
-    <aside aria-label="Park list">
-      <div class="list" id="parkList" tabindex="0"></div>
-    </aside>
-
-    <div id="map" aria-label="Interactive map"></div>
-
-    <div class="legend" aria-hidden="true">
-      <div class="row"><span class="dot tx"></span> Texas</div>
-      <div class="row"><span class="dot ok"></span> Oklahoma</div>
     </div>
+    <div class="drawer" id="drawer">
+      <div class="chips" role="group" aria-label="Filter and sort">
+        <button class="chip" data-filter="camping" aria-pressed="false">Camping</button>
+        <button class="chip" data-filter="darksky" aria-pressed="false">Dark Sky Places</button>
+        <button class="chip" data-filter="four" aria-pressed="false">4 stars and up</button>
+        <label class="sr-only" for="agency">Who runs it</label>
+        <select class="chip" id="agency">
+          <option value="all">All places</option>
+          <option value="tpwd">State parks</option>
+          <option value="nps">National Park Service</option>
+          <option value="usfs">Forests and grasslands</option>
+          <option value="ok">Oklahoma picks</option>
+        </select>
+        <label class="sr-only" for="sort">Sort</label>
+        <select class="chip" id="sort">
+          <option value="dark">Darkest first</option>
+          <option value="near">Nearest first</option>
+          <option value="name">A to Z</option>
+        </select>
+      </div>
+      <p class="count" id="count" aria-live="polite"></p>
+      <ul class="list" id="list"></ul>
+    </div>
+  </aside>
 
-    <div class="toolbar">
-      <button id="fitBtn" class="floating-btn" title="Zoom to all">Fit to all</button>
-      <button id="clearBtn" class="floating-btn" title="Clear search">Clear search</button>
+  <div class="toolbar" id="toolbar">
+    <button class="icon-btn glass" id="layersBtn" aria-label="Map layers" aria-expanded="false" aria-controls="layersPop">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="icon-btn glass" id="locateBtn" aria-label="Sort by distance from where I am">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2" fill="currentColor"/><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7" fill="none"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3" stroke="currentColor" stroke-width="1.7"/></svg>
+    </button>
+    <button class="icon-btn glass" data-about aria-label="About StarFinder, its data and sources">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M12 11v6M12 7.5v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="layers-pop glass layers" id="layersPop" hidden>
+      <button class="toggle" role="switch" aria-checked="true" data-layer="sky"><span>Sky glow<small>Modelled light pollution, 2026</small></span><span class="sw"></span></button>
+      <div class="opacity"><label for="skyOpacity">Sky glow strength</label><input id="skyOpacity" type="range" min="20" max="100" value="85" /></div>
+      <button class="toggle" role="switch" aria-checked="false" data-layer="lights"><span>Satellite lights<small>NASA VIIRS, Oct 28 2026</small></span><span class="sw"></span></button>
+      <button class="toggle" role="switch" aria-checked="true" data-layer="globe"><span>Globe view<small>Zoom out to see the Earth</small></span><span class="sw"></span></button>
     </div>
   </div>
 
-  <!-- Leaflet JS -->
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""
-  ></script>
-  <script>
-  // --- Data ---------------------------------------------------------------
-  // Booking links favor official park pages that expose reservation buttons.
-  const parks = [
-    {
-      id: 'caddo', state: 'TX', name: 'Caddo Lake State Park',
-      coords: [32.6867, -94.1838],
-      // Main thumbnail image (Big Cypress Bayou)
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/USA%20-%20Texas%20-%20Caddo%20Lake%20State%20Park%20-%20Big%20Cypress%20Bayou.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/caddo-lake',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/caddo-lake',
-      blurb: 'Bayou vibes, Spanish moss & historic CCC cabins right on Big Cypress Bayou.',
-      // Four curated photos for the slider: main bayou view, CCC cabins, canoeing on Saw Mill Pond, and bald cypress grove
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/USA%20-%20Texas%20-%20Caddo%20Lake%20State%20Park%20-%20Big%20Cypress%20Bayou.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Caddo%20lake%20sp%20tx%20cabins.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Canoeing%20Caddo%20Lake%20State%20Park%20Texas%202023.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Caddo%20Lake-%20Cypress.jpg'
-      ]
-    },
-    {
-      id: 'beaversbend', state: 'OK', name: 'Beavers Bend State Park',
-      coords: [34.14454, -94.72342],
-      // Main thumbnail image (spillway overlook)
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/20150409-RD-LSC-0214%20(16965444367).jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://web1.travelok.com/state-parks/beavers-bend-state-park',
-      bookUrl: 'https://web1.travelok.com/state-parks/beavers-bend-state-park',
-      blurb: 'Towering pines along the Mountain Fork River; cabins + trout stream access.',
-      // Four curated photos for the slider: three USDA views of the spillway and one additional overlook
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/20150409-RD-LSC-0214%20(16965444367).jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/20150409-RD-LSC-0132%20(17172446321).jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/20150409-RD-LSC-0199%20(16985159178).jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/20150409-RD-LSC-0235%20(17172217411).jpg'
-      ]
-    },
-    {
-      id: 'turnerfalls', state: 'OK', name: 'Turner Falls Park (Davis, OK)',
-      coords: [34.4272, -97.1429],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Turner%20Falls%20Park%20with%20the%20Pool.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://turnerfallspark.squarespace.com/',
-      bookUrl: 'https://www.turnerfallspark.com/cabins/',
-      blurb: '77‑ft waterfall, swimming holes, caves; on‑site cabins & bunkhouses.'
-      ,
-      // Provide four unique views of this iconic waterfall.  We include the classic pool view,
-      // a wide shot of the falls from the Arbuckle Mountains, a winter scene, and a
-      // panoramic winter vista.  These URLs use the Wikimedia Commons direct file paths.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Turner%20Falls%20Park%20with%20the%20Pool.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Turner%20Falls%20-%20Arbuckle%20Mts.,%20OK,%20USA%20-%20panoramio.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Turner%20Falls%20in%20Winter.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Turner%20Falls%20Park%20in%20Winter%20-%20from%20viewpoint.jpg'
-      ]
-    },
-    {
-      id: 'lakemurray', state: 'OK', name: 'Lake Murray State Park',
-      coords: [34.0561, -97.1053],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Fishing%20Pier%20-%20panoramio.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://travelok.com/state-parks/lake-murray-state-park',
-      bookUrl: 'https://travelok.com/state-parks/lake-murray-state-park',
-      blurb: 'Oklahoma’s largest state park—coves, clear water & historic Tucker Tower area.'
-      ,
-      // Lake Murray offers limited imagery online.  We provide the fishing pier view
-      // along with a second shot taken in front of the lodge.  The remaining slots
-      // repeat the pier photo to maintain four images.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Fishing%20Pier%20-%20panoramio.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/In%20front%20of%20Lodge%20-%20panoramio.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Fishing%20Pier%20-%20panoramio.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Fishing%20Pier%20-%20panoramio.jpg'
-      ]
-    },
-    {
-      id: 'possum', state: 'TX', name: 'Possum Kingdom State Park',
-      coords: [32.8792, -98.4727],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Possum%20Kingdom%20State%20Park%20June%202021%2002%20(Possum%20Kingdom%20Lake).jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/possum-kingdom',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/possum-kingdom',
-      blurb: 'Cliff‑lined lake views, clear water; lakeside sites & stone CCC structures.'
-      ,
-      // Showcase a variety of scenes at Possum Kingdom: the lake itself,
-      // a cosy camp site, the rustic entrance portal, and another lake view from 2021.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Possum%20Kingdom%20State%20Park%20June%202021%2002%20(Possum%20Kingdom%20Lake).jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Possum%20Kingdom%20State%20Park%20Camp%20Site.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Possum%20Kingdom%20State%20Park%20Entrance%20Portal.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Possum%20Kingdom%20State%20Park%20June%202021%2001%20(Possum%20Kingdom%20Lake).jpg'
-      ]
-    },
-    {
-      id: 'tyler', state: 'TX', name: 'Tyler State Park',
-      coords: [32.4929, -95.2832],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tyler%20sp%20tx%20lake%20view.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/tyler',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/tyler',
-      blurb: 'Pineywoods oasis with a spring‑fed lake; family‑friendly beach & rentals.'
-      ,
-      // Tyler’s gallery includes the tranquil lake, the festive entrance sign,
-      // a CCC‑built waterfall, and a towering pine forest scene.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Tyler%20sp%20tx%20lake%20view.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Entrance%20sign%20to%20Tyler%20(TX)%20State%20Park%20IMG%200316.JPG',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Waterfall%20Tyler%20State%20Park%20Texas%202025.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Tyler%20State%20Park%20(Texas)-0125.JPG'
-      ]
-    },
-    {
-      id: 'daingerfield', state: 'TX', name: 'Daingerfield State Park',
-      coords: [33.00861, -94.69889],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Daingerfield_sp_lake.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/daingerfield',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/daingerfield',
-      blurb: 'Shimmering hardwood forest around a small lake; seasonal fall color pops.'
-      ,
-      // Include the serene lake view along with the historic cabin and a reflective
-      // scene on Little Pine Lake.  Duplicate the lake view to complete the set.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Daingerfield_sp_lake.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Daingerfield%20sp%20cabin.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Daingerfield%20sp%20reflection.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Daingerfield_sp_lake.jpg'
-      ]
-    },
-    {
-      id: 'cooper', state: 'TX', name: 'Cooper Lake SP — South Sulphur Unit',
-      coords: [33.28773, -95.65792],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Cooper%20Lake%20State%20Park%20July%202015%203.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/cooper-lake',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/cooper-lake',
-      blurb: 'Wide open water, equestrian trails; screened shelters & lakeside cabins.'
-      ,
-      // Highlight South Sulphur’s variety with three distinct viewpoints and one
-      // wide lake shot.  These include the swimming hole and earlier July 2015
-      // photos.  The July 2015 “3” image remains as the hero.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Cooper%20Lake%20State%20Park%20July%202015%203.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Cooper%20Lake%20State%20Park%20July%202015%201.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Cooper%20Lake%20State%20Park%20July%202015%202.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Cooper%20Lake%20State%20Park%20Texas%20swimming%20hole.jpg'
-      ]
-    },
-    {
-      id: 'eisenhower', state: 'TX', name: 'Eisenhower State Park (Lake Texoma)',
-      coords: [33.810339, -96.599971],
-      // Using a Lake Texoma photo; will gracefully fall back if unavailable.
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Texoma%20Morning.jpg',
-      credit: 'Wikimedia (Lake Texoma scene)',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/eisenhower',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/eisenhower',
-      blurb: 'High bluffs & rocky coves on Texoma; cabins (“Ike’s Cabin”), shelters & OHV trail.'
-      ,
-      // Replace the placeholder with four real photographs: the lakeside
-      // sunrise, a view of the park proper, a Lake Texoma shoreline shot,
-      // and a unique vintage car image taken at the park.  These capture
-      // the diversity of experiences at Eisenhower State Park.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Texoma%20Morning.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Eisenhower%20State%20Park%20(Texas).jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Texoma,%20Eisenhower%20State%20Park.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/1983Parisienne.jpg'
-      ]
-    },
-    {
-      id: 'bobsandlin', state: 'TX', name: 'Lake Bob Sandlin State Park',
-      coords: [33.0139, -95.1092],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Group%20Picnic%20Area%20Lake%20Bob%20Sandlin%20State%20Park%20Texas%202023.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/lake-bob-sandlin',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/lake-bob-sandlin',
-      blurb: 'Tall trees, calm coves & fishing piers; easy cabin access for families.'
-      ,
-      // Present multiple vistas of Lake Bob Sandlin: the group picnic area,
-      // a scenic pond, a fishing pier and the picnic area again for a full set.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Group%20Picnic%20Area%20Lake%20Bob%20Sandlin%20State%20Park%20Texas%202023.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Pond%20Lake%20Bob%20Sandlin%20State%20Park%20Texas%202023.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Pier%20Lake%20Bob%20Sandlin%20State%20Park%20Texas%202023.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Group%20Picnic%20Area%20Lake%20Bob%20Sandlin%20State%20Park%20Texas%202023.jpg'
-      ]
-    }
-    // --- Additional top Texas state parks (beyond the initial 10) ---
-    ,{
-      id: 'pedernales', state: 'TX', name: 'Pedernales Falls State Park',
-      coords: [30.30792, -98.24813],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pedernales%20falls%20overlook.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/pedernales-falls',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/pedernales-falls',
-      blurb: 'Cascading limestone falls & swimming holes on the Pedernales River.'
-      ,
-      // Capture the park’s diverse features: the main overlook, Twin Falls area,
-      // an “eye” rock formation at the falls, and a shady path through limestone
-      // terrain.  Each image uses a Wikimedia Commons file path.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Pedernales%20falls%20overlook.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Pedernales%20Falls%20State%20Park%20Twin%20Falls%20Area.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Eye%20at%20the%20Falls%20-%20Pedernales%20Falls%20State%20Park.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Path%20in%20Pedernales%20Falls%20State%20Park.jpg'
-      ]
-    },{
-      id: 'lostmaples', state: 'TX', name: 'Lost Maples State Natural Area',
-      coords: [29.8283, -99.5869],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Lost%20Maples%20Scenic%20View%202021.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/lost-maples',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/lost-maples',
-      blurb: 'Bigtooth maple groves blaze orange in fall & scenic canyons along the Sabinal River.'
-      ,
-      // Explore multiple facets of Lost Maples: the classic scenic overlook, a
-      // fall-colour day use area, a tranquil pond on the Edwards Plateau, and
-      // the dramatic grotto on the East Trail.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Lost%20Maples%20Scenic%20View%202021.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Lost%20maples%20day%20use%20area%20overlook.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Lost%20Maples%20State%20Natural%20Area,%20Edwards%20Plateau,%20Texas,%20United%20States.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Lost%20Maples%20Grotto%202021.jpg'
-      ]
-    },{
-      id: 'enchantedrock', state: 'TX', name: 'Enchanted Rock State Natural Area',
-      coords: [30.502425, -98.82598],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Enchanted%20rock.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/enchanted-rock',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/enchanted-rock',
-      blurb: 'Massive pink granite dome with panoramic Hill Country views & hiking trails.'
-      ,
-      // Four views of Enchanted Rock: the primary granite dome,
-      // a view from 2006 showing hikers on the slope, a 2005 shot, and
-      // an aerial perspective revealing the rock’s full footprint.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Enchanted%20rock.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Enchanted%20rock%202006.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Enchanted%20Rock%202005.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Aerial%20View%20of%20Enchanted%20Rock.jpg'
-      ]
-    },{
-      id: 'coloradobend', state: 'TX', name: 'Colorado Bend State Park',
-      coords: [31.022965, -98.442401],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Gorman%20falls.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/colorado-bend',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/colorado-bend',
-      blurb: 'Rugged Hill Country wilderness with Gorman Falls, caves & riverside camping.'
-      ,
-      // Display a rich sample of Colorado Bend: the iconic Gorman Falls, the
-      // spacious camping area, towering cliffs across the river, and lush moss at
-      // the base of the falls.  These images highlight both adventure and
-      // serenity in the park.
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Gorman%20falls.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Camping%20Area%20Colorado%20Bend%20State%20Park%20Texas.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Cliffs%20Seen%20from%20Colorado%20Bend%20State%20Park%20Texas.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Moss%20Colorado%20Bend%20SP%202024.jpg'
-      ]
-    },{
-      id: 'garner', state: 'TX', name: 'Garner State Park',
-      coords: [29.58785, -99.73867],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Garner%20state%20park%20overlook.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/garner',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/garner',
-      blurb: 'Hill Country stalwart with Frio River swimming, fall color & CCC cabins.'
-      ,
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Garner%20state%20park%20overlook.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Garner%20state%20park%20overlook.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Garner%20state%20park%20overlook.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Garner%20state%20park%20overlook.jpg'
-      ]
-    },{
-      id: 'paloduro', state: 'TX', name: 'Palo Duro Canyon State Park',
-      coords: [34.9373, -101.645],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Palo_Duro_Canyon_State_Park.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/palo-duro-canyon',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/palo-duro-canyon',
-      blurb: 'Texas’ Grand Canyon: red‑rock cliffs, hoodoos & scenic drives; cabins on the rim.'
-      ,
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Palo_Duro_Canyon_State_Park.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Palo_Duro_Canyon_State_Park.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Palo_Duro_Canyon_State_Park.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Palo_Duro_Canyon_State_Park.jpg'
-      ]
-    },{
-      id: 'caprock', state: 'TX', name: 'Caprock Canyons State Park',
-      coords: [34.4293, -101.128],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Caprock%20Canyon%20State%20Park%20(13301185954).jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/caprock-canyons',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/caprock-canyons',
-      blurb: 'Wild bison, red‑rock mesas & a rails‑to‑trails route; lakeside cabins & yurts.'
-      ,
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Caprock%20Canyon%20State%20Park%20(13301185954).jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Caprock%20Canyon%20State%20Park%20(13301185954).jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Caprock%20Canyon%20State%20Park%20(13301185954).jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Caprock%20Canyon%20State%20Park%20(13301185954).jpg'
-      ]
-    },{
-      id: 'bigbend', state: 'TX', name: 'Big Bend Ranch State Park',
-      coords: [29.4709, -103.9579],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Solitario%20Peak.jpg',
-      credit: 'Wikimedia Commons (Public Domain)',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/big-bend-ranch',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/big-bend-ranch',
-      blurb: 'Remote desert park with rugged mountains & Rio Grande vistas; backcountry sites & a historic ranch house.'
-      ,
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Solitario%20Peak.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Solitario%20Peak.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Solitario%20Peak.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Solitario%20Peak.jpg'
-      ]
-    },{
-      id: 'inkslake', state: 'TX', name: 'Inks Lake State Park',
-      coords: [30.7428, -98.3675],
-      img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Inks%20lake%20retaining%20wall.jpg',
-      credit: 'Wikimedia Commons',
-      infoUrl: 'https://tpwd.texas.gov/state-parks/inks-lake',
-      bookUrl: 'https://tpwd.texas.gov/state-parks/inks-lake',
-      blurb: 'Constant‑level lake for swimming & kayaking; pink rock outcrops & cabins.'
-      ,
-      imgs: [
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Inks%20lake%20retaining%20wall.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Inks%20lake%20retaining%20wall.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Inks%20lake%20retaining%20wall.jpg',
-        'https://commons.wikimedia.org/wiki/Special:FilePath/Inks%20lake%20retaining%20wall.jpg'
-      ]
-    }
-  ];
+  <div class="legend glass" id="legend" aria-label="Legend">
+    <div><b>Sky glow</b> at the zenith, modelled</div>
+    <div class="bar" aria-hidden="true"></div>
+    <div class="ends"><span>Pristine · 22.0</span><span>Rural · 21</span><span>City · 17 mag/arcsec²</span></div>
+  </div>
 
-  // --- Helpers ------------------------------------------------------------
-  const placeholder = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450">
-      <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#111827"/></linearGradient></defs>
-      <rect width="100%" height="100%" fill="url(#g)"/>
-      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui,Segoe UI,Roboto" font-size="20" fill="#94a3b8">Photo unavailable</text>
-    </svg>`
-  );
+  <section class="card glass" id="card" aria-label="Place details" hidden></section>
 
-  function imageTag(src, alt){
-    return `<img src="${src}" alt="${alt}" onerror="this.onerror=null;this.src='${placeholder}';"/>`;
-  }
+  <dialog class="about" id="about" aria-labelledby="aboutTitle">
+    <div class="in">
+      <div class="kicker">About StarFinder</div>
+      <h2 id="aboutTitle">How dark is the sky where you want to sleep?</h2>
+      <p>StarFinder maps every Texas state park, state natural area and state historic site, every National Park Service unit in Texas, and the national forests and grasslands, and gives each a star rating for how much of the night sky you can expect to see there. It is free, it has no ads and it does not track you.</p>
+      <h3>What the stars mean</h3>
+      <p>The rating comes from <b>the share of the stars a pristine sky shows</b> that should still be visible to the naked eye at the place. Twenty percentage points per star, in half stars: five stars means 90% or more; one star means about a fifth. A city centre keeps only a few percent.</p>
+      <p>Behind it is the modelled brightness of the sky straight overhead, in magnitudes per square arcsecond (a natural sky is about 22.0; a city centre about 17 to 18). From that comes the faintest star you could see, and from that, how many stars. These are <b>estimates from a model, not measurements</b>; moonlight, weather, haze, smoke, your eyes and how long you let them adapt all change what you will see.</p>
+      <h3>How the sky glow is made</h3>
+      <p>We took NASA's Black Marble nightly satellite radiance (VIIRS Day/Night Band, gap-filled and corrected for moonlight and angle) for twelve nights from August to October 2026, kept the median of each half-kilometre pixel so that clouds and one-off fires drop out, and spread every lit pixel's light across the sky around it with the standard distance law for sky glow (brightness falling with distance to the power 2.5, plus atmospheric loss beyond about 100 km, out to 350 km). Two places with a published Bortle class 3 (Enchanted Rock and South Llano River) set the scale. It is our own model, in the family of the world light-pollution atlases; it is not their data.</p>
+      <p>Known limits: the satellite cannot see much of the blue in white LED light, so newer LED-lit places may be brighter than shown; very bright city cores saturate the satellite product at 38 nW/cm²/sr; and the Bortle scale is a whole-sky judgement by eye, while this is the zenith only.</p>
+      <h3>Sources and licences</h3>
+      <table>
+        <tr><th>What</th><th>Source</th><th>Licence</th></tr>
+        <tr><td>Night-time radiance</td><td><a href="https://www.earthdata.nasa.gov/data/tools/gibs" target="_blank" rel="noopener">NASA GIBS</a>, layer VIIRS SNPP Gap-Filled BRDF Corrected DNB Radiance (Black Marble VNP46A2)</td><td>NASA data, no restrictions; credit NASA</td></tr>
+        <tr><td>Satellite lights layer</td><td>The same layer, served live by NASA GIBS</td><td>As above</td></tr>
+        <tr><td>Base map</td><td><a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> dark style, OpenMapTiles schema</td><td>Map data © OpenStreetMap contributors (ODbL); OpenMapTiles</td></tr>
+        <tr><td>Map engine</td><td><a href="https://maplibre.org" target="_blank" rel="noopener">MapLibre GL JS</a> 5.24.0</td><td>BSD-3-Clause</td></tr>
+        <tr><td>Park facts and locations</td><td>Texas Parks and Wildlife Department, National Park Service and USDA Forest Service pages, with Wikipedia where an official page gave no coordinates; each place links its source</td><td>Facts; coordinates checked against each source</td></tr>
+        <tr><td>Dark Sky Places</td><td><a href="https://darksky.org/" target="_blank" rel="noopener">DarkSky International</a></td><td>Designations as published</td></tr>
+        <tr><td>Photos</td><td>Wikimedia Commons, linked</td><td>Each file's own Creative Commons licence</td></tr>
+      </table>
+      <h3>Before you go</h3>
+      <p>Check the park's own page for closures, burn bans and reservations, and pick a night near the new moon. StarFinder keeps nothing about you; "Nearest first" uses your location only inside your browser.</p>
+      <p style="margin-top:16px"><button class="btn primary" id="aboutClose">Back to the map</button></p>
+    </div>
+  </dialog>
 
-  function stateDot(state){
-    const cls = state==='TX' ? 'tx' : 'ok';
-    return `<span class="pill"><span class="dot ${cls}"></span>${state}</span>`;
-  }
-
-  // Custom close button handler.  It prevents default link behavior
-  // and instructs Leaflet to close the currently open popup.  This
-  // is used by the `<button class="popup-close-btn">` within each
-  // popup card.
-  function closePopup(event){
-    event.preventDefault();
-    if (typeof map !== 'undefined') {
-      map.closePopup();
-    }
-  }
-
-  // Maintain current image index for each park; keys correspond to park id
-  const sliderState = {};
-
-  // Build a popup for a park using the simplified glass design.
-  function makePopup(p){
-    // Initialize slider index if not already present
-    if (sliderState[p.id] === undefined) sliderState[p.id] = 0;
-    // Determine the current image to display; fall back to single img if imgs missing
-    const imgs = p.imgs && p.imgs.length ? p.imgs : [p.img];
-    const idx = sliderState[p.id] % imgs.length;
-    const imgSrc = imgs[idx];
-    // Compose HTML for popup with hero image, navigation buttons, title and CTA
-    return `
-      <div class="popup-card" data-id="${p.id}" role="dialog" aria-label="${p.name} details">
-        <button type="button" class="popup-close-btn" onclick="closePopup(event)">×</button>
-        <div class="popup-hero">
-          <img src="${imgSrc}" alt="${p.name} photo" onerror="this.onerror=null;this.src='${placeholder}'" />
-          <button class="prev" title="Previous image">‹</button>
-          <button class="next" title="Next image">›</button>
-        </div>
-        <div class="popup-body">
-          <div class="popup-title">${p.name}</div>
-          <a class="popup-cta" href="${p.infoUrl}" target="_blank" rel="noopener">Open Park Page</a>
-        </div>
-      </div>`;
-  }
-
-  // --- Map ---------------------------------------------------------------
-  const map = L.map('map', {zoomControl:false});
-  L.control.zoom({position:'bottomright'}).addTo(map);
-  const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-
-  const markers = [];
-  const group = L.featureGroup().addTo(map);
-
-  // --- Light pollution overlay -------------------------------------------------
-  // Define a tile layer for light pollution.  This uses an ArcGIS tile cache
-  // representing global light pollution intensity.  Tiles follow the pattern
-  // `/tile/{z}/{y}/{x}` appended to the map service base.  Opacity is set
-  // moderately low so that underlying basemap features remain visible.  We
-  // assign a higher zIndex than the base map so that markers appear above
-  // this overlay.  Attribution is provided per the tile provider’s license.
-  const lightPollution = L.tileLayer(
-    'https://tiles.arcgis.com/tiles/j80Jz20at6Bi0thr/arcgis/rest/services/Light_Pollution_Pixelated/MapServer/tile/{z}/{y}/{x}',
-    {
-      attribution: 'Light pollution overlay © ArcGIS, International Dark-Sky Association',
-      opacity: 0.6,
-      // Ensure overlay stays below markers but above base map by giving it a low zIndex
-      zIndex: 10
-    }
-  );
-
-
-  parks.forEach(p => {
-    const m = L.marker(p.coords, {title: p.name});
-    m.bindPopup(makePopup(p));
-    m.on('click', () => m.openPopup());
-    m.park = p; // attach for filtering
-    m.addTo(group);
-    markers.push(m);
-  });
-
-  map.setView([33.38, -95.9], 6);
-
-  // --- Sidebar list ------------------------------------------------------
-  const list = document.getElementById('parkList');
-  function renderList(items){
-    list.innerHTML = '';
-    items.forEach(p => {
-      const el = document.createElement('div');
-      el.className = 'item';
-      el.innerHTML = `
-        <div class="thumb">${imageTag(p.img, p.name + ' thumbnail')}</div>
-        <div class="meta">
-          <h3>${p.name}</h3>
-          <div class="pill">${stateDot(p.state)}</div>
-          <div class="links" aria-label="Quick links">
-            <a href="#" data-id="${p.id}" class="fly">📍 View on map</a>
-            <a href="${p.bookUrl}" target="_blank" rel="noopener">🛎️ Book</a>
-            <a href="${p.infoUrl}" target="_blank" rel="noopener">ℹ️ Info</a>
-          </div>
-        </div>`;
-      list.appendChild(el);
-    });
-  }
-  renderList(parks);
-
-  list.addEventListener('click', (e) => {
-    const a = e.target.closest('a.fly');
-    if(!a) return;
-    e.preventDefault();
-    const id = a.getAttribute('data-id');
-    const m = markers.find(x => x.park.id === id);
-    if(m){ map.flyTo(m.getLatLng(), 11, {duration: .9}); m.openPopup(); }
-  });
-
-  // --- Filters & search --------------------------------------------------
-  const fTX = document.getElementById('filter-tx');
-  const fOK = document.getElementById('filter-ok');
-  function applyFilters(){
-    const showTX = fTX.checked, showOK = fOK.checked;
-    const visible = [];
-    markers.forEach(m => {
-      const s = m.park.state;
-      const shouldShow = (s==='TX' && showTX) || (s==='OK' && showOK);
-      if(shouldShow){ m.addTo(group); visible.push(m.park); }
-      else { group.removeLayer(m); }
-    });
-    renderList(visible);
-    if(visible.length){ map.fitBounds(L.featureGroup(visible.map(v=>L.marker(v.coords))).getBounds().pad(0.12)); }
-  }
-  fTX.addEventListener('change', applyFilters);
-  fOK.addEventListener('change', applyFilters);
-
-  const search = document.getElementById('search');
-  search.addEventListener('input', () => {
-    const q = search.value.trim().toLowerCase();
-    markers.forEach(m => {
-      const match = m.park.name.toLowerCase().includes(q);
-      if(q === ''){ m.addTo(group); }
-      else if(match){ m.addTo(group); }
-      else { group.removeLayer(m); }
-    });
-    const visibleParks = markers.filter(m=>group.hasLayer(m)).map(m=>m.park);
-    renderList(visibleParks);
-  });
-
-  document.getElementById('fitBtn').addEventListener('click', () => {
-    if(group.getLayers().length){ map.setView([33.38, -95.9], 6); }
-  });
-  document.getElementById('clearBtn').addEventListener('click', () => { search.value=''; applyFilters(); });
-
-  // --- Light pollution toggle event --------------------------------------
-  // Attach a change listener to the light pollution checkbox.  When the
-  // checkbox is checked, add the light pollution tile layer to the map.  When
-  // unchecked, remove it.  This keeps the overlay optional and ensures
-  // markers remain visible.  The layer is defined above near map setup.
-  const toggleLight = document.getElementById('toggle-light');
-  if (toggleLight) {
-    toggleLight.addEventListener('change', () => {
-      if (toggleLight.checked) {
-        lightPollution.addTo(map);
-      } else {
-        map.removeLayer(lightPollution);
-      }
-    });
-  }
-
-  
-  // --- Preview hover functionality ---
-  const preview = document.createElement('div');
-  preview.className = 'preview';
-  document.body.appendChild(preview);
-
-  function showPreview(p, x, y) {
-    // Build preview HTML with fallback
-    const imgHtml = `<img src="${p.img}" alt="${p.name} preview" onerror="this.onerror=null;this.src='${placeholder}';">`;
-    preview.innerHTML = imgHtml + `<div class="info">${p.name}</div>`;
-    preview.style.left = x + 'px';
-    preview.style.top = y + 'px';
-    preview.style.display = 'block';
-  }
-  function hidePreview() {
-    preview.style.display = 'none';
-  }
-
-  // Event delegation for hover on sidebar list items
-  list.addEventListener('mouseover', (e) => {
-    const item = e.target.closest('.item');
-    if(item) {
-      const fly = item.querySelector('a.fly');
-      if(fly){
-        const id = fly.getAttribute('data-id');
-        const park = parks.find(p => p.id === id);
-        if(park){
-          const rect = item.getBoundingClientRect();
-          showPreview(park, rect.right + 10 + window.scrollX, rect.top + window.scrollY);
-        }
-      }
-    }
-  });
-  list.addEventListener('mouseout', (e) => {
-    const item = e.target.closest('.item');
-    if(item) { hidePreview(); }
-  });
-
-  // Keyboard focus helper for accessibility
-  list.addEventListener('keydown', (e)=>{
-    if(e.key==='Enter'){
-      const firstLink = e.target.querySelector('a.fly');
-      if(firstLink){ firstLink.click(); }
-    }
-  });
-
-  // --- Popup slider controls ---
-  // Listen for clicks on previous/next buttons inside popups to cycle images
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.popup-hero button');
-    if (!btn) return;
-    const card = btn.closest('.popup-card');
-    if (!card) return;
-    const pid = card.getAttribute('data-id');
-    const park = parks.find(p => p.id === pid);
-    if (!park) return;
-    const imgs = park.imgs && park.imgs.length ? park.imgs : [park.img];
-    // Initialize slider state if not present
-    if (sliderState[pid] === undefined) sliderState[pid] = 0;
-    // Update index based on button direction
-    if (btn.classList.contains('prev')) {
-      sliderState[pid] = (sliderState[pid] - 1 + imgs.length) % imgs.length;
-    } else {
-      sliderState[pid] = (sliderState[pid] + 1) % imgs.length;
-    }
-    // Update the image source
-    const imgEl = card.querySelector('.popup-hero img');
-    if (imgEl) {
-      imgEl.src = imgs[sliderState[pid]];
-    }
-  });
-  </script>
+  <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js" crossorigin="anonymous"></script>
+  <script src="app/starfinder.js"></script>
 </body>
 </html>

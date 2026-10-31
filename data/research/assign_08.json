@@ -1,0 +1,56 @@
+[
+ {
+  "id": "tx-big-bend-ranch",
+  "name_hint": "Big Bend Ranch SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/big-bend-ranch"
+ },
+ {
+  "id": "tx-cooper-lake",
+  "name_hint": "Cooper SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/cooper-lake"
+ },
+ {
+  "id": "tx-fort-leaton",
+  "name_hint": "Fort Leaton SHS",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/fort-leaton"
+ },
+ {
+  "id": "tx-hueco-tanks",
+  "name_hint": "Hueco Tanks State Park & HS",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/hueco-tanks"
+ },
+ {
+  "id": "tx-lake-somerville",
+  "name_hint": "Lake Somerville SP & Trailway",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lake-somerville"
+ },
+ {
+  "id": "tx-monahans-sandhills",
+  "name_hint": "Monahans Sandhills SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/monahans-sandhills"
+ },
+ {
+  "id": "tx-ray-roberts-lake",
+  "name_hint": "Ray Roberts Lake SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/ray-roberts-lake"
+ },
+ {
+  "id": "nps-bibe",
+  "name_hint": "Big Bend National Park",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/bibe/"
+ },
+ {
+  "id": "nps-waco",
+  "name_hint": "Waco Mammoth National Monument",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/waco/"
+ }
+]

@@ -1,0 +1,62 @@
+[
+ {
+  "id": "tx-abilene",
+  "name_hint": "Abilene SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/abilene"
+ },
+ {
+  "id": "tx-buescher",
+  "name_hint": "Buescher SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/buescher"
+ },
+ {
+  "id": "tx-devils-sinkhole",
+  "name_hint": "Devil's Sinkhole SNA",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/devils-sinkhole"
+ },
+ {
+  "id": "tx-garner",
+  "name_hint": "Garner SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/garner"
+ },
+ {
+  "id": "tx-lake-bob-sandlin",
+  "name_hint": "Lake Bob Sandlin SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lake-bob-sandlin"
+ },
+ {
+  "id": "tx-lost-maples",
+  "name_hint": "Lost Maples SNA",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lost-maples"
+ },
+ {
+  "id": "tx-palo-duro-canyon",
+  "name_hint": "Palo Duro Canyon SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/palo-duro-canyon"
+ },
+ {
+  "id": "tx-sheldon-lake",
+  "name_hint": "Sheldon Lake SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/sheldon-lake"
+ },
+ {
+  "id": "nps-gumo",
+  "name_hint": "Guadalupe Mountains National Park",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/gumo/"
+ },
+ {
+  "id": "usfs-caddo-national-grassland",
+  "name_hint": "Caddo National Grassland",
+  "agency_hint": "USDA Forest Service",
+  "url_hint": "https://www.fs.usda.gov/ (find the official page)"
+ }
+]

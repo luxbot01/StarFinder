@@ -1,0 +1,56 @@
+[
+ {
+  "id": "tx-bonham",
+  "name_hint": "Bonham SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/bonham"
+ },
+ {
+  "id": "tx-davis-mountains",
+  "name_hint": "Davis Mountains SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/davis-mountains"
+ },
+ {
+  "id": "tx-franklin-mountains",
+  "name_hint": "Franklin Mountains SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/franklin-mountains"
+ },
+ {
+  "id": "tx-kickapoo-cavern",
+  "name_hint": "Kickapoo Cavern SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/kickapoo-cavern"
+ },
+ {
+  "id": "tx-lockhart",
+  "name_hint": "Lockhart SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lockhart"
+ },
+ {
+  "id": "tx-old-tunnel",
+  "name_hint": "Old Tunnel SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/old-tunnel"
+ },
+ {
+  "id": "tx-sea-rim",
+  "name_hint": "Sea Rim SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/sea-rim"
+ },
+ {
+  "id": "nps-cham",
+  "name_hint": "Chamizal National Memorial",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/cham/"
+ },
+ {
+  "id": "usfs-sabine-national-forest",
+  "name_hint": "Sabine National Forest",
+  "agency_hint": "USDA Forest Service",
+  "url_hint": "https://www.fs.usda.gov/ (find the official page)"
+ }
+]

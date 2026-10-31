@@ -1,0 +1,56 @@
+[
+ {
+  "id": "tx-big-spring",
+  "name_hint": "Big Spring SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/big-spring"
+ },
+ {
+  "id": "tx-copper-breaks",
+  "name_hint": "Copper Breaks SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/copper-breaks"
+ },
+ {
+  "id": "tx-fort-parker",
+  "name_hint": "Fort Parker SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/fort-parker"
+ },
+ {
+  "id": "tx-huntsville",
+  "name_hint": "Huntsville SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/huntsville"
+ },
+ {
+  "id": "tx-lake-tawakoni",
+  "name_hint": "Lake Tawakoni SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lake-tawakoni"
+ },
+ {
+  "id": "tx-mother-neff",
+  "name_hint": "Mother Neff SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/mother-neff"
+ },
+ {
+  "id": "tx-resaca-de-la-palma",
+  "name_hint": "Resaca de la Palma SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/resaca-de-la-palma"
+ },
+ {
+  "id": "nps-bith",
+  "name_hint": "Big Thicket National Preserve",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/bith/"
+ },
+ {
+  "id": "usfs-angelina-national-forest",
+  "name_hint": "Angelina National Forest",
+  "agency_hint": "USDA Forest Service",
+  "url_hint": "https://www.fs.usda.gov/ (find the official page)"
+ }
+]

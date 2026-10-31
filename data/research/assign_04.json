@@ -1,0 +1,62 @@
+[
+ {
+  "id": "tx-balmorhea",
+  "name_hint": "Balmorhea SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/balmorhea"
+ },
+ {
+  "id": "tx-cedar-hill",
+  "name_hint": "Cedar Hill SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/cedar-hill"
+ },
+ {
+  "id": "tx-enchanted-rock",
+  "name_hint": "Enchanted Rock SNA",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/enchanted-rock"
+ },
+ {
+  "id": "tx-government-canyon",
+  "name_hint": "Government Canyon SNA",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/government-canyon"
+ },
+ {
+  "id": "tx-lake-colorado-city",
+  "name_hint": "Lake Colorado City SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/lake-colorado-city"
+ },
+ {
+  "id": "tx-martin-dies-jr",
+  "name_hint": "Martin Dies, Jr. SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/martin-dies-jr"
+ },
+ {
+  "id": "tx-possum-kingdom",
+  "name_hint": "Possum Kingdom SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/possum-kingdom"
+ },
+ {
+  "id": "tx-tyler",
+  "name_hint": "Tyler SP",
+  "agency_hint": "Texas Parks and Wildlife Department",
+  "url_hint": "https://tpwd.texas.gov/state-parks/tyler"
+ },
+ {
+  "id": "nps-pais",
+  "name_hint": "Padre Island National Seashore",
+  "agency_hint": "National Park Service",
+  "url_hint": "https://www.nps.gov/pais/"
+ },
+ {
+  "id": "usfs-rita-blanca-national-grassland",
+  "name_hint": "Rita Blanca National Grassland",
+  "agency_hint": "USDA Forest Service",
+  "url_hint": "https://www.fs.usda.gov/ (find the official page)"
+ }
+]
