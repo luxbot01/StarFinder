@@ -1,0 +1,156 @@
+{
+ "meta": {
+  "what": "Places whose own official campsite page says sites have a 20-amp (NEMA 5-20, household 120 V, takes a standard 5-15 plug) or 120 V outlet, read Nov 2 2026. Never inferred from 30-amp or 50-amp service.",
+  "count": 21
+ },
+ "places": [
+  {
+   "id": "tx-buescher",
+   "name": "Buescher State Park",
+   "quote": "Campsites with Electricity People per Site: 8 Number of Sites: 32 Located in Cozy Circle (campsites #1-14) and Oak Haven (campsites #15-32). Site #5 and #31 are wheelchair friendly. Back-in Picnic table Water hookup 20/30-amp electric Fire ring with grill Restr",
+   "source": "https://tpwd.texas.gov/state-parks/buescher/fees-facilities/campsites",
+   "read": "2026-11-02T21:56:44Z"
+  },
+  {
+   "id": "tx-garner",
+   "name": "Garner State Park",
+   "quote": "ites (New Garner) Number of Sites: 12 People per Site: 8 Sites are in Shady Meadows (#144-155). No tents are allowed, and there is no shade or tree cover. Pull-through Picnic table Water hookup Sewer hookup Lantern post 20/30/50-amp electrical hookup Fire ring with",
+   "source": "https://tpwd.texas.gov/state-parks/garner/fees-facilities/campsites",
+   "read": "2026-11-02T21:56:47Z"
+  },
+  {
+   "id": "tx-palo-duro-canyon",
+   "name": "Palo Duro Canyon State Park",
+   "quote": "Campsites with Electricity (Hackberry) Number of Sites: 32 People per Site: 8 These sites are in the Hackberry area. Some sites will hold up to 60-foot RVs. Picnic table Water hookup 20 amp hookup 30 amp hookup Restrooms with sho",
+   "source": "https://tpwd.texas.gov/state-parks/palo-duro-canyon/fees-facilities/campsites",
+   "read": "2026-11-02T21:56:52Z"
+  },
+  {
+   "id": "tx-goliad",
+   "name": "Goliad State Park and Historic Site",
+   "quote": "kawa camping area toward the front of the park, near the Mission. These are all pull-through sites and have enough space to accommodate most large RV’s and motorhomes. Picnic table Water hookup Sewer hookup Lantern post 20/30/50-amp electric hookup Fire ring with r",
+   "source": "https://tpwd.texas.gov/state-parks/goliad/fees-facilities/campsites",
+   "read": "2026-11-02T21:57:06Z"
+  },
+  {
+   "id": "tx-lake-brownwood",
+   "name": "Lake Brownwood State Park",
+   "quote": "per Site: 8 Two vehicles (a trailer counts as a vehicle) can park at a campsite. Excess vehicles must park in an overflow area at a fee of $5 per vehicle, per night. Picnic table Water Sewer hookup Fire ring with grill 50/30/20-amp electric In Council Bluff area Rest",
+   "source": "https://tpwd.texas.gov/state-parks/lake-brownwood/fees-facilities/campsites",
+   "read": "2026-11-02T21:57:07Z"
+  },
+  {
+   "id": "tx-palo-pinto-mountains",
+   "name": "Palo Pinto Mountains State Park",
+   "quote": "Campsites with Electricity People per Site: 8 Number of Sites: 23 These sites are in the Warbler Ridge campgroun Picnic table Water Electric 20/30/50 amp Fire ring with grill Restrooms w",
+   "source": "https://tpwd.texas.gov/state-parks/palo-pinto-mountains/fees-facilities/campsites",
+   "read": "2026-11-02T21:57:11Z"
+  },
+  {
+   "id": "nps-lamr",
+   "name": "Lake Meredith National Recreation Area",
+   "quote": "RV sites with 50, 30 and 20 amp electric and water hookups. These 10 fe",
+   "source": "https://www.nps.gov/lamr/planyourvisit/camping.htm",
+   "read": "2026-11-02T21:57:14Z",
+   "pageDate": "February 4, 2026"
+  },
+  {
+   "id": "tx-goose-island",
+   "name": "Goose Island State Park",
+   "quote": "Campsites are in the Bayfront area loop. Most sites are on the waterfront but some are across the road from the waterfront. Picnic table Ground fires prohibited Water hookup Shade shelter 20/30/50-amp electric Restrooms with showers",
+   "source": "https://tpwd.texas.gov/state-parks/goose-island/fees-facilities/campsites",
+   "read": "2026-11-02T21:57:25Z"
+  },
+  {
+   "id": "tx-balmorhea",
+   "name": "Balmorhea State Park",
+   "quote": ") Number of Sites: 18 People per Site: 8 These sites are 30 amp only. Check-in time is 2 p.m. Early entry not allowed. Picnic table Outdoor grill Fire ring Water hookup Restroom with showers nearby Sites 1, 3-11, 18-19: 20/30 amp service Sites 12-17: Tent only, 20/",
+   "source": "https://tpwd.texas.gov/state-parks/balmorhea/fees-facilities/campsites",
+   "read": "2026-11-02T21:57:48Z"
+  },
+  {
+   "id": "tx-possum-kingdom",
+   "name": "Possum Kingdom State Park",
+   "quote": "es with Electricity (Spanish Oaks) Number of Sites: 21 People per Site: 8 These sites are in the Spanish Oaks Camping Area and do not have tent pads. Peak rates are from March through November. Picnic table Water hookup 20/30/50-amp electricity Fire ring with grill",
+   "source": "https://tpwd.texas.gov/state-parks/possum-kingdom/fees-facilities/campsites",
+   "read": "2026-11-02T21:57:58Z"
+  },
+  {
+   "id": "tx-bastrop",
+   "name": "Bastrop State Park",
+   "quote": "ney Hill camp area (sites 1-25) and back-in sites are in the Copperas Creek camp area (sites 69-78). We allow tents in Copperas Creek but not in Piney Hill. Picnic table Outdoor grill Fire ring Water hookup Sewer hookup 20/30/50-amp electric hookup More » $25 Daily",
+   "source": "https://tpwd.texas.gov/state-parks/bastrop/fees-facilities/campsites",
+   "read": "2026-11-02T21:58:08Z"
+  },
+  {
+   "id": "tx-mckinney-falls",
+   "name": "McKinney Falls State Park",
+   "quote": "Campsites with Electricity (50/30/20 amp) People per Site: 8 Number of Sites",
+   "source": "https://tpwd.texas.gov/state-parks/mckinney-falls/fees-facilities/campsites",
+   "read": "2026-11-02T21:58:16Z"
+  },
+  {
+   "id": "tx-cleburne",
+   "name": "Cleburne State Park",
+   "quote": "Campsites (20/30/50 amp) People per Site: 8 Number of Si",
+   "source": "https://tpwd.texas.gov/state-parks/cleburne/fees-facilities/campsites",
+   "read": "2026-11-02T21:58:38Z"
+  },
+  {
+   "id": "tx-lake-livingston",
+   "name": "Lake Livingston State Park",
+   "quote": "er Site: 8 These sites are in the Piney Shores loop and have a lake view. Reservations for a Friday or Saturday night must include both nights, for a minimum two-night reservation. Picnic table Water hookup Sewer hookup 20 amp hookup 30 amp hookup 50 amp hookup Lant",
+   "source": "https://tpwd.texas.gov/state-parks/lake-livingston/fees-facilities/campsites",
+   "read": "2026-11-02T21:58:43Z"
+  },
+  {
+   "id": "tx-ray-roberts-lake",
+   "name": "Ray Roberts Lake State Park",
+   "quote": "Campsites with Electricity (50/30/20-amp | Isle du Bois) People per Site: 8",
+   "source": "https://tpwd.texas.gov/state-parks/ray-roberts-lake/fees-facilities/campsites",
+   "read": "2026-11-02T21:59:21Z"
+  },
+  {
+   "id": "tx-huntsville",
+   "name": "Huntsville State Park",
+   "quote": "le lengths vary from 20 to 60 feet. Site #24 is wheelchair accessible. Contact the park for specific site details. Pull-through Picnic table Fire ring Water hookup Sewer hookup Lantern post Restrooms with showers nearby 20/30/50-amp electric hookup #1-25 in Raven H",
+   "source": "https://tpwd.texas.gov/state-parks/huntsville/fees-facilities/campsites",
+   "read": "2026-11-02T21:59:33Z"
+  },
+  {
+   "id": "tx-fort-richardson",
+   "name": "Fort Richardson State Park, Historic Site & Lost Creek Reservoir State Trailway",
+   "quote": "Campsites Number of Sites: 4 People per Site: 8 These are sites #1-4 in the West Camping Loop. Picnic table Water hookup Sewer hookup Fire ring/grill Back-in parking 20/30/50-amp electric Tents and RVs allowed R",
+   "source": "https://tpwd.texas.gov/state-parks/fort-richardson/fees-facilities/campsites",
+   "read": "2026-11-02T21:59:47Z"
+  },
+  {
+   "id": "tx-inks-lake",
+   "name": "Inks Lake State Park",
+   "quote": "ites #219 and #220 are wheelchair accessible. Campers must walk in about 100 feet from the parking lot. Maximum of four people and one vehicle are allowed per site. Picnic table Outdoor grill Fire ring Water Electricity 20-amp electric #219 & 220 are wheelchair acce",
+   "source": "https://tpwd.texas.gov/state-parks/inks-lake/fees-facilities/campsites",
+   "read": "2026-11-02T21:59:49Z"
+  },
+  {
+   "id": "tx-bonham",
+   "name": "Bonham State Park",
+   "quote": "Campsites #3-14. Tents and RVs are allowed at these sites. All sites except #13 are back-in. Picnic table Fire ring Upright grill Water spigot Electric hookup (20/30/50-amp) Lantern holder Restrooms/shower",
+   "source": "https://tpwd.texas.gov/state-parks/bonham/fees-facilities/campsites",
+   "read": "2026-11-02T22:00:00Z"
+  },
+  {
+   "id": "tx-davis-mountains",
+   "name": "Davis Mountains State Park",
+   "quote": "Campsites with Electricity People per Site: 8 Number of Sites: 34 Sites have a fire ring and/or a grill. Picnic table Water hookup 20 amp hookup 30 amp hookup Restrooms nearby M",
+   "source": "https://tpwd.texas.gov/state-parks/davis-mountains/fees-facilities/campsites",
+   "read": "2026-11-02T22:00:12Z"
+  },
+  {
+   "id": "tx-galveston-island",
+   "name": "Galveston Island State Park",
+   "quote": "e per Site: 12 Number of Sites: 8 Sites have a 12-person occupancy which can be increased to 16 people for an extra fee. Four of these sites are ADA accessible. Picnic table Fire ring Water Restrooms with showers nearby 20/30/50 amp hookups More » $35 Nightly Plus",
+   "source": "https://tpwd.texas.gov/state-parks/galveston-island/fees-facilities/campsites",
+   "read": "2026-11-02T22:00:33Z"
+  }
+ ]
+}
