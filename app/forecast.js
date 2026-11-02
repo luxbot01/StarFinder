@@ -213,8 +213,8 @@
   const sun = (cx, cy, r) => `<g stroke="${C.sun}" stroke-width="1.7" stroke-linecap="round">${rays(cx, cy, r + 2.1, r + 3.9)}</g><circle cx="${cx}" cy="${cy}" r="${r}" fill="${C.sun}"/>`;
   const drop = (x, y) => `<path d="M${x + 0.9} ${y}l-1.5 3.6" stroke="${C.drop}" stroke-width="1.9" stroke-linecap="round"/>`;
   const flake = (x, y) => `<g stroke="${C.flake}" stroke-width="1.25" stroke-linecap="round"><path d="M${x} ${y - 1.9}v3.8M${x - 1.65} ${y - 0.95}l3.3 1.9M${x - 1.65} ${y + 0.95}l3.3-1.9"/></g>`;
-  const pellet = (x, y) => `<circle cx="${x}" cy="${y}" r="1.45" fill="${C.flake}" stroke="${C.drop}" stroke-width=".9"/>`;
-  const sleet = (x, y) => `<path d="M${x} ${y - 1.6}l1.3 1.6-1.3 1.6-1.3-1.6z" fill="${C.ice}"/>`;
+  const pellet = (x, y) => `<circle cx="${x}" cy="${y}" r="1.8" fill="${C.flake}" stroke="${C.drop}" stroke-width="1"/>`;   // big enough to read as hail at 24 px
+  const sleet = (x, y) => `<path d="M${x} ${y - 2.2}l1.75 2.2-1.75 2.2-1.75-2.2z" fill="${C.ice}" stroke="#eaf6ff" stroke-width=".5"/>`;
   const bolt = `<path d="M12.9 12.6l-3.1 4.8h2.6l-1.5 4.4 4.8-6.2h-2.7l1.7-3z" fill="${C.bolt}" stroke="#2a2148" stroke-width=".6" stroke-linejoin="round"/>`;
   const sparkle = (x, y, r) => `<path d="M${x} ${y - r}l${r * 0.28} ${r * 0.72} ${r * 0.72} ${r * 0.28}-${r * 0.72} ${r * 0.28}-${r * 0.28} ${r * 0.72}-${r * 0.28}-${r * 0.72}-${r * 0.72}-${r * 0.28} ${r * 0.72}-${r * 0.28}z" fill="#fff8e6"/>`;
   const ICON = {
@@ -224,9 +224,9 @@
     rain: cloud(12, 9.4, 0.98, C.cloud) + drop(7.4, 16.6) + drop(11.6, 17.4) + drop(15.8, 16.6),
     snow: cloud(12, 9.4, 0.98, C.cloud) + flake(7.6, 18.4) + flake(12.2, 20.2) + flake(16.8, 18.4),
     mix: cloud(12, 9.4, 0.98, C.cloud) + drop(7.2, 16.6) + flake(12.2, 19.6) + drop(15.6, 16.6),
-    ice: cloud(12, 9.4, 0.98, C.cloud) + drop(7.2, 16.6) + sleet(12.2, 19.4) + drop(15.6, 16.6),
+    ice: cloud(12, 9.4, 0.98, C.cloud) + drop(6.8, 16.6) + sleet(11.8, 19.6) + sleet(16.9, 18.2),
     storm: cloud(12, 8.8, 0.98, C.storm) + bolt + drop(6.6, 16.2) + drop(17.2, 16.2),
-    hail: cloud(12, 8.8, 0.98, C.storm) + bolt + pellet(7.2, 18.2) + pellet(17.4, 18.8) + pellet(5.6, 21.6),
+    hail: cloud(12, 8.8, 0.98, C.storm) + bolt + pellet(6.9, 18) + pellet(17.6, 18.6) + pellet(5.4, 21.8) + pellet(18.9, 22),
   };
   const icon = (k) => `<svg class="wx-ic" viewBox="0 0 24 24" aria-hidden="true">${ICON[k] || ICON.partly}</svg>`;
   const DROP = '<svg class="wx-dr" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.2c1.7 2.3 3.2 4 3.2 5.8a3.2 3.2 0 0 1-6.4 0C2.8 5.2 4.3 3.5 6 1.2z" fill="currentColor"/></svg>';
@@ -329,5 +329,5 @@
     for (const [el, { p, mode }] of mounted) { if (!el.isConnected) mounted.delete(el); else if (el.dataset.wxFailed) mount(el, p, mode, true); }
   });
 
-  window.SFWeather = { mount, get, moonLit, _test: { span, calendar, classify, omKind, parts } };
+  window.SFWeather = { mount, get, moonLit, _test: { span, calendar, classify, omKind, parts, icon } };
 })();
