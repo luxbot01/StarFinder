@@ -35,8 +35,13 @@ def colour(lr):
     for k in range(4): out[..., k] = np.interp(lr, xs, cols[:, k])
     return out.astype(np.uint8)
 
-def tiles(zmin=4, zmax=9, box=(-110.2, 20.3, -87.8, 40.45)):
+def empty_tile():
+    im = Image.new("P", (256, 256), 0); im.putpalette([0, 0, 0] * 256); im.info["transparency"] = 0
+    return im
+
+def tiles(zmin=4, zmax=9, box=(-110.25, 20.25, -87.75, 40.5)):   # the same box as the map source's bounds in app/starfinder.js
     lon_a, lat_a, lon_b, lat_b = box; n_written = 0; total = 0
+    EMPTY = empty_tile()
     for z in range(zmin, zmax + 1):
         n = 2 ** z
         def tx(lon): return int((lon + 180) / 360 * n)
@@ -54,10 +59,11 @@ def tiles(zmin=4, zmax=9, box=(-110.2, 20.3, -87.8, 40.45)):
                 LON, LAT = np.meshgrid(px, lat)
                 edge = np.minimum.reduce([LON - (-110.25), -87.75 - LON, LAT - 20.25, 40.5 - LAT])
                 rgba[..., 3] = (rgba[..., 3] * np.clip(edge / 1.6, 0, 1)).astype(np.uint8)
-                if rgba[..., 3].max() == 0: continue
-                im = Image.fromarray(rgba, "RGBA").quantize(colors=96, method=Image.Quantize.FASTOCTREE)
+                # an empty tile is still written (one shared transparent image): MapLibre asks for every tile inside
+                # the source bounds, and a missing one is a 404 in the visitor's console
+                im = EMPTY if rgba[..., 3].max() == 0 else Image.fromarray(rgba, "RGBA").quantize(colors=96, method=Image.Quantize.FASTOCTREE)
                 p = os.path.join(REPO, "tiles", "sky", str(z), str(x)); os.makedirs(p, exist_ok=True)
-                f = os.path.join(p, f"{y}.png"); im.save(f, optimize=True)
+                f = os.path.join(p, f"{y}.png"); im.save(f, optimize=True, **({"bits": 1, "transparency": 0} if im is EMPTY else {}))
                 n_written += 1; total += os.path.getsize(f)
     print("tiles", n_written, "bytes", total)
 

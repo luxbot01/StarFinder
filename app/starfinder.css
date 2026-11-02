@@ -284,11 +284,6 @@
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: 0 18px 50px oklch(0.05 0.03 290 / 0.55); }
 .panel .brand h1 { font-family: var(--serif); font-weight: 400; font-size: 26px; letter-spacing: 0; }
 .panel .brand p { font-family: var(--serif); font-style: italic; color: var(--text-dim); font-size: 13.5px; }
-.panel .search input { font-family: var(--serif); font-size: 17px; height: 46px; background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 0 56px 0 28px; }
-.panel .search input::placeholder { font-style: italic; color: oklch(0.66 0.02 290); }
-.panel .search > svg { left: 2px; }
-.panel .search .clear { right: 44px; }
-.panel .search .go { position: absolute; right: 0; height: 32px; font: 600 11.5px var(--mono); letter-spacing: .16em; color: var(--gold); text-transform: uppercase; }
 .lbl { font: 600 10.5px var(--mono); letter-spacing: .22em; text-transform: uppercase; color: var(--amethyst); }
 .panel .chips { gap: 6px; }
 .panel .chip { font: 500 11.5px var(--mono); letter-spacing: .12em; text-transform: uppercase; height: 30px; padding: 0 10px; border-radius: 3px;
@@ -331,6 +326,158 @@
 .pop .pa { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
 .pop .pa .btn { min-height: 40px; font-size: 14px; }
 @media (min-width: 900px) { .panel { grid-template-rows: auto auto auto auto minmax(0, 1fr); gap: 10px; } }
-@media (max-width: 899px) { .panel.open .drawer { grid-template-rows: auto auto auto minmax(0, 1fr); } .panel .search input { height: 44px; } }
+@media (max-width: 899px) { .panel.open .drawer { grid-template-rows: auto auto auto minmax(0, 1fr); } }
 
 .pop .amen { grid-column: auto; }
+
+/* ===== Nov 1, Rose: "the main search bar ... the glassy web style". Liquid Glass (GlassstyleContext V7 to V10), read for a
+   dark sky: a still capsule of tinted glass, a 1px rim-light drawn as a gradient border (bright where the light falls, top left,
+   fading round the back), a thin lens ring that bends what is behind it harder at the edge, and a soft specular that follows
+   the pointer. The blur is set once and never animated or transitioned (MobiledesignContext V2). On phones the capsule and a
+   round menu button float over the map on their own, as Liquid Glass controls do; there is no tray behind them. */
+:root {
+  --lg-fill: oklch(0.31 0.06 300 / 0.46);
+  --lg-fill-float: oklch(0.19 0.055 300 / 0.72);   /* dense enough to read without the blur (a capture, an old engine) */
+  --lg-rim: linear-gradient(145deg, oklch(1 0 0 / 0.58), oklch(1 0 0 / 0.14) 32%, oklch(1 0 0 / 0.05) 62%, oklch(1 0 0 / 0.30));
+  --lg-rim-hot: linear-gradient(145deg, oklch(0.92 0.12 85 / 0.95), oklch(0.85 0.14 85 / 0.35) 34%, oklch(1 0 0 / 0.08) 64%, oklch(0.85 0.14 85 / 0.55));
+  --lg-shadow: 0 12px 30px -12px oklch(0.03 0.02 290 / 0.85), 0 2px 6px oklch(0.03 0.02 290 / 0.35);
+  --mx: 24%; --my: 0%;
+}
+.lg {
+  position: relative; isolation: isolate; border: 1px solid transparent; border-radius: 999px;
+  background: linear-gradient(var(--lg-fill), var(--lg-fill)) padding-box, var(--lg-rim) border-box;
+  -webkit-backdrop-filter: blur(16px) saturate(1.7); backdrop-filter: blur(16px) saturate(1.7);
+  box-shadow: var(--lg-shadow), inset 0 1px 0 oklch(1 0 0 / 0.16), inset 0 -1px 0 oklch(1 0 0 / 0.05);
+}
+/* the specular: a soft light where the pointer is, plus a fixed sheen from above */
+.lg::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1;
+  background: radial-gradient(160px 70px at var(--mx) var(--my), oklch(1 0 0 / 0.34), oklch(1 0 0 / 0) 70%),
+    linear-gradient(178deg, oklch(1 0 0 / 0.12), oklch(1 0 0 / 0) 46%);
+  mix-blend-mode: soft-light;
+}
+/* the lens: a 5px ring that refracts a little harder than the middle; a ring, never a bezel (GlassstyleContext V10) */
+.lg::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; padding: 5px;
+  -webkit-backdrop-filter: blur(2px) brightness(1.08) saturate(1.8); backdrop-filter: blur(2px) brightness(1.08) saturate(1.8);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude;
+}
+
+.search.lg { display: flex; align-items: center; gap: 4px; height: 50px; padding: 0 5px 0 15px; min-width: 0; }
+.search.lg svg { position: static; left: auto; flex: none; }   /* the old rule pinned every svg in the search to left:12px */
+.search.lg > svg { opacity: 0.85; color: var(--text); }
+.search.lg button svg { opacity: 1; }
+.search.lg input {
+  flex: 1 1 auto; min-width: 0; width: auto; height: 100%; padding: 0 6px 0 7px; margin: 0;
+  background: transparent; border: 0; border-radius: 0; outline: none; box-shadow: none;
+  font: 400 16.5px/1.2 var(--font); letter-spacing: 0.005em; color: var(--text); caret-color: var(--gold); text-overflow: ellipsis;
+}
+.search.lg input::placeholder { color: oklch(0.84 0.03 300 / 0.78); font-style: normal; opacity: 1; }
+.search.lg input::-webkit-search-cancel-button, .search.lg input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; display: none; }
+.search.lg input:focus-visible { outline: none; }
+.search.lg .clear { position: static; flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+  color: var(--text); background: oklch(1 0 0 / 0.12); }
+.search.lg .go {
+  position: static; flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: 38px; padding: 0 16px; border-radius: 999px; background: var(--gold); color: var(--gold-ink);
+  font: 650 14px/1 var(--font); letter-spacing: 0.01em; text-transform: none;
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.5), inset 0 -1px 0 oklch(0.5 0.1 70 / 0.35), 0 4px 14px -5px oklch(0.85 0.14 85 / 0.55);
+}
+.search.lg .go-i { display: none; }
+.search.lg:focus-within {
+  background: linear-gradient(var(--lg-fill), var(--lg-fill)) padding-box, var(--lg-rim-hot) border-box;
+  outline: 2px solid oklch(0.85 0.14 85 / 0.85); outline-offset: 3px;
+}
+.burger.lg { width: 50px; height: 50px; border-radius: 50%; flex: none; }
+@media (hover: hover) {
+  .search.lg:hover:not(:focus-within) { --lg-rim: linear-gradient(145deg, oklch(1 0 0 / 0.75), oklch(1 0 0 / 0.2) 32%, oklch(1 0 0 / 0.07) 62%, oklch(1 0 0 / 0.4)); }
+  .search.lg .go:hover { filter: brightness(1.06); }
+  .search.lg .clear:hover { background: oklch(1 0 0 / 0.2); }
+}
+.search.lg .go:active { transform: scale(0.96); }
+@media (forced-colors: active) { .search.lg { border-color: CanvasText; } }
+
+@media (min-width: 900px) {
+  .panel .topline .search.lg { margin: 2px 0 4px; }   /* room for the focus ring above the filters */
+}
+@media (max-width: 899px) {
+  /* closed: no tray, just the two glass controls floating over the map; the gaps between them stay touchable map */
+  .panel:not(.open) { background: none; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; pointer-events: none; }
+  .panel:not(.open) .topline > * { pointer-events: auto; }
+  .panel .topline { gap: 8px; }
+  .panel:not(.open) .lg { --lg-fill: var(--lg-fill-float); }
+  .search.lg { height: 50px; padding-left: 14px; }
+  .panel.open .topline { padding: 2px 2px 0; }
+}
+@media (max-width: 420px) {
+  .search.lg .go { width: 40px; height: 40px; padding: 0; }
+  .search.lg .go-t { display: none; }
+  .search.lg .go-i { display: block; }
+  .search.lg input { font-size: 16px; padding-right: 2px; }
+}
+
+/* ===== Nov 1: the seven-day forecast (app/forecast.js). Seven equal columns that fit a 344 px fold cover without
+   scrolling; tabular figures; the icon carries the weather and a sentence per day carries it for screen readers. */
+.wx { display: grid; gap: 8px; }
+.wx-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.card .wx-head h3 { margin: 0; }
+.wx-days { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.wx-day {
+  position: relative; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 8px 0 7px;
+  border-radius: 12px; background: oklch(1 0 0 / 0.035); border: 1px solid oklch(1 0 0 / 0.07); font-variant-numeric: tabular-nums;
+}
+.wx-day.is-today { background: oklch(0.85 0.14 85 / 0.07); border-color: oklch(0.85 0.14 85 / 0.24); }
+.wx-d { font: 600 10.5px/1.25 var(--mono); letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-dim); white-space: nowrap; }
+.wx-ic { display: block; width: 30px; height: 30px; margin: 3px 0 2px; }
+.wx-hi { font-size: 15px; font-weight: 600; line-height: 1.2; color: var(--text); }
+.wx-lo { font-size: 12.5px; line-height: 1.2; color: var(--text-faint); }
+.wx-p { display: inline-flex; align-items: center; gap: 1px; margin-top: 4px; font: 500 10.5px/1.2 var(--mono); color: var(--text-faint); white-space: nowrap; }
+.wx-p.is-wet { color: oklch(0.83 0.1 245); }
+.wx-dr { width: 8px; height: 8px; flex: none; }
+.wx-a { font: 500 10.5px/1.25 var(--mono); color: var(--text-dim); white-space: nowrap; }
+.wx-a.is-dim { color: var(--text-faint); opacity: 0.75; }
+.wx-a.is-snow { color: oklch(0.96 0.02 250); }
+.wx-mark { position: absolute; top: -6px; right: -3px; width: 13px; height: 13px; filter: drop-shadow(0 0 4px oklch(0.85 0.14 85 / 0.75)); }
+.wx-night { display: flex; gap: 8px; align-items: flex-start; margin: 2px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--text-dim); }
+.wx-night .wx-star { width: 15px; height: 15px; flex: none; margin-top: 2px; }
+.wx-night b { color: var(--text); font-weight: 600; }
+.wx-night.is-cloudy .wx-star { opacity: 0.45; }
+.card p.wx-src, .wx-src { margin: 0; font-size: 12px; line-height: 1.45; color: var(--text-faint); }
+.wx-src a { color: var(--text-dim); }
+.card p.wx-msg, .wx-msg { margin: 0; font-size: 13.5px; color: var(--text-dim); }
+.wx-retry { font: 600 12.5px var(--font); color: var(--gold); padding: 0 12px; min-height: 32px; margin-left: 4px; border-radius: 999px; border: 1px solid oklch(0.85 0.14 85 / 0.45); }
+.wx-day.is-wait .wx-ph { border-radius: 50%; background: oklch(1 0 0 / 0.07); }
+.wx-day.is-wait .wx-hi, .wx-day.is-wait .wx-lo { opacity: 0.45; }
+/* in the pin pop-up: the same week, smaller, without the amounts (the card has them) */
+.pop .wx-slot { width: 100%; }
+.pop .wx-mini { gap: 5px; margin: 2px 0 0; }
+.pop .wx-mini .wx-days { gap: 3px; }
+.pop .wx-mini .wx-day { padding: 6px 0 5px; border-radius: 9px; }
+.pop .wx-mini .wx-d { font-size: 9.5px; letter-spacing: 0.03em; }
+.pop .wx-mini .wx-ic { width: 24px; height: 24px; margin: 2px 0 1px; }
+.pop .wx-mini .wx-hi { font-size: 13px; }
+.pop .wx-mini .wx-lo { font-size: 11px; }
+.pop .wx-mini .wx-p { font-size: 9.5px; margin-top: 2px; }
+.pop .wx-mini .wx-dr { width: 7px; height: 7px; }
+.pop .wx-mini .wx-src, .pop .wx-mini .wx-msg { font-size: 10.5px; text-align: center; }
+@media (max-width: 899px) and (orientation: landscape) and (max-height: 500px) { .pop .wx-slot { display: none; } }
+/* touch: a 44px target for every control in the capsule, with the visible shapes kept small (MobiledesignContext V1) */
+.search.lg .clear { width: 44px; height: 44px; background: none; }
+.search.lg .clear svg { box-sizing: content-box; padding: 8px; border-radius: 50%; background: oklch(1 0 0 / 0.12); }
+@media (hover: hover) { .search.lg .clear:hover svg { background: oklch(1 0 0 / 0.22); } .search.lg .clear:hover { background: none; } }
+@media (pointer: coarse) { .search.lg { height: 54px; } .search.lg .go { height: 44px; min-width: 44px; } .burger.lg { width: 54px; height: 54px; } }
+/* the panel's one column is minmax(0, 1fr): with a bare auto column, the clear button appearing while typing grew the
+   top line's min-content past the phone's width and pushed the Find button off the screen (FrontendContext V3 F4, FX3) */
+.panel { grid-template-columns: minmax(0, 1fr); }
+.panel > *, .panel .topline { min-width: 0; }
+/* the pin pop-up on phones: it scrolls inside if the screen is short, the photo shrinks with the screen, and the floating
+   buttons and legend step aside while it is open, as they do for the card */
+.pop { overflow: hidden auto; overscroll-behavior: contain; scrollbar-width: thin; }
+@media (max-width: 899px) {
+  .pop .hero { height: clamp(96px, 21svh, 170px); }
+  body.pop-open .toolbar, body.pop-open .legend { visibility: hidden; }
+}
+.pop .x { background: oklch(0.10 0.04 295 / 0.6); border-color: oklch(1 0 0 / 0.35); }   /* it vanished over bright sky photos */
+/* the brand line keeps the About button beside it in the narrower 340 px panel: the subtitle wraps instead */
+.panel .topline .brand { flex: 1 1 0; min-width: 0; }

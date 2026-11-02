@@ -33,6 +33,22 @@ clear, moonless night, not measurements.
 Known limits: VIIRS sees little of the blue in white LEDs; bright city cores saturate at 38.2;
 the Bortle scale is a whole-sky judgement by eye and this is the zenith only.
 
+## The seven-day forecast (`app/forecast.js`)
+
+Opening a place (its card, or its pin's pop-up) fetches that park's forecast; nothing is fetched before.
+The source is the US National Weather Service API (`api.weather.gov`): `/points/{lat},{lon}` gives the
+forecast grid and the park's time zone (kept a week), then the gridpoint data gives, per local day: the
+day's high and that night's low, the highest chance of precipitation, the amounts of rain, snow and ice
+(summed over the day, inches), the sky cover by the hour, and the forecast's own weather types, including
+`hail` and the `small_hail` / `large_hail` attributes. The icon follows from those: hail only when the
+forecast names hail, storm, freezing rain or sleet, rain and snow, snow, rain, or clear, partly cloudy and
+cloudy from the daytime sky cover. "Clearest night" is the lowest mean cloud cover from 9 PM to 3 AM; the
+moon's lit fraction comes from the mean synodic month (it reads 99.8% and 100% at the two 2026 lunar
+eclipses). If NWS does not answer, Open-Meteo is asked (`api.open-meteo.com`, WMO weather codes; its US
+models do not forecast hail), and its credit sits beside the data. Answers are kept in `localStorage` for
+30 minutes; offline, a copy up to 12 hours old is shown and labelled, and a failed card retries by itself
+when the browser comes back online. The icons are drawn in the file, by us.
+
 ## Park data (`data/research/`)
 
 Twelve researcher batches in one fixed schema (`HAIKU_BRIEF.md`), merged and checked:
@@ -50,10 +66,22 @@ Forest Service points with Wikipedia's coordinates.
 | Park facts | TPWD, NPS and USDA Forest Service pages; Wikipedia where no official point exists | facts, each linked |
 | Dark Sky Places | DarkSky International | as published |
 | Photos | Wikimedia Commons, linked | each file's own licence |
+| Seven-day forecast | National Weather Service API, gridpoint forecast | US government open data, free for any use; credit NWS |
+| Forecast when NWS does not answer | Open-Meteo.com | data CC BY 4.0, "Weather data by Open-Meteo.com" shown beside it; their free service is for non-commercial sites |
 
 Not used, and why: the World Atlas of Artificial Night Sky Brightness (Falchi et al. 2016) is
 CC BY-NC 4.0; David Lorenz's 2025 atlas publishes no licence; lightpollutionmap.info's tiles are not
 openly licensed; the earlier ArcGIS overlay had no stated licence. NASA's VNP46A4 annual composite
 would be better than a 12-night median, but downloading it needs a NASA Earthdata login.
+
+## Tests
+
+With the site served on port 4317 (`python -m http.server 4317`):
+`node tools/shoot_wx.mjs <outDir>` walks 13 sizes in Chromium and 9 in WebKit (phones, fold cover and inner
+screen, landscape, tablet, laptop, 1440, 1920, 21:9 and a portrait monitor) and reports console errors,
+failed responses, the search capsule's sizes, the forecast's seven days and any clipped column;
+`node tools/test_wx_paths.mjs <outDir>` makes each failure happen on purpose (NWS down, both down,
+offline and back, the cache, an expired copy offline). `tools/shoot.mjs` and `tools/shoot_pop.mjs` are
+the earlier layout passes.
 
 Code: Apache-2.0 (see LICENSE).

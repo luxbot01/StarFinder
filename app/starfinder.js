@@ -127,6 +127,7 @@
         </div>
         <div class="tags"><span class="tag model">Modelled from NASA satellite data</span>${dsp}${pub}</div>
         ${nearPct ? `<p class="note">The sky gets noticeably darker within about 8 km of this point; campsites away from town lights may beat this rating.</p>` : ""}
+        <section id="wxCard" aria-labelledby="wxTitle"></section>
         ${photos.length ? `<figure class="photo" style="margin:0"><img id="ph" src="${esc(photos[0].img)}" alt="${esc(p.name)}" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption id="phCap">${credit(photos[0])}</figcaption>${photos.length > 1 ? `<div class="nav"><button data-ph="-1" aria-label="Previous photo">&#8249;</button><button data-ph="1" aria-label="Next photo">&#8250;</button></div>` : ""}</figure>` : ""}
         ${p.blurb ? `<p>${esc(p.blurb)}</p>` : ""}
         ${p.status ? `<p class="prov">Research note: ${esc(p.status)} Check the park's own page before you go.</p>` : ""}
@@ -142,6 +143,7 @@
         <p class="prov">Map point: ${esc(p.coordPoint || "")}${p.coordSource && /^https?:/.test(p.coordSource) ? ` (<a href="${esc(p.coordSource)}" target="_blank" rel="noopener">source</a>)` : ""}. ${p.county ? esc(p.county) + " County. " : ""}${esc(p.agency)}. Sky values are estimates for a clear, moonless night, not measurements.</p>
       </div>`;
     card.setAttribute("aria-labelledby", "cardTitle");
+    if (window.SFWeather) window.SFWeather.mount($("#wxCard"), p, "full");
     let pi = 0;
     $$("[data-ph]", card).forEach((b) => b.addEventListener("click", () => { pi = (pi + +b.dataset.ph + photos.length) % photos.length; $("#ph").src = photos[pi].img; $("#phCap").innerHTML = credit(photos[pi]); }));
     $("#cardClose").addEventListener("click", () => select(null));
@@ -160,14 +162,15 @@
     renderCard(p); card.hidden = false; document.body.classList.add("card-open");
     if (!reduce) { card.classList.add("enter"); requestAnimationFrame(() => requestAnimationFrame(() => card.classList.remove("enter"))); }
     history.replaceState(null, "", "#p=" + encodeURIComponent(id));
-    if (isPhone()) setDrawer(false);
+    if (isPhone()) { setDrawer(false); if (pop) pop.remove(); }   // one sheet at a time on a phone: the card replaces the pop-up
     if (state.mapReady) {
       state.map.setFilter("pl-sel", ["==", ["get", "id"], id]);
       if (fly !== false) {
         const shortLand = isPhone() && innerHeight <= 500 && innerWidth > innerHeight;
         const pad = shortLand ? { top: 60, bottom: 20, left: 20, right: Math.round(Math.min(380, innerWidth * 0.52)) + 30 }
           : isPhone() ? { top: 70, bottom: Math.round(innerHeight * 0.55), left: 30, right: 30 }
-          : { top: 60, bottom: 60, left: parseInt(getComputedStyle(document.documentElement).getPropertyValue("--panel-w")) + 40, right: 420 };
+          // desktop: the pin sits low enough for the pop-up that hangs above it (about 420 px with the forecast strip)
+          : { top: Math.min(450, Math.round(innerHeight * 0.52)), bottom: 40, left: parseInt(getComputedStyle(document.documentElement).getPropertyValue("--panel-w")) + 40, right: 420 };
         state.map.flyTo({ center: [p.lon, p.lat], zoom: Math.max(state.map.getZoom(), 8.2), padding: pad, duration: reduce ? 0 : 1400, essential: true });
       }
     }
@@ -189,10 +192,15 @@
       <div class="pb"><div class="pt">${esc(p.name)}</div>
         <div class="pr">${starsSvg(p.sky.stars)}<span>${Math.round(p.sky.pct)}% OF STARS</span></div>
         ${amenStrip(p) ? `<div class="amen" style="justify-content:center">${amenStrip(p)}</div>` : ""}
+        <div class="wx-slot"></div>
         <div class="pa">${p.url ? `<a class="btn primary" href="${esc(p.url)}" target="_blank" rel="noopener">Open Park Page</a>` : ""}<button class="btn" data-details>Details</button></div></div></div>`;
-    pop = new maplibregl.Popup({ className: "sf-pop", closeButton: false, maxWidth: "none", offset: 14, focusAfterOpen: false })
+    const phone = isPhone();
+    pop = new maplibregl.Popup({ className: "sf-pop", closeButton: false, maxWidth: "none", offset: 14, focusAfterOpen: false, ...(phone ? { anchor: "bottom" } : {}) })
       .setLngLat([p.lon, p.lat]).setHTML(html).addTo(state.map);
+    document.body.classList.add("pop-open");
+    pop.on("close", () => document.body.classList.remove("pop-open"));
     const el = pop.getElement();
+    if (window.SFWeather) window.SFWeather.mount(el.querySelector(".wx-slot"), p, "mini");
     el.querySelector(".x").addEventListener("click", () => pop && pop.remove());
     el.querySelector("[data-details]").addEventListener("click", () => select(id, false));
     el.querySelectorAll(".ph-nav").forEach((b) => b.addEventListener("click", () => {
@@ -200,7 +208,16 @@
       el.querySelector(".hero img").src = ph[i].img; el.querySelector(".hero .credit").innerHTML = credit(ph[i]); }));
     $$(".row").forEach((r) => (r.dataset.id === id ? r.setAttribute("aria-current", "true") : r.removeAttribute("aria-current")));
     state.map.setFilter("pl-sel", ["==", ["get", "id"], id]);
-    if (fly) state.map.easeTo({ center: [p.lon, p.lat], zoom: Math.max(state.map.getZoom(), 7.2), offset: [0, isPhone() ? 120 : 140], duration: reduce ? 0 : 900 });
+    // On a phone the pop-up hangs above its pin and must clear the floating search bar: cap it to the room there (it scrolls
+    // inside if it is still taller), then put the pin just under it. Left to choose, MapLibre hung it below the pin on short
+    // screens and its buttons fell off the bottom.
+    let dy = 140;
+    if (phone) {
+      const box = el.querySelector(".pop"), top = 76, room = innerHeight - top - 30;
+      box.style.maxHeight = room + "px";
+      dy = Math.round(Math.min(innerHeight - 24, top + Math.min(box.offsetHeight, room) + 18) - innerHeight / 2);
+    }
+    if (fly) state.map.easeTo({ center: [p.lon, p.lat], zoom: Math.max(state.map.getZoom(), 7.2), offset: [0, dy], duration: reduce ? 0 : 900 });
   }
 
   /* ---------- the phone drawer and the layer menu ---------- */
@@ -321,11 +338,28 @@
       else if ($("#panel").classList.contains("open")) setDrawer(false);
     });
     document.addEventListener("click", (e) => { if (!$("#layersPop").hidden && !e.target.closest("#toolbar")) setLayers(false); });
+    document.addEventListener("keydown", (e) => {   // "/" jumps to the search, as on most map sites
+      const a = document.activeElement;
+      if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey || (a && (/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) || a.isContentEditable))) return;
+      e.preventDefault(); $("#q").focus();
+    });
+  }
+
+  /* ---------- the glass catches the light: the pointer is the light source (hover devices only) ---------- */
+  function glassLight() {
+    if (reduce || !matchMedia("(hover: hover)").matches) return;
+    let raf = 0, px = 0, py = 0;
+    const paint = () => {
+      raf = 0; const els = $$(".lg"), rects = els.map((g) => g.getBoundingClientRect());   // all reads, then all writes
+      els.forEach((g, i) => { const r = rects[i]; if (!r.width) return;
+        g.style.setProperty("--mx", (((px - r.left) / r.width) * 100).toFixed(1) + "%"); g.style.setProperty("--my", (((py - r.top) / r.height) * 100).toFixed(1) + "%"); });
+    };
+    addEventListener("pointermove", (e) => { px = e.clientX; py = e.clientY; if (!raf) raf = requestAnimationFrame(paint); }, { passive: true });
   }
 
   async function start() {
     document.body.insertAdjacentHTML("afterbegin", '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="sfHalf" clipPathUnits="userSpaceOnUse"><rect x="0" y="0" width="12" height="24"/></clipPath></defs></svg>');
-    wire();
+    wire(); glassLight();
     try {
       const [pl, ph] = await Promise.all([fetch("data/places.json").then((r) => r.json()), fetch("data/photos.json").then((r) => r.json()).catch(() => ({}))]);
       state.places = pl.places; state.photos = ph; state.places.forEach((p) => state.byId.set(p.id, p));
