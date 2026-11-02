@@ -540,3 +540,27 @@ html.warp .lg {
 @media (forced-colors: active) { .amen i.ban { border-color: CanvasText; } .burn .burn-ic, .burn.is-ban .burn-ic { color: CanvasText; } }
 .burn.is-off, .burn.is-na { border-style: dashed; }
 .card .burn.is-off p.burn-lead, .card .burn.is-na p.burn-lead { font-weight: 500; color: var(--text-dim); }
+
+/* ===== Nov 2: the filter row. Her order, left to right: Dark Sky Places at the far left, then one toggle per amenity icon (the
+   same icons, labels and order as the strips: power by amperage, then water, restrooms, showers, cabins), then the other filters.
+   One row at every width that scrolls sideways (no wrap), so the order she set is the order you meet; the fade at the right edge
+   says there is more and goes away at the end. Pressed icons are gold like every pressed chip; several pressed means a place must
+   have ALL of them, and the count line says so with AND. Thumb-sized (44 px) on touch screens. */
+.panel .chips { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; gap: 5px;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 26px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 26px), transparent); }
+.panel .chips.at-end { -webkit-mask-image: none; mask-image: none; }
+.amen-filters { display: flex; flex: none; gap: 4px; }
+.panel .chip.ic { padding: 0 5px; min-width: 30px; justify-content: center; gap: 2px; color: oklch(0.86 0.06 260); letter-spacing: .02em; }
+.panel .chip.ic svg { width: 16px; height: 16px; flex: none; }
+.panel .chip.ic.amp { font: 700 9.5px var(--mono); color: var(--gold); }
+.panel .chip.ic[aria-pressed="true"] { background: var(--gold); color: var(--gold-ink); border-color: var(--gold); }
+.count-row { display: flex; align-items: center; gap: 10px; margin: 0; flex-wrap: wrap; min-height: 22px; }
+.fclear { font: 600 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold); padding: 3px 8px;
+  border: 1px solid oklch(0.85 0.14 85 / 0.45); border-radius: 3px; }
+@media (pointer: coarse) {
+  .panel .chip { height: 44px; }
+  .panel .chip.ic { min-width: 44px; }
+  .panel .chips, .amen-filters { gap: 6px; }
+  .fclear { min-height: 44px; padding: 0 14px; }
+}
+@media (hover: hover) { .fclear:hover { background: oklch(0.85 0.14 85 / 0.10); } }

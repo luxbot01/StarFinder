@@ -127,6 +127,23 @@ the row stays in the data. To bring one back, set `listed` to true or delete the
 up `places.json` first; re-run it after anything that rebuilds `places.json` (`tools/build_data.py` does). Unclear places stay
 listed; their sentences are in the audit file. Tests: `python -I tools/test_camping_delist.py`.
 
+## The filter row and the amenity icons (`app/starfinder.js` AMEN and IC)
+
+One row, left to right: Dark Sky Places, then one toggle per amenity icon, then Camping, 4 stars and up, No county ban, who runs
+it and the sort. It never wraps; it scrolls sideways (a mouse wheel scrolls it while the pointer is on it), with a fade at the
+right edge until the end is reached. Pressing icons keeps the places that have ALL of them, and the count line says so ("19 of
+111 places with 50A AND 120V") with a Clear button. The hash carries the filters (`#p=<id>&f=darksky.rv50.rv120`), so a shared
+link opens the same view. Targets are 44 px on touch screens. The icons, their labels and their order come from one list, AMEN,
+used by the list rows, the pop-up, the card and the filter row: 50A, 30A, 120V, water at sites, drinking water, restrooms,
+showers, cabins. "No county ban" keeps places a current burn-ban reading says are not on the list (Oklahoma is not tracked and
+drops out); with no current reading the chip is hidden.
+
+The 120 V household outlet (`amen.rv120`, a NEMA 5-15 face; a 20-amp 5-20 receptacle takes the same plug) is marked only where
+the place's own campsite page names a 20-amp or 120 V outlet, never from 30-amp or 50-amp alone: 21 places on Nov 2 2026, each
+with `amen.rv120src` {url, read, quote}; record `data/research/outlets_120v_2026-11-02.json`, applied by
+`python -I tools/merge_outlets.py data/research/outlets_120v_2026-11-02.json` (idempotent, backs up first). A place whose page
+is silent shows nothing for 120 V, never a struck-through icon. Tests: `node tools/shoot_filters.mjs <outDir> check`.
+
 ## Sources and licences
 
 | What | Source | Licence |

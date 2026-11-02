@@ -43,9 +43,11 @@
     <div class="drawer" id="drawer">
       <div class="lbl">Filter the sky</div>
       <div class="chips" role="group" aria-label="Filter and sort">
-        <button class="chip" data-filter="camping" aria-pressed="false">Camping</button>
-        <button class="chip" data-filter="darksky" aria-pressed="false">Dark Sky Places</button>
-        <button class="chip" data-filter="four" aria-pressed="false">4 stars and up</button>
+        <button class="chip" type="button" data-filter="darksky" aria-pressed="false">Dark Sky Places</button>
+        <span class="amen-filters" id="amenFilters" role="group" aria-label="Places that have all of the selected amenities"></span>
+        <button class="chip" type="button" data-filter="camping" aria-pressed="false">Camping</button>
+        <button class="chip" type="button" data-filter="four" aria-pressed="false">4 stars and up</button>
+        <button class="chip" type="button" data-filter="noban" aria-pressed="false" title="Only places whose county is not on the Texas burn-ban list (checked every 6 hours)" hidden>No county ban</button>
         <label class="sr-only" for="agency">Who runs it</label>
         <select class="chip" id="agency">
           <option value="all">All places</option>
@@ -61,7 +63,7 @@
           <option value="name">A to Z</option>
         </select>
       </div>
-      <p class="count" id="count" aria-live="polite"></p>
+      <p class="count-row"><span class="count" id="count" aria-live="polite"></span><button class="fclear" id="fClear" type="button" hidden>Clear filters</button></p>
       <ul class="list" id="list"></ul>
     </div>
   </aside>
@@ -127,6 +129,8 @@
       <p>Every 6 hours a small job on GitHub reads the Texas A&amp;M Forest Service's list of counties under a burn ban and saves it with the list's own date. A place's card then says whether a county it sits in is on the list, with the date of the list and when we last checked. The Forest Service compiles county orders; the counties issue them, and an order can start or lift before the list shows it. "No county burn ban reported" is not "fires are allowed": the park's own rules still apply, and federal land (national parks, forests and grasslands) sets its own. If the list or our check is more than a few days old, the card says so instead of showing a status. Oklahoma places are not covered. A place whose county is on the list carries a flame with a line through it in the list, on its pop-up and card, and beside its dot on the map once you zoom in to where place names show.</p>
       <h3>Camping</h3>
       <p>StarFinder is for places you can camp. On Nov 2 2026 we read every place's own official page: 94 offer camping, 17 do not say either way and stay on the map, and 5 whose own page says no camping or day use only are left off (Fort Leaton, Big Spring, Old Tunnel, Longhorn Cavern and Fort Davis National Historic Site). Check the park's own page before you go; rules and closures change.</p>
+      <h3>Filters</h3>
+      <p>The icons in the filter row are the same as on each place. Press one to keep only the places that have it; press several and a place must have all of them (the line under the row says AND). The 120 V household outlet is shown only where the park's own campsite page lists a 20-amp or 120 V outlet; a place whose page does not say shows nothing for it.</p>
       <h3>Before you go</h3>
       <p>Check the park's own page for closures, burn bans and reservations, and pick a night near the new moon. StarFinder keeps nothing about you; "Nearest first" uses your location only inside your browser, and the forecast sends only the park's coordinates.</p>
       <p style="margin-top:16px"><button class="btn primary" id="aboutClose">Back to the map</button></p>

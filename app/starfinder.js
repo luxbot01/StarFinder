@@ -8,7 +8,7 @@
   const isPhone = () => matchMedia("(max-width: 899px)").matches;
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-  const state = { places: [], byId: new Map(), filters: { camping: false, darksky: false, four: false },
+  const state = { places: [], byId: new Map(), filters: { camping: false, darksky: false, four: false, noban: false }, amenOn: new Set(), clearSet: new Set(),
     agency: "all", sort: "dark", q: "", sel: null, me: null, map: null, mapReady: false, burn: null, burnDone: false, banSet: new Set(), visIds: [] };
   window.__sf = state;   // read-only handle for the test harness
 
@@ -48,9 +48,16 @@
     restrooms: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="5" r="1.9" fill="currentColor"/><circle cx="16.5" cy="5" r="1.9" fill="currentColor"/><path d="M5.6 9h3.8v6H8.5v5h-2v-5h-.9zM14.6 9h3.8l1.5 6h-1.8v5h-1.6v-5h-1.6v5h-1.6v-5H11z" fill="currentColor"/><path d="M12 8v13" stroke="currentColor" stroke-width="1" opacity=".5"/></svg>',
     showers: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6.5a4 4 0 0 1 4 4v1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M10.5 9.5h8l-1.3 2.2h-5.4z" fill="currentColor"/><path d="M11.6 14.2l-.6 1.6M14.5 14.2v1.8M17.4 14.2l.6 1.6M11 18.4l-.6 1.6M14.5 18.4v1.8M18 18.4l.6 1.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
     cabins: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.2 11.2L12 4.2l8.8 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.6 10v9.6h12.8V10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10.2 19.6v-5h3.6v5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M15.6 6.2V4.4h1.8v3.2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>',
+    // the household 120 V outlet (NEMA 5-15 face; a 5-20 takes the same plug): the rounded-square plate of a wall outlet, so it
+    // never reads as the round RV faces beside it; two upright slots, the left (neutral) longer, and the round-topped ground below
+    out120: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5.2" y="3.2" width="13.6" height="17.6" rx="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9.6 7.4v4.6M14.4 7.9v3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10.7 17.7v-1.3a1.3 1.3 0 0 1 2.6 0v1.3z" fill="currentColor"/></svg>',
   };
-  const AMEN = [["rv30", "amp30", "30-amp RV hookups", "30A"], ["rv50", "amp50", "50-amp RV hookups", "50A"], ["waterSite", "waterSite", "Water hookups at sites"],
-    ["water", "water", "Drinking water"], ["restrooms", "restrooms", "Restrooms"], ["showers", "showers", "Showers"], ["cabins", "cabins", "Cabins or lodging"]];
+  // One order everywhere the icons appear (list rows, the pop-up, the card and the filter row), so the hand finds each icon in the
+  // same place: power first, by amperage (50, 30, then the 20-amp household outlet), then water, restrooms, showers, cabins.
+  const AMEN = [["rv50", "amp50", "50-amp RV hookups", "50A"], ["rv30", "amp30", "30-amp RV hookups", "30A"], ["rv120", "out120", "120 V household outlet (20-amp)", "120V"],
+    ["waterSite", "waterSite", "Water hookups at sites"], ["water", "water", "Drinking water"], ["restrooms", "restrooms", "Restrooms"], ["showers", "showers", "Showers"],
+    ["cabins", "cabins", "Cabins or lodging"]];
+  const SHORT = { rv50: "50A", rv30: "30A", rv120: "120V", waterSite: "water at sites", water: "drinking water", restrooms: "restrooms", showers: "showers", cabins: "cabins" };
   // the burn-ban mark leads the strip when a current reading says this place is under a ban: it is a condition of the day,
   // not a facility, so it comes before the amenities and in its own colour (app/burnban.js owns the glyph and the label)
   const banChip = (p) => state.burnDone && window.SFBurn ? window.SFBurn.chip(p, state.burn, Date.now()) : "";
@@ -59,20 +66,24 @@
     return banChip(p) + AMEN.filter(([k]) => a[k] === true).map(([k, ic, label, amp]) =>
       `<i class="${amp ? "amp" : ""}" title="${label}" aria-label="${label}">${IC[ic]}${amp ? amp : ""}</i>`).join("");
   }
+  // the exact words that name the 20-amp (household 120 V) outlet, out of the page slice kept in places.json
+  const says20 = (q) => (q.match(/(?:\d+\/)*\b20\b(?:\/\d+)*[- ]?amp\w*(?: (?:hookups?|electric\w*|service|electrical hookup))?|\b20\b[- ]?amp[^.]{0,20}|\b(?:110|115|120)[- ]?v\w*/i) || [q.slice(-60)])[0].trim();
   function amenFull(p) {
     const a = p.amen || {};
     const known = AMEN.filter(([k]) => a[k] === true || a[k] === false);
     if (!known.length) return "";
     return `<div><h3>At the park</h3><div class="amen-full">${known.map(([k, ic, label]) =>
       `<span class="${a[k] ? "" : "no"}">${IC[ic]}${label}${a[k] ? "" : '<span class="sr-only"> (none)</span>'}</span>`).join("")}</div>
-      ${a.src ? `<p class="prov" style="margin-top:6px">Amenities from <a href="${esc(a.src)}" target="_blank" rel="noopener">the park's page</a>.</p>` : ""}</div>`;
+      ${a.src ? `<p class="prov" style="margin-top:6px">Amenities from <a href="${esc(a.src)}" target="_blank" rel="noopener">the park's page</a>.</p>` : ""}
+      ${a.rv120 && a.rv120src ? `<p class="prov" style="margin-top:4px">120 V outlet: <a href="${esc(a.rv120src.url)}" target="_blank" rel="noopener">the park's campsite page</a> lists "${esc(says20(a.rv120src.quote))}".</p>` : ""}</div>`;
   }
 
   /* ---------- filtering, sorting and the list ---------- */
   function visible() {
     const q = state.q.trim().toLowerCase(), f = state.filters;
     let out = state.places.filter((p) =>
-      (!f.camping || p.camping === true) && (!f.darksky || p.darkSky) && (!f.four || p.sky.stars >= 4) &&
+      (!f.camping || p.camping === true) && (!f.darksky || p.darkSky) && (!f.four || p.sky.stars >= 4) && (!f.noban || !state.burnCurrent || state.clearSet.has(p.id)) &&
+      [...state.amenOn].every((k) => p.amen && p.amen[k] === true) &&   // the icon toggles: a place must have ALL that are on
       (state.agency === "all" || agencyOf(p) === state.agency) &&
       (!q || [p.name, p.town, p.county, p.type].some((v) => v && String(v).toLowerCase().includes(q))));
     const from = state.me || (state.map ? (({ lng, lat }) => ({ lat, lon: lng }))(state.map.getCenter()) : { lat: 31.2, lon: -99.3 });
@@ -85,7 +96,10 @@
   function renderList() {
     const items = visible(), ul = $("#list");
     const where = state.sort === "near" ? (state.me ? " · distances from you" : " · distances from the map's centre") : "";
-    $("#count").textContent = `${items.length} of ${state.places.length} places${where}`;
+    const withAll = state.amenOn.size ? " with " + AMEN.filter(([k]) => state.amenOn.has(k)).map(([k]) => SHORT[k]).join(" AND ") : "";
+    $("#count").textContent = `${items.length} of ${state.places.length} places${withAll}${where}`;
+    $("#fClear").hidden = !filtering();
+    writeHash();
     ul.innerHTML = items.map((p) => {
       const sub = [p.type, p.town || p.county].filter(Boolean).join(" · ") + (state.sort === "near" ? ` · ${mi(p._d)} mi` : "");
       return `<li><button class="row" data-id="${esc(p.id)}"${state.sel === p.id ? ' aria-current="true"' : ""}>
@@ -100,6 +114,16 @@
     if (state.mapReady) state.map.setFilter("pl-core", ["in", ["get", "id"], ["literal", state.visIds]]);
     if (state.mapReady) state.map.setFilter("pl-glow", ["in", ["get", "id"], ["literal", state.visIds]]);
     banFilter();
+  }
+  const filtering = () => state.amenOn.size > 0 || Object.values(state.filters).some(Boolean) || state.agency !== "all";
+  // the hash carries the open place and the filters (#p=<id>&f=darksky.rv50.showers), so a shared link opens the same view
+  function writeHash() {
+    const parts = [];
+    if (state.sel) parts.push("p=" + encodeURIComponent(state.sel));
+    const f = [...Object.keys(state.filters).filter((k) => state.filters[k]), ...AMEN.map(([k]) => k).filter((k) => state.amenOn.has(k))];
+    if (f.length) parts.push("f=" + f.join("."));
+    const h = parts.length ? "#" + parts.join("&") : "";
+    if (location.hash !== h) history.replaceState(null, "", location.pathname + location.search + h);
   }
   // the map badge follows the list's filters and the current reading: a place that is hidden, or not under a ban by a current
   // reading, draws no badge
@@ -130,7 +154,13 @@
   const burnHtml = (p) => state.burnDone && window.SFBurn ? window.SFBurn.html(p, state.burn, Date.now(), federal(p)) : "";
   function burnRefresh() {
     const slot = $("#burnSlot"); if (slot && state.sel && state.byId.has(state.sel)) slot.innerHTML = burnHtml(state.byId.get(state.sel));
-    state.banSet = new Set(window.SFBurn ? state.places.filter((p) => window.SFBurn.view(p, state.burn, Date.now()).kind === "ban").map((p) => p.id) : []);
+    const kinds = new Map(window.SFBurn ? state.places.map((p) => [p.id, window.SFBurn.view(p, state.burn, Date.now()).kind]) : []);
+    state.banSet = new Set([...kinds].filter(([, k]) => k === "ban").map(([id]) => id));
+    // "No county ban" keeps only places a CURRENT reading says are not on the list (Oklahoma is not tracked, so it drops out);
+    // with no current reading the chip is hidden and the filter does nothing, because we never claim what we did not just read
+    state.clearSet = new Set([...kinds].filter(([, k]) => k === "none").map(([id]) => id));
+    state.burnCurrent = state.banSet.size + state.clearSet.size > 0;
+    $('[data-filter="noban"]').hidden = !state.burnCurrent;
     renderList();   // the rows gain or lose the mark (and the map badges follow, through banFilter)
     if (pop && pop.isOpen() && popId && state.byId.has(popId)) {   // a pop-up opened before the file landed gets the mark too
       const pb = pop.getElement().querySelector(".pb"), s = amenStrip(state.byId.get(popId)), old = pb.querySelector(".amen");
@@ -196,12 +226,12 @@
     if (!id) {
       card.hidden = true; document.body.classList.remove("card-open");
       if (state.mapReady) state.map.setFilter("pl-sel", ["==", ["get", "id"], ""]);
-      history.replaceState(null, "", location.pathname + location.search); return;
+      writeHash(); return;
     }
     const p = state.byId.get(id); if (!p) return;
     renderCard(p); card.hidden = false; document.body.classList.add("card-open");
     if (!reduce) { card.classList.add("enter"); requestAnimationFrame(() => requestAnimationFrame(() => card.classList.remove("enter"))); }
-    history.replaceState(null, "", "#p=" + encodeURIComponent(id));
+    writeHash();
     if (isPhone()) { setDrawer(false); if (pop) pop.remove(); }   // one sheet at a time on a phone: the card replaces the pop-up
     if (state.mapReady) {
       state.map.setFilter("pl-sel", ["==", ["get", "id"], id]);
@@ -259,6 +289,11 @@
       dy = Math.round(Math.min(innerHeight - 24, top + Math.min(box.offsetHeight, room) + 18) - innerHeight / 2);
     }
     if (fly) state.map.easeTo({ center: [p.lon, p.lat], zoom: Math.max(state.map.getZoom(), 7.2), offset: [0, dy], duration: reduce ? 0 : 900 });
+  }
+
+  function syncToggles() {
+    $$("[data-filter]").forEach((b) => b.setAttribute("aria-pressed", String(!!state.filters[b.dataset.filter])));
+    $$("[data-amen]").forEach((b) => b.setAttribute("aria-pressed", String(state.amenOn.has(b.dataset.amen))));
   }
 
   /* ---------- the phone drawer and the layer menu ---------- */
@@ -365,8 +400,25 @@
     q.addEventListener("keydown", (e) => { if (e.key === "Enter") goFirst(); });
     $("#qGo").addEventListener("click", goFirst);
     $("#qClear").addEventListener("click", () => { q.value = ""; state.q = ""; $("#qClear").hidden = true; renderList(); q.focus(); });
+    // the amenity toggles are made from AMEN, the same list the icon strips use: one owner for the icons, labels and order.
+    // Each says in its title how many places have it, so a toggle that would empty the list is known before it is pressed.
+    $("#amenFilters").innerHTML = AMEN.map(([k, ic, label, amp]) =>
+      `<button class="chip ic${amp ? " amp" : ""}" type="button" data-amen="${k}" aria-pressed="false" aria-label="${label}" title="${label}">${IC[ic]}${amp || ""}</button>`).join("");
+    $$("[data-amen]").forEach((b) => b.addEventListener("click", () => {
+      const k = b.dataset.amen; state.amenOn.has(k) ? state.amenOn.delete(k) : state.amenOn.add(k); syncToggles(); renderList(); }));
     $$("[data-filter]").forEach((b) => b.addEventListener("click", () => {
-      const k = b.dataset.filter; state.filters[k] = !state.filters[k]; b.setAttribute("aria-pressed", String(state.filters[k])); renderList(); }));
+      const k = b.dataset.filter; state.filters[k] = !state.filters[k]; syncToggles(); renderList(); }));
+    $("#fClear").addEventListener("click", () => {
+      state.amenOn.clear(); Object.keys(state.filters).forEach((k) => (state.filters[k] = false)); state.agency = "all"; $("#agency").value = "all";
+      syncToggles(); renderList(); });
+    // one row that scrolls sideways (her order: Dark Sky Places, every icon, then the rest). A mouse wheel moves it sideways while
+    // the pointer is on it, and the fade at the right edge goes away once the end is reached, so the hint never hides the last chip.
+    const row = $(".chips");
+    row.addEventListener("wheel", (e) => {
+      if (row.scrollWidth <= row.clientWidth + 1 || Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      row.scrollLeft += e.deltaY; e.preventDefault(); }, { passive: false });
+    const atEnd = () => row.classList.toggle("at-end", row.scrollLeft + row.clientWidth >= row.scrollWidth - 2);
+    row.addEventListener("scroll", atEnd, { passive: true }); addEventListener("resize", atEnd); requestAnimationFrame(atEnd);
     $("#agency").addEventListener("change", (e) => { state.agency = e.target.value; renderList(); });
     $("#sort").addEventListener("change", (e) => { state.sort = e.target.value; renderList(); });
     $("#list").addEventListener("click", (e) => { const b = e.target.closest(".row"); if (!b) return;
@@ -432,6 +484,12 @@
     fetch("data/burnbans.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : null).catch(() => null)
       .then((b) => { state.burn = b; state.burnDone = true; burnRefresh(); });
     const m = location.hash.match(/p=([\w-]+)/); if (m && state.byId.has(m[1])) state.sel = m[1];
+    const fm = location.hash.match(/f=([\w.]+)/);   // filters from a shared link, read before the first render writes the hash back
+    if (fm) for (const k of fm[1].split(".")) {
+      if (k in state.filters) state.filters[k] = true; else if (AMEN.some(([a]) => a === k)) state.amenOn.add(k);
+    }
+    syncToggles();
+    for (const [k, , label] of AMEN) { const b = $(`[data-amen="${k}"]`); if (b) b.title = `${label}: ${state.places.filter((p) => p.amen && p.amen[k] === true).length} places`; }
     renderList(); if (state.sel) select(state.sel, false);
     // the list is on screen now; the map starts when MapLibre (a large script, loaded beside the page) has arrived. initMap says so if it never does.
     const ml = $("#mlScript");
