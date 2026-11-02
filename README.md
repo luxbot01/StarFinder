@@ -49,6 +49,40 @@ models do not forecast hail), and its credit sits beside the data. Answers are k
 30 minutes; offline, a copy up to 12 hours old is shown and labelled, and a failed card retries by itself
 when the browser comes back online. The icons are drawn in the file, by us.
 
+## County burn bans (`tools/burnbans.py`, `.github/workflows/burnbans.yml`, `app/burnban.js`)
+
+Every 6 hours a scheduled GitHub Actions job reads the Texas A&M Forest Service's county burn-ban list, the
+`BURNBAN.txt` file linked from their [burn bans page](https://tfsweb.tamu.edu/wildfire-and-other-disasters/burn-bans-and-information/)
+(UTF-16, first line `149 Texas Burn Bans - 10/30/2026 8:18:37 AM`), and cross-checks it against the `BURNBAN.XML` file
+beside it. It writes `data/burnbans.json` and commits it only when something changed or the last check is 12 hours old
+(so `checked` is never more than 12 hours behind); the commit is made by `github-actions[bot]` with the run's own
+`GITHUB_TOKEN`, permission `contents: write` and nothing else, and no secret or personal credential exists anywhere.
+A park's counties come from the `county` field in `places.json` (a few multi-county parks are listed in `OVERRIDES`
+in `burnbans.py`, for example Colorado Bend: San Saba and Lampasas); a park is "in effect" if any of its counties is on the list.
+
+It fails closed. A header that does not parse, a count that does not match the names, a name that is not one of the 254
+Texas counties (`data/tx_counties.json`, from the Census Bureau's 2020 county file), the `.txt` and `.xml` disagreeing, a
+list that loses more than half its counties at once, or any network error, makes the run fail and leave the last good
+file alone. The card then ages it out by itself: after 48 hours without a good check, or if the state's own list is more
+than 14 days old, it says the information is out of date and shows no status. An absent reading is never shown as "no ban".
+After a real mass lifting, run the workflow by hand with `accept_drop` ticked; `force` writes the file even when nothing changed.
+
+The card says "Burn ban in effect (X County)" or "No county burn ban reported; check the park's rules", with the
+counties looked up, the list's date, when it was last checked and a link to the Forest Service. It says nothing about
+whether a fire is allowed: the park's own rules still apply, and national parks, forests and grasslands are federal land with
+their own fire orders. Oklahoma places say plainly that they are not covered.
+
+Terms: the Forest Service's site policy (read Nov 2 2026) invites personal, educational and other non-commercial use if
+the source is cited and linked and their notices stay; it gives no guarantee of accuracy or currency. Only county names and
+the list's date are used, StarFinder carries no ads, and the card credits and links them. If StarFinder ever sells anything or
+carries ads, ask them first. GitHub turns scheduled workflows off after 60 days with no repository activity; if the card starts
+saying the information is out of date, check that the workflow is still enabled.
+
+Tests: `python -I tools/test_burnbans.py` (the job runs it before every fetch; a planted county must be found, a clean list
+must stay clean, each refusal must refuse, and a broken matcher must turn a test red), `node tools/test_burnban_view.mjs`
+(the card's words, escaping and the two staleness cut-offs), and `node tools/shoot_burn.mjs <outDir>` (the real file and the
+stale, missing and not-JSON roads, in Chromium and WebKit at four sizes).
+
 ## Park data (`data/research/`)
 
 Twelve researcher batches in one fixed schema (`HAIKU_BRIEF.md`), merged and checked:
@@ -67,6 +101,7 @@ Forest Service points with Wikipedia's coordinates.
 | Dark Sky Places | DarkSky International | as published |
 | Photos | Wikimedia Commons, linked | each file's own licence |
 | Seven-day forecast | National Weather Service API, gridpoint forecast | US government open data, free for any use; credit NWS |
+| County burn bans | Texas A&M Forest Service, Texas Burn Bans list (county names and its date only) | non-commercial use with the source cited and linked (their site policy); no guarantee of currency |
 | Forecast when NWS does not answer | Open-Meteo.com | data CC BY 4.0, "Weather data by Open-Meteo.com" shown beside it; their free service is for non-commercial sites |
 
 Not used, and why: the World Atlas of Artificial Night Sky Brightness (Falchi et al. 2016) is

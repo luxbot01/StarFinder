@@ -511,3 +511,18 @@ html.warp .lg {
 @media (hover: hover) {
   .search.lg:hover:not(:focus-within) { --lg-rim: linear-gradient(180deg, oklch(1 0 0 / 0.32), oklch(1 0 0 / 0.14) 50%, oklch(1 0 0 / 0.22)); }
 }
+
+/* ===== Nov 2: the burn-ban line on the card (app/burnban.js). Amber only when the state's list names a county of this place;
+   calm and neutral otherwise (it is never green: "no ban reported" is not "safe"); dashed when the reading is old or absent. */
+#burnSlot:empty { display: none; }
+.burn { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 12px; border-radius: 12px;
+  border: 1px solid var(--edge); background: oklch(1 0 0 / 0.04); }
+.burn .burn-ic { width: 20px; height: 20px; margin-top: 1px; color: var(--text-faint); }
+.burn-t { min-width: 0; }
+.card p.burn-lead { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--text); }
+.card p.burn-src { margin: 4px 0 0; font-size: 12px; line-height: 1.45; color: var(--text-faint); }
+.burn-src a { color: var(--text-dim); }
+.burn.is-ban { border-color: oklch(0.80 0.12 60 / 0.55); background: oklch(0.80 0.12 60 / 0.09); }
+.burn.is-ban .burn-ic, .card .burn.is-ban p.burn-lead { color: var(--warn); }
+.burn.is-off, .burn.is-na { border-style: dashed; }
+.card .burn.is-off p.burn-lead, .card .burn.is-na p.burn-lead { font-weight: 500; color: var(--text-dim); }

@@ -9,7 +9,7 @@
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   const state = { places: [], byId: new Map(), photos: {}, filters: { camping: false, darksky: false, four: false },
-    agency: "all", sort: "dark", q: "", sel: null, me: null, map: null, mapReady: false };
+    agency: "all", sort: "dark", q: "", sel: null, me: null, map: null, mapReady: false, burn: null, burnDone: false };
   window.__sf = state;   // read-only handle for the test harness
 
   /* ---------- small helpers ---------- */
@@ -116,6 +116,11 @@
     }
   }
   const credit = (ph) => `<a href="${esc(ph.page || ph.img)}" target="_blank" rel="noopener">${esc(ph.credit || ph.source || "Photo")}</a>${ph.license ? ", " + esc(ph.license) : ""}${ph.source ? " · " + esc(ph.source) : ""}`;
+  /* Burn-ban line (app/burnban.js; data/burnbans.json is written every 6 hours by tools/burnbans.py). Nothing is drawn until
+     the file has answered or failed, so "not available" never flashes before the real line. */
+  const federal = (p) => /^(nps|usfs)-/.test(p.id);
+  const burnHtml = (p) => state.burnDone && window.SFBurn ? window.SFBurn.html(p, state.burn, Date.now(), federal(p)) : "";
+  function burnRefresh() { const slot = $("#burnSlot"); if (slot && state.sel && state.byId.has(state.sel)) slot.innerHTML = burnHtml(state.byId.get(state.sel)); }
   function renderCard(p) {
     const s = p.sky, card = $("#card"), photos = p.photos || [];
     const kinds = (p.campingKinds || []).map((k) => `<span class="tag">${esc(KINDS[k] || k)}</span>`).join("");
@@ -145,6 +150,7 @@
         <div class="tags"><span class="tag model">Modelled from NASA satellite data</span>${dsp}${pub}</div>
         ${nearPct ? `<p class="note">The sky gets noticeably darker within about 8 km of this point; campsites away from town lights may beat this rating.</p>` : ""}
         <section id="wxCard" aria-labelledby="wxTitle"></section>
+        <div id="burnSlot">${burnHtml(p)}</div>
         ${photos.length ? `<figure class="photo" style="margin:0"><img id="ph" ${phAttrs(photos[0], "card")} alt="${esc(p.name)}" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption id="phCap">${credit(photos[0])}</figcaption>${photos.length > 1 ? `<div class="nav"><button data-ph="-1" aria-label="Previous photo">&#8249;</button><button data-ph="1" aria-label="Next photo">&#8250;</button></div>` : ""}</figure>` : ""}
         ${p.blurb ? `<p>${esc(p.blurb)}</p>` : ""}
         ${p.status ? `<p class="prov">Research note: ${esc(p.status)} Check the park's own page before you go.</p>` : ""}
@@ -384,6 +390,9 @@
       const [pl, ph] = await Promise.all([fetch("data/places.json").then((r) => r.json()), fetch("data/photos.json").then((r) => r.json()).catch(() => ({}))]);
       state.places = pl.places; state.photos = ph; state.places.forEach((p) => state.byId.set(p.id, p));
     } catch (e) { $("#count").textContent = "The list of places could not load. Serve this folder over http rather than opening the file directly."; }
+    // the burn-ban file is tiny and not needed for the first paint: ask for it now, fill the card line when it lands (no-cache = revalidate, so a new 6-hourly file is not hidden by the CDN's 10 minutes)
+    fetch("data/burnbans.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : null).catch(() => null)
+      .then((b) => { state.burn = b; state.burnDone = true; burnRefresh(); });
     const m = location.hash.match(/p=([\w-]+)/); if (m && state.byId.has(m[1])) state.sel = m[1];
     renderList(); if (state.sel) select(state.sel, false);
     initMap();

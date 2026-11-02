@@ -115,10 +115,13 @@
         <tr><td>Dark Sky Places</td><td><a href="https://darksky.org/" target="_blank" rel="noopener">DarkSky International</a></td><td>Designations as published</td></tr>
         <tr><td>Photos</td><td>Wikimedia Commons, linked; resized copies are kept with the site so they open at once</td><td>Each file's own licence (CC BY, CC BY-SA or public domain); the copies keep it</td></tr>
         <tr><td>Seven-day forecast</td><td><a href="https://www.weather.gov/documentation/services-web-api" target="_blank" rel="noopener">National Weather Service API</a>, gridpoint forecast</td><td>US government open data, free for any use; credit NWS</td></tr>
+        <tr><td>County burn bans</td><td><a href="https://tfsweb.tamu.edu/wildfire-and-other-disasters/burn-bans-and-information/" target="_blank" rel="noopener">Texas A&amp;M Forest Service, Texas Burn Bans</a>: only the county names and the list's own date are used</td><td>Free for non-commercial use with the source cited and linked (their site policy); StarFinder has no ads. They give no guarantee that the list is current</td></tr>
         <tr><td>Forecast, when NWS does not answer</td><td><a href="https://open-meteo.com/" target="_blank" rel="noopener">Weather data by Open-Meteo.com</a></td><td>CC BY 4.0; Open-Meteo's free service for non-commercial sites</td></tr>
       </table>
       <h3>The forecast</h3>
       <p>Opening a place asks the National Weather Service for its forecast at that park's coordinates (if it does not answer, Open-Meteo is asked instead). Each day shows the high, that night's low, the highest chance of rain or snow in the day, and the expected amount. The icon comes from the forecast's own weather types and sky cover; hail shows only when the forecast itself names hail. "Clearest night" averages the forecast cloud cover from 9 PM to 3 AM, and the moon figure is worked out from the average lunar month, good to a few percent. Forecasts are kept in your browser for 30 minutes.</p>
+      <h3>Burn bans</h3>
+      <p>Every 6 hours a small job on GitHub reads the Texas A&amp;M Forest Service's list of counties under a burn ban and saves it with the list's own date. A place's card then says whether a county it sits in is on the list, with the date of the list and when we last checked. The Forest Service compiles county orders; the counties issue them, and an order can start or lift before the list shows it. "No county burn ban reported" is not "fires are allowed": the park's own rules still apply, and federal land (national parks, forests and grasslands) sets its own. If the list or our check is more than a few days old, the card says so instead of showing a status. Oklahoma places are not covered.</p>
       <h3>Before you go</h3>
       <p>Check the park's own page for closures, burn bans and reservations, and pick a night near the new moon. StarFinder keeps nothing about you; "Nearest first" uses your location only inside your browser, and the forecast sends only the park's coordinates.</p>
       <p style="margin-top:16px"><button class="btn primary" id="aboutClose">Back to the map</button></p>
@@ -128,6 +131,7 @@
   <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js" crossorigin="anonymous"></script>
   <script src="app/space.js"></script>
   <script src="app/forecast.js"></script>
+  <script src="app/burnban.js"></script>
   <script src="app/starfinder.js"></script>
 </body>
 </html>
