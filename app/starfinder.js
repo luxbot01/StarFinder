@@ -22,7 +22,11 @@
     }
     return h + "</span>";
   }
-  const starColor = (s) => s >= 4.5 ? "#e6eeff" : s >= 3.5 ? "#b8c6ff" : s >= 2.5 ? "#b49cff" : s >= 1.5 ? "#f2a2cf" : "#ffb071";
+  // Two colours only (Rose, Nov 1): a darker purple for dim skies ("nice for hanging out") to gold for the best ("really
+  // good stars"), mixed in OKLab from oklch(0.50 0.16 302) to oklch(0.86 0.15 84), one step per half star. The ends differ
+  // 4.2:1 in luminance, so they read apart for every kind of colour vision; the purple keeps 3:1 on the map's ink.
+  const DOTS = ["#7546ad", "#8258a9", "#9068a4", "#9e779e", "#ad8597", "#bd938e", "#cda083", "#ddad76", "#eebb64", "#ffc84b"];
+  const starColor = (s) => DOTS[Math.max(0, Math.min(9, Math.round(s * 2) - 1))];
   const agencyOf = (p) => p.id.split("-")[0] === "tx" ? "tpwd" : p.id.split("-")[0];
   function km(a, b) {
     const R = 6371, r = Math.PI / 180, dl = (b.lat - a.lat) * r, dn = (b.lon - a.lon) * r;
@@ -98,6 +102,19 @@
     return state.places.filter((o) => o !== p && o.sky.pct >= p.sky.pct + 8)
       .map((o) => ({ o, d: km(p, o) })).filter((x) => x.d <= 200).sort((a, b) => a.d - b.d).slice(0, 3);
   }
+  const PH_SIZES = { card: "(max-width: 899px) calc(100vw - 32px), 348px", pop: "(max-width: 899px) 78vw, 320px" };
+  const phSet = (ph) => `${ph.src}-480.webp 480w, ${ph.src}-960.webp 960w`;
+  const phAttrs = (ph, where) => ph.src ? `src="${esc(ph.src)}-960.webp" srcset="${esc(phSet(ph))}" sizes="${PH_SIZES[where]}"` : `src="${esc(ph.img)}"`;
+  function setPh(img, ph, where) {
+    if (ph.src) { img.sizes = PH_SIZES[where]; img.srcset = phSet(ph); img.src = `${ph.src}-960.webp`; } else { img.removeAttribute("srcset"); img.src = ph.img; }
+  }
+  const warmed = new Set();
+  function warm(photos, where) {   // the same sizes and srcset as the visible image, so the browser picks the same file and the click is a cache hit
+    for (const ph of photos) {
+      const k = (ph.src || ph.img) + "|" + where; if (warmed.has(k)) continue; warmed.add(k);
+      const i = new Image(); i.decoding = "async"; setPh(i, ph, where);
+    }
+  }
   const credit = (ph) => `<a href="${esc(ph.page || ph.img)}" target="_blank" rel="noopener">${esc(ph.credit || ph.source || "Photo")}</a>${ph.license ? ", " + esc(ph.license) : ""}${ph.source ? " · " + esc(ph.source) : ""}`;
   function renderCard(p) {
     const s = p.sky, card = $("#card"), photos = p.photos || [];
@@ -128,7 +145,7 @@
         <div class="tags"><span class="tag model">Modelled from NASA satellite data</span>${dsp}${pub}</div>
         ${nearPct ? `<p class="note">The sky gets noticeably darker within about 8 km of this point; campsites away from town lights may beat this rating.</p>` : ""}
         <section id="wxCard" aria-labelledby="wxTitle"></section>
-        ${photos.length ? `<figure class="photo" style="margin:0"><img id="ph" src="${esc(photos[0].img)}" alt="${esc(p.name)}" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption id="phCap">${credit(photos[0])}</figcaption>${photos.length > 1 ? `<div class="nav"><button data-ph="-1" aria-label="Previous photo">&#8249;</button><button data-ph="1" aria-label="Next photo">&#8250;</button></div>` : ""}</figure>` : ""}
+        ${photos.length ? `<figure class="photo" style="margin:0"><img id="ph" ${phAttrs(photos[0], "card")} alt="${esc(p.name)}" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption id="phCap">${credit(photos[0])}</figcaption>${photos.length > 1 ? `<div class="nav"><button data-ph="-1" aria-label="Previous photo">&#8249;</button><button data-ph="1" aria-label="Next photo">&#8250;</button></div>` : ""}</figure>` : ""}
         ${p.blurb ? `<p>${esc(p.blurb)}</p>` : ""}
         ${p.status ? `<p class="prov">Research note: ${esc(p.status)} Check the park's own page before you go.</p>` : ""}
         <div><h3>Staying the night</h3><div class="tags">${camp}</div></div>
@@ -144,8 +161,9 @@
       </div>`;
     card.setAttribute("aria-labelledby", "cardTitle");
     if (window.SFWeather) window.SFWeather.mount($("#wxCard"), p, "full");
+    warm(photos, "card");
     let pi = 0;
-    $$("[data-ph]", card).forEach((b) => b.addEventListener("click", () => { pi = (pi + +b.dataset.ph + photos.length) % photos.length; $("#ph").src = photos[pi].img; $("#phCap").innerHTML = credit(photos[pi]); }));
+    $$("[data-ph]", card).forEach((b) => b.addEventListener("click", () => { pi = (pi + +b.dataset.ph + photos.length) % photos.length; setPh($("#ph"), photos[pi], "card"); $("#phCap").innerHTML = credit(photos[pi]); }));
     $("#cardClose").addEventListener("click", () => select(null));
     $$("[data-go]", card).forEach((b) => b.addEventListener("click", () => select(b.dataset.go, true)));
   }
@@ -182,7 +200,7 @@
     const p = state.byId.get(id); if (!p || !state.mapReady) return;
     const ph = p.photos || []; let i = 0;
     if (pop) pop.remove();
-    const hero = ph.length ? `<img src="${esc(ph[0].img)}" alt="${esc(p.name)}" onerror="this.style.display='none'">` +
+    const hero = ph.length ? `<img ${phAttrs(ph[0], "pop")} alt="${esc(p.name)}" onerror="this.style.display='none'">` +
       (ph.length > 1 ? '<button class="ph-nav prev" aria-label="Previous photo">&#8249;</button><button class="ph-nav next" aria-label="Next photo">&#8250;</button>' : "") +
       `<div class="credit">${credit(ph[0])}</div>`
       : `<div class="nophoto"><svg width="54" height="54" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5l3 10.5 10.5 3-10.5 3-3 10.5-3-10.5L2.5 16l10.5-3z" fill="${starColor(p.sky.stars)}"/></svg></div>`;
@@ -201,11 +219,12 @@
     pop.on("close", () => document.body.classList.remove("pop-open"));
     const el = pop.getElement();
     if (window.SFWeather) window.SFWeather.mount(el.querySelector(".wx-slot"), p, "mini");
+    warm(ph, "pop");
     el.querySelector(".x").addEventListener("click", () => pop && pop.remove());
     el.querySelector("[data-details]").addEventListener("click", () => select(id, false));
     el.querySelectorAll(".ph-nav").forEach((b) => b.addEventListener("click", () => {
       i = (i + (b.classList.contains("next") ? 1 : -1) + ph.length) % ph.length;
-      el.querySelector(".hero img").src = ph[i].img; el.querySelector(".hero .credit").innerHTML = credit(ph[i]); }));
+      setPh(el.querySelector(".hero img"), ph[i], "pop"); el.querySelector(".hero .credit").innerHTML = credit(ph[i]); }));
     $$(".row").forEach((r) => (r.dataset.id === id ? r.setAttribute("aria-current", "true") : r.removeAttribute("aria-current")));
     state.map.setFilter("pl-sel", ["==", ["get", "id"], id]);
     // On a phone the pop-up hangs above its pin and must clear the floating search bar: cap it to the room there (it scrolls

@@ -481,3 +481,8 @@
 .pop .x { background: oklch(0.10 0.04 295 / 0.6); border-color: oklch(1 0 0 / 0.35); }   /* it vanished over bright sky photos */
 /* the brand line keeps the About button beside it in the narrower 340 px panel: the subtitle wraps instead */
 .panel .topline .brand { flex: 1 1 0; min-width: 0; }
+/* the places key in the legend: the dots' two colours (purple for dim skies, gold for the best), mixed in OKLab */
+.legend .dots-key { margin-top: 9px; }
+.legend .bar.dots { background: linear-gradient(90deg, #7546ad, #ad8597, #ffc84b); }
+@supports (background: linear-gradient(in oklab 90deg, red, blue)) { .legend .bar.dots { background: linear-gradient(in oklab 90deg, #7546ad, #ffc84b); } }
+.photo img { background: oklch(0.10 0.04 295); }
