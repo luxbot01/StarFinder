@@ -1,5 +1,5 @@
 # StarFinder's burn-ban watcher: every 6 hours it reads the Texas A&M Forest Service county burn-ban list and, only when
-# something changed (or the last check is 12 hours old), commits data/burnbans.json. See tools/burnbans.py and the README.
+# something changed (or the last check is 11 hours old), commits data/burnbans.json. See tools/burnbans.py and the README.
 # No secrets, no personal credential: the job uses the run's own GITHUB_TOKEN with contents: write and nothing else.
 name: Burn-ban watcher
 

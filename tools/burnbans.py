@@ -27,7 +27,7 @@ PAGE = "https://tfsweb.tamu.edu/wildfire-and-other-disasters/burn-bans-and-infor
 TXT = "https://tfsfrp.tamu.edu/WILDFIRES/BURNBAN.txt"
 XML = "https://tfsfrp.tamu.edu/WILDFIRES/BURNBAN.XML"
 UA = "StarFinder-burnban-watcher (+https://github.com/luxbot01/StarFinder)"
-HEARTBEAT_H = 12
+HEARTBEAT_H = 11   # the job runs every 6 hours, so every second run (about 12 hours) writes; with jitter, 11 keeps `checked` under 18 hours
 MAX_BYTES = 200_000   # the real files are 3 to 4 KB
 
 # Parks whose county text in places.json is not enough. Others are read from the text ("A and B", "A, B, C", a trailing note dropped).

@@ -7,7 +7,9 @@
   <meta name="description" content="Find dark skies and campsites across Texas: every state park, natural area and historic site, every national park unit, and the national forests and grasslands, rated by how many stars you can see." />
   <meta name="theme-color" content="#0b0820" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23140f2e'/%3E%3Cpath d='M16 4l2.6 9.4L28 16l-9.4 2.6L16 28l-2.6-9.4L4 16l9.4-2.6z' fill='%23f2c45a'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" crossorigin="anonymous" />
+  <script>window.__sfPlaces = fetch("data/places.json").then(function (r) { return r.json(); }); window.__sfPlaces.catch(function () {});</script>
+  <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />
+  <link rel="stylesheet" href="vendor/maplibre-gl/5.24.0/maplibre-gl.css" />
   <link rel="stylesheet" href="app/starfinder.css" />
 </head>
 <body>
@@ -110,7 +112,7 @@
         <tr><td>Night-time radiance</td><td><a href="https://www.earthdata.nasa.gov/data/tools/gibs" target="_blank" rel="noopener">NASA GIBS</a>, layer VIIRS SNPP Gap-Filled BRDF Corrected DNB Radiance (Black Marble VNP46A2)</td><td>NASA data, no restrictions; credit NASA</td></tr>
         <tr><td>Satellite lights layer</td><td>The same layer, served live by NASA GIBS</td><td>As above</td></tr>
         <tr><td>Base map</td><td><a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> dark style, OpenMapTiles schema</td><td>Map data © OpenStreetMap contributors (ODbL); OpenMapTiles</td></tr>
-        <tr><td>Map engine</td><td><a href="https://maplibre.org" target="_blank" rel="noopener">MapLibre GL JS</a> 5.24.0</td><td>BSD-3-Clause</td></tr>
+        <tr><td>Map engine</td><td><a href="https://maplibre.org" target="_blank" rel="noopener">MapLibre GL JS</a> 5.24.0, kept with this site</td><td>BSD-3-Clause (licence file beside it in the vendor folder)</td></tr>
         <tr><td>Park facts and locations</td><td>Texas Parks and Wildlife Department, National Park Service and USDA Forest Service pages, with Wikipedia where an official page gave no coordinates; each place links its source</td><td>Facts; coordinates checked against each source</td></tr>
         <tr><td>Dark Sky Places</td><td><a href="https://darksky.org/" target="_blank" rel="noopener">DarkSky International</a></td><td>Designations as published</td></tr>
         <tr><td>Photos</td><td>Wikimedia Commons, linked; resized copies are kept with the site so they open at once</td><td>Each file's own licence (CC BY, CC BY-SA or public domain); the copies keep it</td></tr>
@@ -128,7 +130,7 @@
     </div>
   </dialog>
 
-  <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js" crossorigin="anonymous"></script>
+  <script id="mlScript" async src="vendor/maplibre-gl/5.24.0/maplibre-gl.js"></script>
   <script src="app/space.js"></script>
   <script src="app/forecast.js"></script>
   <script src="app/burnban.js"></script>

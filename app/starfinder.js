@@ -1,5 +1,5 @@
-/* StarFinder app. Plain JavaScript, no build step. Data: data/places.json (park facts + modelled sky),
-   data/photos.json (Wikimedia Commons links carried over from the 2025 version), tiles/sky (our model). */
+/* StarFinder app. Plain JavaScript, no build step. Data: data/places.json (park facts, modelled sky, photos with their credits),
+   data/burnbans.json (written every 6 hours by tools/burnbans.py), tiles/sky (our model), photos/ (resized copies). */
 (() => {
   "use strict";
   const $ = (s, r = document) => r.querySelector(s);
@@ -8,7 +8,7 @@
   const isPhone = () => matchMedia("(max-width: 899px)").matches;
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-  const state = { places: [], byId: new Map(), photos: {}, filters: { camping: false, darksky: false, four: false },
+  const state = { places: [], byId: new Map(), filters: { camping: false, darksky: false, four: false },
     agency: "all", sort: "dark", q: "", sel: null, me: null, map: null, mapReady: false, burn: null, burnDone: false };
   window.__sf = state;   // read-only handle for the test harness
 
@@ -387,15 +387,17 @@
     if (navigator.userAgentData) document.documentElement.classList.add("warp");   // Chromium only: see html.warp in the CSS
     wire(); glassLight();
     try {
-      const [pl, ph] = await Promise.all([fetch("data/places.json").then((r) => r.json()), fetch("data/photos.json").then((r) => r.json()).catch(() => ({}))]);
-      state.places = pl.places; state.photos = ph; state.places.forEach((p) => state.byId.set(p.id, p));
+      const pl = await (window.__sfPlaces || fetch("data/places.json").then((r) => r.json()));
+      state.places = pl.places; state.places.forEach((p) => state.byId.set(p.id, p));
     } catch (e) { $("#count").textContent = "The list of places could not load. Serve this folder over http rather than opening the file directly."; }
     // the burn-ban file is tiny and not needed for the first paint: ask for it now, fill the card line when it lands (no-cache = revalidate, so a new 6-hourly file is not hidden by the CDN's 10 minutes)
     fetch("data/burnbans.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : null).catch(() => null)
       .then((b) => { state.burn = b; state.burnDone = true; burnRefresh(); });
     const m = location.hash.match(/p=([\w-]+)/); if (m && state.byId.has(m[1])) state.sel = m[1];
     renderList(); if (state.sel) select(state.sel, false);
-    initMap();
+    // the list is on screen now; the map starts when MapLibre (a large script, loaded beside the page) has arrived. initMap says so if it never does.
+    const ml = $("#mlScript");
+    if (window.maplibregl || !ml) initMap(); else { ml.addEventListener("load", initMap, { once: true }); ml.addEventListener("error", initMap, { once: true }); }
   }
   start();
 })();

@@ -49,13 +49,27 @@ models do not forecast hail), and its credit sits beside the data. Answers are k
 30 minutes; offline, a copy up to 12 hours old is shown and labelled, and a failed card retries by itself
 when the browser comes back online. The icons are drawn in the file, by us.
 
+## Photos (`tools/`)
+
+Each place carries a few photos with their credit and licence. Rules: no Texas state park (TPWD) site photos; Wikimedia
+Commons files only if their own metadata says CC0, CC BY, CC BY-SA or public domain (no NC, no ND); National Park Service
+photos only if NPGallery's record says "Public domain" with full granting rights and no credit that says courtesy, copyright
+or permission (credited "NPS Photo / name", as nps.gov does, and linked to the photo's own nps.gov asset page, which prints the
+credit and the constraint).
+`nps_photos.py` finds NPS candidates (the same NPGallery API nps.gov's galleries read, no key) and `commons_photos.py` finds
+Commons candidates with licences read from Commons' metadata; both write a numbered contact sheet to look at. A person (or a
+helper) chooses by number, `build_commons_picks.py` builds the records from the candidate files (no one types a licence), and
+`merge_photos.py` refuses anything that breaks the rules above, skips duplicates and backs up `places.json`. Then
+`python -I tools/photos_cache.py` keeps resized WebP copies in `photos/` so the arrows answer at once. Wrong-place traps seen:
+Commons categories and searches for Cooper Lake, Bear Creek, Tyler and Village Creek also return same-named parks in other states.
+
 ## County burn bans (`tools/burnbans.py`, `.github/workflows/burnbans.yml`, `app/burnban.js`)
 
 Every 6 hours a scheduled GitHub Actions job reads the Texas A&M Forest Service's county burn-ban list, the
 `BURNBAN.txt` file linked from their [burn bans page](https://tfsweb.tamu.edu/wildfire-and-other-disasters/burn-bans-and-information/)
 (UTF-16, first line `149 Texas Burn Bans - 10/30/2026 8:18:37 AM`), and cross-checks it against the `BURNBAN.XML` file
-beside it. It writes `data/burnbans.json` and commits it only when something changed or the last check is 12 hours old
-(so `checked` is never more than 12 hours behind); the commit is made by `github-actions[bot]` with the run's own
+beside it. It writes `data/burnbans.json` and commits it only when something changed or the last check is 11 hours old
+(so `checked` is never much more than 12 hours behind); the commit is made by `github-actions[bot]` with the run's own
 `GITHUB_TOKEN`, permission `contents: write` and nothing else, and no secret or personal credential exists anywhere.
 A park's counties come from the `county` field in `places.json` (a few multi-county parks are listed in `OVERRIDES`
 in `burnbans.py`, for example Colorado Bend: San Saba and Lampasas); a park is "in effect" if any of its counties is on the list.
@@ -96,7 +110,7 @@ Forest Service points with Wikipedia's coordinates.
 |---|---|---|
 | Night-time radiance and the live lights layer | NASA GIBS, VIIRS SNPP Gap-Filled BRDF Corrected DNB Radiance | NASA data, no restrictions; credit NASA |
 | Base map | OpenFreeMap dark style (OpenMapTiles schema) | Map data © OpenStreetMap contributors, ODbL |
-| Map engine | MapLibre GL JS 5.24.0 | BSD-3-Clause |
+| Map engine | MapLibre GL JS 5.24.0, vendored in `vendor/maplibre-gl/5.24.0/` with its licence file | BSD-3-Clause |
 | Park facts | TPWD, NPS and USDA Forest Service pages; Wikipedia where no official point exists | facts, each linked |
 | Dark Sky Places | DarkSky International | as published |
 | Photos | Wikimedia Commons, linked | each file's own licence |
