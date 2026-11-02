@@ -1,0 +1,1108 @@
+{
+ "meta": {
+  "what": "Camping audit of every StarFinder place, read from each place's own official page on Nov 2 2026 (UTC times below).",
+  "rule": "yes = the place's own page offers any camping (campground, primitive, backcountry, dispersed); no = the page says no camping, or that the place is day use only; unclear = the page does not say. Only no is delisted (places.json listed:false); unclear stays listed.",
+  "counts": {
+   "yes": 94,
+   "no": 5,
+   "unclear": 17
+  }
+ },
+ "places": [
+  {
+   "id": "tx-abilene",
+   "name": "Abilene State Park",
+   "verdict": "yes",
+   "quote": "Rent a yurt or reserve a campsite or screened shelter underneath tall trees.",
+   "source": "https://tpwd.texas.gov/state-parks/abilene",
+   "pageDate": null,
+   "read": "2026-11-02T21:56:41Z"
+  },
+  {
+   "id": "tx-buescher",
+   "name": "Buescher State Park",
+   "verdict": "yes",
+   "quote": "Choose your campsite : with electricity, with water only, or primitive walk-in.",
+   "source": "https://tpwd.texas.gov/state-parks/buescher",
+   "pageDate": null,
+   "read": "2026-11-02T21:56:43Z"
+  },
+  {
+   "id": "tx-devils-sinkhole",
+   "name": "Devil's Sinkhole State Natural Area",
+   "verdict": "unclear",
+   "quote": "Access to Devil’s Sinkhole State Natural Area is only by guided tour. Reservations are required. (Also: Nearby Kickapoo Cavern State Park offers camping.)",
+   "source": "https://tpwd.texas.gov/state-parks/devils-sinkhole",
+   "pageDate": null,
+   "read": "2026-11-02T21:56:44Z"
+  },
+  {
+   "id": "tx-garner",
+   "name": "Garner State Park",
+   "verdict": "yes",
+   "quote": "Reserve a historic cabin, screened shelter or campsite.",
+   "source": "https://tpwd.texas.gov/state-parks/garner",
+   "pageDate": null,
+   "read": "2026-11-02T21:56:46Z"
+  },
+  {
+   "id": "tx-lake-bob-sandlin",
+   "name": "Lake Bob Sandlin State Park",
+   "verdict": "yes",
+   "quote": "Choose from campsite, screened shelter or cabin for your stay by the lake.",
+   "source": "https://tpwd.texas.gov/state-parks/lake-bob-sandlin",
+   "pageDate": null,
+   "read": "2026-11-02T21:56:48Z"
+  },
+  {
+   "id": "tx-lost-maples",
+   "name": "Lost Maples State Natural Area",
+   "verdict": "yes",
+   "quote": "Choose from hike-in primitive campsites or drive-up sites with amenities for your overnight stay.",
+   "source": "https://tpwd.texas.gov/state-parks/lost-maples",
+   "pageDate": null,
+   "read": "2026-11-02T21:56:49Z"
+  },
+  {
+   "id": "tx-palo-duro-canyon",
+   "name": "Palo Duro Canyon State Park",
+   "verdict": "yes",
+   "quote": "Choose from campsites with water and electricity, tent sites, equestrian sites , or backpack camping areas.",
+   "source": "https://tpwd.texas.gov/state-parks/palo-duro-canyon",
+   "pageDate": null,
+   "read": "2026-11-02T21:56:51Z"
+  },
+  {
+   "id": "tx-sheldon-lake",
+   "name": "Sheldon Lake State Park & Environmental Learning Center",
+   "verdict": "unclear",
+   "quote": "Hours Open daily: 8 a.m. – 5 p.m. ... We often reach capacity, and recommend reservations for day use.",
+   "source": "https://tpwd.texas.gov/state-parks/sheldon-lake",
+   "pageDate": null,
+   "read": "2026-11-02T21:56:53Z"
+  },
+  {
+   "id": "nps-gumo",
+   "name": "Guadalupe Mountains National Park",
+   "verdict": "yes",
+   "quote": "Guadalupe Mountains has three developed campgrounds open year round which are open to tent or vehicle camping (RVs, etc.) one of which can only be used by groups with horses.",
+   "source": "https://www.nps.gov/gumo/planyourvisit/camping.htm",
+   "pageDate": "March 27, 2022",
+   "read": "2026-11-02T21:56:56Z"
+  },
+  {
+   "id": "usfs-caddo-national-grassland",
+   "name": "Caddo National Grassland",
+   "verdict": "yes",
+   "quote": "The overnight trailhead has 26 campsites, sanitary facilities, horse washing area and potable water.",
+   "source": "https://www.fs.usda.gov/r08/texas/recreation/bois-d-arc-trailhead-caddo-lbj-national-grasslands",
+   "pageDate": "October 14, 2025",
+   "read": "2026-11-02T22:05:27Z"
+  },
+  {
+   "id": "tx-albert-bessie-kronkosky",
+   "name": "Albert and Bessie Kronkosky State Natural Area",
+   "verdict": "unclear",
+   "quote": "This park is not yet open. ... When this site opens, you’ll be able to camp, backpack and hike.",
+   "source": "https://tpwd.texas.gov/state-parks/albert-bessie-kronkosky",
+   "pageDate": null,
+   "read": "2026-11-02T21:56:59Z",
+   "note": "not open yet"
+  },
+  {
+   "id": "tx-caddo-lake",
+   "name": "Caddo Lake State Park",
+   "verdict": "yes",
+   "quote": "Choose from 46 campsites , ranging from water only to full hookup sites.",
+   "source": "https://tpwd.texas.gov/state-parks/caddo-lake",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:01Z"
+  },
+  {
+   "id": "tx-dinosaur-valley",
+   "name": "Dinosaur Valley State Park",
+   "verdict": "yes",
+   "quote": "Hike between 1 and 2.5 miles across the river to campsites.",
+   "source": "https://tpwd.texas.gov/state-parks/dinosaur-valley/fees-facilities/campsites",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:04Z"
+  },
+  {
+   "id": "tx-goliad",
+   "name": "Goliad State Park and Historic Site",
+   "verdict": "yes",
+   "quote": "Campsites range from sites with water only to full hookups.",
+   "source": "https://tpwd.texas.gov/state-parks/goliad",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:05Z"
+  },
+  {
+   "id": "tx-lake-brownwood",
+   "name": "Lake Brownwood State Park",
+   "verdict": "yes",
+   "quote": "Reserve a campsite, screened shelter or historic cabin for your family getaway.",
+   "source": "https://tpwd.texas.gov/state-parks/lake-brownwood",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:06Z"
+  },
+  {
+   "id": "tx-lyndon-b-johnson",
+   "name": "Lyndon B. Johnson State Park and Historic Site",
+   "verdict": "yes",
+   "quote": "Youth groups can reserve a small camping area.",
+   "source": "https://tpwd.texas.gov/state-parks/lyndon-b-johnson",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:08Z",
+   "note": "youth groups only"
+  },
+  {
+   "id": "tx-palo-pinto-mountains",
+   "name": "Palo Pinto Mountains State Park",
+   "verdict": "yes",
+   "quote": "Bring a picnic and visit for the day or reserve a campsite for an overnight visit.",
+   "source": "https://tpwd.texas.gov/state-parks/palo-pinto-mountains",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:10Z"
+  },
+  {
+   "id": "tx-south-llano-river",
+   "name": "South Llano River State Park",
+   "verdict": "yes",
+   "quote": "Most campsites have water and electric hookups, and a restroom with showers nearby.",
+   "source": "https://tpwd.texas.gov/state-parks/south-llano-river",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:11Z"
+  },
+  {
+   "id": "nps-lamr",
+   "name": "Lake Meredith National Recreation Area",
+   "verdict": "yes",
+   "quote": "Lake Meredith National Recreation Area offers 11 different campgrounds to enjoy the lake or find an off-the-grid campsite.",
+   "source": "https://www.nps.gov/lamr/",
+   "pageDate": "January 27, 2026",
+   "read": "2026-11-02T21:57:13Z"
+  },
+  {
+   "id": "usfs-lyndon-b-johnson-national-grassland",
+   "name": "Lyndon B. Johnson National Grassland",
+   "verdict": "yes",
+   "quote": "Located on the north shore of the 35-acre Black Creek Lake, Black Creek Recreation Area has a picnic area and boat launch facility. The area also has 14 walk-in camping sites available.",
+   "source": "https://www.fs.usda.gov/r08/texas/recreation/black-creek-lake",
+   "pageDate": "June 1, 2026",
+   "read": "2026-11-02T22:05:21Z"
+  },
+  {
+   "id": "tx-atlanta",
+   "name": "Atlanta State Park",
+   "verdict": "yes",
+   "quote": "Campers can reserve one of 58 campsites .",
+   "source": "https://tpwd.texas.gov/state-parks/atlanta",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:19Z"
+  },
+  {
+   "id": "tx-caprock-canyons",
+   "name": "Caprock Canyons State Park and Trailway",
+   "verdict": "yes",
+   "quote": "Campsites range from drive up sites with electricity to hike-in primitive sites..",
+   "source": "https://tpwd.texas.gov/state-parks/caprock-canyons",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:21Z"
+  },
+  {
+   "id": "tx-eisenhower",
+   "name": "Eisenhower State Park",
+   "verdict": "yes",
+   "quote": "Stay overnight at one of our camp­sites .",
+   "source": "https://tpwd.texas.gov/state-parks/eisenhower",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:23Z"
+  },
+  {
+   "id": "tx-goose-island",
+   "name": "Goose Island State Park",
+   "verdict": "yes",
+   "quote": "Choose from 44 campsites by the bay or 57 sites nestled under oak trees , all with water and electricity.",
+   "source": "https://tpwd.texas.gov/state-parks/goose-island",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:24Z"
+  },
+  {
+   "id": "tx-lake-casa-blanca",
+   "name": "Lake Casa Blanca International State Park",
+   "verdict": "yes",
+   "quote": "All campsites have water and electricity; some have sewer hookups, too.",
+   "source": "https://tpwd.texas.gov/state-parks/lake-casa-blanca",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:26Z"
+  },
+  {
+   "id": "tx-martin-creek-lake",
+   "name": "Martin Creek Lake State Park",
+   "verdict": "yes",
+   "quote": "Choose from campsites with water and electricity or primitive campsites situated on an island.",
+   "source": "https://tpwd.texas.gov/state-parks/martin-creek-lake",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:28Z"
+  },
+  {
+   "id": "tx-pedernales-falls",
+   "name": "Pedernales Falls State Park",
+   "verdict": "yes",
+   "quote": "These sites are in the Backcountry Wolf Ridge Camping Area.",
+   "source": "https://tpwd.texas.gov/state-parks/pedernales-falls/fees-facilities/campsites",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:30Z"
+  },
+  {
+   "id": "tx-stephen-f-austin",
+   "name": "Stephen F. Austin State Park",
+   "verdict": "yes",
+   "quote": "Reserve a screened shelter, cabin or campsite for your stay.",
+   "source": "https://tpwd.texas.gov/state-parks/stephen-f-austin",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:31Z"
+  },
+  {
+   "id": "nps-lyjo",
+   "name": "Lyndon B. Johnson National Historical Park",
+   "verdict": "unclear",
+   "quote": "(The unit's pages read say nothing about camping either way; camping.htm and eatingsleeping.htm are 404.)",
+   "source": "https://www.nps.gov/lyjo/",
+   "pageDate": "October 10, 2026",
+   "read": "2026-11-02T21:57:33Z",
+   "alsoRead": [
+    "https://www.nps.gov/lyjo/planyourvisit/basicinfo.htm",
+    "https://www.nps.gov/lyjo/planyourvisit/hours.htm",
+    "https://www.nps.gov/lyjo/planyourvisit/things2do.htm",
+    "https://www.nps.gov/lyjo/planyourvisit/index.htm",
+    "https://www.nps.gov/lyjo/planyourvisit/fees.htm"
+   ]
+  },
+  {
+   "id": "usfs-mcclellan-creek-national-grassland",
+   "name": "McClellan Creek National Grassland",
+   "verdict": "yes",
+   "quote": "East Bluff #1 Campground offers picnicking and camping opportunities at Lake McClellan.",
+   "source": "https://www.fs.usda.gov/r03/cibola/recreation/mcclellan-creek-national-grasslands",
+   "pageDate": "March 20, 2025",
+   "read": "2026-11-02T21:57:39Z"
+  },
+  {
+   "id": "tx-balmorhea",
+   "name": "Balmorhea State Park",
+   "verdict": "yes",
+   "quote": "Set up camp in the desert with a view of mountains.",
+   "source": "https://tpwd.texas.gov/state-parks/balmorhea",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:47Z"
+  },
+  {
+   "id": "tx-cedar-hill",
+   "name": "Cedar Hill State Park",
+   "verdict": "yes",
+   "quote": "Camp at one of 350 developed campsites , all near restrooms with hot showers.",
+   "source": "https://tpwd.texas.gov/state-parks/cedar-hill",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:49Z"
+  },
+  {
+   "id": "tx-enchanted-rock",
+   "name": "Enchanted Rock State Natural Area",
+   "verdict": "yes",
+   "quote": "Attend a star party or camp under the stars at this International Dark Sky Park!",
+   "source": "https://tpwd.texas.gov/state-parks/enchanted-rock",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:51Z"
+  },
+  {
+   "id": "tx-government-canyon",
+   "name": "Government Canyon State Natural Area",
+   "verdict": "yes",
+   "quote": "Reserve one of 23 walk-in tent camp­sites .",
+   "source": "https://tpwd.texas.gov/state-parks/government-canyon",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:52Z"
+  },
+  {
+   "id": "tx-lake-colorado-city",
+   "name": "Lake Colorado City State Park",
+   "verdict": "yes",
+   "quote": "Reserve a campsite or cabin to get away for a weekend.",
+   "source": "https://tpwd.texas.gov/state-parks/lake-colorado-city",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:54Z"
+  },
+  {
+   "id": "tx-martin-dies-jr",
+   "name": "Martin Dies, Jr. State Park",
+   "verdict": "yes",
+   "quote": "Choose from over 200 campsites (most are water/electric sites).",
+   "source": "https://tpwd.texas.gov/state-parks/martin-dies-jr",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:56Z"
+  },
+  {
+   "id": "tx-possum-kingdom",
+   "name": "Possum Kingdom State Park",
+   "verdict": "yes",
+   "quote": "If you’re a camper, choose one of our water and electricity sites, water-only sites, or primitive walk-in sites .",
+   "source": "https://tpwd.texas.gov/state-parks/possum-kingdom",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:57Z"
+  },
+  {
+   "id": "tx-tyler",
+   "name": "Tyler State Park",
+   "verdict": "yes",
+   "quote": "Campsites —ranging from water only to full hookups.",
+   "source": "https://tpwd.texas.gov/state-parks/tyler",
+   "pageDate": null,
+   "read": "2026-11-02T21:57:59Z"
+  },
+  {
+   "id": "nps-pais",
+   "name": "Padre Island National Seashore",
+   "verdict": "yes",
+   "quote": "Learn more about the park's two campgrounds as well as primitive camping on the beach.",
+   "source": "https://www.nps.gov/pais/index.htm",
+   "pageDate": "July 11, 2026",
+   "read": "2026-11-02T21:58:01Z"
+  },
+  {
+   "id": "usfs-rita-blanca-national-grassland",
+   "name": "Rita Blanca National Grassland",
+   "verdict": "unclear",
+   "quote": "Two picnic areas are popular stops for those traveling across the country in need of a reprieve.",
+   "source": "https://www.fs.usda.gov/r03/cibola/recreation/rita-blanca-national-grasslands-0",
+   "pageDate": "April 24, 2025",
+   "read": "2026-11-02T21:58:04Z",
+   "note": "its site list shows only two picnic sites (Felt, Thompson Grove); camping is not mentioned"
+  },
+  {
+   "id": "tx-bastrop",
+   "name": "Bastrop State Park",
+   "verdict": "yes",
+   "quote": "Stay overnight at a campsite or historic cabin .",
+   "source": "https://tpwd.texas.gov/state-parks/bastrop",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:07Z"
+  },
+  {
+   "id": "tx-choke-canyon",
+   "name": "Choke Canyon State Park",
+   "verdict": "yes",
+   "quote": "Calliham is a full-service park, with campsites and other amenities.",
+   "source": "https://tpwd.texas.gov/state-parks/choke-canyon",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:08Z"
+  },
+  {
+   "id": "tx-estero-llano-grande",
+   "name": "Estero Llano Grande State Park",
+   "verdict": "unclear",
+   "quote": "Hours Open daily, 8 a.m.-5 p.m. (Group lodging only: Camp Thicket’s two complexes offer barracks, full kitchens and meeting/dining spaces.)",
+   "source": "https://tpwd.texas.gov/state-parks/estero-llano-grande",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:10Z"
+  },
+  {
+   "id": "tx-guadalupe-river",
+   "name": "Guadalupe River State Park",
+   "verdict": "yes",
+   "quote": "Camp at one of 85 water and electric campsites or nine walk-in tent sites .",
+   "source": "https://tpwd.texas.gov/state-parks/guadalupe-river",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:12Z"
+  },
+  {
+   "id": "tx-lake-corpus-christi",
+   "name": "Lake Corpus Christi State Park",
+   "verdict": "yes",
+   "quote": "Choose from a variety of campsites, screened shelters and cabins for your weekend getaway.",
+   "source": "https://tpwd.texas.gov/state-parks/lake-corpus-christi",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:13Z"
+  },
+  {
+   "id": "tx-mckinney-falls",
+   "name": "McKinney Falls State Park",
+   "verdict": "yes",
+   "quote": "Stay at one of 81 campsites (all with water and electric hookups).",
+   "source": "https://tpwd.texas.gov/state-parks/mckinney-falls",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:15Z"
+  },
+  {
+   "id": "tx-post-oak-ridge",
+   "name": "Post Oak Ridge State Park",
+   "verdict": "unclear",
+   "quote": "Hours Monday - Thursday, 8 a.m. to 4 p.m. Friday - Sunday: 8 a.m. to 8 p.m. Reservations are required. No park headquarters on site.",
+   "source": "https://tpwd.texas.gov/state-parks/post-oak-ridge",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:17Z"
+  },
+  {
+   "id": "tx-village-creek",
+   "name": "Village Creek State Park",
+   "verdict": "yes",
+   "quote": "Stay: Choose from campsites for tents and RVs , or rent our eight-person cabin .",
+   "source": "https://tpwd.texas.gov/state-parks/village-creek",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:18Z"
+  },
+  {
+   "id": "nps-paal",
+   "name": "Palo Alto Battlefield National Historical Park",
+   "verdict": "unclear",
+   "quote": "(The unit's pages read say nothing about camping either way; camping.htm and eatingsleeping.htm are 404.)",
+   "source": "https://www.nps.gov/paal/planyourvisit/index.htm",
+   "pageDate": "February 23, 2026",
+   "read": "2026-11-02T21:58:22Z",
+   "alsoRead": [
+    "https://www.nps.gov/paal/planyourvisit/basicinfo.htm",
+    "https://www.nps.gov/paal/planyourvisit/hours.htm",
+    "https://www.nps.gov/paal/planyourvisit/things2do.htm",
+    "https://www.nps.gov/paal/planyourvisit/fees.htm"
+   ]
+  },
+  {
+   "id": "usfs-black-kettle-national-grassland",
+   "name": "Black Kettle National Grassland (Lake Marvin, Texas unit)",
+   "verdict": "yes",
+   "quote": "Lake Marvin Campground has 12 camping units and is situated at an elevation of 2,000 feet.",
+   "source": "https://www.fs.usda.gov/r03/cibola/recreation/black-kettle-national-grasslands",
+   "pageDate": "March 24, 2025",
+   "read": "2026-11-02T21:58:27Z"
+  },
+  {
+   "id": "tx-bear-creek",
+   "name": "Bear Creek State Park",
+   "verdict": "unclear",
+   "quote": "This park is not yet open. It is in the planning stage of development.",
+   "source": "https://tpwd.texas.gov/state-parks/bear-creek",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:35Z",
+   "note": "not open yet"
+  },
+  {
+   "id": "tx-cleburne",
+   "name": "Cleburne State Park",
+   "verdict": "yes",
+   "quote": "All campsites have water and elec­tricity; some have sewer hookups as well.",
+   "source": "https://tpwd.texas.gov/state-parks/cleburne",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:37Z"
+  },
+  {
+   "id": "tx-falcon",
+   "name": "Falcon State Park",
+   "verdict": "yes",
+   "quote": "Reserve a cabin, screened shelter or campsite for your stay.",
+   "source": "https://tpwd.texas.gov/state-parks/falcon",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:38Z"
+  },
+  {
+   "id": "tx-hill-country",
+   "name": "Hill Country State Natural Area",
+   "verdict": "yes",
+   "quote": "Hill Country State Natural Area offers primitive camping , backpacking, na­ture-watching and multiuse trails for hikers, mountain bikers and horse­back riders .",
+   "source": "https://tpwd.texas.gov/state-parks/hill-country",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:40Z"
+  },
+  {
+   "id": "tx-lake-livingston",
+   "name": "Lake Livingston State Park",
+   "verdict": "yes",
+   "quote": "Reserve a campsite or screened shelter for an overnight stay.",
+   "source": "https://tpwd.texas.gov/state-parks/lake-livingston",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:42Z"
+  },
+  {
+   "id": "tx-meridian",
+   "name": "Meridian State Park",
+   "verdict": "yes",
+   "quote": "Reserve a screened shelter, cabin or campsite for your stay.",
+   "source": "https://tpwd.texas.gov/state-parks/meridian",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:44Z"
+  },
+  {
+   "id": "tx-powderhorn",
+   "name": "Powderhorn State Park",
+   "verdict": "unclear",
+   "quote": "This state park is not open; it is in the planning phase of development. ... Kayaking, hiking and camping are planned for this new state park.",
+   "source": "https://tpwd.texas.gov/state-parks/powderhorn",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:45Z",
+   "note": "not open yet"
+  },
+  {
+   "id": "nps-alfl",
+   "name": "Alibates Flint Quarries National Monument",
+   "verdict": "unclear",
+   "quote": "CAMPING INFORMATION: Camping is available nearby at Lake Meredith National Recreation Area.",
+   "source": "https://www.nps.gov/alfl/planyourvisit/things2do.htm",
+   "pageDate": "September 2, 2026",
+   "read": "2026-11-02T22:04:12Z"
+  },
+  {
+   "id": "nps-rigr",
+   "name": "Rio Grande Wild and Scenic River",
+   "verdict": "yes",
+   "quote": "A backcountry use permit is required to camp at any of these sites.",
+   "source": "https://www.nps.gov/rigr/planyourvisit/eatingsleeping.htm",
+   "pageDate": "August 18, 2023",
+   "read": "2026-11-02T21:58:52Z",
+   "note": "the sites named are in Big Bend National Park, which the river borders"
+  },
+  {
+   "id": "tx-bentsen-rio-grande-valley",
+   "name": "Bentsen-Rio Grande Valley State Park",
+   "verdict": "yes",
+   "quote": "Reserve one of our primitive campsites (restrooms with showers are in the park).",
+   "source": "https://tpwd.texas.gov/state-parks/bentsen-rio-grande-valley",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:53Z"
+  },
+  {
+   "id": "tx-colorado-bend",
+   "name": "Colorado Bend State Park",
+   "verdict": "yes",
+   "quote": "Experience rugged tent camping alongside the Colorado River.",
+   "source": "https://tpwd.texas.gov/state-parks/colorado-bend",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:55Z"
+  },
+  {
+   "id": "tx-fort-boggy",
+   "name": "Fort Boggy State Park",
+   "verdict": "yes",
+   "quote": "Come explore Fort Boggy State Park – its trails, primitive campsites, cabins and 15-acre lake.",
+   "source": "https://tpwd.texas.gov/state-parks/fort-boggy",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:57Z"
+  },
+  {
+   "id": "tx-honey-creek",
+   "name": "Honey Creek State Natural Area",
+   "verdict": "unclear",
+   "quote": "Access to the protected area along the creek is only by guided hike. (Also: The adjacent Guadalupe River State Park ... offers camping.)",
+   "source": "https://tpwd.texas.gov/state-parks/honey-creek",
+   "pageDate": null,
+   "read": "2026-11-02T21:58:58Z"
+  },
+  {
+   "id": "tx-lake-mineral-wells",
+   "name": "Lake Mineral Wells State Park and Trailway",
+   "verdict": "yes",
+   "quote": "Stay at one of our campsites or screened shelters .",
+   "source": "https://tpwd.texas.gov/state-parks/lake-mineral-wells",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:00Z"
+  },
+  {
+   "id": "tx-mission-tejas",
+   "name": "Mission Tejas State Park",
+   "verdict": "yes",
+   "quote": "Choose from 17 campsites or bring friends and reserve the group camp.",
+   "source": "https://tpwd.texas.gov/state-parks/mission-tejas",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:02Z"
+  },
+  {
+   "id": "tx-purtis-creek",
+   "name": "Purtis Creek State Park",
+   "verdict": "yes",
+   "quote": "Choose from 59 campsites with water and electricity, five walk-in tent sites, or 13 primitive hike-in sites .",
+   "source": "https://tpwd.texas.gov/state-parks/purtis-creek",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:03Z"
+  },
+  {
+   "id": "nps-amis",
+   "name": "Amistad National Recreation Area",
+   "verdict": "yes",
+   "quote": "Designated Camping – RV and tent camping in limited development campgrounds.",
+   "source": "https://www.nps.gov/amis/planyourvisit/eatingsleeping.htm",
+   "pageDate": "September 3, 2026",
+   "read": "2026-11-02T21:59:07Z"
+  },
+  {
+   "id": "nps-saan",
+   "name": "San Antonio Missions National Historical Park",
+   "verdict": "unclear",
+   "quote": "(The unit's pages read say nothing about camping either way; camping.htm and eatingsleeping.htm are 404.)",
+   "source": "https://www.nps.gov/saan/",
+   "pageDate": "September 17, 2026",
+   "read": "2026-11-02T21:59:08Z",
+   "alsoRead": [
+    "https://www.nps.gov/saan/planyourvisit/basicinfo.htm",
+    "https://www.nps.gov/saan/planyourvisit/hours.htm",
+    "https://www.nps.gov/saan/planyourvisit/things2do.htm",
+    "https://www.nps.gov/saan/planyourvisit/index.htm",
+    "https://www.nps.gov/saan/planyourvisit/fees.htm"
+   ]
+  },
+  {
+   "id": "tx-big-bend-ranch",
+   "name": "Big Bend Ranch State Park",
+   "verdict": "yes",
+   "quote": "Campers can choose from drive-up or hike-in primitive sites , or equestrian sites .",
+   "source": "https://tpwd.texas.gov/state-parks/big-bend-ranch",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:10Z"
+  },
+  {
+   "id": "tx-cooper-lake",
+   "name": "Cooper State Park",
+   "verdict": "yes",
+   "quote": "Reserve a cabin, shelter or campsite along the lakeshore.",
+   "source": "https://tpwd.texas.gov/state-parks/cooper-lake",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:12Z"
+  },
+  {
+   "id": "tx-fort-leaton",
+   "name": "Fort Leaton State Historic Site",
+   "verdict": "no",
+   "quote": "The fort is a day-use site.",
+   "source": "https://tpwd.texas.gov/state-parks/fort-leaton",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:14Z",
+   "note": "says day use only"
+  },
+  {
+   "id": "tx-hueco-tanks",
+   "name": "Hueco Tanks State Park & Historic Site",
+   "verdict": "yes",
+   "quote": "Campers' pets are allowed in the campground and along the campground roadway, as well as in the same areas as day-use visitor pets.",
+   "source": "https://tpwd.texas.gov/state-parks/hueco-tanks",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:15Z"
+  },
+  {
+   "id": "tx-lake-somerville",
+   "name": "Lake Somerville State Park & Trailway",
+   "verdict": "yes",
+   "quote": "Choose a campsite at either unit or a primitive site along the trailway.",
+   "source": "https://tpwd.texas.gov/state-parks/lake-somerville",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:17Z"
+  },
+  {
+   "id": "tx-monahans-sandhills",
+   "name": "Monahans Sandhills State Park",
+   "verdict": "yes",
+   "quote": "Other equestrian amenities include a trailer parking area, potable water and three campsites .",
+   "source": "https://tpwd.texas.gov/state-parks/monahans-sandhills",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:19Z"
+  },
+  {
+   "id": "tx-ray-roberts-lake",
+   "name": "Ray Roberts Lake State Park",
+   "verdict": "yes",
+   "quote": "Reserve one of our many campsites or a room at Lone Star Lodge .",
+   "source": "https://tpwd.texas.gov/state-parks/ray-roberts-lake",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:20Z"
+  },
+  {
+   "id": "nps-bibe",
+   "name": "Big Bend National Park",
+   "verdict": "yes",
+   "quote": "There are four developed campgrounds in Big Bend National Park, and primitive backcountry camping too.",
+   "source": "https://www.nps.gov/bibe/",
+   "pageDate": "April 1, 2026",
+   "read": "2026-11-02T21:59:22Z"
+  },
+  {
+   "id": "nps-waco",
+   "name": "Waco Mammoth National Monument",
+   "verdict": "unclear",
+   "quote": "(The unit's pages read say nothing about camping either way; camping.htm and eatingsleeping.htm are 404.)",
+   "source": "https://www.nps.gov/waco/",
+   "pageDate": "October 9, 2026",
+   "read": "2026-11-02T21:59:24Z",
+   "alsoRead": [
+    "https://www.nps.gov/waco/planyourvisit/basicinfo.htm",
+    "https://www.nps.gov/waco/planyourvisit/hours.htm",
+    "https://www.nps.gov/waco/planyourvisit/things2do.htm",
+    "https://www.nps.gov/waco/planyourvisit/index.htm",
+    "https://www.nps.gov/waco/planyourvisit/fees.htm"
+   ]
+  },
+  {
+   "id": "tx-big-spring",
+   "name": "Big Spring State Park",
+   "verdict": "no",
+   "quote": "Hike, bike, nature watch, picnic or just take a drive and enjoy the view at this day-use park.",
+   "source": "https://tpwd.texas.gov/state-parks/big-spring",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:27Z",
+   "note": "says day use only"
+  },
+  {
+   "id": "tx-copper-breaks",
+   "name": "Copper Breaks State Park",
+   "verdict": "yes",
+   "quote": "Marvel at a myriad of stars from your campsite.",
+   "source": "https://tpwd.texas.gov/state-parks/copper-breaks",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:29Z"
+  },
+  {
+   "id": "tx-fort-parker",
+   "name": "Fort Parker State Park",
+   "verdict": "yes",
+   "quote": "Reserve a campsite, screened shelter or cabin for your stay.",
+   "source": "https://tpwd.texas.gov/state-parks/fort-parker",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:30Z"
+  },
+  {
+   "id": "tx-huntsville",
+   "name": "Huntsville State Park",
+   "verdict": "yes",
+   "quote": "Rent one of our screened shelters or shelters with amenities , or choose from 160 campsites .",
+   "source": "https://tpwd.texas.gov/state-parks/huntsville",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:32Z"
+  },
+  {
+   "id": "tx-lake-tawakoni",
+   "name": "Lake Tawakoni State Park",
+   "verdict": "yes",
+   "quote": "Reserve a campsite for your tent or RV, or camp with a group .",
+   "source": "https://tpwd.texas.gov/state-parks/lake-tawakoni",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:34Z"
+  },
+  {
+   "id": "tx-mother-neff",
+   "name": "Mother Neff State Park",
+   "verdict": "yes",
+   "quote": "Our new camping loop has 20 full hookup sites (water, sewer and 50/30-amp electricity), level cement pads, and a large gathering area with a fire pit and picnic table.",
+   "source": "https://tpwd.texas.gov/state-parks/mother-neff",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:35Z",
+   "note": "the 15 river tent sites are closed for flood damage"
+  },
+  {
+   "id": "tx-resaca-de-la-palma",
+   "name": "Resaca de la Palma State Park",
+   "verdict": "unclear",
+   "quote": "Hours Open daily. Park: 6 a.m. - 10 p.m. Visitor Center: 8 a.m. – 4:30 p.m.",
+   "source": "https://tpwd.texas.gov/state-parks/resaca-de-la-palma",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:37Z"
+  },
+  {
+   "id": "nps-bith",
+   "name": "Big Thicket National Preserve",
+   "verdict": "yes",
+   "quote": "Backcountry camping is available with a free permit from the visitor center.",
+   "source": "https://www.nps.gov/bith/planyourvisit/eatingsleeping.htm",
+   "pageDate": "April 28, 2025",
+   "read": "2026-11-02T21:59:40Z"
+  },
+  {
+   "id": "usfs-angelina-national-forest",
+   "name": "Angelina National Forest",
+   "verdict": "yes",
+   "quote": "Boykin Springs Recreation Area offers camping, hiking, fishing, picnicking or just getting in touch with nature.",
+   "source": "https://www.fs.usda.gov/r08/texas/recreation/angelina-national-forest",
+   "pageDate": "July 8, 2025",
+   "read": "2026-11-02T22:05:29Z"
+  },
+  {
+   "id": "tx-blanco",
+   "name": "Blanco State Park",
+   "verdict": "yes",
+   "quote": "Set up camp in the heart of the Texas Hill Country.",
+   "source": "https://tpwd.texas.gov/state-parks/blanco",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:43Z"
+  },
+  {
+   "id": "tx-daingerfield",
+   "name": "Daingerfield State Park",
+   "verdict": "yes",
+   "quote": "Explore life in the forest at Daingerfield State Park as you wander the trails, paddle Little Pine Lake, or relax at your campsite.",
+   "source": "https://tpwd.texas.gov/state-parks/daingerfield",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:45Z"
+  },
+  {
+   "id": "tx-fort-richardson",
+   "name": "Fort Richardson State Park, Historic Site & Lost Creek Reservoir State Trailway",
+   "verdict": "yes",
+   "quote": "Our north park has a swim beach, trails, kayak launch and campsites.",
+   "source": "https://tpwd.texas.gov/state-parks/fort-richardson",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:46Z"
+  },
+  {
+   "id": "tx-inks-lake",
+   "name": "Inks Lake State Park",
+   "verdict": "yes",
+   "quote": "Stay at one of nearly 200 campsites or 22 cabins (two are ADA-accessible).",
+   "source": "https://tpwd.texas.gov/state-parks/inks-lake",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:48Z"
+  },
+  {
+   "id": "tx-lake-whitney",
+   "name": "Lake Whitney State Park",
+   "verdict": "yes",
+   "quote": "Reserve a screened shelter, cabin or campsite for your visit.",
+   "source": "https://tpwd.texas.gov/state-parks/lake-whitney",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:50Z"
+  },
+  {
+   "id": "tx-mustang-island",
+   "name": "Mustang Island State Park",
+   "verdict": "yes",
+   "quote": "Stay for the weekend at a campsite with amenities or in a tent on the beach.",
+   "source": "https://tpwd.texas.gov/state-parks/mustang-island",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:51Z"
+  },
+  {
+   "id": "tx-san-angelo",
+   "name": "San Angelo State Park",
+   "verdict": "yes",
+   "quote": "Choose from campsites with water and electricity or primitive drive-up or backpack sites.",
+   "source": "https://tpwd.texas.gov/state-parks/san-angelo",
+   "pageDate": null,
+   "read": "2026-11-02T21:59:53Z"
+  },
+  {
+   "id": "nps-blsc",
+   "name": "Blackwell School National Historic Site",
+   "verdict": "unclear",
+   "quote": "(The unit's pages read say nothing about camping either way; camping.htm and eatingsleeping.htm are 404.)",
+   "source": "https://www.nps.gov/blsc/",
+   "pageDate": "April 29, 2025",
+   "read": "2026-11-02T21:59:55Z",
+   "alsoRead": [
+    "https://www.nps.gov/blsc/planyourvisit/basicinfo.htm",
+    "https://www.nps.gov/blsc/planyourvisit/things2do.htm",
+    "https://www.nps.gov/blsc/planyourvisit/index.htm"
+   ]
+  },
+  {
+   "id": "usfs-davy-crockett-national-forest",
+   "name": "Davy Crockett National Forest",
+   "verdict": "yes",
+   "quote": "This is a horse camp on the Piney Creek Horse Trail.",
+   "source": "https://www.fs.usda.gov/r08/texas/recreation/davy-crockett-national-forest",
+   "pageDate": "July 8, 2025",
+   "read": "2026-11-02T22:05:31Z"
+  },
+  {
+   "id": "tx-bonham",
+   "name": "Bonham State Park",
+   "verdict": "yes",
+   "quote": "Choose from 20 campsites ranging from full hookups to tent sites with water and electricity.",
+   "source": "https://tpwd.texas.gov/state-parks/bonham",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:00Z"
+  },
+  {
+   "id": "tx-davis-mountains",
+   "name": "Davis Mountains State Park",
+   "verdict": "yes",
+   "quote": "You'll enjoy dramatic night skies from your campsite.",
+   "source": "https://tpwd.texas.gov/state-parks/davis-mountains",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:12Z"
+  },
+  {
+   "id": "tx-franklin-mountains",
+   "name": "Franklin Mountains State Park",
+   "verdict": "yes",
+   "quote": "Bring a picnic and spend the day or reserve one of our campsites for an overnight stay.",
+   "source": "https://tpwd.texas.gov/state-parks/franklin-mountains",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:13Z"
+  },
+  {
+   "id": "tx-kickapoo-cavern",
+   "name": "Kickapoo Cavern State Park",
+   "verdict": "yes",
+   "quote": "Stay overnight at one of our camp­sites .",
+   "source": "https://tpwd.texas.gov/state-parks/kickapoo-cavern",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:15Z"
+  },
+  {
+   "id": "tx-lockhart",
+   "name": "Lockhart State Park",
+   "verdict": "yes",
+   "quote": "Reserve a campsite with water and electricity or full hookups .",
+   "source": "https://tpwd.texas.gov/state-parks/lockhart",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:17Z"
+  },
+  {
+   "id": "tx-old-tunnel",
+   "name": "Old Tunnel State Park",
+   "verdict": "no",
+   "quote": "To protect the bats, we do not allow camping, pets or smoking.",
+   "source": "https://tpwd.texas.gov/state-parks/old-tunnel",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:18Z",
+   "note": "says no camping"
+  },
+  {
+   "id": "tx-sea-rim",
+   "name": "Sea Rim State Park",
+   "verdict": "yes",
+   "quote": "Stay at one of 15 campsites with utilities or in our cabin .",
+   "source": "https://tpwd.texas.gov/state-parks/sea-rim",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:20Z"
+  },
+  {
+   "id": "nps-cham",
+   "name": "Chamizal National Memorial",
+   "verdict": "unclear",
+   "quote": "(The unit's pages read say nothing about camping either way; camping.htm and eatingsleeping.htm are 404.)",
+   "source": "https://www.nps.gov/cham/planyourvisit/index.htm",
+   "pageDate": "April 1, 2025",
+   "read": "2026-11-02T22:00:22Z",
+   "alsoRead": [
+    "https://www.nps.gov/cham/planyourvisit/basicinfo.htm",
+    "https://www.nps.gov/cham/planyourvisit/hours.htm",
+    "https://www.nps.gov/cham/planyourvisit/things2do.htm",
+    "https://www.nps.gov/cham/planyourvisit/fees.htm"
+   ]
+  },
+  {
+   "id": "usfs-sabine-national-forest",
+   "name": "Sabine National Forest",
+   "verdict": "yes",
+   "quote": "Lakeview Campground, located on the 185,000- acre Toledo Bend Reservoir and is maintained and operated by the Sabine River Authority of Texas.",
+   "source": "https://www.fs.usda.gov/r08/texas/recreation/sabine-national-forest",
+   "pageDate": "July 8, 2025",
+   "read": "2026-11-02T22:00:25Z"
+  },
+  {
+   "id": "tx-brazos-bend",
+   "name": "Brazos Bend State Park",
+   "verdict": "yes",
+   "quote": "Reserve a campsite , screened shelter , or cabin .",
+   "source": "https://tpwd.texas.gov/state-parks/brazos-bend",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:29Z"
+  },
+  {
+   "id": "tx-devils-river",
+   "name": "Devils River State Natural Area",
+   "verdict": "yes",
+   "quote": "Hughes' campsites are primitive, with no water or electricity.",
+   "source": "https://tpwd.texas.gov/state-parks/devils-river",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:30Z"
+  },
+  {
+   "id": "tx-galveston-island",
+   "name": "Galveston Island State Park",
+   "verdict": "yes",
+   "quote": "Camp on island time - book a bay side or beach side campsite.",
+   "source": "https://tpwd.texas.gov/state-parks/galveston-island",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:32Z"
+  },
+  {
+   "id": "tx-lake-arrowhead",
+   "name": "Lake Arrowhead State Park",
+   "verdict": "yes",
+   "quote": "Bring your horse out for the weekend - we have equestrian campsites and trails.",
+   "source": "https://tpwd.texas.gov/state-parks/lake-arrowhead",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:34Z"
+  },
+  {
+   "id": "tx-longhorn-cavern",
+   "name": "Longhorn Cavern State Park",
+   "verdict": "no",
+   "quote": "Longhorn Cavern State Park is a day-use only park. There is no overnight camping.",
+   "source": "https://tpwd.texas.gov/state-parks/longhorn-cavern",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:35Z",
+   "note": "says no camping"
+  },
+  {
+   "id": "tx-palmetto",
+   "name": "Palmetto State Park",
+   "verdict": "yes",
+   "quote": "Choose one of our 19 tent sites or 17 RV sites .",
+   "source": "https://tpwd.texas.gov/state-parks/palmetto",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:37Z"
+  },
+  {
+   "id": "tx-seminole-canyon",
+   "name": "Seminole Canyon State Park and Historic Site",
+   "verdict": "yes",
+   "quote": "These are drive-up campsite numbers 1-8, 12, 14, 16, 18, 20-27, and 29-31 in the Desert Vista Camping Area.",
+   "source": "https://tpwd.texas.gov/state-parks/seminole-canyon/fees-facilities/campsites",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:39Z"
+  },
+  {
+   "id": "nps-foda",
+   "name": "Fort Davis National Historic Site",
+   "verdict": "no",
+   "quote": "Accommodations: There is no lodging or camping in Fort Davis National Historic Site.",
+   "source": "https://www.nps.gov/foda/planyourvisit/index.htm",
+   "pageDate": "May 29, 2024",
+   "read": "2026-11-02T22:04:36Z",
+   "note": "says no camping"
+  },
+  {
+   "id": "usfs-sam-houston-national-forest",
+   "name": "Sam Houston National Forest",
+   "verdict": "yes",
+   "quote": "It has eight campsites with picnic tables, fire rings and lantern posts. Tent camping is available here.",
+   "source": "https://www.fs.usda.gov/r08/texas/recreation/kellys-pond-campground",
+   "pageDate": "July 22, 2026",
+   "read": "2026-11-02T22:00:46Z",
+   "note": "Kelly's Pond Campground; no camping only in Big Creek Scenic Area"
+  },
+  {
+   "id": "ok-beavers-bend",
+   "name": "Beavers Bend State Park",
+   "verdict": "yes",
+   "quote": "This 3,482-acre park offers 47 cabins with kitchenettes, plus 393 campsites and over 50 tent sites spread over eight camping areas.",
+   "source": "https://www.travelok.com/state-parks/beavers-bend-state-park",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:48Z"
+  },
+  {
+   "id": "ok-turner-falls",
+   "name": "Turner Falls Park",
+   "verdict": "yes",
+   "quote": "Overnight Primitive Camping — Turner Falls Park",
+   "source": "https://www.turnerfallspark.com/camping",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:56Z"
+  },
+  {
+   "id": "ok-lake-murray",
+   "name": "Lake Murray State Park",
+   "verdict": "yes",
+   "quote": "Staying at the park is easy with your choice between RV and tent campgrounds, 56 cabins dotted throughout beautiful Lake Murray State Park and a modern lodge.",
+   "source": "https://www.travelok.com/state-parks/lake-murray-state-park",
+   "pageDate": null,
+   "read": "2026-11-02T22:00:59Z"
+  }
+ ]
+}

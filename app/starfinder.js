@@ -424,7 +424,9 @@
     wire(); glassLight();
     try {
       const pl = await (window.__sfPlaces || fetch("data/places.json").then((r) => r.json()));
-      state.places = pl.places; state.places.forEach((p) => state.byId.set(p.id, p));
+      // a place whose own page says no camping is kept in the data with its reason ("listed": false, tools/camping_delist.py)
+      // and left off the map and the list: every dot is somewhere you can camp, or whose page does not say
+      state.places = pl.places.filter((p) => p.listed !== false); state.places.forEach((p) => state.byId.set(p.id, p));
     } catch (e) { $("#count").textContent = "The list of places could not load. Serve this folder over http rather than opening the file directly."; }
     // the burn-ban file is tiny and not needed for the first paint: ask for it now, fill the card line when it lands (no-cache = revalidate, so a new 6-hourly file is not hidden by the CDN's 10 minutes)
     fetch("data/burnbans.json", { cache: "no-cache" }).then((r) => r.ok ? r.json() : null).catch(() => null)

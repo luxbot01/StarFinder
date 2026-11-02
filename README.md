@@ -113,6 +113,20 @@ Twelve researcher batches in one fixed schema (`HAIKU_BRIEF.md`), merged and che
 Cooper's two units differ by 6.8 km and the TPWD point is used), and `verify2.py` compared the NPS and
 Forest Service points with Wikipedia's coordinates.
 
+## Camping: every place on the map (`data/research/camping_audit_2026-11-02.json`, `tools/camping_delist.py`)
+
+StarFinder is a map of places you can camp. On Nov 2 2026 every place's own official page was read (the `url` in
+`places.json`, plus the agency's camping page where one exists: a TPWD campsites fee page, an NPS camping or eating-and-sleeping
+page, a Forest Service campground page) and each place got a verdict with the sentence it rests on, the page, that page's own date
+when it prints one, and the time it was read: **yes** (any camping: campground, primitive, backcountry or dispersed), **no** (the
+page says no camping, or that the place is day use only) or **unclear** (the page does not say). Result: 94 yes, 5 no, 17 unclear.
+
+Only **no** leaves the map. `python -I tools/camping_delist.py data/research/camping_audit_2026-11-02.json` marks those places
+`"listed": false` with `"delistReason"` (the page's words) and `"delistSource"` (page, read time, page date); the app skips them,
+the row stays in the data. To bring one back, set `listed` to true or delete the three fields. The tool is idempotent and backs
+up `places.json` first; re-run it after anything that rebuilds `places.json` (`tools/build_data.py` does). Unclear places stay
+listed; their sentences are in the audit file. Tests: `python -I tools/test_camping_delist.py`.
+
 ## Sources and licences
 
 | What | Source | Licence |
