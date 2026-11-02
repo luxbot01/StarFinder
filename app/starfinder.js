@@ -378,6 +378,7 @@
 
   async function start() {
     document.body.insertAdjacentHTML("afterbegin", '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="sfHalf" clipPathUnits="userSpaceOnUse"><rect x="0" y="0" width="12" height="24"/></clipPath></defs></svg>');
+    if (navigator.userAgentData) document.documentElement.classList.add("warp");   // Chromium only: see html.warp in the CSS
     wire(); glassLight();
     try {
       const [pl, ph] = await Promise.all([fetch("data/places.json").then((r) => r.json()), fetch("data/photos.json").then((r) => r.json()).catch(() => ({}))]);

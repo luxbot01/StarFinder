@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="app/starfinder.css" />
 </head>
 <body>
+  <!-- the glass's warp: a soft, low-frequency displacement of what is behind the search bar (Chromium paints it; Safari keeps a plain blur) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="lgWarp" x="-5%" y="-10%" width="110%" height="120%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.009 0.024" numOctaves="2" seed="3" result="noise"/><feGaussianBlur in="noise" stdDeviation="2.2" result="soft"/><feDisplacementMap in="SourceGraphic" in2="soft" scale="16" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
   <div id="space" aria-hidden="true"></div>
   <div id="map" role="region" aria-label="Map of Texas parks and night-sky brightness"></div>
 

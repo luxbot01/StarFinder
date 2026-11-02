@@ -486,3 +486,28 @@
 .legend .bar.dots { background: linear-gradient(90deg, #7546ad, #ad8597, #ffc84b); }
 @supports (background: linear-gradient(in oklab 90deg, red, blue)) { .legend .bar.dots { background: linear-gradient(in oklab 90deg, #7546ad, #ffc84b); } }
 .photo img { background: oklch(0.10 0.04 295); }
+/* ===== Rose's note 4 (Nov 1, 9:50 PM): the bright light from the top left was too much. The pointer specular is gone
+   entirely, the rim is an even faint edge with no hot corner, the capsule is more transparent, and what is behind it now
+   bends a little: an SVG displacement in the backdrop (Chromium; Safari and older engines keep the plain blur, because a
+   backdrop-filter they cannot parse is dropped and the declaration before it stands). Nothing here is animated. */
+:root {
+  --lg-fill: oklch(0.31 0.06 300 / 0.30);
+  --lg-fill-float: oklch(0.19 0.055 300 / 0.52);
+  --lg-rim: linear-gradient(180deg, oklch(1 0 0 / 0.22), oklch(1 0 0 / 0.10) 50%, oklch(1 0 0 / 0.16));
+}
+.lg::before { content: none; display: none; }
+.lg {
+  -webkit-backdrop-filter: blur(12px) saturate(1.6);
+  backdrop-filter: blur(12px) saturate(1.6);
+}
+/* the warp only where it is known to paint (Chromium: html.warp, set in starfinder.js); WebKit accepts the value but its
+   rendering of an SVG backdrop filter is unverified, so Safari keeps the plain blur */
+html.warp .lg {
+  backdrop-filter: url(#lgWarp) blur(7px) saturate(1.6);
+  box-shadow: var(--lg-shadow), inset 0 1px 0 oklch(1 0 0 / 0.07), inset 0 -1px 0 oklch(1 0 0 / 0.04);
+}
+.lg::after { -webkit-backdrop-filter: blur(1.5px) brightness(1.03) saturate(1.7); backdrop-filter: blur(1.5px) brightness(1.03) saturate(1.7); }
+.search.lg input { text-shadow: 0 1px 2px oklch(0.08 0.03 295 / 0.7); }
+@media (hover: hover) {
+  .search.lg:hover:not(:focus-within) { --lg-rim: linear-gradient(180deg, oklch(1 0 0 / 0.32), oklch(1 0 0 / 0.14) 50%, oklch(1 0 0 / 0.22)); }
+}
