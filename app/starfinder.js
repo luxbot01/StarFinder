@@ -9,7 +9,7 @@
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   const state = { places: [], byId: new Map(), filters: { camping: false, darksky: false, four: false },
-    agency: "all", sort: "dark", q: "", sel: null, me: null, map: null, mapReady: false, burn: null, burnDone: false };
+    agency: "all", sort: "dark", q: "", sel: null, me: null, map: null, mapReady: false, burn: null, burnDone: false, banSet: new Set(), visIds: [] };
   window.__sf = state;   // read-only handle for the test harness
 
   /* ---------- small helpers ---------- */
@@ -51,9 +51,12 @@
   };
   const AMEN = [["rv30", "amp30", "30-amp RV hookups", "30A"], ["rv50", "amp50", "50-amp RV hookups", "50A"], ["waterSite", "waterSite", "Water hookups at sites"],
     ["water", "water", "Drinking water"], ["restrooms", "restrooms", "Restrooms"], ["showers", "showers", "Showers"], ["cabins", "cabins", "Cabins or lodging"]];
+  // the burn-ban mark leads the strip when a current reading says this place is under a ban: it is a condition of the day,
+  // not a facility, so it comes before the amenities and in its own colour (app/burnban.js owns the glyph and the label)
+  const banChip = (p) => state.burnDone && window.SFBurn ? window.SFBurn.chip(p, state.burn, Date.now()) : "";
   function amenStrip(p) {
     const a = p.amen || {};
-    return AMEN.filter(([k]) => a[k] === true).map(([k, ic, label, amp]) =>
+    return banChip(p) + AMEN.filter(([k]) => a[k] === true).map(([k, ic, label, amp]) =>
       `<i class="${amp ? "amp" : ""}" title="${label}" aria-label="${label}">${IC[ic]}${amp ? amp : ""}</i>`).join("");
   }
   function amenFull(p) {
@@ -93,9 +96,14 @@
         ${amenStrip(p) ? `<span class="amen">${amenStrip(p)}</span>` : ""}
       </button></li>`;
     }).join("") || `<li class="count" style="padding:12px">No place matches. Clear a filter or the search.</li>`;
-    if (state.mapReady) state.map.setFilter("pl-core", ["in", ["get", "id"], ["literal", items.map((p) => p.id)]]);
-    if (state.mapReady) state.map.setFilter("pl-glow", ["in", ["get", "id"], ["literal", items.map((p) => p.id)]]);
+    state.visIds = items.map((p) => p.id);
+    if (state.mapReady) state.map.setFilter("pl-core", ["in", ["get", "id"], ["literal", state.visIds]]);
+    if (state.mapReady) state.map.setFilter("pl-glow", ["in", ["get", "id"], ["literal", state.visIds]]);
+    banFilter();
   }
+  // the map badge follows the list's filters and the current reading: a place that is hidden, or not under a ban by a current
+  // reading, draws no badge
+  const banFilter = () => { if (state.mapReady && state.map.getLayer("pl-ban")) state.map.setFilter("pl-ban", ["in", ["get", "id"], ["literal", (state.visIds || []).filter((id) => state.banSet.has(id))]]); };
 
   /* ---------- the place card ---------- */
   function darkerNearby(p) {
@@ -120,7 +128,15 @@
      the file has answered or failed, so "not available" never flashes before the real line. */
   const federal = (p) => /^(nps|usfs)-/.test(p.id);
   const burnHtml = (p) => state.burnDone && window.SFBurn ? window.SFBurn.html(p, state.burn, Date.now(), federal(p)) : "";
-  function burnRefresh() { const slot = $("#burnSlot"); if (slot && state.sel && state.byId.has(state.sel)) slot.innerHTML = burnHtml(state.byId.get(state.sel)); }
+  function burnRefresh() {
+    const slot = $("#burnSlot"); if (slot && state.sel && state.byId.has(state.sel)) slot.innerHTML = burnHtml(state.byId.get(state.sel));
+    state.banSet = new Set(window.SFBurn ? state.places.filter((p) => window.SFBurn.view(p, state.burn, Date.now()).kind === "ban").map((p) => p.id) : []);
+    renderList();   // the rows gain or lose the mark (and the map badges follow, through banFilter)
+    if (pop && pop.isOpen() && popId && state.byId.has(popId)) {   // a pop-up opened before the file landed gets the mark too
+      const pb = pop.getElement().querySelector(".pb"), s = amenStrip(state.byId.get(popId)), old = pb.querySelector(".amen");
+      if (old) { if (s) old.innerHTML = s; else old.remove(); } else if (s) pb.querySelector(".pr").insertAdjacentHTML("afterend", `<div class="amen" style="justify-content:center">${s}</div>`);
+    }
+  }
   function renderCard(p) {
     const s = p.sky, card = $("#card"), photos = p.photos || [];
     const kinds = (p.campingKinds || []).map((k) => `<span class="tag">${esc(KINDS[k] || k)}</span>`).join("");
@@ -201,10 +217,10 @@
   }
 
   /* ---------- the pin pop-up: the 2025 shape Rose likes, restyled ---------- */
-  let pop = null;
+  let pop = null, popId = null;
   function showPop(id, fly) {
     const p = state.byId.get(id); if (!p || !state.mapReady) return;
-    const ph = p.photos || []; let i = 0;
+    const ph = p.photos || []; let i = 0; popId = id;
     if (pop) pop.remove();
     const hero = ph.length ? `<img ${phAttrs(ph[0], "pop")} alt="${esc(p.name)}" onerror="this.style.display='none'">` +
       (ph.length > 1 ? '<button class="ph-nav prev" aria-label="Previous photo">&#8249;</button><button class="ph-nav next" aria-label="Next photo">&#8250;</button>' : "") +
@@ -274,6 +290,24 @@
     }
   }
   function firstSymbol(map) { const l = map.getStyle().layers.find((x) => x.type === "symbol"); return l && l.id; }
+  /* The burn-ban badge beside a map dot (app/burnban.js draws it). Shown from zoom 6.4, where the place names appear: at the
+     state-wide view the dots' job is the sky, and 60-odd badges would bury the colour that says how dark it is; once you are
+     choosing between nearby places, whether you may have a fire is part of the choice. Anchored to the dot's upper right so it
+     never covers the dot's colour or the name under it. Drawn at the screen's pixel ratio so it stays crisp on a phone. */
+  function addBanBadges(map) {
+    if (!window.SFBurn) return;
+    const pr = Math.max(1, Math.min(3, Math.ceil(window.devicePixelRatio || 1))), px = 20 * pr, img = new Image(px, px);
+    img.onload = () => {
+      try {
+        if (!map.hasImage("sf-ban")) map.addImage("sf-ban", img, { pixelRatio: pr });
+        if (!map.getLayer("pl-ban")) map.addLayer({ id: "pl-ban", type: "symbol", source: "places", minzoom: 6.4, filter: ["in", ["get", "id"], ["literal", []]],
+          layout: { "icon-image": "sf-ban", "icon-size": ["interpolate", ["linear"], ["zoom"], 6.4, 0.85, 9, 1], "icon-anchor": "bottom-left", "icon-offset": [1, -2],
+            "icon-allow-overlap": true, "icon-ignore-placement": true } }, "pl-label");
+        banFilter();
+      } catch (e) { /* the badge is a second telling: the list, the pop-up and the card carry the mark */ }
+    };
+    img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(window.SFBurn.badgeSvg(px));
+  }
 
   function initMap() {
     if (!window.maplibregl) { $("#count").textContent += " · the map could not load, the list still works"; return; }
@@ -309,6 +343,7 @@
       map.addLayer({ id: "pl-label", type: "symbol", source: "places", minzoom: 6.4, layout: { "text-field": ["get", "name"], "text-size": 12.5,
         "text-offset": [0, 1.2], "text-anchor": "top", "text-max-width": 9, "text-font": ["Noto Sans Regular"] },
         paint: { "text-color": "#efe9ff", "text-halo-color": "#0b0820", "text-halo-width": 1.4 } });
+      addBanBadges(map);
       state.mapReady = true; renderList();
       if (state.sel) select(state.sel, true);
       else if (!reduce) setTimeout(() => map.flyTo({ center: [-99.6, 31.1], zoom: isPhone() ? 4.3 : 5.15, padding: isPhone() ? {} : { left: 380 }, duration: 2600, essential: true }), 350);
@@ -385,6 +420,7 @@
   async function start() {
     document.body.insertAdjacentHTML("afterbegin", '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="sfHalf" clipPathUnits="userSpaceOnUse"><rect x="0" y="0" width="12" height="24"/></clipPath></defs></svg>');
     if (navigator.userAgentData) document.documentElement.classList.add("warp");   // Chromium only: see html.warp in the CSS
+    const bk = $("#banKey"); if (bk && window.SFBurn) bk.insertAdjacentHTML("afterbegin", window.SFBurn.badgeSvg(18).replace("<svg ", '<svg aria-hidden="true" ')); else if (bk) bk.remove();   // the map badge's key: the badge itself
     wire(); glassLight();
     try {
       const pl = await (window.__sfPlaces || fetch("data/places.json").then((r) => r.json()));

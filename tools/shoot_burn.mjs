@@ -11,11 +11,16 @@ const OUT = process.argv[2] || "C:/Users/luxbo/Documents/Code/StarFinder/docs/sc
 fs.mkdirSync(OUT, { recursive: true });
 const BASE = "http://127.0.0.1:4317/StarFinder.html";
 const views = [["desktop-1440", 1440, 900, 1, false], ["phone-390", 390, 844, 3, true], ["fold-cover-344", 344, 882, 2.625, true], ["phone-land-844", 844, 390, 3, true]];
+const real = JSON.parse(fs.readFileSync("C:/Users/luxbo/Documents/Code/StarFinder/data/burnbans.json", "utf8"));
+// the state-park case follows today's file (Inks Lake was the example until Burnet County left the list on Nov 2): the first
+// Texas state park under a ban in exactly one county, and the words it must show
+const stateBan = Object.entries(real.places).find(([id, r]) => id.startsWith("tx-") && r.status === "ban" && r.counties.length === 1);
+const SB = stateBan[0], SBC = stateBan[1].banned[0];
+const rx = (s) => new RegExp(s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
 const places = [["tx-colorado-bend", /No county burn ban reported; check the park's rules/, /San Saba and Lampasas Counties/],
-  ["tx-inks-lake", /Burn ban in effect \(Burnet County\)/, /Looked up for Burnet County/],
+  [SB, rx(`Burn ban in effect (${SBC} County)`), rx(`Looked up for ${SBC} County`)],
   ["nps-bibe", /Burn ban in effect \(Brewster County\)/, /federal land/],
   ["ok-turner-falls", /not tracked for Oklahoma/, null]];
-const real = JSON.parse(fs.readFileSync("C:/Users/luxbo/Documents/Code/StarFinder/data/burnbans.json", "utf8"));
 const roads = {
   real: null,
   stale: (r) => r.fulfill({ contentType: "application/json", body: JSON.stringify({ ...real, checked: new Date(Date.now() - 3 * 864e5).toISOString().replace(/\.\d+Z/, "Z") }) }),
@@ -30,7 +35,7 @@ for (const [engineName, engine] of [["chromium", chromium], ["webkit", webkit]])
     if (engineName === "webkit" && !touch && vn !== "desktop-1440") continue;
     for (const [road, handler] of Object.entries(roads)) {
       for (const [pid, leadRe, detailRe] of places) {
-        if (road !== "real" && pid !== "tx-colorado-bend" && pid !== "tx-inks-lake") continue;
+        if (road !== "real" && pid !== "tx-colorado-bend" && pid !== SB) continue;
         if (road !== "real" && vn !== "desktop-1440" && vn !== "phone-390") continue;
         const ctx = await browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: dpr, hasTouch: touch, isMobile: touch && engineName === "chromium" });
         const page = await ctx.newPage(); const errs = [];

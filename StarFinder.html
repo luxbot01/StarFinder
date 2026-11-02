@@ -91,6 +91,7 @@
     <div class="dots-key"><b>Places</b> by how many stars you can see</div>
     <div class="bar dots" aria-hidden="true"></div>
     <div class="ends"><span>Dim, for hanging out</span><span>Really good stars</span></div>
+    <div class="ban-key" id="banKey"><span>County burn ban in effect</span></div>
   </div>
 
   <section class="card glass" id="card" aria-label="Place details" hidden></section>
@@ -123,7 +124,7 @@
       <h3>The forecast</h3>
       <p>Opening a place asks the National Weather Service for its forecast at that park's coordinates (if it does not answer, Open-Meteo is asked instead). Each day shows the high, that night's low, the highest chance of rain or snow in the day, and the expected amount. The icon comes from the forecast's own weather types and sky cover; hail shows only when the forecast itself names hail. "Clearest night" averages the forecast cloud cover from 9 PM to 3 AM, and the moon figure is worked out from the average lunar month, good to a few percent. Forecasts are kept in your browser for 30 minutes.</p>
       <h3>Burn bans</h3>
-      <p>Every 6 hours a small job on GitHub reads the Texas A&amp;M Forest Service's list of counties under a burn ban and saves it with the list's own date. A place's card then says whether a county it sits in is on the list, with the date of the list and when we last checked. The Forest Service compiles county orders; the counties issue them, and an order can start or lift before the list shows it. "No county burn ban reported" is not "fires are allowed": the park's own rules still apply, and federal land (national parks, forests and grasslands) sets its own. If the list or our check is more than a few days old, the card says so instead of showing a status. Oklahoma places are not covered.</p>
+      <p>Every 6 hours a small job on GitHub reads the Texas A&amp;M Forest Service's list of counties under a burn ban and saves it with the list's own date. A place's card then says whether a county it sits in is on the list, with the date of the list and when we last checked. The Forest Service compiles county orders; the counties issue them, and an order can start or lift before the list shows it. "No county burn ban reported" is not "fires are allowed": the park's own rules still apply, and federal land (national parks, forests and grasslands) sets its own. If the list or our check is more than a few days old, the card says so instead of showing a status. Oklahoma places are not covered. A place whose county is on the list carries a flame with a line through it in the list, on its pop-up and card, and beside its dot on the map once you zoom in to where place names show.</p>
       <h3>Before you go</h3>
       <p>Check the park's own page for closures, burn bans and reservations, and pick a night near the new moon. StarFinder keeps nothing about you; "Nearest first" uses your location only inside your browser, and the forecast sends only the park's coordinates.</p>
       <p style="margin-top:16px"><button class="btn primary" id="aboutClose">Back to the map</button></p>

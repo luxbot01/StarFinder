@@ -86,6 +86,13 @@ counties looked up, the list's date, when it was last checked and a link to the 
 whether a fire is allowed: the park's own rules still apply, and national parks, forests and grasslands are federal land with
 their own fire orders. Oklahoma places say plainly that they are not covered.
 
+A place under a ban also carries the burn-ban mark, a flame with a line through it (`app/burnban.js` draws it, one copy of
+the shape): first in the icon strip of its list row and pin pop-up (labelled "Burn ban in effect, X County" for screen readers),
+in place of the plain flame on its card, and as a badge beside its map dot from zoom 6.4, where place names appear. The legend
+keys the badge. One colour, `--ban` (`oklch(0.75 0.155 45)`, `#fd8a54`), redder than the gold of the star dots so it is never
+read as "good stars"; measured 6.4:1 on the chip, 7.6:1 on the card's box and 7.5:1 or more on the badge's own disc. An old or
+missing reading shows the mark nowhere, the same rule as the card's words.
+
 Terms: the Forest Service's site policy (read Nov 2 2026) invites personal, educational and other non-commercial use if
 the source is cited and linked and their notices stay; it gives no guarantee of accuracy or currency. Only county names and
 the list's date are used, StarFinder carries no ads, and the card credits and links them. If StarFinder ever sells anything or
@@ -94,8 +101,10 @@ saying the information is out of date, check that the workflow is still enabled.
 
 Tests: `python -I tools/test_burnbans.py` (the job runs it before every fetch; a planted county must be found, a clean list
 must stay clean, each refusal must refuse, and a broken matcher must turn a test red), `node tools/test_burnban_view.mjs`
-(the card's words, escaping and the two staleness cut-offs), and `node tools/shoot_burn.mjs <outDir>` (the real file and the
-stale, missing and not-JSON roads, in Chromium and WebKit at four sizes).
+(the card's words, escaping, the two staleness cut-offs, and the mark's chip, label, mask ids and badge), `node tools/shoot_burn.mjs <outDir>` (the real file and the
+stale, missing and not-JSON roads, in Chromium and WebKit at four sizes; the banned state park it checks is read from today's
+file), and `node tools/shoot_banicon.mjs <outDir> check` (the mark on every banned row and no other, on the pop-up and card,
+map badges for banned places only, none on a stale file, in both engines at three sizes).
 
 ## Park data (`data/research/`)
 

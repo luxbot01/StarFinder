@@ -38,12 +38,51 @@
     if ((now - checked) / 36e5 > CHECKED_MAX_H) return off("Burn-ban information is out of date; check the park's rules", "Last checked " + ago(now - checked) + ".");
     if ((now - published) / 864e5 > LIST_MAX_D) return off("Burn-ban information is out of date; check the park's rules", "The state's list is dated " + listDay(data.published) + ".");
     var base = { counties: rec.counties || [], listed: listDay(data.published), checked: ago(now - checked) };
-    if (rec.status === "ban") return Object.assign({ kind: "ban", lead: "Burn ban in effect (" + counties(rec.banned) + ")" }, base);
+    if (rec.status === "ban") return Object.assign({ kind: "ban", lead: "Burn ban in effect (" + counties(rec.banned) + ")", label: "Burn ban in effect, " + counties(rec.banned) }, base);
     if (rec.status === "none") return Object.assign({ kind: "none", lead: "No county burn ban reported; check the park's rules" }, base);
     return off("Burn-ban information is not available right now; check the park's rules");
   }
 
-  var FLAME = '<svg class="burn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6c.5 3 2.8 4.6 4.5 6.9 1.4 1.9 2.1 3.6 2.1 5.5a6.6 6.6 0 0 1-13.2 0c0-2 .8-3.6 2.1-4.9.4 1 1 1.7 1.7 2.1-.2-3.4.8-6.5 2.8-9.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+  var FLAME_D = "M12 2.6c.5 3 2.8 4.6 4.5 6.9 1.4 1.9 2.1 3.6 2.1 5.5a6.6 6.6 0 0 1-13.2 0c0-2 .8-3.6 2.1-4.9.4 1 1 1.7 1.7 2.1-.2-3.4.8-6.5 2.8-9.6z";
+  var FLAME = '<svg class="burn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="' + FLAME_D + '" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+
+  /* THE BURN-BAN MARK (asked for on Nov 2 2026 as a little fire with a little line over it): the card's own flame, a solid inner tongue,
+     and one line through it. Each part has a job:
+     - the flame outline is the same path as the card's fire line, so the mark and the card say "fire" in one shape;
+     - the solid tongue is what keeps it fire at 15 px: without it, an outline with a slash reads as a crossed-out water drop,
+       and the drinking-water icon sits in the same strip;
+     - the line runs top left to bottom right, the direction of every prohibition sign, past the flame on both ends so it reads
+       as a line over the fire and not as part of it;
+     - a gap of 1.1 units each side of the line is cut out of the flame (a mask, so it works on any background), so the line
+       and the flame never merge into one blot at small sizes;
+     - stroke 1.7, the weight of the amenity icons, so it sits in their strip as one of them; colour is currentColor (set by CSS).
+     Each copy gets its own mask id: the list redraws, and a page with two masks of one id is invalid and fragile. */
+  var TONGUE_D = "M12 20.6c-1.6 0-2.7-1.2-2.7-2.7 0-1.7 1.3-2.7 2.2-4.4.9 1.4 3.2 2.5 3.2 4.4 0 1.5-1.1 2.7-2.7 2.7z";
+  var SLASH_D = "M3.6 3.6L20.4 20.4";
+  var seq = 0;
+  function glyphParts(sw, id) {
+    return '<defs><mask id="' + id + '" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="#fff"/>' +
+      '<path d="' + SLASH_D + '" stroke="#000" stroke-width="' + (sw + 2.2) + '" stroke-linecap="round"/></mask></defs>' +
+      '<g mask="url(#' + id + ')"><path d="' + FLAME_D + '" fill="none" stroke="currentColor" stroke-width="' + sw + '" stroke-linejoin="round"/>' +
+      '<path d="' + TONGUE_D + '" fill="currentColor"/></g><path d="' + SLASH_D + '" stroke="currentColor" stroke-width="' + sw + '" stroke-linecap="round"/>';
+  }
+  function glyph(cls) { return '<svg' + (cls ? ' class="' + cls + '"' : "") + ' viewBox="0 0 24 24" aria-hidden="true">' + glyphParts(1.7, "sfBanGap" + seq++) + "</svg>"; }
+
+  /* The mark as a chip for the amenity strip (list rows and the pin pop-up), or "" when the place is not under a ban by a
+     current reading (an old or missing file shows no mark anywhere: we never claim what we did not just read). */
+  function chip(place, data, now) {
+    var v = view(place, data, now);
+    return v.kind === "ban" ? '<i class="ban" role="img" aria-label="' + esc(v.label) + '" title="' + esc(v.label) + '">' + glyph() + "</i>" : "";
+  }
+  /* The map badge: a dark disc with a ring and the mark inside, which together read as the familiar circle-and-line sign.
+     The disc is what keeps it legible over the brightest sky glow; the ring is the same orange so it reads as one sign.
+     A standalone SVG (an image for the map), so the colour is written in: COLOR is var(--ban), oklch(0.75 0.155 45). */
+  var COLOR = "#fd8a54";
+  function badgeSvg(px) {
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="' + px + '" height="' + px + '" viewBox="0 0 20 20" style="color:' + COLOR + '">' +
+      '<circle cx="10" cy="10" r="9.3" fill="#0b0820" fill-opacity=".92" stroke="currentColor" stroke-width="1.2"/>' +
+      '<g transform="translate(3 3) scale(0.5833)">' + glyphParts(2.1, "sfBanBadge" + seq++) + "</g></svg>";
+  }
 
   /* The card's section as an HTML string. federal: the NPS and Forest Service sites make their own fire rules. */
   function html(place, data, now, federal) {
@@ -57,10 +96,10 @@
     } else if (v.kind === "off" && v.why) {
       rows += '<p class="burn-src">' + esc(v.why) + " Source: " + link + ".</p>";
     }
-    return '<section class="burn is-' + v.kind + '" aria-labelledby="burnLead">' + FLAME +
+    return '<section class="burn is-' + v.kind + '" aria-labelledby="burnLead">' + (v.kind === "ban" ? glyph("burn-ic ban-ic") : FLAME) +
       '<div class="burn-t"><p class="burn-lead" id="burnLead">' + esc(v.lead) + "</p>" + rows + "</div></section>";
   }
 
-  var api = { view: view, html: html, ago: ago, listDay: listDay, names: names, PAGE: PAGE };
+  var api = { view: view, html: html, chip: chip, glyph: glyph, badgeSvg: badgeSvg, ago: ago, listDay: listDay, names: names, PAGE: PAGE };
   if (typeof module !== "undefined" && module.exports) module.exports = api; else root.SFBurn = api;
 })(typeof window !== "undefined" ? window : globalThis);

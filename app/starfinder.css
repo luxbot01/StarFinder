@@ -522,7 +522,21 @@ html.warp .lg {
 .card p.burn-lead { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--text); }
 .card p.burn-src { margin: 4px 0 0; font-size: 12px; line-height: 1.45; color: var(--text-faint); }
 .burn-src a { color: var(--text-dim); }
-.burn.is-ban { border-color: oklch(0.80 0.12 60 / 0.55); background: oklch(0.80 0.12 60 / 0.09); }
-.burn.is-ban .burn-ic, .card .burn.is-ban p.burn-lead { color: var(--warn); }
+.burn.is-ban { border-color: oklch(0.75 0.155 45 / 0.55); background: oklch(0.75 0.155 45 / 0.09); }
+.burn.is-ban .burn-ic, .card .burn.is-ban p.burn-lead { color: var(--ban); }
+
+/* ===== Nov 2: the burn-ban mark (a flame with a line through it, app/burnban.js) wherever a place is under a ban: list rows,
+   the pin pop-up, the card and a badge beside the map dot. One colour for a ban everywhere, --ban, a fire orange: redder than
+   the gold of the star dots and the Find button (hue 45 against their 85), so the mark is never read as "good stars", and
+   still warm, because it is about fire. Measured on the real surfaces before shipping (see StarfinderContext V8). The shape,
+   not the colour, carries the meaning, so it survives colour blindness and forced colours. */
+:root { --ban: oklch(0.75 0.155 45); }
+.amen i.ban { color: var(--ban); background: oklch(0.75 0.155 45 / 0.13); border-color: oklch(0.75 0.155 45 / 0.45); margin-right: 3px; }
+/* the legend's key for the map badge: the badge itself at map size, then the words; a map symbol with no key is a guess */
+.legend .ban-key { display: flex; align-items: center; gap: 7px; margin-top: 9px; }
+.legend .ban-key svg { width: 18px; height: 18px; flex: none; }
+/* forced colours: the chip's border and the card's icon take the system ink (a colour set on an svg itself is kept there, and
+   orange on a white high-contrast page is about 2.3:1) */
+@media (forced-colors: active) { .amen i.ban { border-color: CanvasText; } .burn .burn-ic, .burn.is-ban .burn-ic { color: CanvasText; } }
 .burn.is-off, .burn.is-na { border-style: dashed; }
 .card .burn.is-off p.burn-lead, .card .burn.is-na p.burn-lead { font-weight: 500; color: var(--text-dim); }
