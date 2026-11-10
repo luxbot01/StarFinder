@@ -232,6 +232,22 @@ def t_multicounty_overrides():
     assert bb.build(t, x, pl, TX, None, NOW)["places"]["nps-pais"]["status"] == "none"   # the city end of the island is not the seashore
 
 
+def t_carry_last_park_ban():
+    """A park that showed a ban last run and cannot be read now keeps the ban, marked as carried, never cleared silently."""
+    many = PARKS + [{"id": "tx-p%d" % i, "county": "Travis", "url": "https://tpwd.texas.gov/state-parks/p%d" % i} for i in range(9)]
+    calm = {"colorado-bend": H("colorado-bend", None), "dewitt": H("dewitt", OTHER)} | {"p%d" % i: H("p%d" % i, None) for i in range(9)}
+    t, x = mk(["TRAVIS"])
+    first = bb.build(t, x, many, TX, None, NOW, parks=bb.read_parks(many, stub(calm | {"inks-lake": H("inks-lake", BAN)})))
+    second = bb.build(t, x, many, TX, first, NOW, parks=bb.read_parks(many, stub(calm | {"inks-lake": (OSError("timed out"), None)})))
+    r = second["places"]["tx-inks-lake"]
+    assert r["status"] == "ban" and r["park"]["status"] == "ban" and r["park"]["carried"] is True, r
+    assert r["park"]["lastRead"] == first["parksRead"] and "timed out" in r["park"]["why"], r["park"]
+    third = bb.build(t, x, many, TX, None, NOW, parks=bb.read_parks(many, stub(calm | {"inks-lake": (OSError("timed out"), None)})))
+    assert third["places"]["tx-inks-lake"]["status"] == "unknown"                         # nothing to carry: unknown, not none
+    assert first["places"]["tx-dewitt"]["countiesFrom"] == "places.json county text"
+    assert first["places"]["tx-colorado-bend"]["countiesFrom"] == "Wikipedia"
+
+
 def t_heartbeat_ignores_read_time():
     a = run_parks(["TRAVIS"], {"inks-lake": H("inks-lake", BAN), "colorado-bend": H("colorado-bend", None), "dewitt": H("dewitt", OTHER)})
     assert bb.same_but_checked(a, dict(a, checked="2026-11-03T00:00:00Z", parksRead="2026-11-03T00:00:00Z"))
@@ -239,7 +255,7 @@ def t_heartbeat_ignores_read_time():
 
 TESTS = [t_planted_positive, t_clean_negative, t_names_and_multicounty, t_refusals, t_big_drop, t_stamp, t_heartbeat_logic,
          t_park_ban_without_county, t_park_alert_shapes, t_park_unknown_is_never_none, t_park_drop_guard, t_multicounty_overrides,
-         t_heartbeat_ignores_read_time]
+         t_heartbeat_ignores_read_time, t_carry_last_park_ban]
 
 
 def control_old_watcher():

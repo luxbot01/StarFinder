@@ -102,7 +102,8 @@
     var link = '<a href="' + PAGE + '" target="_blank" rel="noopener">Texas A&amp;M Forest Service</a>';
     var rows = "", pk = v.park;
     if (pk && pk.status === "ban") {
-      rows += '<p class="burn-park"><b>The park\'s own alert' + (pk.posted ? ", posted " + esc(pk.posted) : "") + ':</b> “' + esc(parkWords(pk.text)) + '” ' +
+      rows += '<p class="burn-park"><b>The park\'s own alert' + (pk.posted ? ", posted " + esc(pk.posted) : "") +
+        (pk.carried ? " (as last read " + esc(pk.lastRead && isFinite(Date.parse(pk.lastRead)) ? ago(now - Date.parse(pk.lastRead)) : "before") + "; the latest check could not reach the page)" : "") + ':</b> “' + esc(parkWords(pk.text)) + '” ' +
         '<a href="' + esc(pk.url) + '" target="_blank" rel="noopener">Park alerts</a></p>';
     } else if (pk && pk.status === "none" && (v.kind === "ban" || v.kind === "none")) {
       rows += '<p class="burn-src">The park\'s own alert page names no burn ban (<a href="' + esc(pk.url) + '" target="_blank" rel="noopener">park alerts</a>).</p>';

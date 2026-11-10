@@ -51,6 +51,14 @@ OVERRIDES = {
     "tx-cooper-lake": ["Hopkins", "Delta"],          # South Sulphur unit in Hopkins, Doctors Creek unit in Delta
     "tx-lake-somerville": ["Burleson", "Lee"],       # Birch Creek unit in Burleson, Nails Creek unit in Lee
 }
+# Where each list above was read: written on the place's data record (countiesFrom), never on the public card.
+OVERRIDE_FROM = {"usfs-angelina-national-forest": "the Forest Service's own page, read Nov 10 2026",
+                 "usfs-sabine-national-forest": "the Forest Service's own page, read Nov 10 2026",
+                 "usfs-davy-crockett-national-forest": "Wikipedia, read Nov 10 2026", "nps-bith": "Wikipedia, read Nov 10 2026",
+                 "nps-pais": "Wikipedia, read Nov 10 2026", "nps-gumo": "Wikipedia, read Nov 10 2026",
+                 "tx-big-bend-ranch": "Wikipedia, read Nov 10 2026", "tx-cooper-lake": "Wikipedia, read Nov 10 2026",
+                 "tx-lake-somerville": "Wikipedia, read Nov 10 2026", "tx-colorado-bend": "Wikipedia",
+                 "nps-lamr": "Wikipedia", "usfs-lyndon-b-johnson-national-grassland": "Wikipedia", "tx-guadalupe-river": "the park's own geography"}
 
 # ---------------------------------------------------------------------------------------------------------------------------
 # The parks' own alerts. Texas state parks post their own burn bans, which do not wait for a county order: on Nov 10 2026 five
@@ -272,8 +280,14 @@ def build(txt_raw, xml_raw, places, tx, prev, now, accept_drop=False, parks=None
             if key(c) not in tx_keys:
                 raise Fail("%s: %r is not a Texas county" % (p["id"], c))
         hit = [c for c in cs if key(c) in ban_keys]
-        rec = {"counties": cs, "countyStatus": "ban" if hit else "none", "banned": hit}
+        rec = {"counties": cs, "countiesFrom": OVERRIDE_FROM.get(p["id"], "places.json county text" if p["id"] not in OVERRIDES else "an override"),
+               "countyStatus": "ban" if hit else "none", "banned": hit}
         park = (parks or {}).get(p["id"])
+        # a park page we could not read this run never clears a ban it showed last run: the last reading is carried, said so,
+        # with when it was read (and a page change across a tenth of the parks fails the whole run, so the last file stands)
+        last = (((prev or {}).get("places") or {}).get(p["id"]) or {}).get("park")
+        if park and park["status"] == "unknown" and last and last.get("status") == "ban":
+            park = dict(last, carried=True, lastRead=last.get("lastRead") or (prev or {}).get("parksRead"), why=park.get("why"))
         if park:
             rec["park"] = park
         # a ban from either source is a ban; a park we could not read never becomes "none"

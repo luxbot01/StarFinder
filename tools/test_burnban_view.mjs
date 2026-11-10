@@ -111,6 +111,11 @@ t("a park page we could not read is never 'no ban', and carries no mark", () => 
   const v = B.view({ id: "unread" }, d2(), NOW); assert.equal(v.kind, "off"); assert.match(v.lead, /could not be read/);
   assert.match(B.html({ id: "unread" }, d2(), NOW, false), /could not read/); assert.equal(B.chip({ id: "unread" }, d2(), NOW), "");
 });
+t("a carried park ban says when it was last read and that the latest check could not reach the page", () => {
+  const d = d2(); d.places.carried = { counties: ["Travis"], countyStatus: "none", banned: [], status: "ban", park: PK("ban", { carried: true, lastRead: "2026-11-02T12:00:00Z" }) };
+  assert.equal(B.view({ id: "carried" }, d, NOW).kind, "ban");
+  assert.match(B.html({ id: "carried" }, d, NOW, false), /as last read 6 hours ago; the latest check could not reach the page/);
+});
 t("the park's words are escaped", () => {
   const h = B.html({ id: "evilPark" }, d2(), NOW, false); assert.doesNotMatch(h, /<img|posted <b>/); assert.match(h, /&lt;img/); assert.match(h, /posted &lt;b&gt;/);
 });

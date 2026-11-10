@@ -17,7 +17,7 @@ const real = JSON.parse(fs.readFileSync("C:/Users/luxbo/Documents/Code/StarFinde
 const stateBan = Object.entries(real.places).find(([id, r]) => id.startsWith("tx-") && r.status === "ban" && r.counties.length === 1);
 const SB = stateBan[0], SBC = stateBan[1].banned[0];
 const rx = (s) => new RegExp(s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-const places = [["tx-colorado-bend", /No county burn ban reported; check the park's rules/, /San Saba and Lampasas Counties/],
+const places = [["tx-colorado-bend", /No burn ban reported by the park or its county; check the park's rules/, /San Saba and Lampasas Counties/],
   [SB, rx(`Burn ban in effect (${SBC} County)`), rx(`Looked up for ${SBC} County`)],
   ["nps-bibe", /Burn ban in effect \(Brewster County\)/, /federal land/],
   ["ok-turner-falls", /not tracked for Oklahoma/, null]];
