@@ -110,7 +110,163 @@ def t_heartbeat_logic():
     assert bb.age_hours("2026-11-02T00:00:00Z", NOW) == 12.0
 
 
-TESTS = [t_planted_positive, t_clean_negative, t_names_and_multicounty, t_refusals, t_big_drop, t_stamp, t_heartbeat_logic]
+# ---- the parks' own alert pages (added Nov 10 2026, after the audit in StarfinderContext V10 found five park bans we missed) ----
+def alert_page(*alerts):
+    """A page in the shape TPWD serves (read Nov 10 2026): one <h3> per alert inside notice-message, then its paragraph."""
+    items = "".join("<h3>%s</h3>&#13;\n<p>%s</p>&#13;\n" % a for a in alerts)
+    return ('<html><main id="content"><h1 class="documentFirstHeading">Park Alerts</h1><div id="content-core">\n<div class="alert">'
+            '<div class="notice-blurb"><h2><span>Park Alert...</span></h2></div><div class="notice-message">%s<hr />&#13;\n'
+            '<p>Check back for updates.</p></div></div>\n</div><div id="viewlet-below-content-body"></div></main></html>' % items).encode("utf-8")
+
+
+NOALERTS = (302, b"", "https://tpwd.texas.gov/acl_users/credentials_cookie_auth/require_login?came_from=https%3A//tpwd.texas.gov/state-parks/x/alert")
+BAN = (200, alert_page(("Burn Ban", "Oct. 19, 2026 - The park is under a burn ban. No wood fires allowed. You may use charcoal for cooking only."),
+                       ("Low Lake Level", "June 22, 2026 - The lake is lower than normal.")), "")
+OTHER = (200, alert_page(("Park Closures", "Some campsites will be closed on Dec. 3."),), "")
+PARKS = [{"id": "tx-inks-lake", "county": "Burnet", "url": "https://tpwd.texas.gov/state-parks/inks-lake"},
+         {"id": "tx-colorado-bend", "county": "San Saba", "url": "https://tpwd.texas.gov/state-parks/colorado-bend"},
+         {"id": "tx-dewitt", "county": "DeWitt", "url": "https://tpwd.texas.gov/state-parks/dewitt"},
+         {"id": "nps-lamr", "county": "Hutchinson", "url": "https://www.nps.gov/lamr/"}]
+NOTICE = "https://tpwd.texas.gov/state-parks/park-information/notices/screwworm-alert"
+
+
+def home(slug, alert_path=None, notice=False):
+    """A park home page in the shape TPWD serves: the banner and its View links when the park has alerts."""
+    links = ([alert_path] if alert_path else []) + ([NOTICE] if notice else [])
+    banner = "".join('<div class="shortmessage" id="park-alert%d"><p>This park has active alerts</p><p><a class="js-more-link" id="more-info%d" '
+                     'href="%s">View</a></p></div>' % (i, i, u) for i, u in enumerate(links, 1))
+    return (200, ('<html><body>%s<div class="park-row"><main><h1>%s</h1></main></div></body></html>' % (banner, slug)).encode("utf-8"), "")
+
+
+def stub(answers):
+    """answers: {slug: (home_answer, alert_answer_or_None)}; the alert answer is served at whatever path the home page links."""
+    def get(url):
+        if url == NOTICE:
+            return answers.get("_notice", OTHER)
+        rest = url.split("/state-parks/")[1].strip("/").split("/")
+        a = answers[rest[0]]
+        a = a[0] if len(rest) == 1 else a[1]
+        if isinstance(a, Exception):
+            raise a
+        return a
+    return get
+
+
+def H(slug, alert, path="alert", notice=False):
+    """The home page plus its alert page, as the stub serves them (alert None: a park with no alerts)."""
+    if isinstance(alert, Exception) and alert.args == ("home",):
+        return (alert, None)
+    return (home(slug, None if alert is None else "https://tpwd.texas.gov/state-parks/%s/%s" % (slug, path), notice), alert)
+
+
+def run_parks(names, answers, prev=None, accept_drop=False):
+    t, x = mk(names)
+    parks = bb.read_parks(PARKS, stub(answers))
+    return bb.build(t, x, PARKS, TX, prev, NOW, accept_drop=accept_drop, parks=parks)
+
+
+def t_park_ban_without_county():
+    """The audit's case: the park posts a burn ban and no county of it is on the state list. The place is under a ban."""
+    out = run_parks(["TRAVIS"], {"inks-lake": H("inks-lake", BAN), "colorado-bend": H("colorado-bend", None), "dewitt": H("dewitt", OTHER)})
+    r = out["places"]["tx-inks-lake"]
+    assert r["status"] == "ban" and r["countyStatus"] == "none" and r["banned"] == [], r
+    assert r["park"]["status"] == "ban" and r["park"]["posted"] == "Oct. 19, 2026", r["park"]
+    assert r["park"]["text"].startswith("The park is under a burn ban. No wood fires allowed."), r["park"]
+    assert r["park"]["url"] == "https://tpwd.texas.gov/state-parks/inks-lake/alert"
+    assert out["places"]["tx-colorado-bend"]["status"] == "none" and out["places"]["tx-colorado-bend"]["park"]["status"] == "none"
+    assert out["places"]["tx-dewitt"]["park"]["status"] == "none" and out["places"]["tx-dewitt"]["park"]["alerts"] == 1   # alerts, none about fire
+    assert "park" not in out["places"]["nps-lamr"] and out["parkBanCount"] == 1           # federal land has no park page here
+
+
+def t_park_alert_shapes():
+    """TPWD posts at /alert for most parks and /park-alert for some (Sheldon Lake, Palo Pinto Mountains); a park may also link only a
+    statewide notice (Longhorn Cavern). The link on the home page is followed, never a built URL."""
+    out = run_parks(["TRAVIS"], {"inks-lake": H("inks-lake", OTHER), "colorado-bend": H("colorado-bend", BAN, path="park-alert"),
+                                 "dewitt": (home("dewitt", None, notice=True), None)})["places"]
+    assert out["tx-colorado-bend"]["status"] == "ban" and out["tx-colorado-bend"]["park"]["url"].endswith("/colorado-bend/park-alert")
+    assert out["tx-dewitt"]["park"]["status"] == "none" and out["tx-dewitt"]["park"]["alerts"] == 1   # the notice was read, and is not a ban
+    assert out["tx-inks-lake"]["park"]["status"] == "none"
+
+
+def t_park_unknown_is_never_none():
+    # one unreadable park among a dozen (under the guard's tenth): that park is "unknown", never "none"
+    many = PARKS + [{"id": "tx-p%d" % i, "county": "Travis", "url": "https://tpwd.texas.gov/state-parks/p%d" % i} for i in range(9)]
+    calm = {"colorado-bend": H("colorado-bend", None), "dewitt": H("dewitt", OTHER)} | {"p%d" % i: H("p%d" % i, None) for i in range(9)}
+
+    def go(names, inks):
+        t, x = mk(names)
+        return bb.build(t, x, many, TX, None, NOW, parks=bb.read_parks(many, stub(calm | {"inks-lake": inks})))["places"]["tx-inks-lake"]
+    r = go(["TRAVIS"], ((200, b"<html><p>a redesigned page</p></html>", ""), None))      # the home page lost its known shape
+    assert r["status"] == "unknown" and r["park"]["status"] == "unknown", r
+    assert go(["TRAVIS"], (OSError("timed out"), None))["status"] == "unknown"           # the home page did not answer
+    assert go(["TRAVIS"], H("inks-lake", (404, b"", "")))["status"] == "unknown"           # a View link that leads nowhere
+    assert go(["TRAVIS"], H("inks-lake", (200, b"<html>no notices here</html>", "")))["status"] == "unknown"   # an alert page of a new shape
+    assert go(["BURNET"], (OSError("timed out"), None))["status"] == "ban"                # the county ban still stands
+    big = PARKS[:3]
+    try:
+        bb.read_parks(big, stub({"inks-lake": (OSError("x"), None), "colorado-bend": (OSError("y"), None), "dewitt": H("dewitt", OTHER)}))
+    except bb.Fail:
+        pass
+    else:
+        raise AssertionError("two of three park pages unreadable must fail the run")
+    expect_fail(lambda: bb.parse_park_alert(302, b"", "https://tpwd.texas.gov/somewhere-else"), "an unexpected redirect")
+    expect_fail(lambda: bb.parse_park_alert(500, b"", ""), "a server error")
+
+
+def t_park_drop_guard():
+    quiet = {"inks-lake": H("inks-lake", None), "colorado-bend": H("colorado-bend", None), "dewitt": H("dewitt", OTHER)}
+    expect_fail(lambda: run_parks(["TRAVIS"], quiet, prev={"banCount": 3, "parkBanCount": 9}), "every park ban vanishing at once")
+    run_parks(["TRAVIS"], quiet, prev={"banCount": 3, "parkBanCount": 9}, accept_drop=True)
+
+
+def t_multicounty_overrides():
+    """The audit's second case: a place reaching several counties is checked against every one of them."""
+    pl = [{"id": "usfs-sabine-national-forest", "county": "Sabine"}, {"id": "nps-pais", "county": "Nueces"},
+          {"id": "usfs-davy-crockett-national-forest", "county": "Houston"}, {"id": "nps-bith", "county": "Hardin"}]
+    t, x = mk(["SHELBY", "WILLACY", "TRINITY", "TYLER"])
+    r = bb.build(t, x, pl, TX, None, NOW)["places"]
+    assert r["usfs-sabine-national-forest"]["banned"] == ["Shelby"] and r["usfs-sabine-national-forest"]["status"] == "ban"
+    assert r["nps-pais"]["counties"] == ["Kleberg", "Kenedy", "Willacy"] and r["nps-pais"]["status"] == "ban"
+    assert r["usfs-davy-crockett-national-forest"]["banned"] == ["Trinity"] and r["nps-bith"]["banned"] == ["Tyler"]
+    t, x = mk(["NUECES"])
+    assert bb.build(t, x, pl, TX, None, NOW)["places"]["nps-pais"]["status"] == "none"   # the city end of the island is not the seashore
+
+
+def t_heartbeat_ignores_read_time():
+    a = run_parks(["TRAVIS"], {"inks-lake": H("inks-lake", BAN), "colorado-bend": H("colorado-bend", None), "dewitt": H("dewitt", OTHER)})
+    assert bb.same_but_checked(a, dict(a, checked="2026-11-03T00:00:00Z", parksRead="2026-11-03T00:00:00Z"))
+
+
+TESTS = [t_planted_positive, t_clean_negative, t_names_and_multicounty, t_refusals, t_big_drop, t_stamp, t_heartbeat_logic,
+         t_park_ban_without_county, t_park_alert_shapes, t_park_unknown_is_never_none, t_park_drop_guard, t_multicounty_overrides,
+         t_heartbeat_ignores_read_time]
+
+
+def control_old_watcher():
+    """The watcher as it was before Nov 10 (the parks never read): the planted park ban must turn the test red."""
+    real = bb.parse_park_alert
+    bb.parse_park_alert = lambda status, body, location="": {"status": "none", "heading": None, "text": None, "posted": None, "alerts": 0}
+    try:
+        t_park_ban_without_county()
+    except AssertionError:
+        return True
+    finally:
+        bb.parse_park_alert = real
+    return False
+
+
+def control_one_county():
+    """Overrides gone (one county per place, as before): the multi-county test must turn red."""
+    real = dict(bb.OVERRIDES)
+    for k in ("usfs-sabine-national-forest", "nps-pais", "usfs-davy-crockett-national-forest", "nps-bith"):
+        bb.OVERRIDES.pop(k, None)
+    try:
+        t_multicounty_overrides()
+    except AssertionError:
+        return True
+    finally:
+        bb.OVERRIDES.clear(); bb.OVERRIDES.update(real)
+    return False
 
 
 def control():
@@ -136,10 +292,13 @@ def main():
             bad += 1
             print("FAIL ", t.__name__)
             traceback.print_exc()
-    ok = control()
-    print("ok   " if ok else "FAIL ", "control: a broken matcher turns the name test red")
-    bad += 0 if ok else 1
-    print("%d of %d passed" % (len(TESTS) + 1 - bad, len(TESTS) + 1))
+    controls = [(control, "a broken matcher turns the name test red"), (control_old_watcher, "the old watcher (parks never read) turns the park-ban test red"),
+                (control_one_county, "one county per place turns the multi-county test red")]
+    for fn, label in controls:
+        ok = fn()
+        print("ok   " if ok else "FAIL ", "control: " + label)
+        bad += 0 if ok else 1
+    print("%d of %d passed" % (len(TESTS) + len(controls) - bad, len(TESTS) + len(controls)))
     return 1 if bad else 0
 
 

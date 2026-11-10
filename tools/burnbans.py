@@ -18,7 +18,7 @@ as "no burn ban".
 
 Writes only when something changed, or when the last check is HEARTBEAT_H hours old, so `checked` never lags by more.
 """
-import json, os, re, sys, urllib.request
+import json, os, re, sys, urllib.error, urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -31,12 +31,126 @@ HEARTBEAT_H = 11   # the job runs every 6 hours, so every second run (about 12 h
 MAX_BYTES = 200_000   # the real files are 3 to 4 KB
 
 # Parks whose county text in places.json is not enough. Others are read from the text ("A and B", "A, B, C", a trailing note dropped).
+# A place is checked against EVERY county it reaches: a ban in any of them is a ban somewhere on that land, and the card names
+# which county. (The Nov 10 2026 audit found Sabine NF checked against Sabine County only while its other four counties were
+# under bans; StarfinderContext V10.) Each line says where its counties were read.
 OVERRIDES = {
     "tx-colorado-bend": ["San Saba", "Lampasas"],   # mostly San Saba; the small part in Lampasas has no public access (Wikipedia)
     "nps-lamr": ["Hutchinson", "Moore", "Potter"],   # Lake Meredith NRA
     "usfs-lyndon-b-johnson-national-grassland": ["Wise", "Montague"],
     "tx-guadalupe-river": ["Comal", "Kendall"],      # the park straddles both
+    # the Forest Service's own pages, read Nov 10 2026
+    "usfs-angelina-national-forest": ["Angelina", "Nacogdoches", "San Augustine", "Jasper"],   # "located in Angelina, Nacogdoches, San Augustine and Jasper counties"
+    "usfs-sabine-national-forest": ["Sabine", "San Augustine", "Shelby", "Jasper", "Newton"],  # "within Sabine, San Augustine, Shelby, Jasper, and Newton counties"
+    # Wikipedia, read Nov 10 2026 (the agency's own page names no counties)
+    "usfs-davy-crockett-national-forest": ["Houston", "Trinity"],
+    "nps-bith": ["Hardin", "Jasper", "Jefferson", "Liberty", "Orange", "Polk", "Tyler"],      # "Centered about Hardin County ... extends into ... Jasper, Jefferson, Liberty, Orange, Polk, and Tyler counties"
+    "nps-pais": ["Kleberg", "Kenedy", "Willacy"],    # the seashore; Nueces holds only the city end of the island
+    "nps-gumo": ["Culberson", "Hudspeth"],
+    "tx-big-bend-ranch": ["Presidio", "Brewster"],
+    "tx-cooper-lake": ["Hopkins", "Delta"],          # South Sulphur unit in Hopkins, Doctors Creek unit in Delta
+    "tx-lake-somerville": ["Burleson", "Lee"],       # Birch Creek unit in Burleson, Nails Creek unit in Lee
 }
+
+# ---------------------------------------------------------------------------------------------------------------------------
+# The parks' own alerts. Texas state parks post their own burn bans, which do not wait for a county order: on Nov 10 2026 five
+# parks (Bastrop, Buescher, Goose Island, Devils River, Post Oak Ridge) were "under a burn ban" by their own alert page while
+# none of their counties was on the state's list, and this watcher said "No county burn ban reported" for all five. So every
+# run also reads the page a visitor opens from the park's "This park has active alerts > View" link,
+# https://tpwd.texas.gov/state-parks/<park>/alert (TPWD's robots.txt allows /state-parks/; read Nov 10 2026). Facts only: the
+# heading, the posted date and the alert's own sentence, shown with a link back to the page.
+# What the page does: a park with alerts answers 200 with <div class="notice-message"> holding one <h3> per alert, each followed
+# by its paragraph ("Burn Ban" / "Oct. 19, 2026 - The park is under a burn ban. No wood fires allowed. ..."). A park with no
+# alerts answers 302 to a sign-in page (require_login?came_from=.../alert): there is no alert object, so no alert is posted.
+PARK_ALERT = "https://tpwd.texas.gov/state-parks/%s/alert"
+FIRE_HEAD = re.compile(r"\b(burn bans?|fire bans?|fire restrictions?|campfire ban)\b", re.I)
+UNKNOWN_MAX = 0.10   # more than a tenth of the parks unreadable on one run: the run fails closed rather than half-know
+
+
+def tpwd_slug(p):
+    m = re.match(r"https?://tpwd\.texas\.gov/state-parks/([a-z0-9-]+)/?$", p.get("url") or "")
+    return m.group(1) if p["id"].startswith("tx-") and m else None
+
+
+def parse_park_alert(status, body, location=""):
+    """One park's alert page -> {status: ban|none, heading, text, posted}. Raises Fail when the page is not the shape we know,
+    so a redesign of their site can never read as "no burn ban"."""
+    if status in (301, 302, 303, 307, 308):
+        if "require_login" in location and re.search(r"(/|%2F)alert$", location):
+            return {"status": "none", "heading": None, "text": None, "posted": None, "alerts": 0}
+        raise Fail("an alert page redirected somewhere unexpected: %s" % location[:120])
+    if status != 200:
+        raise Fail("an alert page answered HTTP %s" % status)
+    text = body.decode("utf-8", errors="replace")
+    core = re.search(r'(?is)<div id="content-core">(.*?)<div id="viewlet-below-content-body"', text)
+    if not core or 'class="notice-message"' not in core.group(1):
+        raise Fail("an alert page has no notice-message block (has the page changed?)")
+    msg = core.group(1)
+    parts = re.split(r"(?is)<h3[^>]*>(.*?)</h3>", msg)
+    alerts = []
+    for i in range(1, len(parts) - 1, 2):
+        head = clean(parts[i])
+        body_txt = clean(re.split(r"(?is)<hr\b", parts[i + 1])[0])
+        alerts.append((head, body_txt))
+    if not alerts:
+        raise Fail("an alert page has no alert headings")
+    for head, body_txt in alerts:
+        if FIRE_HEAD.search(head) or re.search(r"\bunder a burn ban\b", body_txt, re.I):
+            m = re.match(r"^((?:Jan|Feb|Mar|Apr|May|June?|July?|Aug|Sept?|Oct|Nov|Dec)[a-z]*\.? \d{1,2}, \d{4})\s*[-–]\s*(.*)$", body_txt)
+            return {"status": "ban", "heading": head, "text": (m.group(2) if m else body_txt)[:400], "posted": m.group(1) if m else None, "alerts": len(alerts)}
+    return {"status": "none", "heading": None, "text": None, "posted": None, "alerts": len(alerts)}
+
+
+def clean(fragment):
+    import html as _html
+    t = _html.unescape(re.sub(r"(?s)<[^>]+>", " ", fragment)).replace("\r", " ").replace(" ", " ")
+    t = re.sub(r"[�]", "", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def alert_links(home):
+    """The park's own "This park has active alerts > View" links, read off its home page, in page order. TPWD uses more than one
+    shape (/<park>/alert, /<park>/park-alert, and a statewide /park-information/notices/... page), so the links are read, never built."""
+    text = home.decode("utf-8", errors="replace")
+    if 'class="park-row"' not in text:
+        raise Fail("a park home page is not the shape we know (no park-row)")
+    links = re.findall(r'class="js-more-link"[^>]*href="([^"]+)"', text)
+    if "This park has active alerts" in text and not links:
+        raise Fail("a park home page shows alerts but no View link")
+    return [("https://tpwd.texas.gov" + u if u.startswith("/") else u) for u in dict.fromkeys(links)]
+
+
+def read_parks(places, get):
+    """{place id: park reading} for every Texas state park, read the way a visitor reads it: the park's home page, then every alert
+    page its View links open (Nov 10 2026: Sheldon Lake and Palo Pinto Mountains post at /park-alert, most parks at /alert, and
+    some only link a statewide notice). get(url) -> (status, body, location). A park whose pages cannot be read is "unknown"
+    (never "none"); too many unknowns fail the run."""
+    out, unknown, seen = {}, 0, {}
+    for p in places:
+        if not tpwd_slug(p):
+            continue
+        try:
+            st, body, loc = get(p["url"])
+            if st != 200:
+                raise Fail("a park home page answered HTTP %s" % st)
+            r = {"status": "none", "heading": None, "text": None, "posted": None, "alerts": 0, "url": p["url"]}
+            for link in alert_links(body):
+                if link not in seen:            # a statewide notice is linked from many parks: read it once a run
+                    st2, b2, l2 = get(link)
+                    if st2 != 200:
+                        raise Fail("an alert page linked from the park answered HTTP %s" % st2)
+                    seen[link] = parse_park_alert(st2, b2, l2)
+                a = seen[link]
+                r["alerts"] += a.get("alerts", 0)
+                if a["status"] == "ban" and r["status"] != "ban":
+                    r.update({k: a[k] for k in ("status", "heading", "text", "posted")}, url=link)
+        except (Fail, OSError) as e:   # one odd park: "unknown", never "none"; a site-wide change trips the guard below
+            r = {"status": "unknown", "heading": None, "text": None, "posted": None, "why": str(e)[:160], "url": p["url"]}
+            unknown += 1
+        out[p["id"]] = r
+    if out and unknown / len(out) > UNKNOWN_MAX:
+        raise Fail("%d of %d parks' alert pages could not be read" % (unknown, len(out)))
+    return out
 
 
 class Fail(Exception):
@@ -126,7 +240,9 @@ def place_counties(p):
     return [c.strip() for c in re.split(r",|\band\b", text) if c.strip()]
 
 
-def build(txt_raw, xml_raw, places, tx, prev, now, accept_drop=False):
+def build(txt_raw, xml_raw, places, tx, prev, now, accept_drop=False, parks=None):
+    """parks: {place id: park reading} from read_parks(), or None when the parks were not read (old callers, tests of the
+    county half): then no place gets a park line and nothing claims the parks were checked."""
     n1, s1, names1 = parse_txt(decode(txt_raw))
     n2, s2, names2 = parse_xml(decode(xml_raw))
     if n1 != len(names1):
@@ -141,6 +257,11 @@ def build(txt_raw, xml_raw, places, tx, prev, now, accept_drop=False):
         raise Fail("the list fell from %d to %d counties at once; run the workflow by hand with accept_drop to take it" % (pc, len(banned)))
     tx_keys = {key(c) for c in tx}
     ban_keys = {key(c) for c in banned}
+    if parks is not None:
+        pb = sum(1 for r in parks.values() if r["status"] == "ban")
+        ppb = (prev or {}).get("parkBanCount", 0)
+        if ppb >= 4 and pb == 0 and not accept_drop:   # every park ban vanishing at once looks like a parser that went blind
+            raise Fail("the parks' own burn bans fell from %d to 0 at once; run the workflow by hand with accept_drop to take it" % ppb)
     out_places = {}
     for p in places:
         cs = place_counties(p)
@@ -151,9 +272,15 @@ def build(txt_raw, xml_raw, places, tx, prev, now, accept_drop=False):
             if key(c) not in tx_keys:
                 raise Fail("%s: %r is not a Texas county" % (p["id"], c))
         hit = [c for c in cs if key(c) in ban_keys]
-        out_places[p["id"]] = {"counties": cs, "status": "ban" if hit else "none", "banned": hit}
-    return {
-        "schema": 1,
+        rec = {"counties": cs, "countyStatus": "ban" if hit else "none", "banned": hit}
+        park = (parks or {}).get(p["id"])
+        if park:
+            rec["park"] = park
+        # a ban from either source is a ban; a park we could not read never becomes "none"
+        rec["status"] = "ban" if hit or (park and park["status"] == "ban") else "unknown" if park and park["status"] == "unknown" else "none"
+        out_places[p["id"]] = rec
+    out = {
+        "schema": 2,
         "source": {"name": "Texas A&M Forest Service, Texas Burn Bans", "page": PAGE, "data": TXT},
         "published": stamp_to_iso(s1),
         "publishedText": re.sub(r"\s+", " ", s1),
@@ -162,12 +289,17 @@ def build(txt_raw, xml_raw, places, tx, prev, now, accept_drop=False):
         "banned": banned,
         "places": out_places,
     }
+    if parks is not None:
+        out["parkSource"] = {"name": "Texas Parks and Wildlife Department, each state park's alert page", "page": PARK_ALERT % "<park>"}
+        out["parksRead"] = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+        out["parkBanCount"] = sum(1 for r in parks.values() if r["status"] == "ban")
+    return out
 
 
 def same_but_checked(a, b):
     if not a or not b:
         return False
-    strip = lambda d: {k: v for k, v in d.items() if k != "checked"}
+    strip = lambda d: {k: v for k, v in d.items() if k not in ("checked", "parksRead")}
     return strip(a) == strip(b)
 
 
@@ -185,6 +317,38 @@ def fetch(url):
     return raw
 
 
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):   # a park with no alerts redirects to a sign-in page: read the 302 itself
+        return None
+
+
+_OPENER = urllib.request.build_opener(_NoRedirect)
+_last = [0.0]
+
+
+def get_page(url):
+    """(status, body, Location) without following redirects, one request a second (a courtesy to the park site)."""
+    import time
+    wait = 1.0 - (time.time() - _last[0])
+    if wait > 0:
+        time.sleep(wait)
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "text/html"})
+    try:
+        with _OPENER.open(req, timeout=30) as r:
+            body = r.read(MAX_PAGE + 1)
+            st, loc = r.status, ""
+    except urllib.error.HTTPError as e:
+        st, loc, body = e.code, e.headers.get("Location", "") or "", b""
+    finally:
+        _last[0] = time.time()
+    if len(body) > MAX_PAGE:
+        raise Fail("%s is larger than %d bytes" % (url, MAX_PAGE))
+    return st, body, loc
+
+
+MAX_PAGE = 600_000   # a park alert page is about 50 KB
+
+
 def main():
     now = datetime.now(timezone.utc).replace(microsecond=0)
     out = ROOT / "data" / "burnbans.json"
@@ -192,7 +356,8 @@ def main():
     tx = json.loads((ROOT / "data" / "tx_counties.json").read_text(encoding="utf-8"))
     prev = json.loads(out.read_text(encoding="utf-8")) if out.exists() else None
     try:
-        new = build(fetch(TXT), fetch(XML), places, tx, prev, now, accept_drop=os.environ.get("ACCEPT_DROP") == "true")
+        parks = read_parks(places, get_page)
+        new = build(fetch(TXT), fetch(XML), places, tx, prev, now, accept_drop=os.environ.get("ACCEPT_DROP") == "true", parks=parks)
     except Fail as e:
         print("FAIL (nothing written): %s" % e, file=sys.stderr)
         return 1
@@ -205,8 +370,10 @@ def main():
         out.write_text(json.dumps(new, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     verdict = "written (changed)" if changed else "written (heartbeat)" if beat else "unchanged"
     cb = new["places"].get("tx-colorado-bend")
-    msg = "List of %s: %d counties under a burn ban. Colorado Bend State Park (%s): %s. File %s." % (
-        new["publishedText"], new["banCount"], " and ".join(cb["counties"]) if cb else "?", cb["status"] if cb else "?", verdict)
+    unk = [k for k, r in parks.items() if r["status"] == "unknown"]
+    msg = "List of %s: %d counties under a burn ban. %d state parks post their own burn ban; %d park pages unreadable%s. Colorado Bend State Park (%s): %s. File %s." % (
+        new["publishedText"], new["banCount"], new.get("parkBanCount", 0), len(unk), (" (" + ", ".join(unk[:5]) + ")") if unk else "",
+        " and ".join(cb["counties"]) if cb else "?", cb["status"] if cb else "?", verdict)
     print(msg)
     summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary:

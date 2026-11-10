@@ -1,4 +1,5 @@
-# StarFinder's burn-ban watcher: every 6 hours it reads the Texas A&M Forest Service county burn-ban list and, only when
+# StarFinder's burn-ban watcher: every 6 hours it reads the Texas A&M Forest Service county burn-ban list and each Texas state
+# park's own alert page (parks post bans of their own; StarfinderContext V10) and, only when
 # something changed (or the last check is 11 hours old), commits data/burnbans.json. See tools/burnbans.py and the README.
 # No secrets, no personal credential: the job uses the run's own GITHUB_TOKEN with contents: write and nothing else.
 name: Burn-ban watcher
@@ -28,14 +29,14 @@ jobs:
   watch:
     if: github.repository == 'luxbot01/StarFinder'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 12   # about 90 park pages at one request a second, plus the county list
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Tests (a planted county must be found, a clean list must stay clean)
         run: python3 -I tools/test_burnbans.py
 
-      - name: Read the Forest Service list
+      - name: Read the Forest Service list and each state park's own alert page
         env:
           FORCE: ${{ inputs.force }}
           ACCEPT_DROP: ${{ inputs.accept_drop }}
@@ -50,6 +51,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- data/burnbans.json
-          git commit -m "Burn bans: refreshed from the Texas A&M Forest Service list"
+          git commit -m "Burn bans: refreshed from the Texas A&M Forest Service list and the parks' own alerts"
           git pull --rebase origin main
           git push origin HEAD:main

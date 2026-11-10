@@ -63,7 +63,25 @@ helper) chooses by number, `build_commons_picks.py` builds the records from the 
 `python -I tools/photos_cache.py` keeps resized WebP copies in `photos/` so the arrows answer at once. Wrong-place traps seen:
 Commons categories and searches for Cooper Lake, Bear Creek, Tyler and Village Creek also return same-named parks in other states.
 
-## County burn bans (`tools/burnbans.py`, `.github/workflows/burnbans.yml`, `app/burnban.js`)
+## Burn bans (`tools/burnbans.py`, `.github/workflows/burnbans.yml`, `app/burnban.js`)
+
+**Two sources since Nov 10 2026.** An audit that day (every park's own page read the same day, expected against shown) found
+nine places showing "No county burn ban reported" while a ban applied: five Texas state parks post burn bans of their own that do
+not wait for a county order (Bastrop, Buescher, Goose Island, Devils River, Post Oak Ridge), and four multi-county federal units
+were checked against one county only (Sabine NF, Davy Crockett NF, Big Thicket, Padre Island). So the job now also reads each
+state park's home page the way a visitor does and follows every "This park has active alerts > View" link (TPWD posts at
+`/<park>/alert`, at `/<park>/park-alert`, or links a statewide notice, so links are read, never built): about 165 requests and
+10 MB a run, one request a second, allowed by TPWD's robots.txt. A place is under a ban if its park OR any county it reaches says
+so; the card names the source, quotes the park's first two sentences with the posted date and links the page. A park whose pages
+cannot be read is "unknown" and never "no ban"; more than a tenth unreadable, or every park ban vanishing at once, fails the run.
+`OVERRIDES` lists every county of the multi-county places with where each list was read.
+
+**The independent check:** `python -I tools/audit_burnbans.py [file] [--saved <dir>]` re-reads every park's own pages with its
+own code (no import from the watcher) and exits 1 if any park says burn ban while the file shows otherwise. Proved on Nov 10:
+red against the file that was live (the five parks named), green against the new file, red again against a copy with one planted
+wrong answer. The pages of that audit are in `D:\StarFinderData\burnban_audit_2026-11-10` on the build PC.
+
+### The county list
 
 Every 6 hours a scheduled GitHub Actions job reads the Texas A&M Forest Service's county burn-ban list, the
 `BURNBAN.txt` file linked from their [burn bans page](https://tfsweb.tamu.edu/wildfire-and-other-disasters/burn-bans-and-information/)

@@ -79,6 +79,41 @@ t("the map badge is a standalone SVG of the asked size with the colour written i
   assert.match(s, /<circle /); assert.match(s, /<mask id="sfBanBadge\d+"/); assert.match(s, /<\/svg>$/);
   assert.notEqual(/<mask id="([^"]+)"/.exec(B.badgeSvg(18))[1], /<mask id="([^"]+)"/.exec(s)[1]);   // inline in the legend too: ids differ
 });
+// ---- the park's own alert (Nov 10 2026: five parks posted a burn ban while no county of theirs was on the state list) ----
+const PK = (status, extra = {}) => ({ status, url: "https://tpwd.texas.gov/state-parks/bastrop/alert", heading: status === "ban" ? "Burn Ban" : null,
+  posted: status === "ban" ? "Oct. 19, 2026" : null, text: status === "ban" ? "The park is under a burn ban. No wood fires allowed. You may use charcoal for cooking only." : null, ...extra });
+const d2 = () => data({ places: {
+  parkOnly: { counties: ["Bastrop"], countyStatus: "none", banned: [], park: PK("ban"), status: "ban" },
+  parkAndCounty: { counties: ["Burnet"], countyStatus: "ban", banned: ["Burnet"], park: PK("ban"), status: "ban" },
+  clean: { counties: ["Travis"], countyStatus: "none", banned: [], park: PK("none"), status: "none" },
+  unread: { counties: ["Travis"], countyStatus: "none", banned: [], park: PK("unknown", { why: "timed out" }), status: "unknown" },
+  evilPark: { counties: ["Travis"], countyStatus: "none", banned: [], park: PK("ban", { text: '<img src=x onerror=alert(1)>. Second.', posted: "<b>" }), status: "ban" },
+} });
+t("park ban, no county ban: a ban, said as the park's, with the park's own words, date and page", () => {
+  const v = B.view({ id: "parkOnly" }, d2(), NOW);
+  assert.equal(v.kind, "ban"); assert.equal(v.lead, "Burn ban in effect at the park"); assert.equal(v.label, "Burn ban in effect at the park");
+  const h = B.html({ id: "parkOnly" }, d2(), NOW, false);
+  assert.match(h, /The park's own alert, posted Oct\. 19, 2026:/); assert.match(h, /“The park is under a burn ban\. No wood fires allowed\.”/);
+  assert.doesNotMatch(h, /charcoal/);                                    // two sentences, not the whole notice
+  assert.match(h, /href="https:\/\/tpwd\.texas\.gov\/state-parks\/bastrop\/alert"/); assert.match(h, /County list: Looked up for Bastrop County/);
+  assert.match(B.chip({ id: "parkOnly" }, d2(), NOW), /aria-label="Burn ban in effect at the park"/);
+});
+t("park and county both: one lead names both", () => {
+  assert.equal(B.view({ id: "parkAndCounty" }, d2(), NOW).lead, "Burn ban in effect (the park, and Burnet County)");
+  assert.equal(B.view({ id: "parkAndCounty" }, d2(), NOW).label, "Burn ban in effect at the park and in Burnet County");
+});
+t("neither: says both sources were read, never 'safe'", () => {
+  const v = B.view({ id: "clean" }, d2(), NOW); assert.equal(v.kind, "none"); assert.equal(v.lead, "No burn ban reported by the park or its county; check the park's rules");
+  const h = B.html({ id: "clean" }, d2(), NOW, false); assert.match(h, /names no burn ban/); assert.doesNotMatch(h, /safe|allowed/i);
+  assert.equal(B.chip({ id: "clean" }, d2(), NOW), "");
+});
+t("a park page we could not read is never 'no ban', and carries no mark", () => {
+  const v = B.view({ id: "unread" }, d2(), NOW); assert.equal(v.kind, "off"); assert.match(v.lead, /could not be read/);
+  assert.match(B.html({ id: "unread" }, d2(), NOW, false), /could not read/); assert.equal(B.chip({ id: "unread" }, d2(), NOW), "");
+});
+t("the park's words are escaped", () => {
+  const h = B.html({ id: "evilPark" }, d2(), NOW, false); assert.doesNotMatch(h, /<img|posted <b>/); assert.match(h, /&lt;img/); assert.match(h, /posted &lt;b&gt;/);
+});
 t("ages read naturally", () => {
   assert.equal(B.ago(30e3), "just now"); assert.equal(B.ago(10 * 60e3), "10 minutes ago"); assert.equal(B.ago(3600e3), "60 minutes ago");
   assert.equal(B.ago(2 * 3600e3), "2 hours ago"); assert.equal(B.ago(60 * 3600e3), "3 days ago");

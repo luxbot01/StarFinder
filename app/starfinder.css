@@ -539,6 +539,10 @@ html.warp .lg {
    orange on a white high-contrast page is about 2.3:1) */
 @media (forced-colors: active) { .amen i.ban { border-color: CanvasText; } .burn .burn-ic, .burn.is-ban .burn-ic { color: CanvasText; } }
 .burn.is-off, .burn.is-na { border-style: dashed; }
+/* the park's own words (Nov 10): set apart from the county line, because a reader should see which source said "ban" */
+.card p.burn-park { margin: 6px 0 0; font-size: 13px; line-height: 1.45; color: var(--text-dim); }
+.card p.burn-park b { color: var(--text); font-weight: 600; }
+.burn-park a { color: var(--text-dim); white-space: nowrap; }
 .card .burn.is-off p.burn-lead, .card .burn.is-na p.burn-lead { font-weight: 500; color: var(--text-dim); }
 
 /* ===== Nov 2: the filter row. Her order, left to right: Dark Sky Places at the far left, then one toggle per amenity icon (the
